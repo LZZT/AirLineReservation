@@ -3,8 +3,11 @@
   <component name="FacetManager">
     <facet type="hibernate" name="Hibernate">
       <configuration>
-        <datasource-map />
+        <datasource-map>
+          <unit-entry name="hibernate.cfg.xml" value="8d1aee86-e449-49e9-a508-bcc9cb6b9ece" />
+        </datasource-map>
         <naming-strategy-map />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/hibernate.cfg.xml" />
       </configuration>
     </facet>
     <facet type="web" name="Web">
@@ -34,9 +37,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.0.M17" level="application_server_libraries" />
-    <orderEntry type="library" name="Hibernate 4.2.2-4.2.2" level="project" />
-    <orderEntry type="library" name="Struts 2-2.3.20.1" level="project" />
-    <orderEntry type="library" name="mysql:mysql-connector-java:6.0.5" level="project" />
+    <orderEntry type="library" exported="" scope="PROVIDED" name="Tomcat 9.0.0.M17" level="application_server_libraries" />
+    <orderEntry type="library" exported="" name="Hibernate 4.2.2-4.2.2" level="project" />
+    <orderEntry type="library" exported="" name="Struts 2-2.3.20.1" level="project" />
+    <orderEntry type="library" exported="" name="mysql:mysql-connector-java:6.0.5" level="project" />
   </component>
 </module>

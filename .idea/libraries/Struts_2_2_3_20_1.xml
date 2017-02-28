@@ -4,8 +4,6 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/ognl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/commons-fileupload.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/struts2-core.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/xwork-core.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/commons-lang.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/asm.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/commons-io.jar!/" />
@@ -13,6 +11,8 @@
       <root url="jar://$PROJECT_DIR$/lib/asm-tree.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/freemarker.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/javassist.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/struts2-core.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xwork-core.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
