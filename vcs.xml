@@ -6,6 +6,10 @@
           <option name="url" value="https://github.com/LZZT/AirLineReservation.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/LZZT/CS542.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="$USER_HOME$/Documents/Java_Projects" />
