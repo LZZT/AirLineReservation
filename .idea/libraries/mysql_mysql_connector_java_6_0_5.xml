@@ -5,6 +5,8 @@
       <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-6.0.5.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-6.0.5-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>
