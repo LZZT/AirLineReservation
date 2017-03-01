@@ -7,7 +7,16 @@
 
 <struts>
 
-    <package name="struts2" extends="struts-default">
+    <package name="action" extends="struts-default">
+
+        <action name="test" class="action.TestAction" method="saveAndGetTestUserBack">
+            <result name="success">/testDelete.jsp</result>
+        </action>
+
+
+        <action name="deleteTestUser" class="action.TestAction" method="deleteTestUser">
+            <result name="success">/testInsert.jsp</result>
+        </action>
 
     </package>
 

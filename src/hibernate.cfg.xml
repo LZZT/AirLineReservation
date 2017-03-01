@@ -9,7 +9,7 @@
 
     <session-factory>
 
-        <property name="connection.url">jdbc:mysql://localhost/hibernate</property>
+        <property name="connection.url">jdbc:mysql://localhost/AirLineReservation</property>
 
         <property name="connection.username">root</property>
         <property name="connection.password">123456</property>
@@ -20,6 +20,10 @@
 
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
+
+
+        <mapping resource="TestUser.hbm.xml"/>
+
 
     </session-factory>
 
