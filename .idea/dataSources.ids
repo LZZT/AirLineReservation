@@ -18,18 +18,36 @@
       <schema id="7" name="sys"/>
       <schema id="8" name="test"/>
       <table id="9" parent="1" name="testUser"/>
-      <column id="10" parent="9" name="id">
+      <table id="10" parent="1" name="Customer"/>
+      <column id="11" parent="9" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
       </column>
-      <column id="11" parent="9" name="username">
+      <column id="12" parent="9" name="username">
         <data-type>varchar(30)|0</data-type>
       </column>
-      <column id="12" parent="9" name="password">
+      <column id="13" parent="9" name="password">
         <data-type>varchar(30)|0</data-type>
       </column>
-      <key id="13" parent="9" name="PRIMARY">
+      <key id="14" parent="9" name="PRIMARY">
         <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="15" parent="10" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="16" parent="10" name="password">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="17" parent="10" name="contactEmail">
+        <data-type>char(20)|0</data-type>
+      </column>
+      <column id="18" parent="10" name="cBonus">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <key id="19" parent="10" name="PRIMARY">
+        <columns>username</columns>
         <primary>1</primary>
       </key>
     </database-model>

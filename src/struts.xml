@@ -9,14 +9,46 @@
 
     <package name="action" extends="struts-default">
 
+        <interceptors>
+
+            <interceptor name="loginInterceptor" class="interceptor.LoginInterceptor"></interceptor>
+
+            <!--<interceptor-stack name="AirLineReservationInterceptorStack">-->
+                <!--<interceptor-ref name="loginInterceptor"></interceptor-ref>-->
+                <!--<interceptor-ref name="defaultStack"></interceptor-ref>-->
+            <!--</interceptor-stack>-->
+
+        </interceptors>
+
+        <!--<default-interceptor-ref name="AirLineReservationInterceptorStack"></default-interceptor-ref>-->
+
+        <global-results>
+            <result name="login">/login.jsp</result>
+        </global-results>
+
+
         <action name="test" class="action.TestAction" method="saveAndGetTestUserBack">
             <result name="success">/testDelete.jsp</result>
         </action>
 
-
         <action name="deleteTestUser" class="action.TestAction" method="deleteTestUser">
             <result name="success">/testInsert.jsp</result>
         </action>
+
+        <action name="login" class="action.LoginAction" method="login">
+            <result name="success" type="redirect">/index.jsp</result>
+            <result name="input">/login.jsp</result>
+        </action>
+
+        <action name="register" class="action.RegisterAction" method="register">
+            <result name="success" type="redirect">/index.jsp</result>
+            <result name="input">/register.jsp</result>
+        </action>
+
+        <action name="logout" class="action.LogoutAction" method="logout">
+            <result name="success" type="redirect">/logout.jsp</result>
+        </action>
+
 
     </package>
 

@@ -1,5 +1,6 @@
 package action;
 
+import com.opensymphony.xwork2.ActionSupport;
 import dao.TestUserDAO;
 import model.TestUser;
 
@@ -8,7 +9,7 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
 /**
  * Created by QQZhao on 2/28/17.
  */
-public class TestAction {
+public class TestAction extends ActionSupport{
 
     private String primaryKey;
     private String username;
