@@ -23,7 +23,7 @@
 
 
         <mapping resource="TestUser.hbm.xml"/>
-
+        <mapping resource="Customer.hbm.xml"/>
 
     </session-factory>
 
