@@ -21,9 +21,12 @@
         <!-- DB schema will be updated if needed -->
         <!-- <property name="hbm2ddl.auto">update</property> -->
 
-
         <mapping resource="TestUser.hbm.xml"/>
         <mapping resource="Customer.hbm.xml"/>
+        <mapping resource="Aircraft.hbm.xml"/>
+        <mapping resource="Airline.hbm.xml"/>
+        <mapping resource="City.hbm.xml"/>
+        <mapping resource="Airport.hbm.xml"/>
 
     </session-factory>
 

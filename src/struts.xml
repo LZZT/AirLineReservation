@@ -49,6 +49,20 @@
             <result name="success" type="redirect">/logout.jsp</result>
         </action>
 
+        <action name="resultHandler" class="action.resultHandlerAction">
+            <result name="success" type="redirect">/searchResult.jsp</result>
+        </action>
+
+
+        <action name="searchFlight" class="action.SearchAction" method="findAirports">
+            <result name="success" type="redirect">resultHandler.action</result>
+            <result name="input">/index.jsp</result>
+        </action>
+
+        <action name="filter" class="action.FilterAction">
+            <result name="success" type="redirect">resultHandler.action</result>
+        </action>
+
 
     </package>
 

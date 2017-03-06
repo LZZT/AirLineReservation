@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<!--map java class with table in database-->
+
+<hibernate-mapping>
+
+    <class name="model.Aircraft" table="Aircraft">
+
+        <id name="model" column="model" type="string"></id>
+        <property name="capacity" column="capacity" type="int"></property>
+
+        <set name="airlineSet" table="AirlineOwnsAircraft" cascade="save-update">
+            <key column="model"></key>
+            <many-to-many class="model.Airline" column="name"></many-to-many>
+        </set>
+
+    </class>
+
+</hibernate-mapping>
