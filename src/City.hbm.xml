@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<!--map java class with table in database-->
+
+<hibernate-mapping>
+
+    <class name="model.City" table="City">
+
+        <id name="city" column="city" type="string"></id>
+        <property name="state" column="state" type="string"></property>
+        <property name="country" column="country" type="string"></property>
+        <property name="timeZone" column="timeZone" type="string"></property>
+
+        <set name="airportSet" cascade="all" lazy="false">
+            <key column="city"></key>
+            <one-to-many class="model.Airport"/>
+        </set>
+
+    </class>
+
+</hibernate-mapping>

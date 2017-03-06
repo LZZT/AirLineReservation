@@ -37,5 +37,13 @@
       <br><br><br><br>
       <h1>This is the place where user search flights</h1>
 
+      <s:actionerror cssStyle="color:red"/>
+        <form action="searchFlight.action" method="post">
+            Departure City or Airport: <input type="text" name="departureCityOrAirport"/><br>
+            Arrival City or Airport: <input type="text" name="arrivalCityOrAirport"/><br>
+            <input type="submit" value="Search"/>
+
+        </form>
+
   </body>
 </html>
