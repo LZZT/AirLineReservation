@@ -12,6 +12,7 @@
 
   <head>
     <title>Index</title>
+
   </head>
 
   <body>
@@ -39,8 +40,14 @@
 
       <s:actionerror cssStyle="color:red"/>
         <form action="searchFlight.action" method="post">
+            <input type="radio" name="tripType" value="singleTrip" checked/>Single Trip
+            <input type="radio" name="tripType" value="roundTrip"/>Round Trip
+            <br>
             Departure City or Airport: <input type="text" name="departureCityOrAirport"/><br>
             Arrival City or Airport: <input type="text" name="arrivalCityOrAirport"/><br>
+            Departing Date: <input type="date" name="departingDate"/><br>
+            Returning Date: <input type="date" name="returningDate"/><br>
+
             <input type="submit" value="Search"/>
 
         </form>

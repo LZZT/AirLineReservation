@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<!--map java class with table in database-->
+
+<hibernate-mapping>
+
+    <class name="model.Flight" table="Flight">
+
+        <id name="flightNumber" column="flightNumber" type="string"></id>
+        <property name="departureTime" column="departureTime" type="time"></property>
+        <property name="arrivalTime" column="arrivalTime" type="time"></property>
+        <property name="daysOperated" column="daysOperated" type="string"></property>
+        <property name="price" column="price" type="int"></property>
+
+        <many-to-one name="departureAirport" class="model.Airport" column="departureAirport" lazy="false"/>
+        <many-to-one name="arrivalAirport" class="model.Airport" column="arrivalAirport" lazy="false"/>
+
+        <many-to-one name="airline" class="model.Airline" column="Airline" lazy="false"/>
+        <many-to-one name="aircraftModel" class="model.Aircraft" column="aircraftModel" lazy="false"/>
+
+    </class>
+
+</hibernate-mapping>

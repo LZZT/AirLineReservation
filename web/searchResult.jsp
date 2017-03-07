@@ -36,5 +36,60 @@
         </s:form>
 
 
+        <h3>Choose Departure Flight: </h3>
+
+        <table width="80%" align="center" border="1">
+
+            <tr>
+                <th>Flight Number</th>
+                <th>AirLine</th>
+                <th>Aircraft</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+                <th>Departure Airport</th>
+                <th>ArrivalAirport</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+
+
+            <s:iterator value="#session.validFlights" id="flight">
+
+                <tr>
+
+                    <td>
+                        <s:property value='%{#flight.flightNumber}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#flight.airline.code}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#flight.aircraftModel.model}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#flight.departureTime}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#flight.arrivalTime}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#flight.departureAirport.name}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#flight.arrivalAirport.name}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#flight.Price}'/>
+                    </td>
+                    <td>
+                        <s:a href="?id=%{#flight.flightNumber}">Add to Cart</s:a>
+                    </td>
+
+                </tr>
+
+            </s:iterator>
+
+        </table>
+
 </body>
 </html>
