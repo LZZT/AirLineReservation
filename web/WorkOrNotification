@@ -1,0 +1,18 @@
+
+1. Create tables problem.
+    a). airport, city has airport
+    b). Flight talk to airline and aircraft directly? and check if it in airlineHasAircraft?
+
+2. Generating 0-stop, 1-stop and 2-stop flight query for both going and returning trip.
+    a) change data structure
+    b) how hql language getlist of two objects parallely
+    c) how to show them in webpage
+
+3. Manager webpage
+    a) search function does not need to write seperately
+    b) insert, delete and update webpage and logics can be written seperately.
+
+4. From cart --> traveler information --> payment --> index.jsp
+
+4. Data cleaning (not in hurry)
+

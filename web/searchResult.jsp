@@ -82,7 +82,7 @@
                         <s:property value='%{#flight.Price}'/>
                     </td>
                     <td>
-                        <s:a href="?id=%{#flight.flightNumber}">Add to Cart</s:a>
+                        <s:a href="addToCart.action?id=%{#flight.flightNumber}">Add to Cart</s:a>
                     </td>
 
                 </tr>
