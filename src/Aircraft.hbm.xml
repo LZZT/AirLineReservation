@@ -17,6 +17,11 @@
             <many-to-many class="model.Airline" column="name"></many-to-many>
         </set>
 
+        <set name="flightSet">
+            <key column="aircraftModel"></key>
+            <one-to-many class="model.Flight"/>
+        </set>
+
     </class>
 
 </hibernate-mapping>
