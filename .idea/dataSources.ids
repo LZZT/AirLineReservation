@@ -21,9 +21,9 @@
       <table id="10" parent="1" name="Customer"/>
       <table id="11" parent="1" name="Aircraft"/>
       <table id="12" parent="1" name="Airline"/>
-      <table id="13" parent="1" name="AirlineOwnsAircraft"/>
-      <table id="14" parent="1" name="Airport"/>
-      <table id="15" parent="1" name="City"/>
+      <table id="13" parent="1" name="Airport"/>
+      <table id="14" parent="1" name="City"/>
+      <table id="15" parent="1" name="Flight"/>
       <column id="16" parent="9" name="id">
         <mandatory>1</mandatory>
         <data-type>int(11)|0</data-type>
@@ -77,76 +77,119 @@
         <columns>name</columns>
         <primary>1</primary>
       </key>
-      <column id="31" parent="13" name="name">
-        <mandatory>1</mandatory>
-        <data-type>char(20)|0</data-type>
-      </column>
-      <column id="32" parent="13" name="model">
-        <mandatory>1</mandatory>
-        <data-type>char(10)|0</data-type>
-      </column>
-      <index id="33" parent="13" name="model">
-        <columns>model</columns>
-        <desc-columns></desc-columns>
-      </index>
-      <key id="34" parent="13" name="PRIMARY">
-        <columns>name
-model</columns>
-        <primary>1</primary>
-      </key>
-      <foreign-key id="35" parent="13" name="airlineownsaircraft_ibfk_1">
-        <columns>name</columns>
-        <ref-key>~.Airline.PRIMARY</ref-key>
-        <cascade-update-rule>restrict</cascade-update-rule>
-        <cascade-delete-rule>restrict</cascade-delete-rule>
-      </foreign-key>
-      <foreign-key id="36" parent="13" name="airlineownsaircraft_ibfk_2">
-        <columns>model</columns>
-        <ref-key>~.Aircraft.PRIMARY</ref-key>
-        <cascade-update-rule>restrict</cascade-update-rule>
-        <cascade-delete-rule>restrict</cascade-delete-rule>
-      </foreign-key>
-      <column id="37" parent="14" name="code">
+      <column id="31" parent="13" name="code">
         <mandatory>1</mandatory>
         <data-type>char(4)|0</data-type>
       </column>
-      <column id="38" parent="14" name="name">
+      <column id="32" parent="13" name="name">
         <data-type>char(20)|0</data-type>
       </column>
-      <column id="39" parent="14" name="city">
+      <column id="33" parent="13" name="city">
         <data-type>char(20)|0</data-type>
       </column>
-      <index id="40" parent="14" name="city">
+      <index id="34" parent="13" name="city">
         <columns>city</columns>
         <desc-columns></desc-columns>
       </index>
-      <key id="41" parent="14" name="PRIMARY">
+      <key id="35" parent="13" name="PRIMARY">
         <columns>code</columns>
         <primary>1</primary>
       </key>
-      <foreign-key id="42" parent="14" name="airport_ibfk_1">
+      <foreign-key id="36" parent="13" name="airport_ibfk_1">
         <columns>city</columns>
         <ref-key>~.City.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="43" parent="15" name="city">
+      <column id="37" parent="14" name="city">
         <mandatory>1</mandatory>
         <data-type>char(20)|0</data-type>
       </column>
-      <column id="44" parent="15" name="state">
+      <column id="38" parent="14" name="state">
         <data-type>char(10)|0</data-type>
       </column>
-      <column id="45" parent="15" name="country">
+      <column id="39" parent="14" name="country">
         <data-type>char(10)|0</data-type>
       </column>
-      <column id="46" parent="15" name="timeZone">
+      <column id="40" parent="14" name="timeZone">
         <data-type>char(10)|0</data-type>
       </column>
-      <key id="47" parent="15" name="PRIMARY">
+      <key id="41" parent="14" name="PRIMARY">
         <columns>city</columns>
         <primary>1</primary>
       </key>
+      <column id="42" parent="15" name="flightNumber">
+        <mandatory>1</mandatory>
+        <data-type>char(20)|0</data-type>
+      </column>
+      <column id="43" parent="15" name="departureTime">
+        <data-type>time|0</data-type>
+      </column>
+      <column id="44" parent="15" name="arrivalTime">
+        <data-type>time|0</data-type>
+      </column>
+      <column id="45" parent="15" name="daysOperated">
+        <data-type>char(20)|0</data-type>
+      </column>
+      <column id="46" parent="15" name="departureAirport">
+        <data-type>char(20)|0</data-type>
+      </column>
+      <column id="47" parent="15" name="arrivalAirport">
+        <data-type>char(20)|0</data-type>
+      </column>
+      <column id="48" parent="15" name="airline">
+        <data-type>char(20)|0</data-type>
+      </column>
+      <column id="49" parent="15" name="aircraftModel">
+        <data-type>char(10)|0</data-type>
+      </column>
+      <column id="50" parent="15" name="price">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <index id="51" parent="15" name="aircraftModel">
+        <columns>aircraftModel</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="52" parent="15" name="airline">
+        <columns>airline</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="53" parent="15" name="arrivalAirport">
+        <columns>arrivalAirport</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="54" parent="15" name="departureAirport">
+        <columns>departureAirport</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="55" parent="15" name="PRIMARY">
+        <columns>flightNumber</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="56" parent="15" name="flight_ibfk_2">
+        <columns>departureAirport</columns>
+        <ref-key>~.Airport.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="57" parent="15" name="flight_ibfk_3">
+        <columns>arrivalAirport</columns>
+        <ref-key>~.Airport.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="58" parent="15" name="flight_ibfk_4">
+        <columns>airline</columns>
+        <ref-key>~.Airline.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="59" parent="15" name="flight_ibfk_1">
+        <columns>aircraftModel</columns>
+        <ref-key>~.Aircraft.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
     </database-model>
   </data-source>
 </component>

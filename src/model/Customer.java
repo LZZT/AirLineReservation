@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Set;
+
 /**
  * Created by QQZhao on 3/3/17.
  */
@@ -9,6 +11,28 @@ public class Customer {
     private String password;
     private String contactEmail;
     private int cBonus;
+
+    // leaving and returning Flights in Chart does not need to go to database;
+    // It comes with session (~30 minutes or until user logout)
+
+    private Set<Flight> leavingFlightsInChart;
+    private Set<Flight> returningFlightsInChart;
+
+    public Set<Flight> getLeavingFlightsInChart() {
+        return leavingFlightsInChart;
+    }
+
+    public void setLeavingFlightsInChart(Set<Flight> leavingFlightsInChart) {
+        this.leavingFlightsInChart = leavingFlightsInChart;
+    }
+
+    public Set<Flight> getReturningFlightsInChart() {
+        return returningFlightsInChart;
+    }
+
+    public void setReturningFlightsInChart(Set<Flight> returningFlightsInChart) {
+        this.returningFlightsInChart = returningFlightsInChart;
+    }
 
     public String getUsername() {
         return username;
