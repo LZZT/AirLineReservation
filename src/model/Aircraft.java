@@ -12,6 +12,15 @@ public class Aircraft {
 
     private Set<Airline> airlineSet;
 
+    private Set<Flight> flightSet;
+
+    public Set<Flight> getFlightSet() {
+        return flightSet;
+    }
+
+    public void setFlightSet(Set<Flight> flightSet) {
+        this.flightSet = flightSet;
+    }
 
     public String getModel() {
         return model;

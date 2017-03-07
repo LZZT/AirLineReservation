@@ -1,5 +1,10 @@
+
+
+
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -9,12 +14,10 @@ import java.util.Objects;
 public class test {
 
     public static void main(String[] args) {
-        List<String> x = new ArrayList<>();
-        x.add("x1");
-        x.add("x2");
-        Object a = (Object)x;
-        List b = (List<String>)a;
-        System.out.println(b);
+
+        Date date = new Date("05/27/2012");
+        System.out.println(date.toString());
+
     }
 
 }
