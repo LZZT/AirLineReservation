@@ -97,7 +97,7 @@
       </key>
       <foreign-key id="36" parent="13" name="airport_ibfk_1">
         <columns>city</columns>
-        <ref-key>~.City.PRIMARY</ref-key>
+        <ref-key>airlinereservation.City(city)</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
