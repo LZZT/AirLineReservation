@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: QQZhao
@@ -13,7 +14,76 @@
 <body>
 
 
-    <h1>This is the cart</h1>
+    <h1>This is the cart</h1> <br><br>
+
+
+
+
+    <s:iterator value='#session.leavingFlightObjectSet' id="flightList">
+
+        <s:iterator value='%{#flightList}' id="flight">
+
+            <s:property value='%{#flight.flightNumber}'/>
+
+            <s:property value='%{#flight.airline.code}'/>
+
+            <s:property value='%{#flight.aircraftModel.model}'/>
+
+            <s:property value='%{#flight.departureTime}'/>
+
+            <s:property value='%{#flight.arrivalTime}'/>
+
+            <s:property value='%{#flight.departureAirport.name}'/>
+
+            <s:property value='%{#flight.arrivalAirport.name}'/>
+
+            <s:property value='%{#flight.Price}'/><br>
+
+        </s:iterator>
+
+    </s:iterator>
+
+    <br><br>
+
+    -------------------------------------------------------------------------------------------------------------
+    <br><br>
+
+
+    <s:iterator value='#session.returningFlightObjectSet' id="flightList">
+
+        <s:iterator value='%{#flightList}' id="flight">
+
+            <s:property value='%{#flight.flightNumber}'/>
+
+            <s:property value='%{#flight.airline.code}'/>
+
+            <s:property value='%{#flight.aircraftModel.model}'/>
+
+            <s:property value='%{#flight.departureTime}'/>
+
+            <s:property value='%{#flight.arrivalTime}'/>
+
+            <s:property value='%{#flight.departureAirport.name}'/>
+
+            <s:property value='%{#flight.arrivalAirport.name}'/>
+
+            <s:property value='%{#flight.Price}'/><br>
+
+        </s:iterator>
+
+    </s:iterator>
+
+
+
+
+
+    <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
+
+
+
+
+
+
     <h2>In session, you will get two Sets. These two sets are not stored in database</h2>
     <h3>1. leavingFlightObjectSet containing Flights Objects</h3>
     <h3>2. returningFlightObjectSet containing Flights Objects</h3>

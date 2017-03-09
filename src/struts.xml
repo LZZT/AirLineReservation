@@ -12,6 +12,7 @@
         <interceptors>
 
             <interceptor name="loginInterceptor" class="interceptor.LoginInterceptor"></interceptor>
+            <interceptor name="ReturningFlightInterceptor" class="interceptor.ReturningFlightInterceptor"></interceptor>
 
             <!--<interceptor-stack name="AirLineReservationInterceptorStack">-->
                 <!--<interceptor-ref name="loginInterceptor"></interceptor-ref>-->
@@ -24,8 +25,8 @@
 
         <global-results>
             <result name="login">/login.jsp</result>
+            <result name="JumpToCart">/cart.jsp</result>
         </global-results>
-
 
         <action name="test" class="action.TestAction" method="saveAndGetTestUserBack">
             <result name="success">/testDelete.jsp</result>
@@ -49,15 +50,30 @@
             <result name="success" type="redirect">/logout.jsp</result>
         </action>
 
-
-        <action name="searchFlight" class="action.SearchAction" method="findInfo">
-            <result name="success" type="redirect">/searchResult.jsp</result>
-            <result name="input">/index.jsp</result>
+        <action name="searchGoingFlight" class="action.searchGoingAction" method="findInfo">
+            <result name="success" type="redirect">/searchGoingResult.jsp</result>
+            <result name="input">/noResultFound.jsp</result>
         </action>
+
+        <action name="searchReturningFlight" class="action.searchReturningAction" method="findInfo">
+            <result name="success" type="redirect">/searchReturningResult.jsp</result>
+            <result name="input">searchGoingFlight.action</result>
+
+            <interceptor-ref name="ReturningFlightInterceptor"/>
+            <interceptor-ref name="defaultStack"/>
+
+        </action>
+
+        <action name="cartAction" class="action.CartAction">
+            <result name="success" type="redirect">/cart.jsp</result>
+        </action>
+
 
         <action name="filter" class="action.FilterAction">
-            <result name="success" type="redirect">/searchResult.jsp</result>
+            <result name="success" type="redirect">/searchGoingResult.jsp</result>
         </action>
+
+
 
 
     </package>

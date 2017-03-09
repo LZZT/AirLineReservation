@@ -39,7 +39,7 @@
       <h1>This is the place where user search flights</h1>
 
       <s:actionerror cssStyle="color:red"/>
-        <form action="searchFlight.action" method="post">
+        <form action="searchGoingFlight.action" method="post">
             <input type="radio" name="tripType" value="singleTrip" checked/>Single Trip
             <input type="radio" name="tripType" value="roundTrip"/>Round Trip
             <br>
