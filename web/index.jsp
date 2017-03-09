@@ -21,10 +21,11 @@
               $("#singleTrip, #roundTrip").change(function(){
                   $("#datepicker1, #datepicker2").val("").attr("readonly",true);
                   if($("#singleTrip").is(":checked")){
+                      $("#datepicker2").attr("readonly",true);
                       $("#datepicker1").datepicker();
+                      $("#datepicker2").datepicker( "option", "disabled", true );
                   } else if($("#roundTrip").is(":checked")){
-                      $("#datepicker2").removeAttr("readonly");
-                      $("#datepicker2").focus();
+                      $("#datepicker2").attr("readonly",false);
                       $("#datepicker1").datepicker();
                       $("#datepicker2").datepicker();
                   }
@@ -53,7 +54,7 @@
               <input type="submit" value="Logout"/>
           </form>
       <% }%>
-
+      <input type="button" value="Manager Mode" onclick="location.href='manager.jsp';">
       <br><br><br><br>
       <h1>This is the place where user search flights</h1>
 

@@ -15,12 +15,20 @@ import java.util.List;
  * Created by QQZhao on 3/5/17.
  */
 public class SearchAction extends ActionSupport {
-
+    private String flightNumber;
     private String departureCityOrAirport;
     private String arrivalCityOrAirport;
     private String tripType;
     private String departingDate;
     private String returningDate;
+
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
 
     public String getDepartureCityOrAirport() {
         return departureCityOrAirport;
@@ -106,5 +114,17 @@ public class SearchAction extends ActionSupport {
 //        }
 
 
+    }
+
+    public String searchFlightByFlightNumber() throws Exception {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        SearchInfoService searchInfoService = new SearchInfoService();
+
+        List<Flight> validFlightsList = searchInfoService.getFlightByFlightNumber(flightNumber);
+        session.setAttribute("validFlights", validFlightsList);
+
+        return SUCCESS;
     }
 }
