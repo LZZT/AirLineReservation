@@ -9,6 +9,7 @@ import org.apache.struts2.ServletActionContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -17,21 +18,51 @@ import java.util.List;
  */
 public class SearchInfoService {
 
-    public List<Flight> handleSingleTrip(List<Airport> departureAirportsList, List<Airport> arrivalAirportsList, String departingDate){
+    public List<List<Flight>> handleSingleTrip(List<Airport> departureAirportsList, List<Airport> arrivalAirportsList, String departingDate){
 
         int weekNum = convertStringDateToWeekInteger(departingDate);
 
-        List<Flight> validFlightsList = new ArrayList<>();
+        List<List<Flight>> validFlightsList = new ArrayList<>();
         FlightDAO flightDAO = new FlightDAO();
 
         for(Airport departureAirport: departureAirportsList){
             for(Airport arrivalAirport: arrivalAirportsList){
-                validFlightsList.addAll(flightDAO.getFlightByAirportsCodeAndDate(departureAirport.getCode(), arrivalAirport.getCode(), weekNum));
+
+                List<List<Flight>> nonStopFlightList = flightDAO.getNoneStopFlightByAirportsCodeAndDate(departureAirport.getCode(), arrivalAirport.getCode(), weekNum);
+                if(nonStopFlightList != null){
+                    validFlightsList.addAll(nonStopFlightList);
+                }
+
+                List<List<Flight>> oneStopFlightList = flightDAO.getOneStopFlightByAirportsCodeAndDate(departureAirport.getCode(), arrivalAirport.getCode(), weekNum);
+                if(oneStopFlightList != null){
+                    validFlightsList.addAll(oneStopFlightList);
+                }
+
+////                Two stop not done yet
+//                List<List<Flight>> twoStopFlightList = flightDAO.getTwoStopFlightByAirportsCodeAndDate(departureAirport.getCode(), arrivalAirport.getCode(), weekNum);
+//                if(oneStopFlightList != null){
+//                    validFlightsList.addAll(twoStopFlightList);
+//                }
+
+////                Example of Data Structure of validFlightsList
+//                Flight a = new Flight();
+//                a.setFlightNumber("a");
+//                Flight b = new Flight();
+//                b.setFlightNumber("b");
+//                Flight c = new Flight();
+//                c.setFlightNumber("c");
+//                Flight d = new Flight();
+//                d.setFlightNumber("d");
+//                ArrayList[] x = {new ArrayList<Flight>(Arrays.asList(a)), new ArrayList<Flight>(Arrays.asList(b)), new ArrayList<Flight>(Arrays.asList(new Flight[]{c, d}))};
+//                validFlightsList = Arrays.asList(x);
+
             }
         }
 
         return validFlightsList;
     }
+
+
 
     @SuppressWarnings("deprecation")
     private int convertStringDateToWeekInteger(String dateToBeConverted){
