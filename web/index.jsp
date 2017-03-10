@@ -59,9 +59,10 @@
       <h1>This is the place where user search flights</h1>
 
       <s:actionerror cssStyle="color:red"/>
-        <form action="searchFlight.action" method="post">
-            <input type="radio" name="tripType" id="singleTrip" value="singleTrip" required/>Single Trip
-            <input type="radio" name="tripType" id="roundTrip" value="roundTrip" required/>Round Trip
+        <form action="searchGoingFlight.action" method="post">
+            <input type="radio" name="tripType" value="singleTrip" checked/>Single Trip
+            <input type="radio" name="tripType" value="roundTrip"/>Round Trip
+
             <br>
             Departure City or Airport: <input type="text" name="departureCityOrAirport"/><br>
             Arrival City or Airport: <input type="text" name="arrivalCityOrAirport"/><br>

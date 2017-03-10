@@ -10,11 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by QQZhao on 3/5/17.
  */
-public class SearchAction extends ActionSupport {
+public class searchGoingAction extends ActionSupport {
+
     private String flightNumber;
     private String departureCityOrAirport;
     private String arrivalCityOrAirport;
@@ -77,17 +79,46 @@ public class SearchAction extends ActionSupport {
 
         SearchInfoService searchInfoService = new SearchInfoService();
 
+        List<Airport> goingDepartureAirportsList = searchInfoService.getAirportsByCityOrAirportCode(departureCityOrAirport);
+        List<Airport> goingArrivalAirportsList = searchInfoService.getAirportsByCityOrAirportCode(arrivalCityOrAirport);
+        session.setAttribute("goingDepartureAirportsList", goingDepartureAirportsList);
+        session.setAttribute("goingArrivalAirportsList", goingArrivalAirportsList);
+
+        List<List<Flight>> validGoingFlightsList = searchInfoService.handleSingleTrip(goingDepartureAirportsList, goingArrivalAirportsList, departingDate);
+        if(validGoingFlightsList.size() == 0){
+            return INPUT;
+        }
+        session.setAttribute("validGoingFlights", validGoingFlightsList);
+
         if(tripType.equals("singleTrip")){
 
-            List<Airport> departureAirportsList = searchInfoService.getAirportsByCityOrAirportCode(departureCityOrAirport);
-            List<Airport> arrivalAirportsList = searchInfoService.getAirportsByCityOrAirportCode(arrivalCityOrAirport);
-            session.setAttribute("departureAirportsList", departureAirportsList);
-            session.setAttribute("arrivalAirportsList", arrivalAirportsList);
+            try{
+                session.removeAttribute("returningDate");
+            }catch (Exception ex){}
 
-            List<Flight> validFlightsList = searchInfoService.handleSingleTrip(departureAirportsList, arrivalAirportsList, departingDate);
-            session.setAttribute("validFlights", validFlightsList);
+            try{
+                session.removeAttribute("returningDepartureAirportsList");
+            }catch (Exception ex){}
+
+            try{
+                session.removeAttribute("returningArrivalAirportsList");
+            }catch (Exception ex){}
+
+            try{
+                session.removeAttribute("validReturningFlights");
+            }catch (Exception ex){}
+
+            try{
+                session.removeAttribute("returningFlightObjectSet");
+            }catch (Exception ex){}
+
         }
 
+        if(tripType.equals("roundTrip")){
+
+            session.setAttribute("returningDate", returningDate);
+
+        }
         return SUCCESS;
     }
 
@@ -107,13 +138,13 @@ public class SearchAction extends ActionSupport {
             this.addActionError("Invalid Departing Date");
         }
 
-//        try{
-//            Date validDate = new Date(returningDate);
-//        }catch (Exception ex){
-//            this.addActionError("Invalid Returning Date");
-//        }
-
-
+        if(tripType.equals("roundTrip")){
+            try{
+                Date validDate = new Date(returningDate);
+            }catch (Exception ex){
+                this.addActionError("Invalid Returning Date");
+            }
+        }
     }
 
     public String searchFlightByFlightNumber() throws Exception {
@@ -123,7 +154,9 @@ public class SearchAction extends ActionSupport {
         SearchInfoService searchInfoService = new SearchInfoService();
 
         List<Flight> validFlightsList = searchInfoService.getFlightByFlightNumber(flightNumber);
-        session.setAttribute("validFlights", validFlightsList);
+        List<List<Flight>>  validFlightsLists = new ArrayList<>();
+        validFlightsLists.add(validFlightsList);
+        session.setAttribute("validGoingFlights", validFlightsLists);
 
         return SUCCESS;
     }
