@@ -80,7 +80,7 @@
         </action>
 
         <action name="searchFlightByFlightNumber" class="action.searchGoingAction" method="searchFlightByFlightNumber">
-            <result name="success" type="redirect">/searchGoingResult.jsp</result>
+            <result name="success" type="redirect">/managerSearchResult.jsp</result>
             <result name="input">/manager.jsp</result>
         </action>
 
@@ -93,7 +93,7 @@
         <action name="deleteFlight" class="action.ManagerAction" method="deleteFlight">
             <result name="error" type="redirect">/managerActionError.jsp</result>
             <result name="success" type="redirect">/managerActionSuccessful.jsp</result>
-            <result name="input">/searchGoingResult.jsp</result>
+            <result name="input">/managerSearchResult.jsp</result>
         </action>
 
 
