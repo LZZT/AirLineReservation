@@ -2,6 +2,7 @@ package service;
 
 import dao.AirportDAO;
 import dao.FlightDAO;
+import model.Aircraft;
 import model.Airport;
 import model.Flight;
 import org.apache.struts2.ServletActionContext;
@@ -99,7 +100,7 @@ public class SearchInfoService {
             Airport airport = airportDAO.getAirportByCode(cityOrAirport);
             airportsList.add(airport);
 
-        }else{
+        } else {
 
             String[] locationInformationList = cityOrAirport.split(",");
             String targetCityName = locationInformationList[0];
@@ -118,4 +119,12 @@ public class SearchInfoService {
         return airportsList;
     }
 
+
+    public List<Flight> getFlightByFlightNumber(String flightNumber) {
+        FlightDAO flightDAO = new FlightDAO();
+
+        List<Flight> flightsList = flightDAO.getFlightByFlightNumber(flightNumber);
+
+        return flightsList;
+    }
 }

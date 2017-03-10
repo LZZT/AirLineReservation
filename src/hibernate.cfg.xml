@@ -9,10 +9,10 @@
 
     <session-factory>
 
-        <property name="connection.url">jdbc:mysql://localhost/AirLineReservation</property>
+        <property name="connection.url">jdbc:mysql://localhost/cs542</property>
 
         <property name="connection.username">root</property>
-        <property name="connection.password">123456</property>
+        <property name="connection.password">124332538</property>
 
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
@@ -28,7 +28,8 @@
         <mapping resource="City.hbm.xml"/>
         <mapping resource="Airport.hbm.xml"/>
         <mapping resource="Flight.hbm.xml"/>
-
+        <mapping resource="Traveler.hbm.xml"/>
+        <mapping resource="Payment.hbm.xml"/>
     </session-factory>
 
 </hibernate-configuration>

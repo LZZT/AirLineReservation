@@ -1,27 +1,34 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: QQZhao
-  Date: 3/7/17
-  Time: 3:44 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <title>Payment</title>
+    <title>Payment Information</title>
 </head>
 <body>
 
-    <h1>This is where customer pays tickets</h1>
+<h1>Payment Information</h1>
+<br>
 
-    <h3>Tickets objects are already in session</h3>
+<s:actionerror cssStyle="color:red"/>
+<br>
 
-    <h3>Tasks:</h3>
-    <h4>1.  show tickets seperately </h4>
-    <h4>2.  make input webpage for credit card  </h4>
-    <h4>3.  click buy button to the failure or succeed page</h4>
-    <h4>4.  if succeed, save credit card and traveler to database</h4>
-    <h4>5.  generate Transaction objects and store in database. </h4>
+<form action="payment.action" method="post">
+
+    Card Number: <input type="text" name="cardNumber"><br>
+
+    Last Name: <input type="text" name="cardLastname"><br>
+
+    First Name: <input type="text" name="cardFirstname"><br>
+
+    <%--ExpDate: <input type="date" name="expDate"><br>--%>
+    Expire Date: <input type="text"  size ="4" maxlength = "4" name="expDate"><br>
+    <%--CVV: <input type="text" name="cvv"><br>--%>
+    CVV: <input type="text" size = "3" maxlength="3" name = "cvv"><br>
+    Billing Address: <input type="text" name="billingAddress"><br>
+
+    <input type="submit" value="Continue">
+
+</form>
 
 </body>
 </html>

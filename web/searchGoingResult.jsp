@@ -102,7 +102,6 @@
             <%
 
                 }%>
-
                         <td>
                             <input type="hidden" name="index" value=<%=i%>/>
                             <input type="submit" value="Select"/>

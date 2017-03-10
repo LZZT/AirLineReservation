@@ -34,9 +34,7 @@ public class CartAction extends ActionSupport{
         SearchInfoService searchInfoService = new SearchInfoService();
         String validIndex = index.split("/")[0];
         List<Flight> chosenReturningFlight = ((List<List<Flight>>)session.getAttribute("validReturningFlights")).get(Integer.valueOf(validIndex));
-
         session.setAttribute("returningFlightObjectSet", chosenReturningFlight);
-
         return SUCCESS;
 
     }

@@ -1,30 +1,55 @@
+<%@ page import="model.Traveler" %>
+<%@ page import="java.util.List" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%--
   Created by IntelliJ IDEA.
-  User: QQZhao
-  Date: 3/7/17
-  Time: 3:38 AM
+  User: tonggezhu
+  Date: 3/8/17
+  Time: 8:55 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+
 <head>
     <title>Traveler</title>
+
 </head>
+
+
 <body>
+<s:actionerror cssStyle="color:red"/>
+<h1>Traveler information</h1>
+<form action="traveler.action" method="post">
 
-<h1>This is the place user input traveler information</h1>
-<h3>This page has nothing to do with flights, which are already stored in session</h3>
-<h3>This page only deal with traveler information</h3>
+    <%! int i;%>
+    <% for (i = 1; i <= Integer.valueOf((String) session.getAttribute("ticketsNumber")) ; i++) {%>
 
-<br>
+    Passenger <%= i%>:<br>
+    <input type="radio" name="travelerList[<%= i-1%>].gender" value="M"/>male
+    <input type="radio" name="travelerList[<%= i-1%>].gender" value="F"/>female
+    <br>
+    Last Name: <input type="text" name="travelerList[<%= i-1%>].lastname"><br>
+    First Name: <input type="text" name="travelerList[<%= i-1%>].firstname"><br>
+    Date of birth: <input type="date" name="travelerList[<%= i-1%>].dob"><br>
+    Phone: <input type="text" name="travelerList[<%= i-1%>].phone"><br>
+    Email: <input type="email" name="travelerList[<%= i-1%>].email"><br>
+    <br>
+    <%--<input type="radio" name="traveler.gender" value="M"/>male--%>
+    <%--<input type="radio" name="traveler.gender" value="F"/>female--%>
+    <%--<br>--%>
+    <%--Last Name: <input type="text" name="traveler.lastname"><br>--%>
+    <%--First Name: <input type="text" name="traveler.firstname"><br>--%>
+    <%--Date of birth: <input type="date" name="traveler.dob"><br>--%>
+    <%--Phone: <input type="text" name="traveler.phone"><br>--%>
+    <%--Email: <input type="email" name="traveler.email"><br>--%>
 
-<h3>Tasks:</h3>
-<h4>1.  build webpage for user to input information </h4>
-<h4>2.  These information should NOT be stored directly in database, but are stored in session temporarily. </h4>
-<h4>3.  Storing traveler information to database occurs after payment </h4>
-<h4>4.  Generating ticket objects based on traveler information and flights information(both are stored in session) </h4>
-<h4>5.  Store ticket in session (should remove others? Not determined yet)</h4>
-<h4>5.  click "Next" button will go credit card page (customer buy tickets, not flight)</h4>
+    <%}%>
+
+
+    <input type="submit" value="submit">
+</form>
+
 
 </body>
 </html>
