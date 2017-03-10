@@ -68,12 +68,26 @@
             <result name="success" type="redirect">/cart.jsp</result>
         </action>
 
+        <action name="cartNumber" class="action.CartNumberAction" method="cart">
+            <result name="success" type="redirect">/traveler.jsp</result>
+        </action>
 
         <action name="filter" class="action.FilterAction">
             <result name="success" type="redirect">/searchGoingResult.jsp</result>
         </action>
 
+         <action name="traveler" class="action.TravelerAction" method="add">
+            <result name="success" type="redirect">/payment.jsp</result>
+         </action>
 
+        <action name="transAction" class="action.TransAction" method="TransInfo">
+            <result name="success" type="redirect">/cart.jsp</result>
+        </action>
+
+        <action name="payment" class="action.PaymentAction" method="PaymentInfo">
+            <result name="success" type="redirect">/transactionInfo.jsp</result>
+            <result name="input">/payment.jsp</result>
+        </action>
 
 
     </package>

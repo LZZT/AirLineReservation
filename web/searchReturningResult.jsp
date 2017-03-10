@@ -68,7 +68,7 @@
 
             %>
 
-            <form action="cartAction" method="post"/>
+            <form action="cartAction.action" method="post"/>
             <%
                 List<Flight> currentFlights = validFlights.get(i);
 
