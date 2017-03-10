@@ -10,17 +10,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by QQZhao on 3/5/17.
  */
 public class searchGoingAction extends ActionSupport {
 
+    private String flightNumber;
     private String departureCityOrAirport;
     private String arrivalCityOrAirport;
     private String tripType;
     private String departingDate;
     private String returningDate;
+
+    public String getFlightNumber() {
+        return flightNumber;
+    }
+
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
+    }
 
     public String getDepartureCityOrAirport() {
         return departureCityOrAirport;
@@ -135,5 +145,19 @@ public class searchGoingAction extends ActionSupport {
                 this.addActionError("Invalid Returning Date");
             }
         }
+    }
+
+    public String searchFlightByFlightNumber() throws Exception {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        SearchInfoService searchInfoService = new SearchInfoService();
+
+        List<Flight> validFlightsList = searchInfoService.getFlightByFlightNumber(flightNumber);
+        List<List<Flight>>  validFlightsLists = new ArrayList<>();
+        validFlightsLists.add(validFlightsList);
+        session.setAttribute("validGoingFlights", validFlightsLists);
+
+        return SUCCESS;
     }
 }
