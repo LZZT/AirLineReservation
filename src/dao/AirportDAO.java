@@ -23,10 +23,8 @@ public class AirportDAO {
         Transaction tx = session.beginTransaction();
 
         try{
-
             airport = (Airport) session.get(Airport.class, airportCode);
             tx.commit();
-
         }catch (Exception ex){
             if(null != tx){
                 tx.rollback();

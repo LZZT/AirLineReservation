@@ -85,25 +85,19 @@ public class FlightDAO {
         return flightsList;
     }
 
+    public List<Flight> getFlightByFlightNumber(String flightNumber) {
+        List<Flight> flightsList = null;
 
-    public List<List<Flight>> getTwoStopFlightByAirportsCodeAndDate(String departureAirportCode, String arrivalAirportCode, int weekNum){
-        List<List<Flight>> flightsList = null;
         Session session = HibernateUtil.openSession();
-        Transaction tx = session.beginTransaction();
 
-
-        return flightsList;
-    }
-
-
-    public Flight getSingleFlightByFlightNumber(String flightNumber){
-        Flight flight = null;
-        Session session = HibernateUtil.openSession();
         Transaction tx = session.beginTransaction();
 
         try{
 
-            flight = (Flight) session.get(Flight.class, flightNumber);
+            String hql = String.format("FROM Flight WHERE flightNumber = '%s'", flightNumber);
+            Query query = session.createQuery(hql);
+            flightsList = (List<Flight>)query.list();
+
             tx.commit();
 
         }catch (Exception ex){
@@ -114,7 +108,121 @@ public class FlightDAO {
             HibernateUtil.close(session);
         }
 
+        return flightsList;
+    }
+
+    public List<List<Flight>> getTwoStopFlightByAirportsCodeAndDate(String departureAirportCode, String arrivalAirportCode, int weekNum){
+        List<List<Flight>> flightsList = null;
+        Session session = HibernateUtil.openSession();
+        Transaction tx = session.beginTransaction();
+
+
+        return flightsList;
+    }
+
+    public Flight getSingleFlightByFlightNumber(String flightNumber){
+        Flight flight = null;
+        Session session = HibernateUtil.openSession();
+        Transaction tx = session.beginTransaction();
+
+        try {
+            flight = (Flight) session.get(Flight.class, flightNumber);
+            tx.commit();
+        } catch (Exception ex){
+            if(null != tx){
+                tx.rollback();
+            }
+        }finally {
+            HibernateUtil.close(session);
+        }
+
         return flight;
+    }
+
+
+
+
+    public boolean saveFlight(Flight flight){
+
+        Session session = HibernateUtil.openSession();
+
+        Transaction tx = session.beginTransaction();
+
+
+        try{
+            session.save(flight);
+
+            tx.commit();
+
+        }catch (Exception ex){
+            if(null != tx){
+                tx.rollback();
+            }
+        }finally {
+            HibernateUtil.close(session);
+        }
+
+        return true;
+    }
+
+    public boolean updateFlight(Flight flight){
+
+        Session session = HibernateUtil.openSession();
+
+        Transaction tx = session.beginTransaction();
+
+
+        try{
+            String hql = "UPDATE Flight set price = :price, daysOperated = :daysOperated, departureAirport = :departureAirport WHERE flightNumber = :flightNumber";
+            Query query = session.createQuery(hql);
+            query.setParameter("flightNumber", flight.getFlightNumber());
+            /*
+            query.setParameter("departureTime", flight.getDepartureTime());
+            query.setParameter("arrivalTime", flight.getArrivalTime());
+            query.setParameter("airline", flight.getAirline().getCode());
+            query.setParameter("aircraftModel", flight.getAircraftModel().getModel());
+            */
+            query.setParameter("departureAirport", flight.getDepartureAirport().getCode());
+            //query.setParameter("arrivalAirport", flight.getArrivalAirport().getCode());
+            query.setParameter("daysOperated", flight.getDaysOperated());
+            query.setParameter("price", flight.getPrice());
+            int result = query.executeUpdate();
+            tx.commit();
+
+        }catch (Exception ex){
+            if(null != tx){
+                tx.rollback();
+            }
+        }finally {
+            HibernateUtil.close(session);
+        }
+
+        return true;
+    }
+
+    public boolean deleteFlight(String flightNumber){
+
+        Session session = HibernateUtil.openSession();
+
+        Transaction tx = session.beginTransaction();
+
+
+        try{
+
+            String hql = String.format("DELETE Flight WHERE flightNumber = '%s'", flightNumber);
+            Query query = session.createQuery(hql);
+            int result = query.executeUpdate();
+            tx.commit();
+
+        }catch (Exception ex){
+            if(null != tx){
+                tx.rollback();
+            }
+        }finally {
+            HibernateUtil.close(session);
+        }
+
+        return true;
     }
 
 }
