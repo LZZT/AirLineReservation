@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<!--map java class with table in database-->
+
+<hibernate-mapping>
+
+    <class name="model.Payment" table="CreditCard">
+
+        <id name="cardNumber" column="cardNumber" type="string"></id>
+        <property name="cardLastname" column="lastName" type="string"></property>
+        <property name="cardFirstname" column="firstName" type="string"></property>
+        <property name="expDate" column="expDate" type="string"></property>
+        <property name="cvv" column="cvv" type="string"></property>
+        <property name="billingAddress" column="billingAddress" type="string"></property>
+
+    </class>
+
+</hibernate-mapping>
