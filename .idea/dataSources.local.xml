@@ -2,14 +2,7 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="hibernate.cfg.xml/Hibernate" uuid="8d1aee86-e449-49e9-a508-bcc9cb6b9ece">
-      <database-info product="MySQL" version="5.7.17" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
-        <extra-name-characters>#@</extra-name-characters>
-        <identifier-quote-string>`</identifier-quote-string>
-      </database-info>
-      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper" />
-      <user-name>root</user-name>
-      <user-password>dfc0dfcedfc8dfc9df90dfc7dfd3dfd9dfdbdfc6df90df85df85dfc6dfc5dfc9dfcbdfc6dfc2dfc5dfd9dfdedf85dfebdfc3dfd8dfe6dfc3dfc4dfcfdff8dfcfdfd9dfcfdfd8dfdcdfcbdfdedfc3dfc5dfc4</user-password>
-      <resolve-scope>AirLineReservation:</resolve-scope>
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
     </data-source>
   </component>
 </project>

@@ -99,11 +99,6 @@
                             <%= flight.getPrice()%>
                         </td>
 
-                        <td>
-                            <s:a href="deleteFlight.action?flightNumber=">Delete</s:a><br>
-                            <s:a href='updateFlight.jsp'>Update</s:a>
-                        </td>
-
             <%
 
                 }%>

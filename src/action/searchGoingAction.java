@@ -153,10 +153,8 @@ public class searchGoingAction extends ActionSupport {
 
         SearchInfoService searchInfoService = new SearchInfoService();
 
-        List<Flight> validFlightsList = searchInfoService.getFlightByFlightNumber(flightNumber);
-        List<List<Flight>>  validFlightsLists = new ArrayList<>();
-        validFlightsLists.add(validFlightsList);
-        session.setAttribute("validGoingFlights", validFlightsLists);
+        List<Flight> validFlights = searchInfoService.getFlightByFlightNumber(flightNumber);
+        session.setAttribute("validFlights", validFlights);
 
         return SUCCESS;
     }
