@@ -73,6 +73,28 @@
             <result name="success" type="redirect">/searchGoingResult.jsp</result>
         </action>
 
+        <action name="insertFlight" class="action.ManagerAction" method="insertFlight">
+            <result name="error" type="redirect">/managerActionError.jsp</result>
+            <result name="success" type="redirect">/managerActionSuccessful.jsp</result>
+            <result name="input">/manager.jsp</result>
+        </action>
+
+        <action name="searchFlightByFlightNumber" class="action.searchGoingAction" method="searchFlightByFlightNumber">
+            <result name="success" type="redirect">/searchGoingResult.jsp</result>
+            <result name="input">/manager.jsp</result>
+        </action>
+
+        <action name="updateFlight" class="action.ManagerAction" method="updateFlight">
+            <result name="error" type="redirect">/managerActionError.jsp</result>
+            <result name="success" type="redirect">/managerActionSuccessful.jsp</result>
+            <result name="input">/updateFlight.jsp</result>
+        </action>
+
+        <action name="deleteFlight" class="action.ManagerAction" method="deleteFlight">
+            <result name="error" type="redirect">/managerActionError.jsp</result>
+            <result name="success" type="redirect">/managerActionSuccessful.jsp</result>
+            <result name="input">/searchGoingResult.jsp</result>
+        </action>
 
 
 

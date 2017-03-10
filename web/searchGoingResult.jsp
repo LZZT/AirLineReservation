@@ -99,10 +99,14 @@
                             <%= flight.getPrice()%>
                         </td>
 
+                        <td>
+                            <s:a href="deleteFlight.action?flightNumber=">Delete</s:a><br>
+                            <s:a href='updateFlight.jsp'>Update</s:a>
+                        </td>
+
             <%
 
                 }%>
-
                         <td>
                             <input type="hidden" name="index" value=<%=i%>/>
                             <input type="submit" value="Select"/>
