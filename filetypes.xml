@@ -3,7 +3,6 @@
     <extensionMap>
       <mapping pattern="WorkOrNotification" type="PLAIN_TEXT" />
       <mapping pattern="Q2Note" type="PLAIN_TEXT" />
-      <mapping ext="scala" type="PLAIN_TEXT" />
     </extensionMap>
   </component>
 </application>
