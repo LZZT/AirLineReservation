@@ -66,8 +66,8 @@
             <br>
             Departure City or Airport: <input type="text" name="departureCityOrAirport"/><br>
             Arrival City or Airport: <input type="text" name="arrivalCityOrAirport"/><br>
-            Departing Date: <input type="text" id="datepicker1" name="departingDate" readonly/><br>
-            Returning Date: <input type="text" id="datepicker2" name="returningDate" readonly/><br>
+            Departing Date: <input type="text" id="datepicker1" name="departingDate" /><br>
+            Returning Date: <input type="text" id="datepicker2" name="returningDate" /><br>
 
             <input type="submit" value="Search"/>
 
