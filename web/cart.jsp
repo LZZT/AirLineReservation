@@ -68,9 +68,12 @@
     </s:iterator>
 
 </s:iterator>
+
+
 <body>
 <form action="cartNumber.action" method="post">
-
+    <br><br> <br><br>
+    <h2>Please select total number of travelers:</h2>
 <input type="number" name="ticketsNumber" min="1"/>
 
 <input type="reset" value="reset"/>
@@ -83,18 +86,6 @@
 
 <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
 
-
-<h2>In session, you will get two Sets. These two sets are not stored in database</h2>
-<h3>1. leavingFlightObjectSet containing Flights Objects</h3>
-<h3>2. returningFlightObjectSet containing Flights Objects</h3>
-<br>
-
-<h3>Tasks:</h3>
-<h4>1. show both seperately </h4>
-<h4>2. remove function, but update number not allowed </h4>
-(if a customer want to buy tickets for 2 persons, buy for 1 person first.
-It need more information of which combination belongs to which traveler in session.)
-<h4>3. click "Enter Traveler Information" button will go to traveler information page</h4>
 
 </body>
 </html>
