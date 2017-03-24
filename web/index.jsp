@@ -76,6 +76,7 @@
             <input type="radio" name="tripType" id="singleTrip" value="singleTrip" />Single Trip
             <input type="radio" name="tripType" id="roundTrip" value="roundTrip"/>Round Trip
 
+
             <br>
             Departure City or Airport: <input type="text" name="departureCityOrAirport"/><br>
             Arrival City or Airport: <input type="text" name="arrivalCityOrAirport"/><br>
