@@ -14,7 +14,9 @@ public class HibernateUtil {
     static{
         try{
 
-            sessionFactory = new Configuration().configure().buildSessionFactory();
+            sessionFactory = new Configuration()
+                    .configure()
+                    .buildSessionFactory();
 
         }catch (Exception ex){
             ex.printStackTrace();
@@ -23,8 +25,7 @@ public class HibernateUtil {
 
     public static Session openSession(){
 
-        Session session = sessionFactory.openSession();
-        return session;
+        return sessionFactory.openSession();
     }
 
     public static void close(Session session){
@@ -32,4 +33,5 @@ public class HibernateUtil {
             session.close();
         }
     }
+
 }
