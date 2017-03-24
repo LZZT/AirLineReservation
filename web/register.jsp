@@ -1,33 +1,70 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: QQZhao
-  Date: 3/4/17
-  Time: 12:06 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Register</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Blue Arc Theme - Free Website Template</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+
+    <link href="tooplate_style.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
 
-    <s:actionerror cssStyle="color:red"/>
+<div id="tooplate_wrapper">
 
-    <form action="register.action" method="post">
+    <div id="tooplate_menu">
+        <ul>
+            <li><a href="index.html" class="current">Home</a></li>
+            <li><a href="blog.html">Manager</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div> <!-- end of tooplate_menu -->
 
-        username: <input type="text" name="username"><br>
+    <div id="tooplate_header">
 
-        password: <input type="password" name="password"><br>
+        <div><h1>Airline Tickets Reservation System</h1></div>
 
-        re-password: <input type="password" name="repassword"><br>
+    </div> <!-- end of header -->
 
-        email: <input type="text" name="email"><br>
+    <div id="tooplate_middle">
 
-        <input type="submit" value="submit">
+        <s:actionerror cssStyle="color:red"/>
 
-    </form>
+        <form action="register.action" method="post">
+
+            username: <input type="text" name="username"><br>
+
+            password: <input type="password" name="password"><br>
+
+            re-password: <input type="password" name="repassword"><br>
+
+            email: <input type="text" name="email"><br>
+
+            <input type="submit" value="submit">
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+<div id="tooplate_footer_wrapper">
+    <div id="tooplate_footer">
+        Copyright © 2017 <a href="#">CS 542 Team 2</a>
+    </div>
+</div>
 
 </body>
 </html>
+
+
+
+
