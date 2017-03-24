@@ -60,8 +60,8 @@
 
       <s:actionerror cssStyle="color:red"/>
         <form action="searchGoingFlight.action" method="post">
-            <input type="radio" name="tripType" value="singleTrip" checked/>Single Trip
-            <input type="radio" name="tripType" value="roundTrip"/>Round Trip
+            <input type="radio" name="tripType" value="singleTrip" id="singleTrip"/>Single Trip
+            <input type="radio" name="tripType" value="roundTrip" id="roundTrip"/>Round Trip
 
             <br>
             Departure City or Airport: <input type="text" name="departureCityOrAirport"/><br>
