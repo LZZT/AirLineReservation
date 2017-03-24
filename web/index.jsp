@@ -22,11 +22,24 @@
                   $("#datepicker1, #datepicker2").val("").attr("readonly",true);
                   if($("#singleTrip").is(":checked")){
                       $("#datepicker2").attr("readonly",true);
-                      $("#datepicker1").datepicker();
+                      $("#datepicker1").datepicker({
+                          minDate: 0
+                      });
                       $("#datepicker2").datepicker( "option", "disabled", true );
                   } else if($("#roundTrip").is(":checked")){
                       $("#datepicker2").attr("readonly",false);
-                      $("#datepicker1").datepicker();
+                      $("#datepicker1").datepicker({
+                          minDate: 0,
+                          onSelect: function(date){
+
+                              var selectedDate = new Date(date);
+                              var msecsInADay = 86400000;
+                              var endDate = new Date(selectedDate.getTime() + msecsInADay);
+
+                              $("#datepicker2").datepicker( "option", "minDate", endDate );
+
+                          }
+                      });
                       $("#datepicker2").datepicker();
                   }
               });
@@ -60,8 +73,8 @@
 
       <s:actionerror cssStyle="color:red"/>
         <form action="searchGoingFlight.action" method="post">
-            <input type="radio" name="tripType" value="singleTrip" checked/>Single Trip
-            <input type="radio" name="tripType" value="roundTrip"/>Round Trip
+            <input type="radio" name="tripType" id="singleTrip" value="singleTrip" />Single Trip
+            <input type="radio" name="tripType" id="roundTrip" value="roundTrip"/>Round Trip
 
             <br>
             Departure City or Airport: <input type="text" name="departureCityOrAirport"/><br>
