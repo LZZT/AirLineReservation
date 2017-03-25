@@ -52,13 +52,36 @@
     <input type="checkbox" name="daysOperated" value="Sat">Sat
     <input type="checkbox" name="daysOperated" value="Sun">Sun<br>
 
-    Departure Airport: <input type="text" name="departAirport"><br>
+    Departure Airport: <br>
+    <select name="departAirport" size="5" style="width:200px;">
+        <option value="BOS">Boston Logan(BOS)</option>
+        <option value="EWR">Newark Liberty(EWR)</option>
+        <option value="JFK">John F. Kennedy(JFK)</option>
+        <option value="SFO">San Francisco(SFO)</option>
+    </select><br>
 
-    Arrival Airport: <input type="text" name="arriAirport"><br>
 
-    Airline: <input type="text" name="airline"><br>
+    Arrival Airport: <br>
+    <select name="departAirport" size="5" style="width:200px;">
+        <option value="BOS">Boston Logan(BOS)</option>
+        <option value="EWR">Newark Liberty(EWR)</option>
+        <option value="JFK">John F. Kennedy(JFK)</option>
+        <option value="SFO">San Francisco(SFO)</option>
+    </select><br>
 
-    Aircraft Model: <input type="text" name="aircraftModel"><br>
+    Airline: <br>
+    <select name="airline" size="5" style="width:100px;">
+        <option value="America Airline">America Airline</option>
+        <option value="Southwest">Southwest</option>
+        <option value="United Airline">United Airline</option>
+    </select><br>
+
+    Aircraft Model:<br>
+    <select name="aircraftModel" size="5" style="width:100px;">
+        <option value="Airbus 330">Airbus 330</option>
+        <option value="Boeing 777">Boeing 777</option>
+        <option value="Saab">Saab</option>
+    </select><br>
 
     Price: <input type="text" name="price"><br>
 
