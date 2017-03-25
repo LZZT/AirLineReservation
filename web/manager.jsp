@@ -28,6 +28,13 @@
         });
 
     </script>
+
+    <script>
+        $("#setTimeExample").timepicker();
+        $("#setTimeButton").on('click', function (){
+            $("#setTimeExample").timepicker('setTime', new Date());
+        });
+    </script>
 </head>
 <body>
     <!-- -->
@@ -44,9 +51,9 @@
 
                 Flight Number: <input type="text" name="flightNumber"><br>
 
-                Departure Time: <input type="time" name="departTime"><br>
+                Departure Time: <input type="text" name="departTime" id="departTime"><br>
 
-                Arrival Time: <input type="time" name="arriTime"><br>
+                Arrival Time: <input type="text" name="arriTime"><br>
 
                 Days Operated:  <input type="checkbox" name="daysOperated" value="Mon">Mon
                                 <input type="checkbox" name="daysOperated" value="Tue">Tue
