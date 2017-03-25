@@ -9,15 +9,40 @@
 <html>
 <head>
     <title>Title</title>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+    <script>
+        $(function() {
+            $('#departTime').timepicker({
+                timeFormat: 'HH:mm:ss',
+                interval: 15,
+                startTime: '00:00:00',
+                dynamic: false,
+                dropdown: true,
+                scrollbar: true
+            });
+
+            $('#arriTime').timepicker({
+                timeFormat: 'HH:mm:ss',
+                interval: 15,
+                startTime: '00:00:00',
+                dynamic: false,
+                dropdown: true,
+                scrollbar: true
+            });
+        });
+    </script>
 </head>
 <body>
 <form action="updateFlight.action" method="post">
 
     Flight Number: <input type="text" name="flightNumber"><br>
 
-    Departure Time: <input type="time" name="departTime"><br>
+    Departure Time: <input type="text" name="departTime" id="departTime"><br>
 
-    Arrival Time: <input type="time" name="arriTime"><br>
+    Arrival Time: <input type="text" name="arriTime" id="arriTime"><br>
 
     Days Operated:  <input type="checkbox" name="daysOperated" value="Mon">Mon
     <input type="checkbox" name="daysOperated" value="Tue">Tue

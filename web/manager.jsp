@@ -12,8 +12,12 @@
     <title>Title</title>
 
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://code.jquery.com/ui/3.2.1/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
     <script>
         $(document).ready(function() {
             $("input[name$='manager']").click(function() {
@@ -26,13 +30,27 @@
                     $("#search").show();
             });
         });
-
     </script>
 
     <script>
-        $("#setTimeExample").timepicker();
-        $("#setTimeButton").on('click', function (){
-            $("#setTimeExample").timepicker('setTime', new Date());
+        $(function() {
+            $('#departTime').timepicker({
+                timeFormat: 'HH:mm:ss',
+                interval: 15,
+                startTime: '00:00:00',
+                dynamic: false,
+                dropdown: true,
+                scrollbar: true
+            });
+
+            $('#arriTime').timepicker({
+                timeFormat: 'HH:mm:ss',
+                interval: 15,
+                startTime: '00:00:00',
+                dynamic: false,
+                dropdown: true,
+                scrollbar: true
+            });
         });
     </script>
 </head>
@@ -53,7 +71,7 @@
 
                 Departure Time: <input type="text" name="departTime" id="departTime"><br>
 
-                Arrival Time: <input type="text" name="arriTime"><br>
+                Arrival Time: <input type="text" name="arriTime" id="arriTime"><br>
 
                 Days Operated:  <input type="checkbox" name="daysOperated" value="Mon">Mon
                                 <input type="checkbox" name="daysOperated" value="Tue">Tue
