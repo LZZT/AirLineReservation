@@ -87,29 +87,29 @@ public class PaymentAction extends ActionSupport {
     }
 
 
-
-    public void validatePaymentInfo(){
-
-        if (null == cardNumber || !isNumeric(cardNumber) || cardNumber.length()!=16){
-            this.addActionError("Invalid Card Number");
-        }
-
-        if (null == cardLastname|| cardLastname.length() < 1){
-            this.addActionError("Last Name can not be empty");
-        }
-
-        if (null == cardFirstname || cardFirstname.length() < 1){
-            this.addActionError("First Name can not be empty");
-        }
-
-        if (null == cvv || cvv.length()!=3 || !isNumeric(cvv) ){
-            this.addActionError("Invalid CVV number");
-        }
-
-
-
-
-    }
+//
+//    public void validatePaymentInfo(){
+//
+//        if (null == cardNumber || !isNumeric(cardNumber) || cardNumber.length()!=16){
+//            this.addActionError("Invalid Card Number");
+//        }
+//
+//        if (null == cardLastname|| cardLastname.length() < 1){
+//            this.addActionError("Last Name can not be empty");
+//        }
+//
+//        if (null == cardFirstname || cardFirstname.length() < 1){
+//            this.addActionError("First Name can not be empty");
+//        }
+//
+//        if (null == cvv || cvv.length()!=3 || !isNumeric(cvv) ){
+//            this.addActionError("Invalid CVV number");
+//        }
+//
+//
+//
+//
+//    }
     public static boolean isNumeric(String str){
         for (int i = str.length();--i>=0;){
             if (!Character.isDigit(str.charAt(i))){

@@ -45,38 +45,37 @@ public class TravelerAction extends ActionSupport{
 //    }
 
 
-    public void validateAdd(){
-
-        for (Traveler t: travelerList) {
-
-
-            if (null == t.getGender()) {
-                this.addActionError("Gender can not be empty");
-            }
-
-            if (null == t.getLastname() || t.getLastname().length() < 1) {
-                this.addActionError("Last Name can not be empty");
-            }
-
-            if (null == t.getLastname() || t.getLastname().length() < 1) {
-                this.addActionError("First Name can not be empty");
-            }
-
-            if (null == t.getPhone() || t.getPhone().length() != 10 || !isNumeric(t.getPhone())) {
-                this.addActionError("This is not a valid phone number");
-            }
-
-            if (!t.getEmail().contains("@") || !t.getEmail().split("@")[1].contains(".")) {
-                this.addActionError("Invalid email address");
-            }
-
-            try {
-                Date validDate = new Date(t.getDob());
-            } catch (Exception ex) {
-                this.addActionError("Invalid  Date");
-            }
-        }
-    }
+//    public void validateAdd(){
+//        for (Traveler t: travelerList) {
+//
+//
+//            if (null == t.getGender()) {
+//                this.addActionError("Gender can not be empty");
+//            }
+//
+//            if (null == t.getLastname() || t.getLastname().length() < 1) {
+//                this.addActionError("Last Name can not be empty");
+//            }
+//
+//            if (null == t.getLastname() || t.getLastname().length() < 1) {
+//                this.addActionError("First Name can not be empty");
+//            }
+//
+//            if (null == t.getPhone() || t.getPhone().length() != 10 || !isNumeric(t.getPhone())) {
+//                this.addActionError("This is not a valid phone number");
+//            }
+//
+//            if (!t.getEmail().contains("@") || !t.getEmail().split("@")[1].contains(".")) {
+//                this.addActionError("Invalid email address");
+//            }
+//
+//            try {
+//                Date validDate = new Date(t.getDob());
+//            } catch (Exception ex) {
+//                this.addActionError("Invalid  Date");
+//            }
+//        }
+//    }
     public static boolean isNumeric(String str){
         for (int i = str.length();--i>=0;){
             if (!Character.isDigit(str.charAt(i))){

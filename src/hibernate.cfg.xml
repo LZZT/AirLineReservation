@@ -30,6 +30,8 @@
         <mapping resource="Flight.hbm.xml"/>
         <mapping resource="Traveler.hbm.xml"/>
         <mapping resource="Payment.hbm.xml"/>
+        <mapping resource="Transaction.hbm.xml"/>
+        <mapping resource="Ticket.hbm.xml"/>
     </session-factory>
 
 </hibernate-configuration>

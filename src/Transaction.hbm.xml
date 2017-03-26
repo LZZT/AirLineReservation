@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<!--map java class with table in database-->
+
+<hibernate-mapping>
+
+    <class name="model.Transactions" table="Transaction">
+
+        <id name="transactionID" column="transactionID" type="string"></id>
+        <property name="transactionDate" column="transcationDate" type="string"></property>
+        <property name="username" column="username" type="string"></property>
+        <property name="cardnumber" column="cardnumber" type="string"></property>
+        <property name="price" column="price" type="int"></property>
+
+    </class>
+
+</hibernate-mapping>
