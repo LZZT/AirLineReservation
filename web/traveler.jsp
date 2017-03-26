@@ -14,6 +14,17 @@
 <head>
     <title>Traveler</title>
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $( "#datepicker" ).datepicker({
+                maxDate: 0
+            });
+        });
+    </script>
 </head>
 
 
@@ -31,19 +42,11 @@
     <br>
     Last Name: <input type="text" name="travelerList[<%= i-1%>].lastname"><br>
     First Name: <input type="text" name="travelerList[<%= i-1%>].firstname"><br>
-    Date of birth: <input type="date" name="travelerList[<%= i-1%>].dob"><br>
+    Date of birth: <input type="date" name="travelerList[<%= i-1%>].dob" id="datepicker"><br>
     Phone: <input type="text" name="travelerList[<%= i-1%>].phone"><br>
     Email: <input type="email" name="travelerList[<%= i-1%>].email"><br>
     <br>
-    <%--<input type="radio" name="traveler.gender" value="M"/>male--%>
-    <%--<input type="radio" name="traveler.gender" value="F"/>female--%>
-    <%--<br>--%>
-    <%--Last Name: <input type="text" name="traveler.lastname"><br>--%>
-    <%--First Name: <input type="text" name="traveler.firstname"><br>--%>
-    <%--Date of birth: <input type="date" name="traveler.dob"><br>--%>
-    <%--Phone: <input type="text" name="traveler.phone"><br>--%>
-    <%--Email: <input type="email" name="traveler.email"><br>--%>
-
+    
     <%}%>
 
 
