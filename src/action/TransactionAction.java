@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class TransAction extends ActionSupport {
+public class TransactionAction extends ActionSupport {
     private TravelerService travelerService = new TravelerService();
     private PaymentService paymentService = new PaymentService();
     private TransactionService transactionService = new TransactionService();
@@ -29,31 +29,48 @@ public class TransAction extends ActionSupport {
         HttpSession session = request.getSession();
         String departingDate=(String )session.getAttribute("departingDate");
         String returningDate=(String )session.getAttribute("returningDate");
+        int leavingPrice=(int)session.getAttribute("leavingPrice");
+        int ticketsNumber=Integer.valueOf((String)session.getAttribute("ticketsNumber"));
+        int totalprice=0;
+        try{
+            int returningPrice=(int)session.getAttribute("returningPrice");
+            totalprice=(leavingPrice+returningPrice)*ticketsNumber;
+        }
+        catch (Exception ex){
+            totalprice=leavingPrice*ticketsNumber;
+        }
+
 
         Payment payment = (Payment)session.getAttribute("payment");
         paymentService.addNewPayment(payment);
         List<Traveler> travelerList=( List<Traveler>)session.getAttribute("travelerList");
 
         List<Flight> leavingFlightObjectSet=(List<Flight>)session.getAttribute("leavingFlightObjectSet");
-        int totalprice=0;
+//        int totalprice=0;
         Transactions transactions = new Transactions();
         transactions.setCardnumber(payment.getCardNumber());
         transactions.setUsername((String) session.getAttribute("username"));
         UID uid=new UID();
-        transactions.setTransactionID(uid.toString().substring(0,7));
+        System.out.println(uid.toString());
+        transactions.setTransactionID(uid.toString().substring(uid.toString().length()-10));
+        transactions.setPrice(totalprice);
+        Date date=new Date();
+        transactions.setTransactionDate(String.format("%tF",date));
+        transactionService.addNewTransaction(transactions);
+
         int i=0;
         for(Traveler t : travelerList){
             travelerService.registerNewTraveler(t);
 
             for (Flight flight:leavingFlightObjectSet){
 
-                UID uid2=new UID();
-                totalprice+=flight.getPrice();
+
+//                totalprice+=flight.getPrice();
                 Ticket ticket = new Ticket();
                 ticket.setFlightNumber(flight.getFlightNumber());
-                ticket.setTransactionID(uid.toString().substring(0,7));
+                ticket.setTransactionID(uid.toString().substring(uid.toString().length()-10));
                 ticket.setFlightDate(departingDate);
-                ticket.setTicketID(uid2.toString().substring(0,5)+String.valueOf(i));
+                ticket.setTicketID(uid.toString().substring(uid.toString().length()-5)+String.valueOf(i));
                 ticket.setTravellerID(t.getPhone());
                 ticketService.addNewTicket(ticket);
                 i++;
@@ -61,13 +78,12 @@ public class TransAction extends ActionSupport {
             try{
                 List<Flight> returningFlightObjectSet=(List<Flight>)session.getAttribute("returningFlightObjectSet");
                 for (Flight flight:returningFlightObjectSet){
-                    UID uid2=new UID();
-                    totalprice+=flight.getPrice();
+//                    totalprice+=flight.getPrice();
                     Ticket ticket = new Ticket();
                     ticket.setFlightNumber(flight.getFlightNumber());
-                    ticket.setTransactionID(uid.toString().substring(0,7));
+                    ticket.setTransactionID(uid.toString().substring(uid.toString().length()-10));
                     ticket.setFlightDate(returningDate);
-                    ticket.setTicketID(uid2.toString().substring(0,5)+String.valueOf(i));
+                    ticket.setTicketID(uid.toString().substring(uid.toString().length()-5)+String.valueOf(i));
                     ticket.setTravellerID(t.getPhone());
                     ticketService.addNewTicket(ticket);
                     i++;
@@ -76,10 +92,6 @@ public class TransAction extends ActionSupport {
         }
 
 
-        transactions.setPrice(totalprice);
-        Date date=new Date();
-        transactions.setTransactionDate(String.format("%tF",date));
-        transactionService.addNewTransaction(transactions);
 
 
 

@@ -37,6 +37,11 @@ public class searchReturningAction extends ActionSupport{
         List<Flight> chosenGoingFlight = ((List<List<Flight>>)session.getAttribute("validGoingFlights")).get(Integer.valueOf(validIndex));
 
         session.setAttribute("leavingFlightObjectSet", chosenGoingFlight);
+        int price=0;
+        for (Flight f:chosenGoingFlight){
+            price+=f.getPrice();
+        }
+        session.setAttribute("leavingPrice",price);
 
         Airport returningDepartureAirport = chosenGoingFlight.get(chosenGoingFlight.size() - 1).getArrivalAirport();
         Airport returningArrivalAirport = chosenGoingFlight.get(0).getDepartureAirport();

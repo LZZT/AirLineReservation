@@ -80,7 +80,7 @@
             <result name="success" type="redirect">/payment.jsp</result>
          </action>
 
-        <action name="transAction" class="action.TransAction" method="TransInfo">
+        <action name="transAction" class="action.TransactionAction" method="TransInfo">
             <result name="success" type="redirect">/searchSuccessful.jsp</result>
         </action>
 
