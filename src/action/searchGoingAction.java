@@ -76,7 +76,7 @@ public class searchGoingAction extends ActionSupport {
 
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-
+        session.setAttribute("departingDate", departingDate);
         SearchInfoService searchInfoService = new SearchInfoService();
 
         List<Airport> goingDepartureAirportsList = searchInfoService.getAirportsByCityOrAirportCode(departureCityOrAirport);

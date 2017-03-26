@@ -1,12 +1,13 @@
 package dao;
 
-import model.Traveler;
+import model.Ticket;
+import model.Transactions;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
 
 
-public class TravelerDAO {
+public class TicketDAO {
 
 //    public Traveler getTraveler(String travelerid){
 //
@@ -32,14 +33,14 @@ public class TravelerDAO {
 //        return traveler;
 //    }
 
-    public void saveTraveler(Traveler traveler){
+    public void saveTicket(Ticket ticket){
 
         Session session = HibernateUtil.openSession();
 
         Transaction tx = session.beginTransaction();
 
         try{
-            session.save(traveler);
+            session.save(ticket);
             tx.commit();
 
         }catch (Exception ex){

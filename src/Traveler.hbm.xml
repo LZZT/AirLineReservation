@@ -11,7 +11,7 @@
         <id name="phone" column="contactPhone" type="string"></id>
         <property name="lastname" column="lastName" type="string"></property>
         <property name="firstname" column="firstName" type="string"></property>
-        <property name="dob" column="dob" type="date"></property>
+        <property name="dob" column="dob" type="string"></property>
         <property name="email" column="contactEmail" type="string"></property>
         <property name="gender" column="gender" type="string"></property>
 

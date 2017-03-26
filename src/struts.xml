@@ -81,7 +81,7 @@
          </action>
 
         <action name="transAction" class="action.TransAction" method="TransInfo">
-            <result name="success" type="redirect">/cart.jsp</result>
+            <result name="success" type="redirect">/searchSuccessful.jsp</result>
         </action>
 
         <action name="payment" class="action.PaymentAction" method="PaymentInfo">
