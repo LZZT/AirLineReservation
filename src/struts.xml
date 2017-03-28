@@ -12,7 +12,6 @@
         <interceptors>
 
             <interceptor name="loginInterceptor" class="interceptor.LoginInterceptor"></interceptor>
-            <interceptor name="ReturningFlightInterceptor" class="interceptor.ReturningFlightInterceptor"></interceptor>
 
             <!--<interceptor-stack name="AirLineReservationInterceptorStack">-->
                 <!--<interceptor-ref name="loginInterceptor"></interceptor-ref>-->
@@ -58,9 +57,6 @@
         <action name="searchReturningFlight" class="action.searchReturningAction" method="findInfo">
             <result name="success" type="redirect">/searchReturningResult.jsp</result>
             <result name="input">searchGoingFlight.action</result>
-
-            <interceptor-ref name="ReturningFlightInterceptor"/>
-            <interceptor-ref name="defaultStack"/>
 
         </action>
 

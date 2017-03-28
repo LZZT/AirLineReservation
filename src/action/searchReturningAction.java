@@ -43,6 +43,11 @@ public class searchReturningAction extends ActionSupport{
         }
         session.setAttribute("leavingPrice",price);
 
+
+        if(null == session.getAttribute("returningDate")){
+            return "JumpToCart";
+        }
+
         Airport returningDepartureAirport = chosenGoingFlight.get(chosenGoingFlight.size() - 1).getArrivalAirport();
         Airport returningArrivalAirport = chosenGoingFlight.get(0).getDepartureAirport();
 
