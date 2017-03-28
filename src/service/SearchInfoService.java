@@ -110,7 +110,7 @@ public class SearchInfoService {
         return airportsList;
     }
 
-    private List<Airport> getAirportsByNamesList(List<String> nameList){
+    public List<Airport> getAirportsByNamesList(String[] nameList){
         List<Airport> airportsList = new ArrayList<>();
         AirportDAO airportDAO = new AirportDAO();
         for(String name : nameList){
@@ -127,4 +127,33 @@ public class SearchInfoService {
 
         return flightsList;
     }
+
+
+    public List<List<Flight>> filterValidFlightsListByAirportList(List<List<Flight>> validFlightsList, String[] newDepartureAirportNamesList, String[] newArrivalAirportNamesList){
+
+        List<List<Flight>> newValidFlightsList = new ArrayList<>();
+
+        for(List<Flight> eachFlightBundle : validFlightsList){
+
+            String currentFlightBundleDepartureAirportName = eachFlightBundle.get(0).getDepartureAirport().getName();
+            String currentFlightBundleArrivalAirportName = eachFlightBundle.get(eachFlightBundle.size() - 1).getArrivalAirport().getName();
+
+            for(String chosenDepartureAirportName : newDepartureAirportNamesList){
+
+                if(chosenDepartureAirportName.equals(currentFlightBundleDepartureAirportName)){
+
+                    for(String chosenArrivalAirportName : newArrivalAirportNamesList){
+                        if(chosenArrivalAirportName.equals(currentFlightBundleArrivalAirportName)){
+
+                            newValidFlightsList.add(eachFlightBundle);
+
+                        }
+                    }
+                }
+            }
+        }
+        validFlightsList.clear();
+        return newValidFlightsList;
+    }
+
 }

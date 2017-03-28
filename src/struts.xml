@@ -56,9 +56,30 @@
 
         <action name="searchReturningFlight" class="action.searchReturningAction" method="findInfo">
             <result name="success" type="redirect">/searchReturningResult.jsp</result>
-            <result name="input">searchGoingFlight.action</result>
+            <result name="input">/noResultFound.jsp</result>
 
         </action>
+
+
+
+
+
+        <action name="filterGoing" class="action.FilterAction" method="filterGoingAirports">
+            <result name="success" type="redirect">/searchGoingResult.jsp</result>
+            <result name="input" type="redirect">/searchGoingResult.jsp</result>
+        </action>
+
+
+        <action name="filterReturning" class="action.FilterAction" method="filterReturningAirports">
+            <result name="success" type="redirect">/searchReturningResult.jsp</result>
+            <result name="input" type="redirect">/searchReturningResult.jsp</result>
+        </action>
+
+
+
+
+
+
 
         <action name="cartAction" class="action.CartAction">
             <result name="success" type="redirect">/cart.jsp</result>
@@ -66,10 +87,6 @@
 
         <action name="cartNumber" class="action.CartNumberAction" method="cart">
             <result name="success" type="redirect">/traveler.jsp</result>
-        </action>
-
-        <action name="filter" class="action.FilterAction">
-            <result name="success" type="redirect">/searchGoingResult.jsp</result>
         </action>
 
          <action name="traveler" class="action.TravelerAction" method="add">

@@ -81,6 +81,7 @@ public class searchGoingAction extends ActionSupport {
 
         List<Airport> goingDepartureAirportsList = searchInfoService.getAirportsByCityOrAirportCode(departureCityOrAirport);
         List<Airport> goingArrivalAirportsList = searchInfoService.getAirportsByCityOrAirportCode(arrivalCityOrAirport);
+
         session.setAttribute("goingDepartureAirportsList", goingDepartureAirportsList);
         session.setAttribute("goingArrivalAirportsList", goingArrivalAirportsList);
 

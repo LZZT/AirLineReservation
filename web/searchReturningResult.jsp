@@ -26,23 +26,42 @@
         <h1>Search Returning Flights:</h1>
 
         <s:actionerror cssStyle="color:red"/>
-        <s:form action="filter" method="post">
 
-            <s:label value="Departure Airports List:"/>
+        <form action="filterReturning" method="post">
 
-            <s:iterator value="#session.returningDepartureAirportsList" id="airport">
-                <s:checkbox name="returningDepartureAirportNamesList" label="%{#airport.name}" fieldValue="%{#airport.name}"/>
-            </s:iterator>
+            Departure Airports List: <br>
+            <%
+                List<Airport> returningDepartureAirportsList = (List<Airport>)session.getAttribute("returningDepartureAirportsList");
 
-            <s:label value="Arrival Airports List:"/>
+                for(int returningDepartureAirportsIndex = 0; returningDepartureAirportsIndex < returningDepartureAirportsList.size(); returningDepartureAirportsIndex++){
+            %>
+            <input type="checkbox" name="returningDepartureAirportNamesList" value="<%=returningDepartureAirportsList.get(returningDepartureAirportsIndex).getName()%>"/><%=returningDepartureAirportsList.get(returningDepartureAirportsIndex).getName()%><br>
+            <%
+                }
+            %>
 
-            <s:iterator value="#session.returningArrivalAirportsList" id="airport">
-                <s:checkbox name="returningArrivalAirportNamesList" label="%{#airport.name}" fieldValue="%{#airport.name}"/>
-            </s:iterator>
+            <br>
+            Arrival Airports List: <br>
+            <%
+                List<Airport> returningArrivalAirportsList = (List<Airport>)session.getAttribute("returningArrivalAirportsList");
 
-            <s:submit name="submit" value="Filter"/>
+                for(int returningArrivalAirportsIndex = 0; returningArrivalAirportsIndex < returningArrivalAirportsList.size(); returningArrivalAirportsIndex++){
+            %>
 
-        </s:form>
+            <input type="checkbox" name="returningArrivalAirportNamesList" value="<%=returningArrivalAirportsList.get(returningArrivalAirportsIndex).getName()%>"/><%=returningArrivalAirportsList.get(returningArrivalAirportsIndex).getName()%><br>
+
+            <%
+                }
+            %>
+
+            <br>
+
+            <input type="submit" value="Filter Airport"/>
+
+        </form>
+
+
+
 
 
         <h3>Choose Returning Flight: </h3>
@@ -89,7 +108,7 @@
                             <%= flight.getDepartureTime()%>
                         </td>
                         <td>
-                            <%= flight.getDepartureTime()%>
+                            <%= flight.getArrivalTime()%>
                         </td>
 
                         <td>

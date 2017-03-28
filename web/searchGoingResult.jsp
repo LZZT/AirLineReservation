@@ -10,36 +10,80 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page import="java.lang.reflect.Array" %>
 <%@ page import="model.Flight" %>
+<%@ page import="model.Airport" %>
 
 
 <html>
 <head>
+
     <title>Title</title>
+
 </head>
 
 <body>
+
+
+
 
         <br><br>
         <h1>Search Going Flights:</h1>
 
         <s:actionerror cssStyle="color:red"/>
-        <s:form action="filter" method="post">
+        <%--<s:form action="filterGoing" method="post">--%>
 
-            <s:label value="Departure Airports List:"/>
+            <%--<s:label value="Departure Airports List:"/>--%>
 
-            <s:iterator value="#session.goingDepartureAirportsList" id="airport">
-                <s:checkbox name="goingDepartureAirportNamesList" label="%{#airport.name}" fieldValue="%{#airport.name}"/>
-            </s:iterator>
+            <%--<s:iterator value="#session.goingDepartureAirportsList" id="airport">--%>
+                <%--<s:checkbox name="goingDepartureAirportNamesList" label="%{#airport.name}" fieldValue="%{#airport.name}"/>--%>
+            <%--</s:iterator>--%>
 
-            <s:label value="Arrival Airports List:"/>
+            <%--<s:label value="Arrival Airports List:"/>--%>
 
-            <s:iterator value="#session.goingArrivalAirportsList" id="airport">
-                <s:checkbox name="goingArrivalAirportNamesList" label="%{#airport.name}" fieldValue="%{#airport.name}"/>
-            </s:iterator>
+            <%--<s:iterator value="#session.goingArrivalAirportsList" id="airport">--%>
+                <%--<s:checkbox name="goingArrivalAirportNamesList" label="%{#airport.name}" fieldValue="%{#airport.name}"/>--%>
+            <%--</s:iterator>--%>
 
-            <s:submit name="submit" value="Filter"/>
+            <%--<s:submit name="submit" value="Filter"/>--%>
 
-        </s:form>
+        <%--</s:form>--%>
+
+
+
+
+
+        <form action="filterGoing" method="post">
+
+            Departure Airports List: <br>
+            <%
+                List<Airport> goingDepartureAirportsList = (List<Airport>)session.getAttribute("goingDepartureAirportsList");
+
+                for(int goingDepartureAirportsIndex = 0; goingDepartureAirportsIndex < goingDepartureAirportsList.size(); goingDepartureAirportsIndex++){
+            %>
+                <input type="checkbox" name="goingDepartureAirportNamesList" value="<%=goingDepartureAirportsList.get(goingDepartureAirportsIndex).getName()%>"/><%=goingDepartureAirportsList.get(goingDepartureAirportsIndex).getName()%><br>
+            <%
+                }
+            %>
+
+            <br>
+            Arrival Airports List: <br>
+            <%
+                List<Airport> goingArrivalAirportsList = (List<Airport>)session.getAttribute("goingArrivalAirportsList");
+
+                for(int goingArrivalAirportsIndex = 0; goingArrivalAirportsIndex < goingArrivalAirportsList.size(); goingArrivalAirportsIndex++){
+            %>
+
+            <input type="checkbox" name="goingArrivalAirportNamesList" value="<%=goingArrivalAirportsList.get(goingArrivalAirportsIndex).getName()%>"/><%=goingArrivalAirportsList.get(goingArrivalAirportsIndex).getName()%><br>
+
+            <%
+                }
+            %>
+
+            <br>
+
+            <input type="submit" value="Filter Airport"/>
+
+        </form>
+
 
 
         <h3>Choose Departure Flight: </h3>
@@ -86,7 +130,7 @@
                             <%= flight.getDepartureTime()%>
                         </td>
                         <td>
-                            <%= flight.getDepartureTime()%>
+                            <%= flight.getArrivalTime()%>
                         </td>
 
                         <td>
