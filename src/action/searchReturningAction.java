@@ -52,12 +52,12 @@ public class searchReturningAction extends ActionSupport{
         Airport returningArrivalAirport = chosenGoingFlight.get(0).getDepartureAirport();
 
 
-//        List<Airport> returningDepartureAirportsList = searchInfoService.findNearByAirports(returningDepartureAirport);
-//        List<Airport> returningArrivalAirportsList = searchInfoService.findNearByAirports(returningArrivalAirport);
+        List<Airport> returningDepartureAirportsList = searchInfoService.findNearByAirportsInSameCity(returningDepartureAirport);
+        List<Airport> returningArrivalAirportsList = searchInfoService.findNearByAirportsInSameCity(returningArrivalAirport);
 
 
-        List<Airport> returningDepartureAirportsList = new ArrayList<>(Arrays.asList(returningDepartureAirport));
-        List<Airport> returningArrivalAirportsList = new ArrayList<>(Arrays.asList(returningArrivalAirport));
+//        List<Airport> returningDepartureAirportsList = new ArrayList<>(Arrays.asList(returningDepartureAirport));
+//        List<Airport> returningArrivalAirportsList = new ArrayList<>(Arrays.asList(returningArrivalAirport));
 
         session.setAttribute("returningDepartureAirportsList", returningDepartureAirportsList);
         session.setAttribute("returningArrivalAirportsList", returningArrivalAirportsList);

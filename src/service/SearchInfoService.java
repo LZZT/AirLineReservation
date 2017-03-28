@@ -156,4 +156,11 @@ public class SearchInfoService {
         return newValidFlightsList;
     }
 
+    public List<Airport> findNearByAirportsInSameCity(Airport initialAirport){
+
+        String cityName = initialAirport.getCity().getCity();
+        return getAirportsByCityOrAirportCode(cityName);
+
+    }
+
 }
