@@ -55,7 +55,7 @@
         <h2>Welcome to AirLine Reservation System!</h2>
 
       <%
-          if (null == session.getAttribute("username")) {
+              if (null == session.getAttribute("username")) {
       %>
         <input type="button" value="Login" onclick="location.href='login.jsp';">
         <input type="button" value="Register" onclick="location.href='register.jsp';">

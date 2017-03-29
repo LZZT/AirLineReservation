@@ -75,4 +75,12 @@ public class ManagerService {
 
         return airlines;
     }
+
+    public List<String> getAircraftModel() {
+        AircraftDAO aircraftDAO = new AircraftDAO();
+
+        List<String> aircrafts = aircraftDAO.getAircraftModel();
+
+        return aircrafts;
+    }
 }

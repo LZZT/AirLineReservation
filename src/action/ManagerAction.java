@@ -207,12 +207,14 @@ public class ManagerAction extends  ActionSupport {
 
         List<String> managerAirports = managerService.getAirportsCode();
         List<String> managerAirlines = managerService.getAirlinesName();
+        List<String> managerAircraft = managerService.getAircraftModel();
 
         HttpServletRequest request = ServletActionContext.getRequest();
 
         HttpSession session = request.getSession();
         session.setAttribute("managerAirports", managerAirports);
         session.setAttribute("managerAirlines", managerAirlines);
+        session.setAttribute("managerAircraft", managerAircraft);
 
         return SUCCESS;
     }

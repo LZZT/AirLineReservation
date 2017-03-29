@@ -7,7 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ page import="java.util.List" %>
 <html>
 <head>
     <title>Title</title>
@@ -91,11 +90,6 @@
         <div id="insert" class="desc">
             <h4>You must fill all fields in this form.</h4>
 
-            <%
-                List<String> airports = (List<String>)session.getAttribute("managerAirports");
-                List<String> airlines = (List<String>)session.getAttribute("managerAirlines");
-            %>
-
             <form action="insertFlight.action" method="post">
 
                 Flight Number: <input type="text" name="flightNumber" required><br>
@@ -112,43 +106,25 @@
                                 <input type="checkbox" name="daysOperated" value="Sat">Sat
                                 <input type="checkbox" name="daysOperated" value="Sun">Sun<br>
 
-                Departure Airport: <br>
-                <select id="departAirport" name="departAirport" size="5" style="width:200px;">
-                    <option value="BOS">Boston Logan(BOS)</option>
-                    <option value="EWR">Newark Liberty(EWR)</option>
-                    <option value="JFK">John F. Kennedy(JFK)</option>
-                    <option value="SFO">San Francisco(SFO)</option>
-                </select><br>
+                <s:select label="Departure Airports"
+                          headerKey="-1" headerValue="Select Departure Airport"
+                          list="#session.managerAirports"
+                          name="airport" /> <br>
 
+                <s:select label="Arrival Airports"
+                          headerKey="-1" headerValue="Select Arrival Airport"
+                          list="#session.managerAirports"
+                          name="airport" /> <br>
 
-                Arrival Airport: <br>
-                <select id="arriAirport" name="arriAirport" size="5" style="width:200px;" required>
-                    <option value="BOS">Boston Logan(BOS)</option>
-                    <option value="EWR">Newark Liberty(EWR)</option>
-                    <option value="JFK">John F. Kennedy(JFK)</option>
-                    <option value="SFO">San Francisco(SFO)</option>
-                </select><br>
-                <!--
-                Arrival Airport: <br>
-                <select id="arriAirport" name="arriAirport" size="5" style="width:200px;" required>
-                    <c:forEach items="${airports}" var="airport">
-                        <option value="${airport}">${airport}</option>
-                    </c:forEach>
-                </select><br>
-                -->
-                Airline: <br>
-                <select name="airline" size="5" style="width:100px;" required>
-                    <option value="America Airline">America Airline</option>
-                    <option value="Southwest">Southwest</option>
-                    <option value="United Airline">United Airline</option>
-                </select><br>
+                <s:select label="Airline"
+                          headerKey="-1" headerValue="Select Airline"
+                          list="#session.managerAirlines"
+                          name="airline" /> <br>
 
-                Aircraft Model:<br>
-                <select name="aircraftModel" size="5" style="width:100px;" required>
-                    <option value="Airbus 330">Airbus 330</option>
-                    <option value="Boeing 777">Boeing 777</option>
-                    <option value="Saab">Saab</option>
-                </select><br>
+                <s:select label="Aircraft Model"
+                          headerKey="-1" headerValue="Select Aircraft Model"
+                          list="#session.managerAircraft"
+                          name="aircraft" /> <br>
 
                 Price: <input type="text" name="price" required><br>
 
