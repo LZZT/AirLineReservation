@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
     <title>Title</title>
@@ -34,6 +35,28 @@
             });
         });
     </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#submit').click(function() {
+                checked = $("input[type=checkbox]:checked").length;
+
+                if(!checked) {
+                    alert("You must fill all fields in this form.");
+                    return false;
+                }
+
+                var selectDepart = document.getElementById("departAirport");
+                var departAirport = selectDepart.options[selectDepart.selectedIndex].value;
+                var selectArrival = document.getElementById("arriAirport");
+                var arrivalAirport = selectArrival.options[selectArrival.selectedIndex].value;
+                if(departAirport == arrivalAirport) {
+                    alert("Departure airport cannot be same with Arrived airport!");
+                    return false;
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 <form action="updateFlight.action" method="post">
@@ -52,36 +75,25 @@
     <input type="checkbox" name="daysOperated" value="Sat">Sat
     <input type="checkbox" name="daysOperated" value="Sun">Sun<br>
 
-    Departure Airport: <br>
-    <select name="departAirport" size="5" style="width:200px;">
-        <option value="BOS">Boston Logan(BOS)</option>
-        <option value="EWR">Newark Liberty(EWR)</option>
-        <option value="JFK">John F. Kennedy(JFK)</option>
-        <option value="SFO">San Francisco(SFO)</option>
-    </select><br>
+    <s:select label="Departure Airports"
+              headerKey="-1" headerValue="Select Departure Airport"
+              list="#session.managerAirports"
+              name="airport" /> <br>
 
+    <s:select label="Arrival Airports"
+              headerKey="-1" headerValue="Select Arrival Airport"
+              list="#session.managerAirports"
+              name="airport" /> <br>
 
-    Arrival Airport: <br>
-    <select name="departAirport" size="5" style="width:200px;">
-        <option value="BOS">Boston Logan(BOS)</option>
-        <option value="EWR">Newark Liberty(EWR)</option>
-        <option value="JFK">John F. Kennedy(JFK)</option>
-        <option value="SFO">San Francisco(SFO)</option>
-    </select><br>
+    <s:select label="Airline"
+              headerKey="-1" headerValue="Select Airline"
+              list="#session.managerAirlines"
+              name="airline" /> <br>
 
-    Airline: <br>
-    <select name="airline" size="5" style="width:100px;">
-        <option value="America Airline">America Airline</option>
-        <option value="Southwest">Southwest</option>
-        <option value="United Airline">United Airline</option>
-    </select><br>
-
-    Aircraft Model:<br>
-    <select name="aircraftModel" size="5" style="width:100px;">
-        <option value="Airbus 330">Airbus 330</option>
-        <option value="Boeing 777">Boeing 777</option>
-        <option value="Saab">Saab</option>
-    </select><br>
+    <s:select label="Aircraft Model"
+              headerKey="-1" headerValue="Select Aircraft Model"
+              list="#session.managerAircraft"
+              name="aircraft" /> <br>
 
     Price: <input type="text" name="price"><br>
 

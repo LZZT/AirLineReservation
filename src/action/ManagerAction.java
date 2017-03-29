@@ -8,10 +8,16 @@ import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import model.Aircraft;
 import model.Airport;
 import model.Flight;
+import model.Airline;
+import org.apache.struts2.ServletActionContext;
 import service.ManagerService;
 import service.SearchInfoService;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by yenchanghsieh on 3/8/17.
@@ -192,6 +198,23 @@ public class ManagerAction extends  ActionSupport {
         ManagerService managerService = new ManagerService();
 
         managerService.deleteFlight(flightNumber);
+
+        return SUCCESS;
+    }
+
+    public String getAirportAndAirline() throws  Exception {
+        ManagerService managerService = new ManagerService();
+
+        List<String> managerAirports = managerService.getAirportsCode();
+        List<String> managerAirlines = managerService.getAirlinesName();
+        List<String> managerAircraft = managerService.getAircraftModel();
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+
+        HttpSession session = request.getSession();
+        session.setAttribute("managerAirports", managerAirports);
+        session.setAttribute("managerAirlines", managerAirlines);
+        session.setAttribute("managerAircraft", managerAircraft);
 
         return SUCCESS;
     }
