@@ -12,6 +12,7 @@ import service.ValidateTicketService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.ArrayList;
 
 
 /**
@@ -39,16 +40,9 @@ public class CartNumberAction extends ActionSupport {
         List<Flight> leavingFlightObjectSet = (List<Flight>) session.getAttribute("leavingFlightObjectSet");
         int leavingSetSize=leavingFlightObjectSet.size();
         List<Flight> returningFlightObjectSet = (List<Flight>) session.getAttribute("returningFlightObjectSet");
-        List<Flight> flightObjectSet=leavingFlightObjectSet;
-        for (Flight f:leavingFlightObjectSet){
-            System.out.println(f.getFlightNumber()+"=============");
-        }
-        System.out.println(leavingSetSize);
+        List<Flight> flightObjectSet = (List)((ArrayList<Flight>)leavingFlightObjectSet).clone();
         if (returningFlightObjectSet != null) {
             flightObjectSet.addAll(returningFlightObjectSet);
-        }
-        for (Flight f:leavingFlightObjectSet.subList(0,leavingSetSize)){
-            System.out.println(f.getFlightNumber()+"++++++++++++");
         }
         String[] flightdate=new String[flightObjectSet.size()];
         for (int i=0;i<flightObjectSet.size();i++){
@@ -62,9 +56,6 @@ public class CartNumberAction extends ActionSupport {
         for (int i=0;i<Integer.valueOf(ticketsNumber);i++) {
             for (Flight flight : flightObjectSet) {
                 if (!validateTicketService.isAvaliable(flight,  flightdate[flightObjectSet.indexOf(flight)])) {
-//                    ticketService.deleteTicketByTransID(transactions.getTransactionID());
-//                    transactionService.deleteTransaction(transactions.getTransactionID());
-//                    paymentService.deletePayment(transactions.getCardnumber());
                     return ERROR;
                 }
                 int recordNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(), flightdate[flightObjectSet.indexOf(flight)]);
@@ -80,11 +71,6 @@ public class CartNumberAction extends ActionSupport {
                 }
             }
         }
-        for (Flight f:leavingFlightObjectSet.subList(0,leavingSetSize)){
-            System.out.println(f.getFlightNumber());
-        }
-        session.setAttribute("leavingFlightObjectSet", leavingFlightObjectSet.subList(0,leavingSetSize));
-
         return SUCCESS;
     }
 
