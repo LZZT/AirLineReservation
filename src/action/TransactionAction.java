@@ -1,19 +1,13 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import model.Flight;
-import model.Payment;
-import model.Transactions;
-import model.Traveler;
-import model.Ticket;
+import model.*;
 import org.apache.struts2.ServletActionContext;
-import service.PaymentService;
-import service.TicketService;
-import service.TransactionService;
-import service.TravelerService;
+import service.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.*;
 import java.rmi.server.UID;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +18,7 @@ public class TransactionAction extends ActionSupport {
     private PaymentService paymentService = new PaymentService();
     private TransactionService transactionService = new TransactionService();
     private TicketService ticketService = new TicketService();
+    private ValidateTicketService validateTicketService=new ValidateTicketService();
     public String TransInfo(){
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
@@ -40,18 +35,18 @@ public class TransactionAction extends ActionSupport {
             totalprice=leavingPrice*ticketsNumber;
         }
 
-
         Payment payment = (Payment)session.getAttribute("payment");
         paymentService.addNewPayment(payment);
         List<Traveler> travelerList=( List<Traveler>)session.getAttribute("travelerList");
-
         List<Flight> leavingFlightObjectSet=(List<Flight>)session.getAttribute("leavingFlightObjectSet");
-//        int totalprice=0;
+
+
+
+
         Transactions transactions = new Transactions();
         transactions.setCardnumber(payment.getCardNumber());
         transactions.setUsername((String) session.getAttribute("username"));
         UID uid=new UID();
-        System.out.println(uid.toString());
         transactions.setTransactionID(uid.toString().substring(uid.toString().length()-10));
         transactions.setPrice(totalprice);
         Date date=new Date();
@@ -64,8 +59,10 @@ public class TransactionAction extends ActionSupport {
 
             for (Flight flight:leavingFlightObjectSet){
 
+                if (!validateTicketService.isAvaliable(flight,departingDate)){
+                    return ERROR;
+                }
 
-//                totalprice+=flight.getPrice();
                 Ticket ticket = new Ticket();
                 ticket.setFlightNumber(flight.getFlightNumber());
                 ticket.setTransactionID(uid.toString().substring(uid.toString().length()-10));
@@ -78,7 +75,9 @@ public class TransactionAction extends ActionSupport {
             try{
                 List<Flight> returningFlightObjectSet=(List<Flight>)session.getAttribute("returningFlightObjectSet");
                 for (Flight flight:returningFlightObjectSet){
-//                    totalprice+=flight.getPrice();
+                    if (!validateTicketService.isAvaliable(flight,returningDate)){
+                        return ERROR;
+                    }
                     Ticket ticket = new Ticket();
                     ticket.setFlightNumber(flight.getFlightNumber());
                     ticket.setTransactionID(uid.toString().substring(uid.toString().length()-10));
@@ -90,15 +89,9 @@ public class TransactionAction extends ActionSupport {
                 }
             }catch (Exception ex){}
         }
-
-
-
-
-
-
-
         return SUCCESS;
     }
+
 
 }
 

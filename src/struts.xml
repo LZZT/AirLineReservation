@@ -82,6 +82,7 @@
 
         <action name="transAction" class="action.TransactionAction" method="TransInfo">
             <result name="success" type="redirect">/searchSuccessful.jsp</result>
+            <result name="error" type="redirect">/purchaseError.jsp</result>
         </action>
 
         <action name="payment" class="action.PaymentAction" method="PaymentInfo">

@@ -32,6 +32,7 @@
         <mapping resource="Payment.hbm.xml"/>
         <mapping resource="Transaction.hbm.xml"/>
         <mapping resource="Ticket.hbm.xml"/>
+        <mapping resource="ValidateTicket.hbm.xml"/>
     </session-factory>
 
 </hibernate-configuration>
