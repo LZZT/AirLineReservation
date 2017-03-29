@@ -12,15 +12,30 @@ public class Transactions {
     String username;
     String cardnumber;
     int price;
-//    Set<Ticket> ticketSet;
-//
-//    public Set<Ticket> getTicketSet() {
-//        return ticketSet;
-//    }
-//
-//    public void setTicketSet(Set<Ticket> ticketSet) {
-//        this.ticketSet = ticketSet;
-//    }
+    Set<Ticket> ticketSet;
+    Payment payment;
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
+
+
+    public Set<Ticket> getTicketSet() {
+        return ticketSet;
+    }
+
+    public void setTicketSet(Set<Ticket> ticketSet) {
+        this.ticketSet = ticketSet;
+    }
+
+    public void setTickets(Ticket ticket){
+        this.ticketSet.add(ticket);
+    }
 
     public String getTransactionID() {
         return transactionID;
