@@ -163,4 +163,57 @@ public class SearchInfoService {
 
     }
 
+
+    public List<List<Flight>> filterValidFlightsListByStopTypes(List<List<Flight>> validFlightsList, String[] stopType){
+
+        if(stopType.length >= 2 || stopType.length == 0){
+            return validFlightsList;
+        }
+
+        List<List<Flight>> newValidFlightsList = new ArrayList<>();
+
+        if(stopType[0].equals("noneStop")){
+            for(List<Flight> eachFlightBundle : validFlightsList){
+
+                if(eachFlightBundle.size() == 1){
+                    newValidFlightsList.add(eachFlightBundle);
+                }
+            }
+        }
+
+        if(stopType[0].equals("oneStop")){
+            for(List<Flight> eachFlightBundle : validFlightsList){
+
+                if(eachFlightBundle.size() != 1){
+                    newValidFlightsList.add(eachFlightBundle);
+                }
+            }
+        }
+        validFlightsList.clear();
+        return newValidFlightsList;
+    }
+
+    public List<Airport> getAirportsByFlight2DList(List<List<Flight>> validGoingFlightsList, String type){
+
+        List<Airport> airportsList = new ArrayList<>();
+
+        if(type.equals("departure")){
+
+            for(List<Flight> eachFlightBundle : validGoingFlightsList){
+                airportsList.add(eachFlightBundle.get(0).getDepartureAirport());
+            }
+        }
+
+        if(type.equals("arrival")){
+
+            for(List<Flight> eachFlightBundle : validGoingFlightsList){
+                airportsList.add(eachFlightBundle.get(eachFlightBundle.size() - 1).getArrivalAirport());
+            }
+        }
+
+        return airportsList;
+    }
+
+
+
 }

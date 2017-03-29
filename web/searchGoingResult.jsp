@@ -29,29 +29,8 @@
         <h1>Search Going Flights:</h1>
 
         <s:actionerror cssStyle="color:red"/>
-        <%--<s:form action="filterGoing" method="post">--%>
 
-            <%--<s:label value="Departure Airports List:"/>--%>
-
-            <%--<s:iterator value="#session.goingDepartureAirportsList" id="airport">--%>
-                <%--<s:checkbox name="goingDepartureAirportNamesList" label="%{#airport.name}" fieldValue="%{#airport.name}"/>--%>
-            <%--</s:iterator>--%>
-
-            <%--<s:label value="Arrival Airports List:"/>--%>
-
-            <%--<s:iterator value="#session.goingArrivalAirportsList" id="airport">--%>
-                <%--<s:checkbox name="goingArrivalAirportNamesList" label="%{#airport.name}" fieldValue="%{#airport.name}"/>--%>
-            <%--</s:iterator>--%>
-
-            <%--<s:submit name="submit" value="Filter"/>--%>
-
-        <%--</s:form>--%>
-
-
-
-
-
-        <form action="filterGoing" method="post">
+        <form action="filterGoingAirports" method="post">
 
             Departure Airports List: <br>
             <%
@@ -83,6 +62,20 @@
             <input type="submit" value="Filter Airport"/>
 
         </form>
+
+
+
+
+        Stops: <br>
+
+        <form action="filterGoingStopType" method="post">
+
+            <input type="checkbox" name="goingStopType" value="noneStop"/>None Stop<br>
+            <input type="checkbox" name="goingStopType" value="oneStop"/>One Stop<br>
+            <input type="submit" value="Filter Stop"/>
+
+        </form>
+
 
 
 

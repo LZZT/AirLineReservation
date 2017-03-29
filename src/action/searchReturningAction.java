@@ -29,49 +29,52 @@ public class searchReturningAction extends ActionSupport{
 
     public String findInfo() throws Exception {
 
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
+        try {
 
-        SearchInfoService searchInfoService = new SearchInfoService();
-        String validIndex = index.split("/")[0];
-        List<Flight> chosenGoingFlight = ((List<List<Flight>>)session.getAttribute("validGoingFlights")).get(Integer.valueOf(validIndex));
+            HttpServletRequest request = ServletActionContext.getRequest();
+            HttpSession session = request.getSession();
 
-        session.setAttribute("leavingFlightObjectSet", chosenGoingFlight);
-        int price=0;
-        for (Flight f:chosenGoingFlight){
-            price+=f.getPrice();
+            SearchInfoService searchInfoService = new SearchInfoService();
+            String validIndex = index.split("/")[0];
+            List<Flight> chosenGoingFlight = ((List<List<Flight>>) session.getAttribute("validGoingFlights")).get(Integer.valueOf(validIndex));
+
+            session.setAttribute("leavingFlightObjectSet", chosenGoingFlight);
+            int price = 0;
+            for (Flight f : chosenGoingFlight) {
+                price += f.getPrice();
+            }
+            session.setAttribute("leavingPrice", price);
+
+
+            if (null == session.getAttribute("returningDate")) {
+                return "JumpToCart";
+            }
+
+            Airport returningDepartureAirport = chosenGoingFlight.get(chosenGoingFlight.size() - 1).getArrivalAirport();
+            Airport returningArrivalAirport = chosenGoingFlight.get(0).getDepartureAirport();
+
+            List<Airport> returningDepartureAirportsList = searchInfoService.findNearByAirportsInSameCity(returningDepartureAirport);
+            List<Airport> returningArrivalAirportsList = searchInfoService.findNearByAirportsInSameCity(returningArrivalAirport);
+
+            //        List<Airport> returningDepartureAirportsList = new ArrayList<>(Arrays.asList(returningDepartureAirport));
+            //        List<Airport> returningArrivalAirportsList = new ArrayList<>(Arrays.asList(returningArrivalAirport));
+
+            session.setAttribute("returningDepartureAirportsList", returningDepartureAirportsList);
+            session.setAttribute("returningArrivalAirportsList", returningArrivalAirportsList);
+            String returningDate = (String) session.getAttribute("returningDate");
+            List<List<Flight>> validReturningFlightsList = searchInfoService.handleSingleTrip(returningDepartureAirportsList, returningArrivalAirportsList, returningDate);
+
+            if (validReturningFlightsList.size() == 0) {
+                return INPUT;
+            }
+
+            session.setAttribute("validReturningFlights", validReturningFlightsList);
+
+            return SUCCESS;
+
+        }catch (Exception ex){
+            return "GeneralError";
         }
-        session.setAttribute("leavingPrice",price);
-
-
-        if(null == session.getAttribute("returningDate")){
-            return "JumpToCart";
-        }
-
-        Airport returningDepartureAirport = chosenGoingFlight.get(chosenGoingFlight.size() - 1).getArrivalAirport();
-        Airport returningArrivalAirport = chosenGoingFlight.get(0).getDepartureAirport();
-
-
-        List<Airport> returningDepartureAirportsList = searchInfoService.findNearByAirportsInSameCity(returningDepartureAirport);
-        List<Airport> returningArrivalAirportsList = searchInfoService.findNearByAirportsInSameCity(returningArrivalAirport);
-
-
-//        List<Airport> returningDepartureAirportsList = new ArrayList<>(Arrays.asList(returningDepartureAirport));
-//        List<Airport> returningArrivalAirportsList = new ArrayList<>(Arrays.asList(returningArrivalAirport));
-
-        session.setAttribute("returningDepartureAirportsList", returningDepartureAirportsList);
-        session.setAttribute("returningArrivalAirportsList", returningArrivalAirportsList);
-        String returningDate = (String)session.getAttribute("returningDate");
-        List<List<Flight>> validReturningFlightsList = searchInfoService.handleSingleTrip(returningDepartureAirportsList, returningArrivalAirportsList, returningDate);
-
-        if(validReturningFlightsList.size() == 0){
-            return INPUT;
-        }
-
-        session.setAttribute("validReturningFlights", validReturningFlightsList);
-
-        return SUCCESS;
-
     }
 
 }

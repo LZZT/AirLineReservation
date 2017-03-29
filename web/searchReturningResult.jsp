@@ -27,7 +27,7 @@
 
         <s:actionerror cssStyle="color:red"/>
 
-        <form action="filterReturning" method="post">
+        <form action="filterReturningAirports" method="post">
 
             Departure Airports List: <br>
             <%
@@ -59,6 +59,21 @@
             <input type="submit" value="Filter Airport"/>
 
         </form>
+
+
+
+        Stops: <br>
+
+        <form action="filterReturningStopType" method="post">
+
+            <input type="checkbox" name="returningStopType" value="noneStop"/>None Stop<br>
+            <input type="checkbox" name="returningStopType" value="oneStop"/>One Stop<br>
+            <input type="submit" value="Filter Stop"/>
+
+        </form>
+
+
+
 
 
 

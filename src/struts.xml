@@ -25,6 +25,9 @@
         <global-results>
             <result name="login">/login.jsp</result>
             <result name="JumpToCart">/cart.jsp</result>
+            <result name="GoingFilterNotFound">/searchGoingResult.jsp</result>
+            <result name="ReturningFilterNotFound">/searchReturningResult.jsp</result>
+            <result name="GeneralError">/generalError.jsp</result>
         </global-results>
 
         <action name="test" class="action.TestAction" method="saveAndGetTestUserBack">
@@ -64,16 +67,29 @@
 
 
 
-        <action name="filterGoing" class="action.FilterAction" method="filterGoingAirports">
+        <action name="filterGoingAirports" class="action.FilterAction" method="filterGoingAirports">
             <result name="success" type="redirect">/searchGoingResult.jsp</result>
             <result name="input" type="redirect">/searchGoingResult.jsp</result>
         </action>
 
 
-        <action name="filterReturning" class="action.FilterAction" method="filterReturningAirports">
+        <action name="filterReturningAirports" class="action.FilterAction" method="filterReturningAirports">
             <result name="success" type="redirect">/searchReturningResult.jsp</result>
             <result name="input" type="redirect">/searchReturningResult.jsp</result>
         </action>
+
+
+        <action name="filterGoingStopType" class="action.FilterAction" method="filterGoingStopType">
+            <result name="success" type="redirect">/searchGoingResult.jsp</result>
+            <result name="input" type="redirect">/searchGoingResult.jsp</result>
+        </action>
+
+        <action name="filterReturningStopType" class="action.FilterAction" method="filterReturningStopType">
+            <result name="success" type="redirect">/searchReturningResult.jsp</result>
+            <result name="input" type="redirect">/searchReturningResult.jsp</result>
+        </action>
+
+
 
 
 
