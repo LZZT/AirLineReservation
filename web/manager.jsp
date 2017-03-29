@@ -53,6 +53,21 @@
             });
         });
     </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#submit').click(function() {
+                checked = $("input[type=checkbox]:checked").length;
+
+                if(!checked) {
+                    alert("You must select one day operated.");
+                    return false;
+                }
+
+            });
+        });
+
+    </script>
 </head>
 <body>
     <!-- -->
@@ -67,11 +82,11 @@
         <div id="insert" class="desc">
             <form action="insertFlight.action" method="post">
 
-                Flight Number: <input type="text" name="flightNumber"><br>
+                Flight Number: <input type="text" name="flightNumber" required>*</input><br>
 
-                Departure Time: <input type="text" name="departTime" id="departTime"><br>
+                Departure Time: <input type="text" name="departTime" id="departTime" required><br>
 
-                Arrival Time: <input type="text" name="arriTime" id="arriTime"><br>
+                Arrival Time: <input type="text" name="arriTime" id="arriTime" required><br>
 
                 Days Operated:  <input type="checkbox" name="daysOperated" value="Mon">Mon
                                 <input type="checkbox" name="daysOperated" value="Tue">Tue
@@ -91,7 +106,7 @@
 
 
                 Arrival Airport: <br>
-                <select name="departAirport" size="5" style="width:200px;">
+                <select name="arriAirport" size="5" style="width:200px;" required>
                     <option value="BOS">Boston Logan(BOS)</option>
                     <option value="EWR">Newark Liberty(EWR)</option>
                     <option value="JFK">John F. Kennedy(JFK)</option>
@@ -99,33 +114,22 @@
                 </select><br>
 
                 Airline: <br>
-                <select name="airline" size="5" style="width:100px;">
+                <select name="airline" size="5" style="width:100px;" required>
                     <option value="America Airline">America Airline</option>
                     <option value="Southwest">Southwest</option>
                     <option value="United Airline">United Airline</option>
                 </select><br>
 
                 Aircraft Model:<br>
-                <select name="aircraftModel" size="5" style="width:100px;">
+                <select name="aircraftModel" size="5" style="width:100px;" required>
                     <option value="Airbus 330">Airbus 330</option>
                     <option value="Boeing 777">Boeing 777</option>
                     <option value="Saab">Saab</option>
                 </select><br>
 
-                Price: <input type="text" name="price"><br>
+                Price: <input type="text" name="price" required><br>
 
-                <!--
-                Test:
-                <select size="5" style="width:100px;">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                </select>
-                -->
-                <input type="submit" value="submit">
+                <input type="submit" value="submit" id="submit">
             </form>
         </div>
 
