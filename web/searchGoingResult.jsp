@@ -18,6 +18,9 @@
 
     <title>Title</title>
 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="tooplate_style.css" rel="stylesheet" type="text/css" />
+
     <script type="text/javascript">
 
     function sortByPrice(){
@@ -27,89 +30,135 @@
     }
 
     </script>
+
+
+    <style>
+        nav {
+            float: left;
+            max-width: 200px;
+            margin: 0;
+            padding: 1em;
+        }
+
+        main {
+            margin-left: 230px;
+            border-left: 1px solid gray;
+            padding: 1em;
+            overflow: hidden;
+        }
+
+    </style>
+
+
 </head>
 
 <body>
 
+<br><br>
+
+<div id="tooplate_wrapper">
+
+    <div id="tooplate_menu">
+        <ul>
+            <li><a href="index.jsp" class="current">Home</a></li>
+            <li><a href="manager.jsp">Manager</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div> <!-- end of tooplate_menu -->
 
 
 
-        <br><br>
-        <h1>Search Going Flights:</h1>
+    <nav>
+        <h3>Filter Conditions:</h3>
+        <ul>
 
-        <s:actionerror cssStyle="color:red"/>
+            <li>
 
-        <form action="filterGoingAirports" method="post">
+                <h5>Sort result by:</h5>
+                <form action="sortGoing" method="post">
+                    <select name="sortGoingBy" onchange="this.form.submit()">
+                        <option></option>
+                        <option value="price">Price</option>
+                        <option value="departureTime">Departure Time</option>
+                        <option value="arrivalTime">Arrival Time</option>
+                        <option value="transitionTime">Transition Time</option>
+                    </select>
+                </form>
 
-            Departure Airports List: <br>
-            <%
-                List<Airport> goingDepartureAirportsList = (List<Airport>)session.getAttribute("goingDepartureAirportsList");
-
-                for(int goingDepartureAirportsIndex = 0; goingDepartureAirportsIndex < goingDepartureAirportsList.size(); goingDepartureAirportsIndex++){
-            %>
-                <input type="checkbox" name="goingDepartureAirportNamesList" value="<%=goingDepartureAirportsList.get(goingDepartureAirportsIndex).getName()%>"/><%=goingDepartureAirportsList.get(goingDepartureAirportsIndex).getName()%><br>
-            <%
-                }
-            %>
-
-            Arrival Airports List: <br>
-            <%
-                List<Airport> goingArrivalAirportsList = (List<Airport>)session.getAttribute("goingArrivalAirportsList");
-
-                for(int goingArrivalAirportsIndex = 0; goingArrivalAirportsIndex < goingArrivalAirportsList.size(); goingArrivalAirportsIndex++){
-            %>
-
-            <input type="checkbox" name="goingArrivalAirportNamesList" value="<%=goingArrivalAirportsList.get(goingArrivalAirportsIndex).getName()%>"/><%=goingArrivalAirportsList.get(goingArrivalAirportsIndex).getName()%><br>
-
-            <%
-                }
-            %>
-
-            <br>
-
-            <input type="submit" value="Filter Airport"/>
-
-        </form>
+            </li>
 
 
 
+            <li>
+                <s:actionerror cssStyle="color:red"/>
+                <form action="filterGoingAirports" method="post">
 
-        Stops: <br>
+                    <h5>Departure Airports:</h5>
+                    <%
+                        List<Airport> goingDepartureAirportsList = (List<Airport>)session.getAttribute("goingDepartureAirportsList");
 
-        <form action="filterGoingStopType" method="post">
+                        for(int goingDepartureAirportsIndex = 0; goingDepartureAirportsIndex < goingDepartureAirportsList.size(); goingDepartureAirportsIndex++){
+                    %>
+                        <input type="checkbox" name="goingDepartureAirportNamesList" value="<%=goingDepartureAirportsList.get(goingDepartureAirportsIndex).getName()%>"/><%=goingDepartureAirportsList.get(goingDepartureAirportsIndex).getName()%><br>
+                    <%
+                        }
+                    %>
+                    <br>
 
-            <input type="checkbox" name="goingStopType" value="noneStop"/>None Stop<br>
-            <input type="checkbox" name="goingStopType" value="oneStop"/>One Stop<br>
-            <input type="submit" value="Filter Stop"/>
+                    <h5>Arrival Airports:</h5>
+                    <%
+                        List<Airport> goingArrivalAirportsList = (List<Airport>)session.getAttribute("goingArrivalAirportsList");
 
-        </form>
+                        for(int goingArrivalAirportsIndex = 0; goingArrivalAirportsIndex < goingArrivalAirportsList.size(); goingArrivalAirportsIndex++){
+                    %>
+
+                    <input type="checkbox" name="goingArrivalAirportNamesList" value="<%=goingArrivalAirportsList.get(goingArrivalAirportsIndex).getName()%>"/><%=goingArrivalAirportsList.get(goingArrivalAirportsIndex).getName()%><br>
+
+                    <%
+                        }
+                    %>
+                    <br>
+                    <input type="submit" value="Filter Airport"/>
+
+                </form>
+
+            </li>
+
+            <li>
+
+                <h5>Stops:</h5>
+
+                <form action="filterGoingStopType" method="post">
+
+                    <input type="checkbox" name="goingStopType" value="noneStop"/>None Stop<br>
+                    <input type="checkbox" name="goingStopType" value="oneStop"/>One Stop<br>
+                    <input type="submit" value="Filter Stop"/>
+
+                </form>
+
+            </li>
+
+            <li>
+                <h5>Time:</h5>
+
+                <form action="filterGoingTime" method="post">
+
+                    <input type="checkbox" name="goingTimeRange" value="morning"/>Morning<br>
+                    <input type="checkbox" name="goingTimeRange" value="afternoon"/>Afternoon<br>
+                    <input type="checkbox" name="goingTimeRange" value="evening"/>Evening<br>
+                    <input type="submit" value="Filter Time"/>
+
+                </form>
+            </li>
 
 
-        Time: <br>
-
-        <form action="filterGoingTime" method="post">
-
-            <input type="checkbox" name="goingTimeRange" value="morning"/>Morning<br>
-            <input type="checkbox" name="goingTimeRange" value="afternoon"/>Afternoon<br>
-            <input type="checkbox" name="goingTimeRange" value="evening"/>Evening<br>
-            <input type="submit" value="Filter Time"/>
-
-        </form>
+        </ul>
+    </nav>
 
 
 
-
-        Sort result by:
-        <form action="sortGoing" method="post">
-            <select name="sortGoingBy" onchange="this.form.submit()">
-                <option></option>
-                <option value="price">Price</option>
-                <option value="departureTime">Departure Time</option>
-                <option value="arrivalTime">Arrival Time</option>
-                <option value="transitionTime">Transition Time</option>
-            </select>
-        </form>
-
+    <main>
 
 
 
@@ -189,104 +238,16 @@
 
 
 
+    </main>
+</div>
 
 
 
-
-
-
-
-
-
-
-
-
-        <%--<s:iterator value="#session.validFlights" id="flightList">--%>
-
-                <%--<s:iterator value='%{#flightList}' id="flight">--%>
-
-                            <%--<s:property value='%{#flight.flightNumber}'/>--%>
-
-                            <%--<s:property value='%{#flight.airline.code}'/>--%>
-
-                            <%--<s:property value='%{#flight.aircraftModel.model}'/>--%>
-
-                            <%--<s:property value='%{#flight.departureTime}'/>--%>
-
-                            <%--<s:property value='%{#flight.arrivalTime}'/>--%>
-
-                            <%--<s:property value='%{#flight.departureAirport.name}'/>--%>
-
-                            <%--<s:property value='%{#flight.arrivalAirport.name}'/>--%>
-
-                            <%--<s:property value='%{#flight.Price}'/><br>--%>
-
-                <%--</s:iterator>--%>
-
-            <%------------------------------------------------------------------------------------------------------------------------------------%>
-            <%--<br>--%>
-        <%--</s:iterator>--%>
-
-
-        <%--<table width="80%" align="center" border="1">--%>
-
-        <%--<tr>--%>
-        <%--<th>Flight Number</th>--%>
-        <%--<th>AirLine</th>--%>
-        <%--<th>Aircraft</th>--%>
-        <%--<th>Departure Time</th>--%>
-        <%--<th>Arrival Time</th>--%>
-        <%--<th>Departure Airport</th>--%>
-        <%--<th>ArrivalAirport</th>--%>
-        <%--<th>Price</th>--%>
-        <%--<th></th>--%>
-        <%--</tr>--%>
-
-
-        <%--<s:iterator value="#session.validFlights" id="flight">--%>
-
-        <%--<tr>--%>
-
-        <%--<td>--%>
-        <%--<s:property value='%{#flight.flightNumber}'/>--%>
-        <%--</td>--%>
-        <%--<td>--%>
-        <%--<s:property value='%{#flight.airline.code}'/>--%>
-        <%--</td>--%>
-        <%--<td>--%>
-        <%--<s:property value='%{#flight.aircraftModel.model}'/>--%>
-        <%--</td>--%>
-        <%--<td>--%>
-        <%--<s:property value='%{#flight.departureTime}'/>--%>
-        <%--</td>--%>
-        <%--<td>--%>
-        <%--<s:property value='%{#flight.arrivalTime}'/>--%>
-        <%--</td>--%>
-
-        <%--<td>--%>
-        <%--<s:property value='%{#flight.departureAirport.name}'/>--%>
-        <%--</td>--%>
-        <%--<td>--%>
-        <%--<s:property value='%{#flight.arrivalAirport.name}'/>--%>
-        <%--</td>--%>
-        <%--<td>--%>
-        <%--<s:property value='%{#flight.Price}'/>--%>
-        <%--</td>--%>
-        <%--<td>--%>
-        <%--<s:a href="addToCart.action?id=%{#flight.flightNumber}">Add to Cart</s:a>--%>
-        <%--</td>--%>
-
-        <%--</tr>--%>
-
-        <%--</s:iterator>--%>
-
-        <%--</table>--%>
-
-
-
-
-
-
+<div id="tooplate_footer_wrapper">
+    <div id="tooplate_footer">
+        Copyright © 2017 <a href="#">CS 542 Team 2</a>
+    </div>
+</div>
 
 
 </body>
