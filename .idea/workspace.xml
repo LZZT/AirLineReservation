@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="779cdd27-db07-43e8-9ba3-9f64e217c59f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/cart.jsp" afterPath="$PROJECT_DIR$/web/cart.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/login.jsp" afterPath="$PROJECT_DIR$/web/login.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/payment.jsp" afterPath="$PROJECT_DIR$/web/payment.jsp" />
@@ -41,19 +42,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="searchGoingResult.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/searchGoingResult.jsp">
+      <file leaf-file-name="manager.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/manager.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="52" column="40" lean-forward="false" selection-start-line="52" selection-start-column="40" selection-end-line="52" selection-end-column="40" />
-              <folding>
-                <marker date="1490827591000" expanded="true" signature="7762:7771" ph="..." />
-              </folding>
+            <state relative-caret-position="162">
+              <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="logout.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/logout.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="6" lean-forward="false" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="405">
@@ -63,21 +72,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="searchReturningResult.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/searchReturningResult.jsp">
+      <file leaf-file-name="mytrip.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/mytrip.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="52" column="44" lean-forward="false" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
+            <state relative-caret-position="195">
+              <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="searchSuccessful.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/searchSuccessful.jsp">
+      <file leaf-file-name="managerSearchResult.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/managerSearchResult.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="39" column="40" lean-forward="false" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+            <state relative-caret-position="-411">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -128,16 +137,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
               <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testDelete.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/testDelete.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1171,7 +1170,7 @@
       <workItem from="1490752250626" duration="9313000" />
       <workItem from="1490763745159" duration="9282000" />
       <workItem from="1490802039054" duration="9426000" />
-      <workItem from="1490818860653" duration="6734000" />
+      <workItem from="1490818860653" duration="6773000" />
     </task>
     <task id="LOCAL-00001" summary="initializing 1">
       <created>1488308833101</created>
@@ -1310,7 +1309,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180222000" />
+    <option name="totallyTimeSpent" value="180261000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="829" extended-state="6" />
@@ -1629,42 +1628,42 @@
         <state relative-caret-position="-155">
           <caret line="527" column="19" lean-forward="true" selection-start-line="527" selection-start-column="19" selection-end-line="527" selection-end-column="19" />
           <folding>
-            <marker date="1490827666000" expanded="true" signature="96755:96772" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="96755:96790" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="96755:96803" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="96755:96818" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="96853:99182" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="96866:99167" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="96920:97329" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="96939:97314" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="97071:97294" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="97111:97260" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="97132:97238" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="97379:97697" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="97398:97682" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="97478:97662" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="97518:97628" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="97539:97606" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="97748:98019" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="97767:98004" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="97800:97984" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="97840:97950" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="97861:97928" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="98062:98374" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="98081:98359" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="98155:98339" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="98195:98305" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="98216:98283" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="98425:98752" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="98444:98737" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="98533:98717" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="98573:98683" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="98594:98661" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="98804:99153" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="98823:99138" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="98934:99118" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="98974:99084" ph="..." />
-            <marker date="1490827666000" expanded="true" signature="98995:99062" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="96755:96772" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="96755:96790" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="96755:96803" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="96755:96818" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="96853:99182" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="96866:99167" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="96920:97329" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="96939:97314" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="97071:97294" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="97111:97260" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="97132:97238" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="97379:97697" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="97398:97682" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="97478:97662" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="97518:97628" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="97539:97606" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="97748:98019" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="97767:98004" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="97800:97984" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="97840:97950" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="97861:97928" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="98062:98374" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="98081:98359" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="98155:98339" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="98195:98305" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="98216:98283" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="98425:98752" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="98444:98737" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="98533:98717" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="98573:98683" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="98594:98661" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="98804:99153" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="98823:99138" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="98934:99118" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="98974:99084" ph="..." />
+            <marker date="1490827691000" expanded="true" signature="98995:99062" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1734,42 +1733,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/logout.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="6" lean-forward="false" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/manager.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/managerActionError.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/managerSearchResult.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/mytrip.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -1884,6 +1851,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="27" column="60" lean-forward="true" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/mytrip.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/managerSearchResult.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-411">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/manager.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/logout.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="6" lean-forward="false" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
           <folding />
         </state>
       </provider>
