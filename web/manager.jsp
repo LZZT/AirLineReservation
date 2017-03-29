@@ -60,14 +60,24 @@
                 checked = $("input[type=checkbox]:checked").length;
 
                 if(!checked) {
-                    alert("You must select one day operated.");
+                    alert("You must fill all fields in this form.");
                     return false;
                 }
 
+                var selectDepart = document.getElementById("departAirport");
+                var departAirport = selectDepart.options[selectDepart.selectedIndex].value;
+                var selectArrival = document.getElementById("arriAirport");
+                var arrivalAirport = selectArrival.options[selectArrival.selectedIndex].value;
+                if(departAirport == arrivalAirport) {
+                    alert("Departure airport cannot be same with Arrived airport!");
+                    return false;
+                }
             });
         });
 
+
     </script>
+
 </head>
 <body>
     <!-- -->
@@ -80,9 +90,10 @@
 
 
         <div id="insert" class="desc">
+            <h4>You must fill all fields in this form.</h4>
             <form action="insertFlight.action" method="post">
 
-                Flight Number: <input type="text" name="flightNumber" required>*</input><br>
+                Flight Number: <input type="text" name="flightNumber" required><br>
 
                 Departure Time: <input type="text" name="departTime" id="departTime" required><br>
 
@@ -97,7 +108,7 @@
                                 <input type="checkbox" name="daysOperated" value="Sun">Sun<br>
 
                 Departure Airport: <br>
-                <select name="departAirport" size="5" style="width:200px;">
+                <select id="departAirport" name="departAirport" size="5" style="width:200px;">
                     <option value="BOS">Boston Logan(BOS)</option>
                     <option value="EWR">Newark Liberty(EWR)</option>
                     <option value="JFK">John F. Kennedy(JFK)</option>
@@ -106,7 +117,7 @@
 
 
                 Arrival Airport: <br>
-                <select name="arriAirport" size="5" style="width:200px;" required>
+                <select id="arriAirport" name="arriAirport" size="5" style="width:200px;" required>
                     <option value="BOS">Boston Logan(BOS)</option>
                     <option value="EWR">Newark Liberty(EWR)</option>
                     <option value="JFK">John F. Kennedy(JFK)</option>
@@ -129,7 +140,7 @@
 
                 Price: <input type="text" name="price" required><br>
 
-                <input type="submit" value="submit" id="submit">
+                <input type="submit" value="submit" id="submit"">
             </form>
         </div>
 
