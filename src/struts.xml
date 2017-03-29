@@ -110,6 +110,7 @@
 
         <action name="cartNumber" class="action.CartNumberAction" method="cart">
             <result name="success" type="redirect">/traveler.jsp</result>
+            <result name="error" type="redirect">/purchaseError.jsp</result>
         </action>
 
          <action name="traveler" class="action.TravelerAction" method="add">
@@ -118,7 +119,6 @@
 
         <action name="transAction" class="action.TransactionAction" method="TransInfo">
             <result name="success" type="redirect">/searchSuccessful.jsp</result>
-            <result name="error" type="redirect">/purchaseError.jsp</result>
         </action>
 
         <action name="payment" class="action.PaymentAction" method="PaymentInfo">
