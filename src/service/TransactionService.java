@@ -6,6 +6,8 @@ import dao.TravelerDAO;
 import model.Transactions;
 import model.Traveler;
 
+import java.util.List;
+
 
 public class TransactionService {
     public void addNewTransaction(Transactions transactions){
@@ -17,4 +19,8 @@ public class TransactionService {
         transactionDAO.deleteTransaction(transactionID);
     }
 
+    public List<Transactions> getTransactionByCustomer(String username){
+        TransactionDAO transactionDAO = new TransactionDAO();
+        return transactionDAO.getTransactionByCustomer(username);
+    }
 }

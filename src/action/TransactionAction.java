@@ -18,7 +18,6 @@ public class TransactionAction extends ActionSupport {
     private PaymentService paymentService = new PaymentService();
     private TransactionService transactionService = new TransactionService();
     private TicketService ticketService = new TicketService();
-    private ValidateTicketService validateTicketService=new ValidateTicketService();
     public String TransInfo() {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
@@ -68,23 +67,6 @@ public class TransactionAction extends ActionSupport {
             for (Traveler t : travelerList) {
                 travelerService.registerNewTraveler(t);
                 for (Flight flight : leavingFlightObjectSet) {
-//                    if (!validateTicketService.isAvaliable(flight,  flightdate[leavingFlightObjectSet.indexOf(flight)])) {
-//                        ticketService.deleteTicketByTransID(transactions.getTransactionID());
-//                        transactionService.deleteTransaction(transactions.getTransactionID());
-//                        paymentService.deletePayment(transactions.getCardnumber());
-//                        return ERROR;
-//                    }
-//                    int recordNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(), flightdate[leavingFlightObjectSet.indexOf(flight)]);
-//                    if (recordNumber == 0) {
-//                        ValidateTicket validateTicket = new ValidateTicket();
-//                        validateTicket.setFlightNumber(flight.getFlightNumber());
-//                        validateTicket.setFlightDate(flightdate[leavingFlightObjectSet.indexOf(flight)]);
-//                        validateTicket.setCapacity(validateTicketService.getCapacity(flight.getAircraftModel().getModel()));
-//                        validateTicket.setTotalTicketNumber(1);
-//                        validateTicketService.recordValidateTicket(validateTicket);
-//                    } else {
-//                            validateTicketService.updateValidateTicket(recordNumber + 1, flight.getFlightNumber(), flightdate[leavingFlightObjectSet.indexOf(flight)]);
-//                    }
                     Ticket ticket = new Ticket();
                     ticket.setFlightNumber(flight.getFlightNumber());
                     ticket.setTransactionID(uid.toString().substring(uid.toString().length() - 10));
