@@ -18,6 +18,15 @@
 
     <title>Title</title>
 
+    <script type="text/javascript">
+
+    function sortByPrice(){
+
+        window.location = "${pageContext.request.contextPath}/sortGoingByPrice";
+
+    }
+
+    </script>
 </head>
 
 <body>
@@ -85,6 +94,20 @@
             <input type="checkbox" name="goingTimeRange" value="evening"/>Evening<br>
             <input type="submit" value="Filter Time"/>
 
+        </form>
+
+
+
+
+        Sort result by:
+        <form action="sortGoing" method="post">
+            <select name="sortGoingBy" onchange="this.form.submit()">
+                <option></option>
+                <option value="price">Price</option>
+                <option value="departureTime">Departure Time</option>
+                <option value="arrivalTime">Arrival Time</option>
+                <option value="transitionTime">Transition Time</option>
+            </select>
         </form>
 
 

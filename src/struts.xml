@@ -102,6 +102,11 @@
         </action>
 
 
+        <action name="sortGoing" class="action.SortAction" method="sortGoing">
+            <result name="success" type="redirect">/searchGoingResult.jsp</result>
+        </action>
+
+
 
 
         <action name="cartAction" class="action.CartAction">
