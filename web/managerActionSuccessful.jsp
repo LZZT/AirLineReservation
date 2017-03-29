@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<meta http-equiv="Refresh" content="4;url=manager.jsp">
+<meta http-equiv="Refresh" content="4;url=index.jsp">
 <html>
 <head>
     <title>Manager Action Successful</title>

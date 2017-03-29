@@ -10,6 +10,7 @@ import dao.AirportDAO;
 import model.Aircraft;
 import model.Airline;
 import model.Flight;
+import model.Airport;
 
 
 /**
@@ -57,5 +58,21 @@ public class ManagerService {
         Airline airline = airlineDAO.getAirlineByName(name);
 
         return airline;
+    }
+
+    public List<String> getAirportsCode() {
+        AirportDAO airportDAO = new AirportDAO();
+
+        List<String> airports = airportDAO.getAirportsCode();
+
+        return airports;
+    }
+
+    public List<String> getAirlinesName() {
+        AirlineDAO airlineDAO = new AirlineDAO();
+
+        List<String> airlines = airlineDAO.getAirlinesName();
+
+        return airlines;
     }
 }

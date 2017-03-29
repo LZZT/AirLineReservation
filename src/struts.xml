@@ -60,10 +60,6 @@
 
         </action>
 
-
-
-
-
         <action name="filterGoing" class="action.FilterAction" method="filterGoingAirports">
             <result name="success" type="redirect">/searchGoingResult.jsp</result>
             <result name="input" type="redirect">/searchGoingResult.jsp</result>
@@ -74,12 +70,6 @@
             <result name="success" type="redirect">/searchReturningResult.jsp</result>
             <result name="input" type="redirect">/searchReturningResult.jsp</result>
         </action>
-
-
-
-
-
-
 
         <action name="cartAction" class="action.CartAction">
             <result name="success" type="redirect">/cart.jsp</result>
@@ -126,7 +116,11 @@
             <result name="success" type="redirect">/managerActionSuccessful.jsp</result>
             <result name="input">/managerSearchResult.jsp</result>
         </action>
-
+        
+        <action name="reloadDB" class="action.ManagerAction" method="getAirportAndAirline">
+            <result name="success" type="redirect">/manager.jsp</result>
+            <result name="input">/index.jsp</result>
+        </action>
 
     </package>
 

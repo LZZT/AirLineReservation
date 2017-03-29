@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ page import="java.util.List" %>
 <html>
 <head>
     <title>Title</title>
@@ -74,8 +75,6 @@
                 }
             });
         });
-
-
     </script>
 
 </head>
@@ -91,6 +90,12 @@
 
         <div id="insert" class="desc">
             <h4>You must fill all fields in this form.</h4>
+
+            <%
+                List<String> airports = (List<String>)session.getAttribute("managerAirports");
+                List<String> airlines = (List<String>)session.getAttribute("managerAirlines");
+            %>
+
             <form action="insertFlight.action" method="post">
 
                 Flight Number: <input type="text" name="flightNumber" required><br>
@@ -123,7 +128,14 @@
                     <option value="JFK">John F. Kennedy(JFK)</option>
                     <option value="SFO">San Francisco(SFO)</option>
                 </select><br>
-
+                <!--
+                Arrival Airport: <br>
+                <select id="arriAirport" name="arriAirport" size="5" style="width:200px;" required>
+                    <c:forEach items="${airports}" var="airport">
+                        <option value="${airport}">${airport}</option>
+                    </c:forEach>
+                </select><br>
+                -->
                 Airline: <br>
                 <select name="airline" size="5" style="width:100px;" required>
                     <option value="America Airline">America Airline</option>
@@ -140,7 +152,7 @@
 
                 Price: <input type="text" name="price" required><br>
 
-                <input type="submit" value="submit" id="submit"">
+                <input type="submit" value="submit" id="submit">
             </form>
         </div>
 

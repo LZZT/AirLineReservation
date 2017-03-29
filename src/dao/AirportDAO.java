@@ -13,6 +13,28 @@ import java.util.List;
  * Created by QQZhao on 3/5/17.
  */
 public class AirportDAO {
+    public List<String> getAirportsCode() {
+        List<String> airportList = null;
+        Session session = HibernateUtil.openSession();
+        Transaction tx = session.beginTransaction();
+
+        try {
+            String hql = String.format("SELECT code FROM Airport");
+            Query query = session.createQuery(hql);
+
+            airportList = (List<String>) query.list();
+
+            tx.commit();
+        } catch (Exception ex) {
+            if (null != tx) {
+                tx.rollback();
+            }
+        } finally {
+            HibernateUtil.close(session);
+        }
+
+        return airportList;
+    }
 
     public Airport getAirportByCode(String airportCode){
 

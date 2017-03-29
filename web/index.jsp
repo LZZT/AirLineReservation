@@ -67,7 +67,7 @@
               <input type="submit" value="Logout"/>
           </form>
       <% }%>
-      <input type="button" value="Manager Mode" onclick="location.href='manager.jsp';">
+      <input type="button" value="Manager Mode" onclick="location.href='reloadDB.action';"s>
       <br><br><br><br>
       <h1>This is the place where user search flights</h1>
 

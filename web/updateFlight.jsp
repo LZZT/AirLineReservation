@@ -34,6 +34,28 @@
             });
         });
     </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#submit').click(function() {
+                checked = $("input[type=checkbox]:checked").length;
+
+                if(!checked) {
+                    alert("You must fill all fields in this form.");
+                    return false;
+                }
+
+                var selectDepart = document.getElementById("departAirport");
+                var departAirport = selectDepart.options[selectDepart.selectedIndex].value;
+                var selectArrival = document.getElementById("arriAirport");
+                var arrivalAirport = selectArrival.options[selectArrival.selectedIndex].value;
+                if(departAirport == arrivalAirport) {
+                    alert("Departure airport cannot be same with Arrived airport!");
+                    return false;
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 <form action="updateFlight.action" method="post">
@@ -53,16 +75,15 @@
     <input type="checkbox" name="daysOperated" value="Sun">Sun<br>
 
     Departure Airport: <br>
-    <select name="departAirport" size="5" style="width:200px;">
+    <select id="departAirport" name="departAirport" size="5" style="width:200px;">
         <option value="BOS">Boston Logan(BOS)</option>
         <option value="EWR">Newark Liberty(EWR)</option>
         <option value="JFK">John F. Kennedy(JFK)</option>
         <option value="SFO">San Francisco(SFO)</option>
     </select><br>
 
-
     Arrival Airport: <br>
-    <select name="departAirport" size="5" style="width:200px;">
+    <select id="arriAirport" name="arriAirport" size="5" style="width:200px;">
         <option value="BOS">Boston Logan(BOS)</option>
         <option value="EWR">Newark Liberty(EWR)</option>
         <option value="JFK">John F. Kennedy(JFK)</option>

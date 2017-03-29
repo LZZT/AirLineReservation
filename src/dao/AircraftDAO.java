@@ -6,7 +6,6 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import util.HibernateUtil;
 
-
 /**
  * Created by yenchanghsieh on 3/25/17.
  */
