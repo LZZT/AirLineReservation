@@ -16,21 +16,10 @@
 <html>
 <head>
 
-    <title>Title</title>
+    <title>SearchGoingResults</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="tooplate_style.css" rel="stylesheet" type="text/css" />
-
-    <script type="text/javascript">
-
-    function sortByPrice(){
-
-        window.location = "${pageContext.request.contextPath}/sortGoingByPrice";
-
-    }
-
-    </script>
-
 
     <style>
         nav {
@@ -41,7 +30,7 @@
         }
 
         main {
-            margin-left: 230px;
+            margin-left: 300px;
             border-left: 1px solid gray;
             padding: 1em;
             overflow: hidden;
@@ -64,6 +53,25 @@
             <li><a href="manager.jsp">Manager</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li>
+
+                <%
+                    if (null == session.getAttribute("username")) {
+                %>
+                <input type="button" value="Login" onclick="location.href='login.jsp';">
+                <input type="button" value="Register" onclick="location.href='register.jsp';">
+
+                <% } else {
+                %>
+                <form action="logout.action" method="post">
+                    <h4>Hi! ${sessionScope.username}</h4>
+                    <input type="submit" value="Logout"/>
+                    <input type="button" value="My trip" onclick="location.href='mytrip.jsp';">
+                </form>
+                <% }%>
+
+
+            </li>
         </ul>
     </div> <!-- end of tooplate_menu -->
 
@@ -234,9 +242,6 @@
 
         <br>
         </table>
-
-
-
 
     </main>
 </div>
