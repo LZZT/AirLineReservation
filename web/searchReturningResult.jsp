@@ -40,7 +40,6 @@
                 }
             %>
 
-            <br>
             Arrival Airports List: <br>
             <%
                 List<Airport> returningArrivalAirportsList = (List<Airport>)session.getAttribute("returningArrivalAirportsList");
@@ -73,9 +72,16 @@
         </form>
 
 
+        Time: <br>
 
+        <form action="filterReturningTime" method="post">
 
+            <input type="checkbox" name="returningTimeRange" value="morning"/>Morning<br>
+            <input type="checkbox" name="returningTimeRange" value="afternoon"/>Afternoon<br>
+            <input type="checkbox" name="returningTimeRange" value="evening"/>Evening<br>
+            <input type="submit" value="Filter Time"/>
 
+        </form>
 
 
 

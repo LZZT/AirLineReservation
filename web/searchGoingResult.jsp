@@ -43,7 +43,6 @@
                 }
             %>
 
-            <br>
             Arrival Airports List: <br>
             <%
                 List<Airport> goingArrivalAirportsList = (List<Airport>)session.getAttribute("goingArrivalAirportsList");
@@ -73,6 +72,18 @@
             <input type="checkbox" name="goingStopType" value="noneStop"/>None Stop<br>
             <input type="checkbox" name="goingStopType" value="oneStop"/>One Stop<br>
             <input type="submit" value="Filter Stop"/>
+
+        </form>
+
+
+        Time: <br>
+
+        <form action="filterGoingTime" method="post">
+
+            <input type="checkbox" name="goingTimeRange" value="morning"/>Morning<br>
+            <input type="checkbox" name="goingTimeRange" value="afternoon"/>Afternoon<br>
+            <input type="checkbox" name="goingTimeRange" value="evening"/>Evening<br>
+            <input type="submit" value="Filter Time"/>
 
         </form>
 

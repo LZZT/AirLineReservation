@@ -90,9 +90,16 @@
         </action>
 
 
+        <action name="filterGoingTime" class="action.FilterAction" method="filterGoingTime">
+            <result name="success" type="redirect">/searchGoingResult.jsp</result>
+            <result name="input" type="redirect">/searchGoingResult.jsp</result>
+        </action>
 
 
-
+        <action name="filterReturningTime" class="action.FilterAction" method="filterReturningTime">
+            <result name="success" type="redirect">/searchReturningResult.jsp</result>
+            <result name="input" type="redirect">/searchReturningResult.jsp</result>
+        </action>
 
 
 

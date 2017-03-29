@@ -54,4 +54,5 @@ public class Airport {
     public void setArrivalFlightsSet(Set<Flight> arrivalFlightsSet) {
         this.arrivalFlightsSet = arrivalFlightsSet;
     }
+
 }

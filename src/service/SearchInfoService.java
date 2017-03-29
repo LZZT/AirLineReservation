@@ -9,10 +9,9 @@ import org.apache.struts2.ServletActionContext;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.sql.Time;
+import java.time.LocalTime;
+import java.util.*;
 
 /**
  * Created by QQZhao on 3/5/17.
@@ -62,8 +61,6 @@ public class SearchInfoService {
 
         return validFlightsList;
     }
-
-
 
     @SuppressWarnings("deprecation")
     private int convertStringDateToWeekInteger(String dateToBeConverted){
@@ -193,27 +190,80 @@ public class SearchInfoService {
         return newValidFlightsList;
     }
 
-    public List<Airport> getAirportsByFlight2DList(List<List<Flight>> validGoingFlightsList, String type){
+    public List<Airport> getAirportsByFlight2DList(List<List<Flight>> validFlightsList, String type){
 
-        List<Airport> airportsList = new ArrayList<>();
-
-        if(type.equals("departure")){
-
-            for(List<Flight> eachFlightBundle : validGoingFlightsList){
-                airportsList.add(eachFlightBundle.get(0).getDepartureAirport());
-            }
+        if(!type.equals("departure") && !type.equals("arrival")){
+            return null;
         }
 
-        if(type.equals("arrival")){
+        List<Airport> airportsList = new ArrayList<>();
+        Airport targetAirport = null;
 
-            for(List<Flight> eachFlightBundle : validGoingFlightsList){
-                airportsList.add(eachFlightBundle.get(eachFlightBundle.size() - 1).getArrivalAirport());
+        for(List<Flight> eachFlightBundle : validFlightsList){
+
+            if(type.equals("departure")){
+                targetAirport = eachFlightBundle.get(0).getDepartureAirport();
+            }else{
+                targetAirport = eachFlightBundle.get(eachFlightBundle.size() - 1).getArrivalAirport();
             }
+
+            if(airportsList.size() == 0){
+                airportsList.add(targetAirport);
+            }else{
+                boolean duplicated = false;
+                for(Airport airport : airportsList){
+                    if(airport.getCode().equals(targetAirport.getCode())){
+                        duplicated = true;
+                    }
+                }
+                if(!duplicated){
+                    airportsList.add(targetAirport);
+                }
+            }
+
         }
 
         return airportsList;
     }
 
+    public List<List<Flight>> filterValidFlightsListByTimeRange(List<List<Flight>> validFlightsList, String[] timeRange){
 
+        if(timeRange.length == 3 || timeRange.length == 0){
+            return validFlightsList;
+        }
+
+        List<List<Flight>> newValidFlightsList = new ArrayList<>();
+        for(List<Flight> eachFlightBundle : validFlightsList){
+
+            Time departureTime = eachFlightBundle.get(0).getDepartureTime();
+            if(isInSelectedTimeRange(departureTime, timeRange)){
+                newValidFlightsList.add(eachFlightBundle);
+            }
+
+        }
+        validFlightsList.clear();
+        return newValidFlightsList;
+    }
+
+    private boolean isInSelectedTimeRange(Time targetTime, String[] timeRange){
+
+        for(String time : timeRange){
+
+            if(time.equals("morning") && inBetween(targetTime.toLocalTime(), LocalTime.of(0, 0), LocalTime.of(11, 59))){
+                return true;
+            }
+            if(time.equals("afternoon") && inBetween(targetTime.toLocalTime(), LocalTime.of(12, 0), LocalTime.of(17, 59))){
+                return true;
+            }
+            if(time.equals("evening") && inBetween(targetTime.toLocalTime(), LocalTime.of(18, 0), LocalTime.of(23, 59))){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean inBetween(LocalTime targetTime, LocalTime start, LocalTime end){
+        return (targetTime.isAfter(start) || targetTime.equals(start)) && (targetTime.isBefore(end) || targetTime.equals(end));
+    }
 
 }

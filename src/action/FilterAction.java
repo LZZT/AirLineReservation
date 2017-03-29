@@ -15,8 +15,6 @@ import java.util.List;
  */
 public class FilterAction extends ActionSupport {
 
-
-
     private String[] goingDepartureAirportNamesList;
     private String[] goingArrivalAirportNamesList;
     private String[] returningDepartureAirportNamesList;
@@ -25,21 +23,23 @@ public class FilterAction extends ActionSupport {
     private String[] goingStopType;
     private String[] returningStopType;
 
+    private String[] goingTimeRange;
+    private String[] returningTimeRange;
 
-    public String[] getGoingStopType() {
-        return goingStopType;
+    public String[] getGoingDepartureAirportNamesList() {
+        return goingDepartureAirportNamesList;
     }
 
-    public void setGoingStopType(String[] goingStopType) {
-        this.goingStopType = goingStopType;
+    public void setGoingDepartureAirportNamesList(String[] goingDepartureAirportNamesList) {
+        this.goingDepartureAirportNamesList = goingDepartureAirportNamesList;
     }
 
-    public String[] getReturningStopType() {
-        return returningStopType;
+    public String[] getGoingArrivalAirportNamesList() {
+        return goingArrivalAirportNamesList;
     }
 
-    public void setReturningStopType(String[] returningStopType) {
-        this.returningStopType = returningStopType;
+    public void setGoingArrivalAirportNamesList(String[] goingArrivalAirportNamesList) {
+        this.goingArrivalAirportNamesList = goingArrivalAirportNamesList;
     }
 
     public String[] getReturningDepartureAirportNamesList() {
@@ -58,22 +58,37 @@ public class FilterAction extends ActionSupport {
         this.returningArrivalAirportNamesList = returningArrivalAirportNamesList;
     }
 
-    public String[] getGoingDepartureAirportNamesList() {
-        return goingDepartureAirportNamesList;
+    public String[] getGoingStopType() {
+        return goingStopType;
     }
 
-    public void setGoingDepartureAirportNamesList(String[] goingDepartureAirportNamesList) {
-        this.goingDepartureAirportNamesList = goingDepartureAirportNamesList;
+    public void setGoingStopType(String[] goingStopType) {
+        this.goingStopType = goingStopType;
     }
 
-    public String[] getGoingArrivalAirportNamesList() {
-        return goingArrivalAirportNamesList;
+    public String[] getReturningStopType() {
+        return returningStopType;
     }
 
-    public void setGoingArrivalAirportNamesList(String[] goingArrivalAirportNamesList) {
-        this.goingArrivalAirportNamesList = goingArrivalAirportNamesList;
+    public void setReturningStopType(String[] returningStopType) {
+        this.returningStopType = returningStopType;
     }
 
+    public String[] getGoingTimeRange() {
+        return goingTimeRange;
+    }
+
+    public void setGoingTimeRange(String[] goingTimeRange) {
+        this.goingTimeRange = goingTimeRange;
+    }
+
+    public String[] getReturningTimeRange() {
+        return returningTimeRange;
+    }
+
+    public void setReturningTimeRange(String[] returningTimeRange) {
+        this.returningTimeRange = returningTimeRange;
+    }
 
     public String filterGoingAirports (){
 
@@ -167,6 +182,59 @@ public class FilterAction extends ActionSupport {
 
         session.setAttribute("validReturningFlights", validReturningFlightsList);
 
+        List<Airport> returningDepartureAirportsList = searchInfoService.getAirportsByFlight2DList(validReturningFlightsList, "departure");
+        List<Airport> returningArrivalAirportsList = searchInfoService.getAirportsByFlight2DList(validReturningFlightsList, "arrival");
+
+        session.setAttribute("returningDepartureAirportsList", returningDepartureAirportsList);
+        session.setAttribute("returningArrivalAirportsList", returningArrivalAirportsList);
+
+        return SUCCESS;
+    }
+
+
+    public String filterGoingTime(){
+        if(goingTimeRange == null){
+            return INPUT;
+        }
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        SearchInfoService searchInfoService = new SearchInfoService();
+
+        List<List<Flight>> validGoingFlightsList = searchInfoService.filterValidFlightsListByTimeRange((List<List<Flight>>)session.getAttribute("validGoingFlights"), goingTimeRange);
+
+        if(validGoingFlightsList.size() == 0){
+            return "GoingFilterNotFound";
+        }
+
+        session.setAttribute("validGoingFlights", validGoingFlightsList);
+        List<Airport> goingDepartureAirportsList = searchInfoService.getAirportsByFlight2DList(validGoingFlightsList, "departure");
+        List<Airport> goingArrivalAirportsList = searchInfoService.getAirportsByFlight2DList(validGoingFlightsList, "arrival");
+
+        session.setAttribute("goingDepartureAirportsList", goingDepartureAirportsList);
+        session.setAttribute("goingArrivalAirportsList", goingArrivalAirportsList);
+
+        return SUCCESS;
+    }
+
+
+    public String filterReturningTime(){
+        if(returningTimeRange == null){
+            return INPUT;
+        }
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        SearchInfoService searchInfoService = new SearchInfoService();
+
+        List<List<Flight>> validReturningFlightsList = searchInfoService.filterValidFlightsListByTimeRange((List<List<Flight>>)session.getAttribute("validReturningFlights"), returningTimeRange);
+
+        if(validReturningFlightsList.size() == 0){
+            return "ReturningFilterNotFound";
+        }
+
+        session.setAttribute("validReturningFlights", validReturningFlightsList);
         List<Airport> returningDepartureAirportsList = searchInfoService.getAirportsByFlight2DList(validReturningFlightsList, "departure");
         List<Airport> returningArrivalAirportsList = searchInfoService.getAirportsByFlight2DList(validReturningFlightsList, "arrival");
 
