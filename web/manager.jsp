@@ -11,6 +11,7 @@
 <head>
     <title>Title</title>
 
+    <link href="tooplate_style.css" rel="stylesheet" type="text/css" />
 
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="https://code.jquery.com/ui/3.2.1/jquery-ui.js"></script>
@@ -79,16 +80,21 @@
 </head>
 <body>
     <!-- -->
-
+    <div id="tooplate_wrapper">
     <s:actionerror cssStyle="color:red"/>
 
     <div id="managerOp">
+        <div id="tooplate_header">
+            <h1>Manager Mode</h1>
+        </div>
+
+        <h4>You must fill all fields in this form.</h4>
+
         <input type="radio" name="manager" value="insert" checked/>Insert Flight
         <input type="radio" name="manager" value="search"  />Search Flight
 
 
         <div id="insert" class="desc">
-            <h4>You must fill all fields in this form.</h4>
 
             <form action="insertFlight.action" method="post">
 
@@ -109,12 +115,12 @@
                 <s:select label="Departure Airports"
                           headerKey="-1" headerValue="Select Departure Airport"
                           list="#session.managerAirports"
-                          name="airport" /> <br>
+                          name="departAirport" /> <br>
 
                 <s:select label="Arrival Airports"
                           headerKey="-1" headerValue="Select Arrival Airport"
                           list="#session.managerAirports"
-                          name="airport" /> <br>
+                          name="arriAirport" /> <br>
 
                 <s:select label="Airline"
                           headerKey="-1" headerValue="Select Airline"
@@ -124,9 +130,9 @@
                 <s:select label="Aircraft Model"
                           headerKey="-1" headerValue="Select Aircraft Model"
                           list="#session.managerAircraft"
-                          name="aircraft" /> <br>
+                          name="aircraftModel" /> <br>
 
-                Price: <input type="text" name="price" required><br>
+                Price: <input type="text" name="price" required><br><br>
 
                 <input type="submit" value="submit" id="submit">
             </form>
@@ -140,6 +146,7 @@
             </form>
         </div>
 
+    </div>
     </div>
 </body>
 </html>

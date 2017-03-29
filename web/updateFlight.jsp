@@ -78,12 +78,12 @@
     <s:select label="Departure Airports"
               headerKey="-1" headerValue="Select Departure Airport"
               list="#session.managerAirports"
-              name="airport" /> <br>
+              name="departAirport" /> <br>
 
     <s:select label="Arrival Airports"
               headerKey="-1" headerValue="Select Arrival Airport"
               list="#session.managerAirports"
-              name="airport" /> <br>
+              name="arriAirport" /> <br>
 
     <s:select label="Airline"
               headerKey="-1" headerValue="Select Airline"
@@ -93,7 +93,7 @@
     <s:select label="Aircraft Model"
               headerKey="-1" headerValue="Select Aircraft Model"
               list="#session.managerAircraft"
-              name="aircraft" /> <br>
+              name="aircraftModel" /> <br>
 
     Price: <input type="text" name="price"><br>
 
