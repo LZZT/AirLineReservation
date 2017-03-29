@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE validators PUBLIC
+
+        "-//Apache Struts//XWork Validator 1.0.2//EX"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+
+
+<validators>
+    <field name = "lastname">
+        <field-validator type="requiredstring">
+            <message>lastname is required.</message>
+        </field-validator>
+        <!--<field-validator type="stringlength">-->
+        <!--<param name ="minLength">2</param>-->
+        <!--<param name ="trim">true</param>-->
+            <!--<message>Length of Lastname should be longer than 2.</message>-->
+        <!--</field-validator>-->
+
+    </field>
+
+    <!--<field name="firstname">-->
+        <!--<field-validator type="requiredstring">-->
+            <!--<message>firstname is required.</message>-->
+        <!--</field-validator>-->
+        <!--<field-validator type="stringlength">-->
+        <!--<param name ="minLength">2</param>-->
+        <!--<param name ="trim">true</param>-->
+        <!--<message>Length of firsttname should be longer than 2.</message>-->
+        <!--</field-validator>-->
+    <!--</field>-->
+
+    <!--<field name="gender">-->
+        <!--<field-validator type="required">-->
+            <!--<message>Gender is required.</message>-->
+        <!--</field-validator>-->
+    <!--</field>-->
+
+
+    <!--<field name="dob">-->
+        <!--<field-validator type="date">-->
+            <!--<message>d</message>-->
+        <!--</field-validator>-->
+        <!--<field-validator type="requiredstring">-->
+            <!--<message>Day of birth should not be null.</message>-->
+        <!--</field-validator>-->
+    <!--</field>-->
+
+
+
+</validators>
