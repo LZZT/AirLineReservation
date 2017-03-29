@@ -121,6 +121,7 @@
         
         <action name="searchFlightByFlightNumber" class="action.searchGoingAction" method="searchFlightByFlightNumber">
             <result name="success" type="redirect">/managerSearchResult.jsp</result>
+            <result name="error" type="redirect">/managerActionError.jsp</result>
             <result name="input">/manager.jsp</result>
         </action>
 

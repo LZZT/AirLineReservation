@@ -169,6 +169,8 @@ public class searchGoingAction extends ActionSupport {
         List<Flight> validFlights = searchInfoService.getFlightByFlightNumber(flightNumber);
         session.setAttribute("validFlights", validFlights);
 
+        if(validFlights.isEmpty())
+            return ERROR;
         return SUCCESS;
     }
 }

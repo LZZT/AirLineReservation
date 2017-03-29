@@ -3,8 +3,6 @@
 <html>
 <head>
     <title></title>
-
-
     <script type="text/javascript">
 
         var sec = 3;
@@ -17,8 +15,6 @@
         }
 
     </script>
-
-
 </head>
 <body>
 
