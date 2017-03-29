@@ -85,6 +85,23 @@
 
 
 
+        Sort result by:
+        <form action="sortReturning" method="post">
+            <select name="sortReturningBy" onchange="this.form.submit()">
+                <option></option>
+                <option value="price">Price</option>
+                <option value="departureTime">Departure Time</option>
+                <option value="arrivalTime">Arrival Time</option>
+                <option value="transitionTime">Transition Time</option>
+            </select>
+        </form>
+
+
+
+
+
+
+
         <h3>Choose Returning Flight: </h3>
 
 
