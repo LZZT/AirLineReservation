@@ -74,53 +74,65 @@ public class searchGoingAction extends ActionSupport {
 
     public String findInfo() throws Exception {
 
-        HttpServletRequest request = ServletActionContext.getRequest();
-        HttpSession session = request.getSession();
-        session.setAttribute("departingDate", departingDate);
-        SearchInfoService searchInfoService = new SearchInfoService();
+        try {
 
-        List<Airport> goingDepartureAirportsList = searchInfoService.getAirportsByCityOrAirportCode(departureCityOrAirport);
-        List<Airport> goingArrivalAirportsList = searchInfoService.getAirportsByCityOrAirportCode(arrivalCityOrAirport);
 
-        session.setAttribute("goingDepartureAirportsList", goingDepartureAirportsList);
-        session.setAttribute("goingArrivalAirportsList", goingArrivalAirportsList);
+            HttpServletRequest request = ServletActionContext.getRequest();
+            HttpSession session = request.getSession();
+            session.setAttribute("departingDate", departingDate);
+            SearchInfoService searchInfoService = new SearchInfoService();
 
-        List<List<Flight>> validGoingFlightsList = searchInfoService.handleSingleTrip(goingDepartureAirportsList, goingArrivalAirportsList, departingDate);
-        if(validGoingFlightsList.size() == 0){
-            return INPUT;
+            List<Airport> goingDepartureAirportsList = searchInfoService.getAirportsByCityOrAirportCode(departureCityOrAirport);
+            List<Airport> goingArrivalAirportsList = searchInfoService.getAirportsByCityOrAirportCode(arrivalCityOrAirport);
+
+            session.setAttribute("goingDepartureAirportsList", goingDepartureAirportsList);
+            session.setAttribute("goingArrivalAirportsList", goingArrivalAirportsList);
+
+            List<List<Flight>> validGoingFlightsList = searchInfoService.handleSingleTrip(goingDepartureAirportsList, goingArrivalAirportsList, departingDate);
+            if (validGoingFlightsList.size() == 0) {
+                return INPUT;
+            }
+            session.setAttribute("validGoingFlights", validGoingFlightsList);
+
+            if (tripType.equals("singleTrip")) {
+
+                try {
+                    session.removeAttribute("returningDate");
+                } catch (Exception ex) {
+                }
+
+                try {
+                    session.removeAttribute("returningDepartureAirportsList");
+                } catch (Exception ex) {
+                }
+
+                try {
+                    session.removeAttribute("returningArrivalAirportsList");
+                } catch (Exception ex) {
+                }
+
+                try {
+                    session.removeAttribute("validReturningFlights");
+                } catch (Exception ex) {
+                }
+
+                try {
+                    session.removeAttribute("returningFlightObjectSet");
+                } catch (Exception ex) {
+                }
+
+            }
+
+            if (tripType.equals("roundTrip")) {
+
+                session.setAttribute("returningDate", returningDate);
+
+            }
+            return SUCCESS;
+
+        }catch (Exception ex){
+            return "GeneralError";
         }
-        session.setAttribute("validGoingFlights", validGoingFlightsList);
-
-        if(tripType.equals("singleTrip")){
-
-            try{
-                session.removeAttribute("returningDate");
-            }catch (Exception ex){}
-
-            try{
-                session.removeAttribute("returningDepartureAirportsList");
-            }catch (Exception ex){}
-
-            try{
-                session.removeAttribute("returningArrivalAirportsList");
-            }catch (Exception ex){}
-
-            try{
-                session.removeAttribute("validReturningFlights");
-            }catch (Exception ex){}
-
-            try{
-                session.removeAttribute("returningFlightObjectSet");
-            }catch (Exception ex){}
-
-        }
-
-        if(tripType.equals("roundTrip")){
-
-            session.setAttribute("returningDate", returningDate);
-
-        }
-        return SUCCESS;
     }
 
     @SuppressWarnings("deprecation")

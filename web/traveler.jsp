@@ -54,17 +54,17 @@
                 <%--return false;--%>
             <%--}--%>
 
-            var lastname = document.forms["TravelersForm"]["travelerList[<%= i-1%>].lastname"].value;
-            if (lastname == null || lastname.length < 3) {
-                alert("Length of the lastname can not be less than 3! ");
-                return false;
-            }
+            <%--var lastname = document.forms["TravelersForm"]["travelerList[<%= i-1%>].lastname"].value;--%>
+            <%--if (lastname == null || lastname.length < 3) {--%>
+                <%--alert("Length of the lastname can not be less than 3! ");--%>
+                <%--return false;--%>
+            <%--}--%>
 
-            var firstname = document.forms["TravelersForm"]["travelerList[<%= i-1%>].firstname"].value;
-            if (firstname == null || firstname.length < 3) {
-                alert("Length of the firstname can not be less than 3!");
-                return false;
-            }
+            <%--var firstname = document.forms["TravelersForm"]["travelerList[<%= i-1%>].firstname"].value;--%>
+            <%--if (firstname == null || firstname.length < 3) {--%>
+                <%--alert("Length of the firstname can not be less than 3!");--%>
+                <%--return false;--%>
+            <%--}--%>
 
             <%--var dob = document.forms["TravelersForm"]["travelerList[<%= i-1%>].dob"].value;--%>
             <%--if (dob == null) {--%>

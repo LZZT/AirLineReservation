@@ -18,6 +18,15 @@
 
     <title>Title</title>
 
+    <script type="text/javascript">
+
+    function sortByPrice(){
+
+        window.location = "${pageContext.request.contextPath}/sortGoingByPrice";
+
+    }
+
+    </script>
 </head>
 
 <body>
@@ -29,29 +38,8 @@
         <h1>Search Going Flights:</h1>
 
         <s:actionerror cssStyle="color:red"/>
-        <%--<s:form action="filterGoing" method="post">--%>
 
-            <%--<s:label value="Departure Airports List:"/>--%>
-
-            <%--<s:iterator value="#session.goingDepartureAirportsList" id="airport">--%>
-                <%--<s:checkbox name="goingDepartureAirportNamesList" label="%{#airport.name}" fieldValue="%{#airport.name}"/>--%>
-            <%--</s:iterator>--%>
-
-            <%--<s:label value="Arrival Airports List:"/>--%>
-
-            <%--<s:iterator value="#session.goingArrivalAirportsList" id="airport">--%>
-                <%--<s:checkbox name="goingArrivalAirportNamesList" label="%{#airport.name}" fieldValue="%{#airport.name}"/>--%>
-            <%--</s:iterator>--%>
-
-            <%--<s:submit name="submit" value="Filter"/>--%>
-
-        <%--</s:form>--%>
-
-
-
-
-
-        <form action="filterGoing" method="post">
+        <form action="filterGoingAirports" method="post">
 
             Departure Airports List: <br>
             <%
@@ -64,7 +52,6 @@
                 }
             %>
 
-            <br>
             Arrival Airports List: <br>
             <%
                 List<Airport> goingArrivalAirportsList = (List<Airport>)session.getAttribute("goingArrivalAirportsList");
@@ -83,6 +70,46 @@
             <input type="submit" value="Filter Airport"/>
 
         </form>
+
+
+
+
+        Stops: <br>
+
+        <form action="filterGoingStopType" method="post">
+
+            <input type="checkbox" name="goingStopType" value="noneStop"/>None Stop<br>
+            <input type="checkbox" name="goingStopType" value="oneStop"/>One Stop<br>
+            <input type="submit" value="Filter Stop"/>
+
+        </form>
+
+
+        Time: <br>
+
+        <form action="filterGoingTime" method="post">
+
+            <input type="checkbox" name="goingTimeRange" value="morning"/>Morning<br>
+            <input type="checkbox" name="goingTimeRange" value="afternoon"/>Afternoon<br>
+            <input type="checkbox" name="goingTimeRange" value="evening"/>Evening<br>
+            <input type="submit" value="Filter Time"/>
+
+        </form>
+
+
+
+
+        Sort result by:
+        <form action="sortGoing" method="post">
+            <select name="sortGoingBy" onchange="this.form.submit()">
+                <option></option>
+                <option value="price">Price</option>
+                <option value="departureTime">Departure Time</option>
+                <option value="arrivalTime">Arrival Time</option>
+                <option value="transitionTime">Transition Time</option>
+            </select>
+        </form>
+
 
 
 

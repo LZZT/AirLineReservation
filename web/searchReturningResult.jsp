@@ -27,7 +27,7 @@
 
         <s:actionerror cssStyle="color:red"/>
 
-        <form action="filterReturning" method="post">
+        <form action="filterReturningAirports" method="post">
 
             Departure Airports List: <br>
             <%
@@ -40,7 +40,6 @@
                 }
             %>
 
-            <br>
             Arrival Airports List: <br>
             <%
                 List<Airport> returningArrivalAirportsList = (List<Airport>)session.getAttribute("returningArrivalAirportsList");
@@ -59,6 +58,45 @@
             <input type="submit" value="Filter Airport"/>
 
         </form>
+
+
+
+        Stops: <br>
+
+        <form action="filterReturningStopType" method="post">
+
+            <input type="checkbox" name="returningStopType" value="noneStop"/>None Stop<br>
+            <input type="checkbox" name="returningStopType" value="oneStop"/>One Stop<br>
+            <input type="submit" value="Filter Stop"/>
+
+        </form>
+
+
+        Time: <br>
+
+        <form action="filterReturningTime" method="post">
+
+            <input type="checkbox" name="returningTimeRange" value="morning"/>Morning<br>
+            <input type="checkbox" name="returningTimeRange" value="afternoon"/>Afternoon<br>
+            <input type="checkbox" name="returningTimeRange" value="evening"/>Evening<br>
+            <input type="submit" value="Filter Time"/>
+
+        </form>
+
+
+
+        Sort result by:
+        <form action="sortReturning" method="post">
+            <select name="sortReturningBy" onchange="this.form.submit()">
+                <option></option>
+                <option value="price">Price</option>
+                <option value="departureTime">Departure Time</option>
+                <option value="arrivalTime">Arrival Time</option>
+                <option value="transitionTime">Transition Time</option>
+            </select>
+        </form>
+
+
 
 
 

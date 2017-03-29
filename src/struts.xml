@@ -14,8 +14,8 @@
             <interceptor name="loginInterceptor" class="interceptor.LoginInterceptor"></interceptor>
 
             <!--<interceptor-stack name="AirLineReservationInterceptorStack">-->
-                <!--<interceptor-ref name="loginInterceptor"></interceptor-ref>-->
-                <!--<interceptor-ref name="defaultStack"></interceptor-ref>-->
+            <!--<interceptor-ref name="loginInterceptor"></interceptor-ref>-->
+            <!--<interceptor-ref name="defaultStack"></interceptor-ref>-->
             <!--</interceptor-stack>-->
 
         </interceptors>
@@ -25,6 +25,9 @@
         <global-results>
             <result name="login">/login.jsp</result>
             <result name="JumpToCart">/cart.jsp</result>
+            <result name="GoingFilterNotFound">/searchGoingResult.jsp</result>
+            <result name="ReturningFilterNotFound">/searchReturningResult.jsp</result>
+            <result name="GeneralError">/generalError.jsp</result>
         </global-results>
 
         <action name="test" class="action.TestAction" method="saveAndGetTestUserBack">
@@ -60,16 +63,51 @@
 
         </action>
 
-        <action name="filterGoing" class="action.FilterAction" method="filterGoingAirports">
+        <action name="filterGoingAirports" class="action.FilterAction" method="filterGoingAirports">
             <result name="success" type="redirect">/searchGoingResult.jsp</result>
             <result name="input" type="redirect">/searchGoingResult.jsp</result>
         </action>
 
 
-        <action name="filterReturning" class="action.FilterAction" method="filterReturningAirports">
+        <action name="filterReturningAirports" class="action.FilterAction" method="filterReturningAirports">
             <result name="success" type="redirect">/searchReturningResult.jsp</result>
             <result name="input" type="redirect">/searchReturningResult.jsp</result>
         </action>
+
+
+        <action name="filterGoingStopType" class="action.FilterAction" method="filterGoingStopType">
+            <result name="success" type="redirect">/searchGoingResult.jsp</result>
+            <result name="input" type="redirect">/searchGoingResult.jsp</result>
+        </action>
+
+        <action name="filterReturningStopType" class="action.FilterAction" method="filterReturningStopType">
+            <result name="success" type="redirect">/searchReturningResult.jsp</result>
+            <result name="input" type="redirect">/searchReturningResult.jsp</result>
+        </action>
+
+
+        <action name="filterGoingTime" class="action.FilterAction" method="filterGoingTime">
+            <result name="success" type="redirect">/searchGoingResult.jsp</result>
+            <result name="input" type="redirect">/searchGoingResult.jsp</result>
+        </action>
+
+
+        <action name="filterReturningTime" class="action.FilterAction" method="filterReturningTime">
+            <result name="success" type="redirect">/searchReturningResult.jsp</result>
+            <result name="input" type="redirect">/searchReturningResult.jsp</result>
+        </action>
+
+
+        <action name="sortGoing" class="action.SortAction" method="sortGoing">
+            <result name="success" type="redirect">/searchGoingResult.jsp</result>
+        </action>
+
+
+        <action name="sortReturning" class="action.SortAction" method="sortReturning">
+            <result name="success" type="redirect">/searchReturningResult.jsp</result>
+        </action>
+
+
 
         <action name="cartAction" class="action.CartAction">
             <result name="success" type="redirect">/cart.jsp</result>
@@ -77,22 +115,22 @@
 
         <action name="cartNumber" class="action.CartNumberAction" method="cart">
             <result name="success" type="redirect">/traveler.jsp</result>
+            <result name="error" type="redirect">/purchaseError.jsp</result>
         </action>
 
-         <action name="traveler" class="action.TravelerAction" method="add">
+        <action name="traveler" class="action.TravelerAction" method="add">
             <result name="success" type="redirect">/payment.jsp</result>
-         </action>
+        </action>
 
         <action name="transAction" class="action.TransactionAction" method="TransInfo">
             <result name="success" type="redirect">/searchSuccessful.jsp</result>
-            <result name="error" type="redirect">/purchaseError.jsp</result>
         </action>
 
         <action name="payment" class="action.PaymentAction" method="PaymentInfo">
             <result name="success" type="redirect">/transactionInfo.jsp</result>
             <result name="input">/payment.jsp</result>
         </action>
-        
+
         <action name="searchFlightByFlightNumber" class="action.searchGoingAction" method="searchFlightByFlightNumber">
             <result name="success" type="redirect">/managerSearchResult.jsp</result>
             <result name="error" type="redirect">/managerActionError.jsp</result>
@@ -116,7 +154,7 @@
             <result name="success" type="redirect">/managerActionSuccessful.jsp</result>
             <result name="input">/managerSearchResult.jsp</result>
         </action>
-        
+
         <action name="reloadDB" class="action.ManagerAction" method="getAirportAndAirline">
             <result name="success" type="redirect">/manager.jsp</result>
             <result name="input">/index.jsp</result>

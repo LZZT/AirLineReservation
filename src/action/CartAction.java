@@ -33,13 +33,17 @@ public class CartAction extends ActionSupport{
 
         SearchInfoService searchInfoService = new SearchInfoService();
         String validIndex = index.split("/")[0];
-        List<Flight> chosenReturningFlight = ((List<List<Flight>>)session.getAttribute("validReturningFlights")).get(Integer.valueOf(validIndex));
+
+        List<Flight> chosenReturningFlight = ((List<List<Flight>>) session.getAttribute("validReturningFlights")).get(Integer.valueOf(validIndex));
+
         session.setAttribute("returningFlightObjectSet", chosenReturningFlight);
-        int price=0;
-        for (Flight f:chosenReturningFlight){
-            price+=f.getPrice();
+
+        int price = 0;
+        for (Flight f : chosenReturningFlight) {
+            price += f.getPrice();
         }
-        session.setAttribute("returningPrice",price);
+
+        session.setAttribute("returningPrice", price);
         return SUCCESS;
 
     }

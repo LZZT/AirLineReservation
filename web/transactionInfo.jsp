@@ -12,60 +12,123 @@
 
 <s:actionerror cssStyle="color:red"/>
 <h1>Flight Infomation</h1>
+<h2>Leaving Flight:</h2>
+<br>
+<table width="80%" align="center" border="1">
 
-<s:iterator value='#session.leavingFlightObjectSet' id="flightList">
+    <tr>
+        <th>Flight Number</th>
+        <th>Airline</th>
+        <th>Aircraft Model</th>
+        <th>Departure Date</th>
+        <th>Departure Time</th>
+        <th>Arrival Time</th>
+        <th>Departure Airport</th>
+        <th>Arrival Airport</th>
+        <th>Price</th>
+        <th></th>
+    </tr>
 
-    <s:iterator value='%{#flightList}' id="flight">
+    <s:iterator value='#session.leavingFlightObjectSet' id="flightList">
+        <s:iterator value='%{#flightList}' id="flight">
 
-        <s:property value='%{#flight.flightNumber}'/>
+            <tr>
 
-        <s:property value='%{#flight.airline.code}'/>
+                <td>
+                    <s:property value='%{#flight.flightNumber}'/>
+                </td>
+                <td>
+                    <s:property value='%{#flight.airline.code}'/>
+                </td>
+                <td>
+                    <s:property value='%{#flight.aircraftModel.model}'/>
+                </td>
+                <td>
+                    <% out.println((String) session.getAttribute("departingDate"));%>
+                </td>
+                <td>
+                    <s:property value='%{#flight.departureTime}'/>
+                </td>
+                <td>
+                    <s:property value='%{#flight.arrivalTime}'/>
+                </td>
+                <td>
+                    <s:property value='%{#flight.departureAirport.name}'/>
+                </td>
+                <td>
+                    <s:property value='%{#flight.arrivalAirport.name}'/>
+                </td>
+                <td>
+                    <s:property value='%{#flight.Price}'/><br>
+                </td>
 
-        <s:property value='%{#flight.aircraftModel.model}'/>
-
-        <s:property value='%{#flight.departureTime}'/>
-
-        <s:property value='%{#flight.arrivalTime}'/>
-
-        <s:property value='%{#flight.departureAirport.name}'/>
-
-        <s:property value='%{#flight.arrivalAirport.name}'/>
-
-        <s:property value='%{#flight.Price}'/><br>
-
+            </tr>
+        </s:iterator>
     </s:iterator>
 
-</s:iterator>
+</table>
+<br>
+<h2>Returning Flight:</h2>
+<br>
 
-<br><br>
+<table width="80%" align="center" border="1">
 
--------------------------------------------------------------------------------------------------------------
-<br><br>
+    <tr>
+        <th>Flight Number</th>
+        <th>Airline</th>
+        <th>Aircraft Model</th>
+        <th>Departure Date</th>
+        <th>Departure Time</th>
+        <th>Arrival Time</th>
+        <th>Departure Airport</th>
+        <th>Arrival Airport</th>
+        <th>Price</th>
+        <th></th>
+    </tr>
 
 
-<s:iterator value='#session.returningFlightObjectSet' id="flightList">
 
-    <s:iterator value='%{#flightList}' id="flight">
+    <s:iterator value='#session.returningFlightObjectSet' id="flightList">
 
-        <s:property value='%{#flight.flightNumber}'/>
+        <s:iterator value='%{#flightList}' id="flight">
 
-        <s:property value='%{#flight.airline.code}'/>
+            <tr>
 
-        <s:property value='%{#flight.aircraftModel.model}'/>
+                <td>
+                    <s:property value='%{#flight.flightNumber}'/>
+                </td>
+                <td>
+                    <s:property value='%{#flight.airline.code}'/>
+                </td>
+                <td>
+                    <s:property value='%{#flight.aircraftModel.model}'/>
+                </td>
+                <td>
+                    <% out.println((String) session.getAttribute("returningDate"));%>
+                </td>
+                <td>
+                    <s:property value='%{#flight.departureTime}'/>
+                </td>
+                <td>
+                    <s:property value='%{#flight.arrivalTime}'/>
+                </td>
+                <td>
+                    <s:property value='%{#flight.departureAirport.name}'/>
+                </td>
+                <td>
+                    <s:property value='%{#flight.arrivalAirport.name}'/>
+                </td>
+                <td>
+                    <s:property value='%{#flight.Price}'/><br>
+                </td>
 
-        <s:property value='%{#flight.departureTime}'/>
-
-        <s:property value='%{#flight.arrivalTime}'/>
-
-        <s:property value='%{#flight.departureAirport.name}'/>
-
-        <s:property value='%{#flight.arrivalAirport.name}'/>
-
-        <s:property value='%{#flight.Price}'/><br>
-
+            </tr>
+        </s:iterator>
     </s:iterator>
 
-</s:iterator>
+</table>
+
+
 
 <h1>Traveler Infomation</h1>
 <table width="80%" align="center" border="1">

@@ -36,29 +36,29 @@ public class LoginAction extends ActionSupport{
 
     public String login() throws Exception{
 
+        if (null == username || username.length() < 1){
+            this.addActionError("username can not be empty");
+            return INPUT;
+        }
+        else if(!customerService.isCustomerExists(username)){
+            this.addActionError("Invalid username!");
+            return INPUT;
+        }
+
+        if (null == password || password.length() < 6){
+            this.addActionError("Invalid password!");
+            return INPUT;
+        }
+        else if(!customerService.isPasswordMatchingUsername(username, password)){
+            this.addActionError("Invalid password!");
+            return INPUT;
+        }
+
         ActionContext actionContext = ActionContext.getContext();
         Map<String, Object> sessionMap = actionContext.getSession();
         sessionMap.put("username", username);
 
         return SUCCESS;
-    }
-
-
-    public void validateLogin(){
-
-        if (null == username || username.length() < 1){
-            this.addActionError("username can not be empty");
-        }
-        else if(!customerService.isCustomerExists(username)){
-            this.addActionError("Invalid username!");
-        }
-
-        if (null == password || password.length() < 6){
-            this.addActionError("Invalid password!");
-        }
-        else if(!customerService.isPasswordMatchingUsername(username, password)){
-            this.addActionError("Invalid password!");
-        }
     }
 
 }

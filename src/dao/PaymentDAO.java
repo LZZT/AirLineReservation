@@ -3,6 +3,7 @@ package dao;
 import model.Payment;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import util.HibernateUtil;
 
 
@@ -51,5 +52,29 @@ public class PaymentDAO {
         }
     }
 
+    public boolean deletePayment(String cardNumber) {
+
+        Session session = HibernateUtil.openSession();
+
+        Transaction tx = session.beginTransaction();
+
+
+        try {
+
+            String hql = String.format("DELETE CreditCard WHERE cardNumber = '%s'", cardNumber);
+            Query query = session.createQuery(hql);
+            int result = query.executeUpdate();
+            tx.commit();
+
+        } catch (Exception ex) {
+            if (null != tx) {
+                tx.rollback();
+            }
+        } finally {
+            HibernateUtil.close(session);
+        }
+
+        return true;
+    }
 
 }
