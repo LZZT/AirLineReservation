@@ -132,7 +132,7 @@
                           list="#session.managerAircraft"
                           name="aircraftModel" /> <br>
 
-                Price: <input type="text" name="price" required><br><br>
+                Price: <input type="text" name="price" required><br>
 
                 <input type="submit" value="submit" id="submit">
             </form>
