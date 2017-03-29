@@ -1,11 +1,17 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import model.Flight;
+import model.Ticket;
+import model.Traveler;
+import model.ValidateTicket;
 import org.apache.struts2.ServletActionContext;
+import service.ValidateTicketService;
 
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 /**
@@ -22,12 +28,62 @@ public class CartNumberAction extends ActionSupport {
     public void setTicketsNumber(String ticketsNumber) {
         this.ticketsNumber = ticketsNumber;
     }
-
+    private ValidateTicketService validateTicketService=new ValidateTicketService();
     public String cart() throws Exception {
 
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
         session.setAttribute("ticketsNumber", ticketsNumber);
+        String departingDate = (String) session.getAttribute("departingDate");
+        String returningDate = (String) session.getAttribute("returningDate");
+        List<Flight> leavingFlightObjectSet = (List<Flight>) session.getAttribute("leavingFlightObjectSet");
+        int leavingSetSize=leavingFlightObjectSet.size();
+        List<Flight> returningFlightObjectSet = (List<Flight>) session.getAttribute("returningFlightObjectSet");
+        List<Flight> flightObjectSet=leavingFlightObjectSet;
+        for (Flight f:leavingFlightObjectSet){
+            System.out.println(f.getFlightNumber()+"=============");
+        }
+        System.out.println(leavingSetSize);
+        if (returningFlightObjectSet != null) {
+            flightObjectSet.addAll(returningFlightObjectSet);
+        }
+        for (Flight f:leavingFlightObjectSet.subList(0,leavingSetSize)){
+            System.out.println(f.getFlightNumber()+"++++++++++++");
+        }
+        String[] flightdate=new String[flightObjectSet.size()];
+        for (int i=0;i<flightObjectSet.size();i++){
+            if (i<leavingSetSize){
+                flightdate[i]=departingDate;}
+            else {
+                flightdate[i]=returningDate;
+            }
+        }
+
+        for (int i=0;i<Integer.valueOf(ticketsNumber);i++) {
+            for (Flight flight : flightObjectSet) {
+                if (!validateTicketService.isAvaliable(flight,  flightdate[flightObjectSet.indexOf(flight)])) {
+//                    ticketService.deleteTicketByTransID(transactions.getTransactionID());
+//                    transactionService.deleteTransaction(transactions.getTransactionID());
+//                    paymentService.deletePayment(transactions.getCardnumber());
+                    return ERROR;
+                }
+                int recordNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(), flightdate[flightObjectSet.indexOf(flight)]);
+                if (recordNumber == 0) {
+                    ValidateTicket validateTicket = new ValidateTicket();
+                    validateTicket.setFlightNumber(flight.getFlightNumber());
+                    validateTicket.setFlightDate(flightdate[flightObjectSet.indexOf(flight)]);
+                    validateTicket.setCapacity(validateTicketService.getCapacity(flight.getAircraftModel().getModel()));
+                    validateTicket.setTotalTicketNumber(1);
+                    validateTicketService.recordValidateTicket(validateTicket);
+                } else {
+                    validateTicketService.updateValidateTicket(recordNumber + 1, flight.getFlightNumber(), flightdate[flightObjectSet.indexOf(flight)]);
+                }
+            }
+        }
+        for (Flight f:leavingFlightObjectSet.subList(0,leavingSetSize)){
+            System.out.println(f.getFlightNumber());
+        }
+        session.setAttribute("leavingFlightObjectSet", leavingFlightObjectSet.subList(0,leavingSetSize));
 
         return SUCCESS;
     }

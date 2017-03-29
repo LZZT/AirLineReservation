@@ -13,6 +13,9 @@ public class TicketService {
         TicketDAO ticketDAO = new TicketDAO();
         ticketDAO.saveTicket(ticket);
     }
-
+    public void deleteTicketByTransID(String  transactionID){
+        TicketDAO ticketDAO = new TicketDAO();
+        ticketDAO.deleteTicketByTransID(transactionID);
+    }
 
 }

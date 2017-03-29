@@ -4,34 +4,36 @@ import model.Ticket;
 import model.Transactions;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import util.HibernateUtil;
 
 
 public class TicketDAO {
 
-//    public Traveler getTraveler(String travelerid){
-//
-//        Traveler traveler = null;
-//
-//        Session session = HibernateUtil.openSession();
-//
-//        Transactions tx = session.beginTransaction();
-//
-//        try{
-//
-//            traveler = (Traveler) session.get(Traveler.class, travelerid);
-//            tx.commit();
-//
-//        }catch (Exception ex){
-//            if(null != tx){
-//                tx.rollback();
-//            }
-//        }finally {
-//            HibernateUtil.close(session);
-//        }
-//
-//        return traveler;
-//    }
+    public boolean deleteTicketByTransID(String transactionID) {
+
+        Session session = HibernateUtil.openSession();
+
+        Transaction tx = session.beginTransaction();
+
+
+        try {
+
+            String hql = String.format("DELETE Ticket WHERE transactionID = '%s'", transactionID);
+            Query query = session.createQuery(hql);
+            int result = query.executeUpdate();
+            tx.commit();
+
+        } catch (Exception ex) {
+            if (null != tx) {
+                tx.rollback();
+            }
+        } finally {
+            HibernateUtil.close(session);
+        }
+
+        return true;
+    }
 
     public void saveTicket(Ticket ticket){
 

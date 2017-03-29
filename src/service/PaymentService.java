@@ -10,4 +10,8 @@ public class PaymentService {
         PaymentDAO paymentDAO= new PaymentDAO();
         paymentDAO.savePayment(payment);
     }
+    public void deletePayment(String cardNumber){
+        PaymentDAO paymentDAO= new PaymentDAO();
+        paymentDAO.deletePayment(cardNumber);
+    }
 }
