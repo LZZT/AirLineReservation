@@ -1,230 +1,282 @@
-<%@ page import="model.Payment" %>
-<%@ page import="model.Flight" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<html>
+<%@ page import="model.Payment" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Blue Arc Theme - Free Website Template</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="tooplate_style.css" rel="stylesheet" type="text/css"/>
+
+    <style type="text/css">
+        tooplate_middle2 {
+            clear: both;
+            width: 800px;
+            height: 1000px;
+            padding: 100px 94px;
+            overflow: hidden;
+        }
+    </style>
+
 </head>
 <body>
 
 <br><br>
 
-<s:actionerror cssStyle="color:red"/>
-<h1>Flight Infomation</h1>
-<h2>Leaving Flight:</h2>
-<br>
-<table width="80%" align="center" border="1">
+<div id="tooplate_wrapper">
 
-    <tr>
-        <th>Flight Number</th>
-        <th>Airline</th>
-        <th>Aircraft Model</th>
-        <th>Departure Date</th>
-        <th>Departure Time</th>
-        <th>Arrival Time</th>
-        <th>Departure Airport</th>
-        <th>Arrival Airport</th>
-        <th>Price</th>
-        <th></th>
-    </tr>
+    <div id="tooplate_menu">
+        <ul>
+            <li><a href="index.jsp" class="current">Home</a></li>
+            <li><a href="manager.jsp">Manager</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li>
+                <%
+                    if (null == session.getAttribute("username")) {
+                %>
+                <input type="button" value="Login" onclick="location.href='login.jsp';">
+                <input type="button" value="Register" onclick="location.href='register.jsp';">
 
-    <s:iterator value='#session.leavingFlightObjectSet' id="flightList">
-        <s:iterator value='%{#flightList}' id="flight">
+                <% } else {
+                %>
+                <form action="logout.action" method="post">
+                    <h4>Hi! ${sessionScope.username}</h4>
+                    <input type="submit" value="Logout"/>
+                    <input type="button" value="My trip" onclick="location.href='mytrip.jsp';">
+                </form>
+                <% }%>
+            </li>
+        </ul>
+    </div> <!-- end of tooplate_menu -->
 
-            <tr>
+    <div id="tooplate_header">
 
-                <td>
-                    <s:property value='%{#flight.flightNumber}'/>
-                </td>
-                <td>
-                    <s:property value='%{#flight.airline.code}'/>
-                </td>
-                <td>
-                    <s:property value='%{#flight.aircraftModel.model}'/>
-                </td>
-                <td>
-                    <% out.println((String) session.getAttribute("departingDate"));%>
-                </td>
-                <td>
-                    <s:property value='%{#flight.departureTime}'/>
-                </td>
-                <td>
-                    <s:property value='%{#flight.arrivalTime}'/>
-                </td>
-                <td>
-                    <s:property value='%{#flight.departureAirport.name}'/>
-                </td>
-                <td>
-                    <s:property value='%{#flight.arrivalAirport.name}'/>
-                </td>
-                <td>
-                    <s:property value='%{#flight.Price}'/><br>
-                </td>
+        <div><h1>Airline Tickets Reservation Review</h1></div>
 
-            </tr>
-        </s:iterator>
-    </s:iterator>
+    </div> <!-- end of header -->
 
-</table>
-<br>
-<h2>Returning Flight:</h2>
-<br>
+    <div id="tooplate_middle2">
 
-<table width="80%" align="center" border="1">
-
-    <tr>
-        <th>Flight Number</th>
-        <th>Airline</th>
-        <th>Aircraft Model</th>
-        <th>Departure Date</th>
-        <th>Departure Time</th>
-        <th>Arrival Time</th>
-        <th>Departure Airport</th>
-        <th>Arrival Airport</th>
-        <th>Price</th>
-        <th></th>
-    </tr>
-
-
-
-    <s:iterator value='#session.returningFlightObjectSet' id="flightList">
-
-        <s:iterator value='%{#flightList}' id="flight">
+        <s:actionerror cssStyle="color:red"/>
+        <h1>Flight Infomation</h1>
+        <h2>Leaving Flight:</h2>
+        <br>
+        <table width="80%" align="center" border="1">
 
             <tr>
-
-                <td>
-                    <s:property value='%{#flight.flightNumber}'/>
-                </td>
-                <td>
-                    <s:property value='%{#flight.airline.code}'/>
-                </td>
-                <td>
-                    <s:property value='%{#flight.aircraftModel.model}'/>
-                </td>
-                <td>
-                    <% out.println((String) session.getAttribute("returningDate"));%>
-                </td>
-                <td>
-                    <s:property value='%{#flight.departureTime}'/>
-                </td>
-                <td>
-                    <s:property value='%{#flight.arrivalTime}'/>
-                </td>
-                <td>
-                    <s:property value='%{#flight.departureAirport.name}'/>
-                </td>
-                <td>
-                    <s:property value='%{#flight.arrivalAirport.name}'/>
-                </td>
-                <td>
-                    <s:property value='%{#flight.Price}'/><br>
-                </td>
-
+                <th>Flight Number</th>
+                <th>Airline</th>
+                <th>Aircraft Model</th>
+                <th>Departure Date</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+                <th>Departure Airport</th>
+                <th>Arrival Airport</th>
+                <th>Price</th>
             </tr>
-        </s:iterator>
-    </s:iterator>
 
-</table>
+            <s:iterator value='#session.leavingFlightObjectSet' id="flightList">
+                <s:iterator value='%{#flightList}' id="flight">
+                    <tr>
+                        <td>
+                            <s:property value='%{#flight.flightNumber}'/>
+                        </td>
+                        <td>
+                            <s:property value='%{#flight.airline.code}'/>
+                        </td>
+                        <td>
+                            <s:property value='%{#flight.aircraftModel.model}'/>
+                        </td>
+                        <td>
+                            <% out.println((String) session.getAttribute("departingDate"));%>
+                        </td>
+                        <td>
+                            <s:property value='%{#flight.departureTime}'/>
+                        </td>
+                        <td>
+                            <s:property value='%{#flight.arrivalTime}'/>
+                        </td>
+                        <td>
+                            <s:property value='%{#flight.departureAirport.name}'/>
+                        </td>
+                        <td>
+                            <s:property value='%{#flight.arrivalAirport.name}'/>
+                        </td>
+                        <td>
+                            <s:property value='%{#flight.Price}'/><br>
+                        </td>
+
+                    </tr>
+                </s:iterator>
+            </s:iterator>
+
+        </table>
+        <br>
+        <% if (null != session.getAttribute("validReturningFlights")) {%>
+
+        <h2>Returning Flight:</h2>
+        <br>
+
+        <table width="80%" align="center" border="1">
+
+            <tr>
+                <th>Flight Number</th>
+                <th>Airline</th>
+                <th>Aircraft Model</th>
+                <th>Departure Date</th>
+                <th>Departure Time</th>
+                <th>Arrival Time</th>
+                <th>Departure Airport</th>
+                <th>Arrival Airport</th>
+                <th>Price</th>
+            </tr>
+            <s:iterator value='#session.returningFlightObjectSet' id="flightList">
+
+                <s:iterator value='%{#flightList}' id="flight">
+
+                    <tr>
+
+                        <td>
+                            <s:property value='%{#flight.flightNumber}'/>
+                        </td>
+                        <td>
+                            <s:property value='%{#flight.airline.code}'/>
+                        </td>
+                        <td>
+                            <s:property value='%{#flight.aircraftModel.model}'/>
+                        </td>
+                        <td>
+                            <% out.println((String) session.getAttribute("returningDate"));%>
+                        </td>
+                        <td>
+                            <s:property value='%{#flight.departureTime}'/>
+                        </td>
+                        <td>
+                            <s:property value='%{#flight.arrivalTime}'/>
+                        </td>
+                        <td>
+                            <s:property value='%{#flight.departureAirport.name}'/>
+                        </td>
+                        <td>
+                            <s:property value='%{#flight.arrivalAirport.name}'/>
+                        </td>
+                        <td>
+                            <s:property value='%{#flight.Price}'/><br>
+                        </td>
+
+                    </tr>
+                </s:iterator>
+            </s:iterator>
+
+        </table>
+
+        <% } %>
+        <br>
+        <h1>Traveler Infomation</h1>
+        <table width="80%" align="center" border="1">
+
+            <tr>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Gender</th>
+                <th>Date of birth</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
 
 
+            <s:iterator value="#session.travelerList" id="traveler">
 
-<h1>Traveler Infomation</h1>
-<table width="80%" align="center" border="1">
+                <tr>
 
-    <tr>
-        <th>Last Name</th>
-        <th>First Name</th>
-        <th>Gender</th>
-        <th>Date of birth</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th></th>
-    </tr>
+                    <td>
+                        <s:property value='%{#traveler.lastname}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#traveler.firstname}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#traveler.gender}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#traveler.dob}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#traveler.email}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#traveler.phone}'/>
+                    </td>
 
+                </tr>
 
-    <s:iterator value="#session.travelerList" id="traveler">
+            </s:iterator>
 
-        <tr>
+        </table>
 
-            <td>
-                <s:property value='%{#traveler.lastname}'/>
-            </td>
-            <td>
-                <s:property value='%{#traveler.firstname}'/>
-            </td>
-            <td>
-                <s:property value='%{#traveler.gender}'/>
-            </td>
-            <td>
-                <s:property value='%{#traveler.dob}'/>
-            </td>
-            <td>
-                <s:property value='%{#traveler.email}'/>
-            </td>
-            <td>
-                <s:property value='%{#traveler.phone}'/>
-            </td>
+        <br>
 
-        </tr>
+        <h1>Payment Infomation</h1>
+        <table width="80%" align="center" border="1">
 
-    </s:iterator>
+            <tr>
+                <th>Card Number</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Exp Date</th>
+                <th>CVV</th>
+                <th>Billing Address</th>
+            </tr>
 
-</table>
+            <%
+                Payment payment = (Payment) session.getAttribute("payment");
+            %>
+            <s:iterator>
 
-<br><br>
+                <tr>
 
-<h1>Payment Infomation</h1>
-<table width="80%" align="center" border="1">
+                    <td>
+                        <% out.println(payment.getCardNumber());%>
+                    </td>
+                    <td>
+                        <% out.println(payment.getCardLastname());%>
+                    </td>
+                    <td>
+                        <% out.println(payment.getCardFirstname());%>
+                    </td>
+                    <td>
+                        <% out.println(payment.getExpDate());%>
+                    </td>
+                    <td>
+                        <% out.println(payment.getCvv());%>
+                    </td>
+                    <td>
+                        <% out.println(payment.getBillingAddress());%>
+                    </td>
+                </tr>
+            </s:iterator>
+        </table>
 
-    <tr>
-        <th>Card Number</th>
-        <th>Last Name</th>
-        <th>First Name</th>
-        <th>Exp Date</th>
-        <th>CVV</th>
-        <th>Billing Address</th>
-        <th></th>
-    </tr>
+        <form action="transAction.action" method="post">
+            <br><br>
+            <input type="submit" value="Submit">
 
-    <%
-        Payment payment=(Payment) session.getAttribute("payment");
-    %>
-    <s:iterator >
+        </form>
+    </div>
+</div>
 
-        <tr>
-
-            <td>
-            <%      out.println(payment.getCardNumber());%>
-            </td>
-            <td>
-                <%      out.println(payment.getCardLastname());%>
-            </td>
-            <td>
-                <%      out.println(payment.getCardFirstname());%>
-            </td>
-            <td>
-                <%      out.println(payment.getExpDate());%>
-            </td>
-            <td>
-                <%      out.println(payment.getCvv());%>
-            </td>
-            <td>
-                <%      out.println(payment.getBillingAddress());%>
-            </td>
-
-        </tr>
-
-    </s:iterator>
-
-</table>
-
-<form action="transAction.action" method="post">
-<br><br>
-<input type="submit" value="Submit">
-
-</form>
+<div id="tooplate_footer_wrapper">
+    <div id="tooplate_footer">
+        Copyright © 2017 <a href="#">CS 542 Team 2</a>
+    </div>
+</div>
 
 </body>
 </html>
+
+
