@@ -8,7 +8,6 @@ import service.SearchInfoService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.ResourceBundle;
 
 /**
  * Created by QQZhao on 3/29/17.
@@ -61,6 +60,38 @@ public class SortAction extends ActionSupport {
         }
 
         session.setAttribute("validGoingFlights", validGoingFlightsList);
+
+        return SUCCESS;
+    }
+
+
+    public String sortReturning(){
+
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        SearchInfoService searchInfoService = new SearchInfoService();
+        List<List<Flight>> validReturningFlightsList = (List<List<Flight>>)session.getAttribute("validReturningFlights");
+
+        if(sortReturningBy.equals("price")){
+
+            validReturningFlightsList = searchInfoService.getValidFlightsSortedByPrice(validReturningFlightsList);
+
+        }else if(sortReturningBy.equals("departureTime")){
+
+            validReturningFlightsList = searchInfoService.getValidFlightsSortedByDepartureTime(validReturningFlightsList);
+
+        }else if(sortReturningBy.equals("arrivalTime")){
+
+            validReturningFlightsList = searchInfoService.getValidFlightsSortedByArrivalTime(validReturningFlightsList);
+
+        }else if(sortReturningBy.equals("transitionTime")){
+
+            validReturningFlightsList = searchInfoService.getValidFlightsSortedByTransitionTime(validReturningFlightsList);
+
+        }
+
+        session.setAttribute("validReturningFlights", validReturningFlightsList);
 
         return SUCCESS;
     }

@@ -14,12 +14,12 @@
         <many-to-one name="city" class="model.City" column="city"/>
 
         <set name="departureFlightsSet" cascade="all" lazy="true">
-            <key column="code"></key>
+            <key column="flightNumber"></key>
             <one-to-many class="model.Flight"/>
         </set>
 
         <set name="arrivalFlightsSet" cascade="all" lazy="true">
-            <key column="code"></key>
+            <key column="flightNumber"></key>
             <one-to-many class="model.Flight"/>
         </set>
 

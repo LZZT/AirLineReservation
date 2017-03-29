@@ -107,6 +107,10 @@
         </action>
 
 
+        <action name="sortReturning" class="action.SortAction" method="sortReturning">
+            <result name="success" type="redirect">/searchReturningResult.jsp</result>
+        </action>
+
 
 
         <action name="cartAction" class="action.CartAction">
