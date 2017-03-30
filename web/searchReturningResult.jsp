@@ -38,6 +38,20 @@
 
     </style>
 
+    <%
+        String sortReturningBy = "None";
+        if(null != session.getAttribute("sortReturningBy")) {
+            sortReturningBy = (String)session.getAttribute("sortReturningBy");
+        }
+    %>
+
+    <script>
+        function filterSelection() {
+            var element = document.getElementById('sortReturningBy');
+            if('None' != ('<%= sortReturningBy %>'))
+                element.value = ('<%= sortReturningBy %>');
+        }
+    </script>
 
 </head>
 
@@ -83,8 +97,8 @@
 
                     <h5>Sort result by:</h5>
                     <form action="sortReturning" method="post">
-                        <select name="sortReturningBy" onchange="this.form.submit()">
-                            <option></option>
+                        <select id="sortReturningBy" name="sortReturningBy" onchange="this.form.submit()">
+                            <option>None</option>
                             <option value="price">Price</option>
                             <option value="departureTime">Departure Time</option>
                             <option value="arrivalTime">Arrival Time</option>

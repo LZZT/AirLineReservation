@@ -39,12 +39,12 @@
     </style>
 
 
-        <%
-            String sortGoingBy = "None";
-            if(null != session.getAttribute("sortGoingBy")) {
-                sortGoingBy = (String)session.getAttribute("sortGoingBy");
-            }
-        %>
+    <%
+        String sortGoingBy = "None";
+        if(null != session.getAttribute("sortGoingBy")) {
+            sortGoingBy = (String)session.getAttribute("sortGoingBy");
+        }
+    %>
 
     <script>
         function filterSelection() {
@@ -175,7 +175,6 @@
 
         </ul>
     </nav>
-
 
 
     <main>

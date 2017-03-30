@@ -5,6 +5,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/action/SortAction.java" afterPath="$PROJECT_DIR$/src/action/SortAction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/searchGoingResult.jsp" afterPath="$PROJECT_DIR$/web/searchGoingResult.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/searchReturningResult.jsp" afterPath="$PROJECT_DIR$/web/searchReturningResult.jsp" />
     </list>
     <list id="1e355202-5fb8-4d09-9a61-ec227a95e639" name="New changelist" comment="" />
     <ignored path="AirLineReservation.iws" />
@@ -38,30 +39,30 @@
       <file leaf-file-name="manager.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/manager.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
-              <caret line="58" column="39" lean-forward="true" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="39" />
+            <state relative-caret-position="870">
+              <caret line="58" column="39" lean-forward="false" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="searchGoingResult.jsp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="searchGoingResult.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/searchGoingResult.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+            <state relative-caret-position="-143">
+              <caret line="54" column="13" lean-forward="true" selection-start-line="48" selection-start-column="4" selection-end-line="54" selection-end-column="13" />
               <folding>
-                <marker date="1490882976000" expanded="true" signature="8268:8277" ph="..." />
+                <marker date="1490914373000" expanded="true" signature="8243:8252" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="searchReturningResult.jsp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="searchReturningResult.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/searchReturningResult.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="203" column="32" lean-forward="true" selection-start-line="203" selection-start-column="32" selection-end-line="203" selection-end-column="32" />
+            <state relative-caret-position="1006">
+              <caret line="98" column="47" lean-forward="false" selection-start-line="98" selection-start-column="34" selection-end-line="98" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -69,22 +70,22 @@
       </file>
       <file leaf-file-name="struts.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/struts.xml">
-          <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="100" column="72" lean-forward="true" selection-start-line="100" selection-start-column="72" selection-end-line="100" selection-end-column="72" />
+            <state relative-caret-position="237">
+              <caret line="106" column="78" lean-forward="false" selection-start-line="106" selection-start-column="78" selection-end-line="106" selection-end-column="78" />
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="SortAction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/action/SortAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="64" column="55" lean-forward="false" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="55" />
+            <state relative-caret-position="462">
+              <caret line="61" column="73" lean-forward="true" selection-start-line="61" selection-start-column="73" selection-end-line="61" selection-end-column="73" />
               <folding />
             </state>
           </provider>
@@ -123,6 +124,7 @@
       <find>fil</find>
       <find>id</find>
       <find>sortGoingBy</find>
+      <find>sortReturning</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -190,13 +192,13 @@
         <option value="$PROJECT_DIR$/web/login.jsp" />
         <option value="$PROJECT_DIR$/web/payment.jsp" />
         <option value="$PROJECT_DIR$/web/register.jsp" />
-        <option value="$PROJECT_DIR$/web/searchReturningResult.jsp" />
         <option value="$PROJECT_DIR$/web/searchSuccessful.jsp" />
         <option value="$PROJECT_DIR$/web/traveler.jsp" />
         <option value="$PROJECT_DIR$/web/logout.jsp" />
         <option value="$PROJECT_DIR$/web/manager.jsp" />
-        <option value="$PROJECT_DIR$/src/action/SortAction.java" />
         <option value="$PROJECT_DIR$/web/searchGoingResult.jsp" />
+        <option value="$PROJECT_DIR$/web/searchReturningResult.jsp" />
+        <option value="$PROJECT_DIR$/src/action/SortAction.java" />
       </list>
     </option>
   </component>
@@ -235,7 +237,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="829" />
+    <option name="height" value="830" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -383,6 +385,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -426,7 +429,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1122,7 +1124,8 @@
       <workItem from="1490752250626" duration="9313000" />
       <workItem from="1490763745159" duration="9282000" />
       <workItem from="1490802039054" duration="9426000" />
-      <workItem from="1490818860653" duration="16880000" />
+      <workItem from="1490818860653" duration="17542000" />
+      <workItem from="1490914293278" duration="288000" />
     </task>
     <task id="LOCAL-00001" summary="initializing 1">
       <created>1488308833101</created>
@@ -1261,10 +1264,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="190368000" />
+    <option name="totallyTimeSpent" value="191318000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="829" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="830" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1279,14 +1282,14 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39373296" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39319727" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32064778" sideWeight="0.49117646" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33106267" sideWeight="0.78161764" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33106267" sideWeight="0.78161764" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.04229195" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -1345,11 +1348,17 @@
           <properties />
           <option name="timeStamp" value="21" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/action/SortAction.java</url>
+          <line>94</line>
+          <properties />
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="33" />
+      <option name="time" value="34" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1364,33 +1373,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1480">
           <caret line="228" column="48" lean-forward="false" selection-start-line="228" selection-start-column="48" selection-end-line="228" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#818#819#0" expanded="false" />
-            <element signature="e#871#872#0" expanded="false" />
-            <element signature="e#1106#1107#0" expanded="false" />
-            <element signature="e#1157#1158#0" expanded="false" />
-            <element signature="e#1390#1391#0" expanded="false" />
-            <element signature="e#1447#1448#0" expanded="false" />
-            <element signature="e#1702#1703#0" expanded="false" />
-            <element signature="e#1757#1758#0" expanded="false" />
-            <element signature="e#1985#1986#0" expanded="false" />
-            <element signature="e#2021#2022#0" expanded="false" />
-            <element signature="e#2081#2082#0" expanded="false" />
-            <element signature="e#2131#2132#0" expanded="false" />
-            <element signature="e#2177#2178#0" expanded="false" />
-            <element signature="e#2217#2218#0" expanded="false" />
-            <element signature="e#2285#2286#0" expanded="false" />
-            <element signature="e#2343#2344#0" expanded="false" />
-            <element signature="e#2386#2387#0" expanded="false" />
-            <element signature="e#2423#2424#0" expanded="false" />
-            <element signature="e#2485#2486#0" expanded="false" />
-            <element signature="e#2537#2538#0" expanded="false" />
-            <element signature="e#2584#2585#0" expanded="false" />
-            <element signature="e#2625#2626#0" expanded="false" />
-            <element signature="e#2695#2696#0" expanded="false" />
-            <element signature="e#2755#2756#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1406,7 +1388,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="90" column="63" lean-forward="false" selection-start-line="90" selection-start-column="63" selection-end-line="90" selection-end-column="63" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1414,7 +1395,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-355">
           <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1535,7 +1515,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1960">
           <caret line="15" column="3" lean-forward="false" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1550,7 +1529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="615">
           <caret line="41" column="30" lean-forward="false" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1558,44 +1536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-155">
           <caret line="527" column="19" lean-forward="true" selection-start-line="527" selection-start-column="19" selection-end-line="527" selection-end-column="19" />
-          <folding>
-            <marker date="1490883016000" expanded="true" signature="93488:93505" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="93488:93523" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="93488:93536" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="93488:93551" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="93586:95915" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="93599:95900" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="93653:94062" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="93672:94047" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="93804:94027" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="93844:93993" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="93865:93971" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="94112:94430" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="94131:94415" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="94211:94395" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="94251:94361" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="94272:94339" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="94481:94752" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="94500:94737" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="94533:94717" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="94573:94683" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="94594:94661" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="94795:95107" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="94814:95092" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="94888:95072" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="94928:95038" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="94949:95016" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="95158:95485" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="95177:95470" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="95266:95450" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="95306:95416" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="95327:95394" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="95537:95886" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="95556:95871" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="95667:95851" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="95707:95817" ph="..." />
-            <marker date="1490883016000" expanded="true" signature="95728:95795" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1611,24 +1551,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="87" column="25" lean-forward="false" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="25" />
-          <folding>
-            <element signature="method#handleSingleTrip#0;class#SearchInfoService#0" expanded="false" />
-            <element signature="method#convertStringDateToWeekInteger#0;class#SearchInfoService#0" expanded="false" />
-            <element signature="method#getAirportsByNamesList#0;class#SearchInfoService#0" expanded="false" />
-            <element signature="method#getFlightByFlightNumber#0;class#SearchInfoService#0" expanded="false" />
-            <element signature="method#filterValidFlightsListByAirportList#0;class#SearchInfoService#0" expanded="false" />
-            <element signature="method#findNearByAirportsInSameCity#0;class#SearchInfoService#0" expanded="false" />
-            <element signature="method#filterValidFlightsListByStopTypes#0;class#SearchInfoService#0" expanded="false" />
-            <element signature="method#getAirportsByFlight2DList#0;class#SearchInfoService#0" expanded="false" />
-            <element signature="method#filterValidFlightsListByTimeRange#0;class#SearchInfoService#0" expanded="false" />
-            <element signature="method#isInSelectedTimeRange#0;class#SearchInfoService#0" expanded="false" />
-            <element signature="method#inBetween#0;class#SearchInfoService#0" expanded="false" />
-            <element signature="method#getValidFlightsSortedByPrice#0;class#SearchInfoService#0" expanded="false" />
-            <element signature="method#getValidFlightsSortedByDepartureTime#0;class#SearchInfoService#0" expanded="false" />
-            <element signature="method#getValidFlightsSortedByArrivalTime#0;class#SearchInfoService#0" expanded="false" />
-            <element signature="method#getValidFlightsSortedByTransitionTime#0;class#SearchInfoService#0" expanded="false" />
-            <element signature="method#calculatePriorityForEachFlightsBundle#0;class#SearchInfoService#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1748,7 +1670,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1792,48 +1713,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/struts.xml">
-      <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/web/manager.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="100" column="72" lean-forward="true" selection-start-line="100" selection-start-column="72" selection-end-line="100" selection-end-column="72" />
+        <state relative-caret-position="870">
+          <caret line="58" column="39" lean-forward="false" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="39" />
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/struts.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="106" column="78" lean-forward="false" selection-start-line="106" selection-start-column="78" selection-end-line="106" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.struts2.graph.fileEditor.Struts2GraphFileEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/action/SortAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="64" column="55" lean-forward="false" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/searchReturningResult.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="203" column="32" lean-forward="true" selection-start-line="203" selection-start-column="32" selection-end-line="203" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/manager.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="58" column="39" lean-forward="true" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="39" />
+        <state relative-caret-position="462">
+          <caret line="61" column="73" lean-forward="true" selection-start-line="61" selection-start-column="73" selection-end-line="61" selection-end-column="73" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/searchGoingResult.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+        <state relative-caret-position="-143">
+          <caret line="54" column="13" lean-forward="true" selection-start-line="48" selection-start-column="4" selection-end-line="54" selection-end-column="13" />
           <folding>
-            <marker date="1490882976000" expanded="true" signature="8268:8277" ph="..." />
+            <marker date="1490914373000" expanded="true" signature="8243:8252" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/searchReturningResult.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1006">
+          <caret line="98" column="47" lean-forward="false" selection-start-line="98" selection-start-column="34" selection-end-line="98" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
