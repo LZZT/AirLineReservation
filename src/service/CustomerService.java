@@ -48,5 +48,9 @@ public class CustomerService {
 
     }
 
+    public Customer getCustomer(String username){
+        CustomerDAO customerDAO = new CustomerDAO();
+        return  customerDAO.getCustomer(username);
+    }
 
 }

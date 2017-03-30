@@ -9,11 +9,20 @@
 
     <class name="model.Customer" table="Customer">
 
-        <id name="username" column="username" type="string"></id>
-        <property name="password" column="password" type="string"></property>
-        <property name="contactEmail" column="contactEmail" type="string"></property>
-        <property name="cBonus" column="cBonus" type="int"></property>
+        <id name="username" column="username" type="string"/>
+        <property name="password" column="password" type="string"/>
+        <property name="contactEmail" column="contactEmail" type="string"/>
+        <property name="cBonus" column="cBonus" type="int"/>
 
+        <!--<set name="transactionsSet" inverse="true" cascade="all">-->
+            <!--<key column="username"/>-->
+            <!--<one-to-many class="model.Transactions" />-->
+        <!--</set>-->
+
+        <set name="travelerSet" table="CustomerOwnsTraveler" cascade="save-update">
+            <key column="username"></key>
+            <many-to-many class="model.Traveler" column="contactPhone"></many-to-many>
+        </set>
     </class>
 
 </hibernate-mapping>

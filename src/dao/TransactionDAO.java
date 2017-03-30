@@ -1,7 +1,7 @@
 package dao;
 
 import model.Transactions;
-import model.Traveler;
+import model.Customer;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -85,7 +85,6 @@ public class TransactionDAO {
         Transaction tx = session.beginTransaction();
         List<Transactions> transactionList=null;
         try {
-
             String hql = String.format(" FROM Transaction T WHERE T.username = '%s'", userName);
             Query query = session.createQuery(hql);
             transactionList =  query.list();

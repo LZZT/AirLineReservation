@@ -60,8 +60,8 @@ public class RegisterAction extends ActionSupport {
         customerService.registerNewCustomer(customer);
 
         HttpServletRequest request = ServletActionContext.getRequest();
-
         HttpSession session = request.getSession();
+        session.setAttribute("customer",customer);
         session.setAttribute("username", username);
 
         return SUCCESS;

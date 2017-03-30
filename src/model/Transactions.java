@@ -7,35 +7,13 @@ import java.util.Set;
  * Created by liweihao on 3/24/17.
  */
 public class Transactions {
-    String transactionID;
-    String transactionDate;
-    String username;
-    String cardnumber;
-    int price;
-    Set<Ticket> ticketSet;
-    Payment payment;
-
-    public Payment getPayment() {
-        return payment;
-    }
-
-    public void setPayment(Payment payment) {
-        this.payment = payment;
-    }
-
-
-
-    public Set<Ticket> getTicketSet() {
-        return ticketSet;
-    }
-
-    public void setTicketSet(Set<Ticket> ticketSet) {
-        this.ticketSet = ticketSet;
-    }
-
-    public void setTickets(Ticket ticket){
-        this.ticketSet.add(ticket);
-    }
+    private String transactionID;
+    private String transactionDate;
+    private String username;
+    private String cardnumber;
+    private int price;
+    private Set<Ticket> ticketSet;
+    private Payment payment;
 
     public String getTransactionID() {
         return transactionID;
@@ -75,5 +53,21 @@ public class Transactions {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public Set<Ticket> getTicketSet() {
+        return ticketSet;
+    }
+
+    public void setTicketSet(Set<Ticket> ticketSet) {
+        this.ticketSet = ticketSet;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 }

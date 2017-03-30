@@ -14,4 +14,16 @@ public class PaymentService {
         PaymentDAO paymentDAO= new PaymentDAO();
         paymentDAO.deletePayment(cardNumber);
     }
+
+    public boolean isPaymentExists(String cardNumber){
+
+        PaymentDAO paymentDAO= new PaymentDAO();
+
+        Payment payment = paymentDAO.getPayment(cardNumber);
+
+        if (payment == null){
+            return false;
+        }
+        return true;
+    }
 }

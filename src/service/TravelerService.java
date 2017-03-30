@@ -14,4 +14,16 @@ public class TravelerService {
         TravelerDAO travelerDAO = new TravelerDAO();
         travelerDAO.deleteTraveler(phone);
     }
+
+    public boolean isTravelerExists(String phone){
+
+        TravelerDAO travelerDAO = new TravelerDAO();
+
+        Traveler traveler = travelerDAO.getTraveler(phone);
+
+        if (traveler == null){
+            return false;
+        }
+        return true;
+    }
 }

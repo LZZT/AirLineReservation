@@ -11,28 +11,35 @@ public class Customer {
     private String password;
     private String contactEmail;
     private int cBonus;
+    private Set<Traveler> TravelerSet;
 
+    public Customer() {
+    }
+
+    public Customer(String username) {
+        this.username = username;
+    }
+
+    public void setTraveler(Traveler traveler){
+        this.TravelerSet.add(traveler);
+    }
+
+    public Set<Traveler> getTravelerSet() {
+        return TravelerSet;
+    }
+
+    public void setTravelerSet(Set<Traveler> travelerSet) {
+        TravelerSet = travelerSet;
+    }
     // leaving and returning Flights in Chart does not need to go to database;
     // It comes with session (~30 minutes or until user logout)
 
-    private Set<Flight> leavingFlightsInChart;
-    private Set<Flight> returningFlightsInChart;
+    private Set<Transactions> transactionsSet;
 
-    public Set<Flight> getLeavingFlightsInChart() {
-        return leavingFlightsInChart;
+    public void setTransactionsSet(Set<Transactions> transactionsSet) {
+        this.transactionsSet = transactionsSet;
     }
 
-    public void setLeavingFlightsInChart(Set<Flight> leavingFlightsInChart) {
-        this.leavingFlightsInChart = leavingFlightsInChart;
-    }
-
-    public Set<Flight> getReturningFlightsInChart() {
-        return returningFlightsInChart;
-    }
-
-    public void setReturningFlightsInChart(Set<Flight> returningFlightsInChart) {
-        this.returningFlightsInChart = returningFlightsInChart;
-    }
 
     public String getUsername() {
         return username;
@@ -64,5 +71,9 @@ public class Customer {
 
     public void setcBonus(int cBonus) {
         this.cBonus = cBonus;
+    }
+
+    public Set<Transactions> getTransactionsSet() {
+        return transactionsSet;
     }
 }

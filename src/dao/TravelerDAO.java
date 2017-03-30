@@ -9,7 +9,7 @@ import util.HibernateUtil;
 
 public class TravelerDAO {
 
-    public Traveler getTraveler(String travelerid){
+    public Traveler getTraveler(String phone){
 
         Traveler traveler = null;
 
@@ -18,8 +18,7 @@ public class TravelerDAO {
         Transaction tx = session.beginTransaction();
 
         try{
-
-            traveler =  session.get(Traveler.class, travelerid);
+            traveler =  session.get(Traveler.class, phone);
             tx.commit();
 
         }catch (Exception ex){

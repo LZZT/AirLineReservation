@@ -8,6 +8,7 @@ import service.CustomerService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by QQZhao on 3/4/17.
@@ -18,9 +19,7 @@ public class LoginAction extends ActionSupport{
     private String password;
     private CustomerService customerService = new CustomerService();
 
-    public String getUsername() {
-        return username;
-    }
+    public String getUsername() {return username;}
 
     public void setUsername(String username) {
         this.username = username;
@@ -53,12 +52,17 @@ public class LoginAction extends ActionSupport{
             this.addActionError("Invalid password!");
             return INPUT;
         }
-
+        
         ActionContext actionContext = ActionContext.getContext();
         Map<String, Object> sessionMap = actionContext.getSession();
         sessionMap.put("username", username);
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
 
-        return SUCCESS;
+        if (null ==session.getAttribute("leavingFlightObjectSet") && null==session.getAttribute("returningFlightObjectSet"))
+            return SUCCESS;
+        else
+            return NONE;
     }
 
 }

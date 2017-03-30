@@ -1,13 +1,17 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import model.Customer;
 import model.Traveler;
 import org.apache.struts2.ServletActionContext;
+import service.CustomerService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by liweihao on 3/9/17.
@@ -16,6 +20,7 @@ public class TravelerAction extends ActionSupport{
 
 
     private List<Traveler> travelerList;
+    private CustomerService customerService = new CustomerService();
 
     public List<Traveler> getTravelerList() {
         return travelerList;
@@ -28,6 +33,13 @@ public class TravelerAction extends ActionSupport{
     public String add() throws Exception{
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
+        String username= (String) session.getAttribute("username");
+        Customer customer=customerService.getCustomer(username);
+        Set<Customer> customerSet= new HashSet<>();
+        customerSet.add(customer);
+        for(Traveler traveler:travelerList){
+            traveler.setCustomerSet(customerSet);
+        }
         session.setAttribute("travelerList", travelerList);
         return SUCCESS;
     }

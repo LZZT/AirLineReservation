@@ -10,6 +10,7 @@ public class Ticket {
     String travellerID;
     String transactionID;
 
+
     public String getTicketID() {
         return ticketID;
     }

@@ -28,7 +28,8 @@ public class LogoutAction extends ActionSupport{
         HttpSession session = request.getSession();
 
         session.removeAttribute("username");
-
+        session.removeAttribute("leavingFlightObjectSet");
+        session.removeAttribute("returningFlightObjectSet");
         return SUCCESS;
     }
 

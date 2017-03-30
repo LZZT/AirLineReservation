@@ -41,6 +41,7 @@
         <action name="login" class="action.LoginAction" method="login">
             <result name="success" type="redirect">/index.jsp</result>
             <result name="input">/login.jsp</result>
+            <result name="none">/cart.jsp</result>
         </action>
 
         <action name="register" class="action.RegisterAction" method="register">
@@ -110,6 +111,8 @@
 
 
         <action name="cartAction" class="action.CartAction">
+            <!--<interceptor-ref  name ="loginInterceptor" />-->
+            <result name ="login" type="redirect">/requireLogin.jsp</result >
             <result name="success" type="redirect">/cart.jsp</result>
         </action>
 

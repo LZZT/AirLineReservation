@@ -21,8 +21,8 @@ public class LoginInterceptor extends AbstractInterceptor {
 
             return Action.LOGIN;
         }
-
-        return actionInvocation.invoke();
+        return  Action.SUCCESS;
+//       return actionInvocation.invoke();
     }
 
 }
