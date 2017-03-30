@@ -160,6 +160,11 @@
             <result name="input">/index.jsp</result>
         </action>
 
+        <action name="ResetPassword" class="action.ResetPasswordAction" method="UserInfo">
+            <result name="success" type="redirect">/ResetPasswordConfirmation.jsp</result>
+            <result name="input">/ResetPassword.jsp</result>
+        </action>
+
     </package>
 
 </struts>
