@@ -5,13 +5,11 @@ import dao.CustomerDAO;
 import model.Customer;
 import org.apache.struts2.ServletActionContext;
 import service.CustomerService;
+import util.emailValidation;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-/**
- * Created by QQZhao on 3/4/17.
- */
 public class RegisterAction extends ActionSupport {
 
     private String username;
@@ -82,7 +80,7 @@ public class RegisterAction extends ActionSupport {
             this.addActionError("passworld not same as re-password");
         }
 
-        if (!email.contains("@") || !email.split("@")[1].contains(".")){
+        if (!emailValidation.emailValidate(email)){
             this.addActionError("Invalid email address");
         }
 
