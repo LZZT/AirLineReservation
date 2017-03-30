@@ -77,6 +77,7 @@ public class RegisterAction extends ActionSupport {
 
         if (null == password || password.length() < 6){
             this.addActionError("password length must be longer than 6");
+
         }else if (! password.equals(repassword)){
             this.addActionError("passworld not same as re-password");
         }

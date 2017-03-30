@@ -14,6 +14,7 @@
         <property name="capacity" column="capacity" type="int"></property>
         <property name="totalTicketNumber" column="totalTicketNumber" type="int"></property>
 
+
     </class>
 
 </hibernate-mapping>
