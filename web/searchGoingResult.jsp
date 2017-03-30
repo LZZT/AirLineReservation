@@ -39,10 +39,23 @@
     </style>
 
 
+        <%
+            String sortGoingBy = "None";
+            if(null != session.getAttribute("sortGoingBy")) {
+                sortGoingBy = (String)session.getAttribute("sortGoingBy");
+            }
+        %>
+
+    <script>
+        function filterSelection() {
+            var element = document.getElementById('sortGoingBy');
+            if('None' != ('<%= sortGoingBy %>'))
+                element.value = ('<%= sortGoingBy %>');
+        }
+    </script>
 </head>
 
-<body>
-
+<body onload="filterSelection()">
 <br><br>
 
 <div id="tooplate_wrapper">
@@ -85,8 +98,8 @@
 
                 <h5>Sort result by:</h5>
                 <form action="sortGoing" method="post">
-                    <select name="sortGoingBy" onchange="this.form.submit()">
-                        <option></option>
+                    <select id="sortGoingBy" name="sortGoingBy" onchange="this.form.submit()">
+                        <option>None</option>
                         <option value="price">Price</option>
                         <option value="departureTime">Departure Time</option>
                         <option value="arrivalTime">Arrival Time</option>
@@ -95,7 +108,6 @@
                 </form>
 
             </li>
-
 
 
             <li>

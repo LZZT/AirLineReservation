@@ -61,6 +61,9 @@ public class SortAction extends ActionSupport {
 
         session.setAttribute("validGoingFlights", validGoingFlightsList);
 
+
+        session.setAttribute("sortGoingBy", sortGoingBy);
+
         return SUCCESS;
     }
 
