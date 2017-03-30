@@ -1,17 +1,12 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
-import model.Customer;
-import org.apache.struts2.ServletActionContext;
 import service.CustomerService;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import util.emailValidation;
 
 
-/**
- * Created by tonggezhu on 3/29/17.
- */
+
+
 public class ResetPasswordAction extends ActionSupport {
 
     private String username;
@@ -46,17 +41,6 @@ public class ResetPasswordAction extends ActionSupport {
 
     public String UserInfo() throws Exception{
 
-//        Customer customer = new Customer();
-//        customer.setUsername(username);
-//        customer.setContactEmail(email);
-//        customer.setPassword("");
-//        customer.setcBonus(0);
-//
-//
-//        HttpServletRequest request = ServletActionContext.getRequest();
-//
-//        HttpSession session = request.getSession();
-//        session.setAttribute("username", username);
         return SUCCESS;
 
     }
@@ -67,15 +51,11 @@ public class ResetPasswordAction extends ActionSupport {
             this.addActionError("username can not be empty");
         }
 
-        if (!email.contains("@") || !email.split("@")[1].contains(".")){
+        if (!emailValidation.emailValidate(email)){
             this.addActionError("Invalid email address");
         }
 
-        if (!reemail.contains("@") || !reemail.split("@")[1].contains(".")){
-            this.addActionError("Invalid email address");
-        }
-
-        if (!email.equals(reemail)){
+        if (reemail == null || !email.equals(reemail)){
             this.addActionError("Email address should be the same!");
         }
 
