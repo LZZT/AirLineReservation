@@ -184,7 +184,7 @@
             <h3>Choose Returning Flight: </h3>
 
 
-            <table width="80%" align="center">
+            <table width="80%" align="center" border="1">
                 <tr>
                     <th>Flight Number</th>
                     <th>AirLine</th>
