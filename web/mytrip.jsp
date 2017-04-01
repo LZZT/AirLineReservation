@@ -1,7 +1,12 @@
-<%@ page import="model.Payment" %>
-<%@ page import="model.Flight" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.List" %>
+<%@ page import="service.TransactionService" %>
+<%@ page import="model.*" %>
+<%@ page import="service.TravelerService" %>
+<%@ page import="java.util.Map" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+
 <html>
 <head>
     <title></title>
@@ -11,157 +16,69 @@
 <br><br>
 
 <s:actionerror cssStyle="color:red"/>
-<h1>Flight Infomation</h1>
 
-<s:iterator value='#session.leavingFlightObjectSet' id="flightList">
+<%--<form action="mytrip.action" method="post">--%>
 
-    <s:iterator value='%{#flightList}' id="flight">
+<%
+    TransactionService transactionService = new TransactionService();
+    String username= (String) session.getAttribute("username");
+    Map<Transactions,List<Ticket>> ticketsListSet = transactionService.getTransactionAndTicket2(username);
+//    List<List<Ticket>> ticketsListSet = transactionService.getTransactionAndTicket(username);
 
-        <s:property value='%{#flight.flightNumber}'/>
+    session.setAttribute("ticketsListSet",ticketsListSet);
+%>
 
-        <s:property value='%{#flight.airline.code}'/>
+<s:iterator value='#session.ticketsListSet' id="ticketsListSet">
 
-        <s:property value='%{#flight.aircraftModel.model}'/>
-
-        <s:property value='%{#flight.departureTime}'/>
-
-        <s:property value='%{#flight.arrivalTime}'/>
-
-        <s:property value='%{#flight.departureAirport.name}'/>
-
-        <s:property value='%{#flight.arrivalAirport.name}'/>
-
-        <s:property value='%{#flight.Price}'/><br>
-
-    </s:iterator>
-
-</s:iterator>
-
-<br><br>
-
--------------------------------------------------------------------------------------------------------------
-<br><br>
-
-
-<s:iterator value='#session.returningFlightObjectSet' id="flightList">
-
-    <s:iterator value='%{#flightList}' id="flight">
-
-        <s:property value='%{#flight.flightNumber}'/>
-
-        <s:property value='%{#flight.airline.code}'/>
-
-        <s:property value='%{#flight.aircraftModel.model}'/>
-
-        <s:property value='%{#flight.departureTime}'/>
-
-        <s:property value='%{#flight.arrivalTime}'/>
-
-        <s:property value='%{#flight.departureAirport.name}'/>
-
-        <s:property value='%{#flight.arrivalAirport.name}'/>
-
-        <s:property value='%{#flight.Price}'/><br>
-
-    </s:iterator>
-
-</s:iterator>
-
-<h1>Traveler Infomation</h1>
 <table width="80%" align="center" border="1">
 
-    <tr>
-        <th>Last Name</th>
-        <th>First Name</th>
-        <th>Gender</th>
-        <th>Date of birth</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th></th>
-    </tr>
-
-
-    <s:iterator value="#session.travelerList" id="traveler">
-
         <tr>
-
-            <td>
-                <s:property value='%{#traveler.lastname}'/>
-            </td>
-            <td>
-                <s:property value='%{#traveler.firstname}'/>
-            </td>
-            <td>
-                <s:property value='%{#traveler.gender}'/>
-            </td>
-            <td>
-                <s:property value='%{#traveler.dob}'/>
-            </td>
-            <td>
-                <s:property value='%{#traveler.email}'/>
-            </td>
-            <td>
-                <s:property value='%{#traveler.phone}'/>
-            </td>
-
+            <th>TicketID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Flight Number</th>
+            <th>Flight Date</th>
+            <th>Departure City</th>
+            <th>Arrival City</th>
         </tr>
 
-    </s:iterator>
+       <s:iterator value='%{#ticketsListSet.value}' id="ticketList">
+            <s:iterator value='%{#ticketList}' id="ticket">
 
-</table>
+                <tr>
 
-<br><br>
+                    <td>
+                        <s:property value='%{#ticket.ticketID}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#ticket.firstName}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#ticket.lastName}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#ticket.flightNumber}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#ticket.flightDate}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#ticket.departureCity}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#ticket.arrivalCity}'/>
+                    </td>
+                </tr>
+            </s:iterator>
+        </s:iterator>
 
-<h1>Payment Infomation</h1>
-<table width="80%" align="center" border="1">
+    </table>
 
-    <tr>
-        <th>Card Number</th>
-        <th>Last Name</th>
-        <th>First Name</th>
-        <th>Exp Date</th>
-        <th>CVV</th>
-        <th>Billing Address</th>
-        <th></th>
-    </tr>
+</s:iterator>
+<br>
+<input type="button" onclick="location.href='index.jsp';" value="Return"/>
 
-    <%
-        Payment payment=(Payment) session.getAttribute("payment");
-    %>
-    <s:iterator >
-
-        <tr>
-
-            <td>
-            <%      out.println(payment.getCardNumber());%>
-            </td>
-            <td>
-                <%      out.println(payment.getCardLastname());%>
-            </td>
-            <td>
-                <%      out.println(payment.getCardFirstname());%>
-            </td>
-            <td>
-                <%      out.println(payment.getExpDate());%>
-            </td>
-            <td>
-                <%      out.println(payment.getCvv());%>
-            </td>
-            <td>
-                <%      out.println(payment.getBillingAddress());%>
-            </td>
-
-        </tr>
-
-    </s:iterator>
-
-</table>
-
-<form action="transAction.action" method="post">
-<br><br>
-<input type="submit" value="Submit">
-
-</form>
+<%--</form>--%>
 
 </body>
 </html>

@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import util.HibernateUtil;
 
+
 import java.util.List;
 
 
@@ -84,10 +85,11 @@ public class TransactionDAO {
         Session session = HibernateUtil.openSession();
         Transaction tx = session.beginTransaction();
         List<Transactions> transactionList=null;
+        System.out.println(userName);
         try {
-            String hql = String.format(" FROM Transaction T WHERE T.username = '%s'", userName);
+            String hql = String.format(" FROM Transactions T WHERE T.username = '%s'", userName);
             Query query = session.createQuery(hql);
-            transactionList =  query.list();
+            transactionList = (List<Transactions> ) query.list();
             tx.commit();
 
         } catch (Exception ex) {

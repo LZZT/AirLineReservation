@@ -26,4 +26,9 @@ public class TravelerService {
         }
         return true;
     }
+    public  Traveler getTraveler(String phone){
+        TravelerDAO travelerDAO = new TravelerDAO();
+        return  travelerDAO.getTraveler(phone);
+
+    }
 }

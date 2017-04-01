@@ -4,12 +4,47 @@ package model;
  * Created by liweihao on 3/24/17.
  */
 public class Ticket {
-    String ticketID;
-    String flightNumber;
-    String flightDate;
-    String travellerID;
-    String transactionID;
+    private String ticketID;
+    private String flightNumber;
+    private String flightDate;
+    private String travellerID;
+    private String transactionID;
+    private String firstName;
+    private String lastName;
+    private String departureCity;
+    private String arrivalCity;
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getDepartureCity() {
+        return departureCity;
+    }
+
+    public void setDepartureCity(String departureCity) {
+        this.departureCity = departureCity;
+    }
+
+    public String getArrivalCity() {
+        return arrivalCity;
+    }
+
+    public void setArrivalCity(String arrivalCity) {
+        this.arrivalCity = arrivalCity;
+    }
 
     public String getTicketID() {
         return ticketID;

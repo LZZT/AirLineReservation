@@ -7,6 +7,8 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import util.HibernateUtil;
 
+import java.util.List;
+
 
 public class TicketDAO {
 
@@ -76,6 +78,28 @@ public class TicketDAO {
         }finally {
             HibernateUtil.close(session);
         }
+    }
+
+    public List<Ticket> getTicketByTransaction(String transactionID) {
+        Session session = HibernateUtil.openSession();
+        Transaction tx = session.beginTransaction();
+        List<Ticket> ticketList=null;
+        try {
+            String hql = String.format(" FROM Ticket T WHERE T.transactionID = '%s'", transactionID);
+            Query query = session.createQuery(hql);
+            ticketList =  query.list();
+            System.out.println(ticketList.size());
+            tx.commit();
+
+        } catch (Exception ex) {
+            if (null != tx) {
+                tx.rollback();
+            }
+        } finally {
+            HibernateUtil.close(session);
+        }
+
+        return ticketList;
     }
 
 

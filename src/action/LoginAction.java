@@ -2,11 +2,14 @@ package action;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import model.Ticket;
 import org.apache.struts2.ServletActionContext;
 import service.CustomerService;
+import service.TransactionService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -18,6 +21,7 @@ public class LoginAction extends ActionSupport{
     private String username;
     private String password;
     private CustomerService customerService = new CustomerService();
+    private TransactionService transactionService = new TransactionService();
 
     public String getUsername() {return username;}
 
@@ -58,7 +62,8 @@ public class LoginAction extends ActionSupport{
         sessionMap.put("username", username);
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-
+//        List<List<Ticket>> transactionsListSet = transactionService.getTransactionAndTicket(username);
+//        session.setAttribute("transactionsListSet",transactionsListSet);
         if (null ==session.getAttribute("leavingFlightObjectSet") && null==session.getAttribute("returningFlightObjectSet"))
             return SUCCESS;
         else
