@@ -57,11 +57,34 @@
             });
         });
     </script>
+
+    <script>
+        function GetURLParameter(sParam)
+        {
+            var sPageURL = window.location.search.substring(1);
+            var sURLVariables = sPageURL.split('&');
+            for (var i = 0; i < sURLVariables.length; i++)
+            {
+                var sParameterName = sURLVariables[i].split('=');
+                if (sParameterName[0] == sParam)
+                {
+                    document.getElementById('test').innerHTML=sParameterName[1];
+                    return sParameterName[1];
+                }
+            }
+        }​
+    </script>
 </head>
 <body>
+
 <form action="updateFlight.action" method="post">
 
-    Flight Number: <input type="text" name="flightNumber"><br>
+    Flight Number: <input id="flightNumber" type="text" name="flightNumber" readonly><br>
+    <script>
+        var sPageURL = window.location.search.substring(1);
+        var sParameterName = sPageURL.split('=');
+        document.getElementById("flightNumber").value=sParameterName[1];
+    </script>
 
     Departure Time: <input type="text" name="departTime" id="departTime"><br>
 

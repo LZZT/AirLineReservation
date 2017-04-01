@@ -60,8 +60,6 @@ public class SortAction extends ActionSupport {
         }
 
         session.setAttribute("validGoingFlights", validGoingFlightsList);
-
-
         session.setAttribute("sortGoingBy", sortGoingBy);
 
         return SUCCESS;
@@ -95,6 +93,7 @@ public class SortAction extends ActionSupport {
         }
 
         session.setAttribute("validReturningFlights", validReturningFlightsList);
+        session.setAttribute("sortReturningBy", sortReturningBy);
 
         return SUCCESS;
     }

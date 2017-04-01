@@ -39,12 +39,12 @@
     </style>
 
 
-        <%
-            String sortGoingBy = "None";
-            if(null != session.getAttribute("sortGoingBy")) {
-                sortGoingBy = (String)session.getAttribute("sortGoingBy");
-            }
-        %>
+    <%
+        String sortGoingBy = "None";
+        if(null != session.getAttribute("sortGoingBy")) {
+            sortGoingBy = (String)session.getAttribute("sortGoingBy");
+        }
+    %>
 
     <script>
         function filterSelection() {
@@ -177,7 +177,6 @@
     </nav>
 
 
-
     <main>
 
 
@@ -185,7 +184,7 @@
         <h3>Choose Departure Flight: </h3>
 
 
-        <table width="80%" align="center">
+        <table width="80%" align="center" border="1">
             <tr>
                 <th>Flight Number</th>
                 <th>AirLine</th>

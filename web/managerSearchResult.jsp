@@ -118,7 +118,7 @@
                     </td>
                     <td>
                         <s:a href="deleteFlight.action?flightNumber=%{#flight.flightNumber}">Delete</s:a><br>
-                        <s:a href='updateFlight.jsp'>Update</s:a>
+                        <s:a href='updateFlight.jsp?flightNumber=%{#flight.flightNumber}'>Update</s:a>
                     </td>
 
                 </tr>
