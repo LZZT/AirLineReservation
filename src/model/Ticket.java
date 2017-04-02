@@ -13,6 +13,15 @@ public class Ticket {
     private String lastName;
     private String departureCity;
     private String arrivalCity;
+    private int price;
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 
     public String getFirstName() {
         return firstName;

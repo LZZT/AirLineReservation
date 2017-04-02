@@ -38,9 +38,6 @@
             <result name="success">/testInsert.jsp</result>
         </action>
 
-        <action name="mytrip" class="action.MytripAction" method="mytripInfo">
-            <result name="success">/mytrip.jsp</result>
-        </action>
 
         <action name="login" class="action.LoginAction" method="login">
             <result name="success" type="redirect">/index.jsp</result>

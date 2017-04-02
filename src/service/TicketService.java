@@ -36,6 +36,7 @@ public class TicketService {
             ticket.setLastName(traveler.getLastname());
             ticket.setDepartureCity(getSingleFlightByFlightNumber(ticket.getFlightNumber()).getDepartureAirport().getCity().getCity());
             ticket.setArrivalCity(getSingleFlightByFlightNumber(ticket.getFlightNumber()).getArrivalAirport().getCity().getCity());
+            ticket.setPrice(getSingleFlightByFlightNumber(ticket.getFlightNumber()).getPrice());
         }
         return  ticketList;
     }

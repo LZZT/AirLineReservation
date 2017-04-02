@@ -15,21 +15,26 @@
 
 <br><br>
 
+<h2>My Tickets</h2>
+
 <s:actionerror cssStyle="color:red"/>
 
-<%--<form action="mytrip.action" method="post">--%>
 
 <%
     TransactionService transactionService = new TransactionService();
     String username= (String) session.getAttribute("username");
     Map<Transactions,List<Ticket>> ticketsListSet = transactionService.getTransactionAndTicket2(username);
-//    List<List<Ticket>> ticketsListSet = transactionService.getTransactionAndTicket(username);
-
     session.setAttribute("ticketsListSet",ticketsListSet);
 %>
 
 <s:iterator value='#session.ticketsListSet' id="ticketsListSet">
+    <s:iterator value='%{#ticketsListSet.key}' id="transactions">
 
+        &nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Transaction ID:<s:property value='%{#transactions.transactionID}'/>
+        &emsp; Transaction Date:<s:property value='%{#transactions.transactionDate}'/>
+        &emsp; Total Price:<s:property value='%{#transactions.price}'/>
+
+    </s:iterator>
 <table width="80%" align="center" border="1">
 
         <tr>
@@ -40,6 +45,8 @@
             <th>Flight Date</th>
             <th>Departure City</th>
             <th>Arrival City</th>
+            <th>Price</th>
+
         </tr>
 
        <s:iterator value='%{#ticketsListSet.value}' id="ticketList">
@@ -68,17 +75,19 @@
                     <td>
                         <s:property value='%{#ticket.arrivalCity}'/>
                     </td>
+                    <td>
+                        <s:property value='%{#ticket.price}'/>
+                    </td>
                 </tr>
             </s:iterator>
         </s:iterator>
 
     </table>
+    <br><br>
 
 </s:iterator>
 <br>
 <input type="button" onclick="location.href='index.jsp';" value="Return"/>
-
-<%--</form>--%>
 
 </body>
 </html>
