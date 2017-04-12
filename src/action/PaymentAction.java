@@ -1,12 +1,14 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import model.Customer;
 import model.Payment;
 import org.apache.struts2.ServletActionContext;
 import service.PaymentService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 public class PaymentAction extends ActionSupport {
@@ -20,6 +22,17 @@ public class PaymentAction extends ActionSupport {
     private String expDate;
     private String cvv;
     private String billingAddress;
+
+    private String index;
+
+
+    public PaymentService getPaymentService() {
+        return paymentService;
+    }
+
+    public void setPaymentService(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
 
     public String getCardNumber() {
         return cardNumber;
@@ -69,11 +82,25 @@ public class PaymentAction extends ActionSupport {
         this.billingAddress = billingAddress;
     }
 
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
+    }
+
     public String PaymentInfo() {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-//        Customer customer = (Customer) session.getAttribute("customer");
-//        Payment payment = customer.getPayment();
+
+
+        if(null != index && index instanceof String){
+            String indexNumber = ((String)index).split("/")[0];
+            Payment p = (Payment) ((List)session.getAttribute("paymentsHistoryList")).get(Integer.valueOf(indexNumber));
+            session.setAttribute("payment", p);
+
+        }else{
         Payment payment = new Payment();
         payment.setCardNumber(cardNumber);
         payment.setCardLastname(cardLastname);
@@ -83,6 +110,8 @@ public class PaymentAction extends ActionSupport {
         payment.setBillingAddress(billingAddress);
 
         session.setAttribute("payment",payment);
+        }
+
         return SUCCESS;
     }
 

@@ -1,15 +1,22 @@
+<%@ page import="service.TransactionService" %>
+<%@ page import="java.util.List" %>
+<%@ page import="org.hibernate.Transaction" %>
+<%@ page import="model.Transactions" %>
+<%@ page import="model.Payment" %>
+<%@ page import="service.PaymentService" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Blue Arc Theme - Free Website Template</title>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
 
-    <link href="tooplate_style.css" rel="stylesheet" type="text/css" />
+    <link href="tooplate_style.css" rel="stylesheet" type="text/css"/>
 
 </head>
 <body>
@@ -51,7 +58,54 @@
 
     </div> <!-- end of header -->
 
-    <div id="tooplate_middle">
+    <div id="tooplate_middle2">
+        <h3>Choose payment from Order history</h3>
+
+        <table width="80%" align="center" border="1">
+
+            <tr>
+                <th>cardNumber</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Billing Address</th>
+            </tr>
+        <%
+            PaymentService paymentService = new PaymentService();
+            String username = (String) session.getAttribute("username");
+            List<Payment> paymentsList = paymentService.getCreditCardByUsername(username);
+            session.setAttribute("paymentsHistoryList",paymentsList);
+
+            for (int i = 0; i<paymentsList.size(); i++) {
+
+
+//            for(Payment p: paymentsList){
+
+        %>
+
+            <form action="payment.action" method="post">
+                <tr>
+                    <td>
+
+                        <%= paymentsList.get(i).getCardNumber() %>
+                    </td>
+                    <td>
+                        <%= paymentsList.get(i).getCardFirstname()%>
+                    </td>
+                    <td>
+                        <%= paymentsList.get(i).getCardLastname()%>
+                    </td>
+                    <td>
+                        <%= paymentsList.get(i).getBillingAddress()%>
+                    </td>
+
+                    <td>
+                        <input type="hidden" name="index" value=<%=i%>/>
+                        <input type="submit" value="Select"/>
+                    </td>
+                </tr>
+
+                    <% }%>
+            </table>
 
         <s:actionerror cssStyle="color:red"/>
 
@@ -63,9 +117,9 @@
 
             First Name: <input type="text" name="cardFirstname"><br>
 
-            Expire Date: <input type="text"  size ="4" maxlength = "4" name="expDate"><br>
+            Expire Date: <input type="text" size="4" maxlength="4" name="expDate"><br>
 
-            CVV: <input type="text" size = "3" maxlength="3" name = "cvv"><br>
+            CVV: <input type="text" size="3" maxlength="3" name="cvv"><br>
 
             Billing Address: <input type="text" name="billingAddress"><br>
 
