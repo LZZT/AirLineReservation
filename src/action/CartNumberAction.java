@@ -34,28 +34,38 @@ public class CartNumberAction extends ActionSupport {
 
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
+
+        if(null == session.getAttribute("username") ||
+                null == session.getAttribute("departingDate") ||
+                null == session.getAttribute("returningDate") ||
+                null == session.getAttribute("leavingFlightObjectSet") ||
+                null == session.getAttribute("returningFlightObjectSet")){
+
+            return "login";
+        }
+
         session.setAttribute("ticketsNumber", ticketsNumber);
         String departingDate = (String) session.getAttribute("departingDate");
         String returningDate = (String) session.getAttribute("returningDate");
         List<Flight> leavingFlightObjectSet = (List<Flight>) session.getAttribute("leavingFlightObjectSet");
-        int leavingSetSize=leavingFlightObjectSet.size();
+        int leavingSetSize = leavingFlightObjectSet.size();
         List<Flight> returningFlightObjectSet = (List<Flight>) session.getAttribute("returningFlightObjectSet");
-        List<Flight> flightObjectSet = (List)((ArrayList<Flight>)leavingFlightObjectSet).clone();
+        List<Flight> flightObjectSet = (List) ((ArrayList<Flight>) leavingFlightObjectSet).clone();
         if (returningFlightObjectSet != null) {
             flightObjectSet.addAll(returningFlightObjectSet);
         }
-        String[] flightdate=new String[flightObjectSet.size()];
-        for (int i=0;i<flightObjectSet.size();i++){
-            if (i<leavingSetSize){
-                flightdate[i]=departingDate;}
-            else {
-                flightdate[i]=returningDate;
+        String[] flightdate = new String[flightObjectSet.size()];
+        for (int i = 0; i < flightObjectSet.size(); i++) {
+            if (i < leavingSetSize) {
+                flightdate[i] = departingDate;
+            } else {
+                flightdate[i] = returningDate;
             }
         }
 
-        for (int i=0;i<Integer.valueOf(ticketsNumber);i++) {
+        for (int i = 0; i < Integer.valueOf(ticketsNumber); i++) {
             for (Flight flight : flightObjectSet) {
-                if (!validateTicketService.isAvaliable(flight,  flightdate[flightObjectSet.indexOf(flight)])) {
+                if (!validateTicketService.isAvaliable(flight, flightdate[flightObjectSet.indexOf(flight)])) {
                     return ERROR;
                 }
                 int recordNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(), flightdate[flightObjectSet.indexOf(flight)]);

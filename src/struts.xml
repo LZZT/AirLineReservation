@@ -13,14 +13,12 @@
 
             <interceptor name="loginInterceptor" class="interceptor.LoginInterceptor"></interceptor>
 
-            <!--<interceptor-stack name="AirLineReservationInterceptorStack">-->
-            <!--<interceptor-ref name="loginInterceptor"></interceptor-ref>-->
-            <!--<interceptor-ref name="defaultStack"></interceptor-ref>-->
-            <!--</interceptor-stack>-->
+            <interceptor-stack name="AirLineReservationInterceptorStack">
+                <interceptor-ref name="loginInterceptor"></interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
 
         </interceptors>
-
-        <!--<default-interceptor-ref name="AirLineReservationInterceptorStack"></default-interceptor-ref>-->
 
         <global-results>
             <result name="login">/login.jsp</result>
@@ -130,6 +128,8 @@
         <action name="payment" class="action.PaymentAction" method="PaymentInfo">
             <result name="success" type="redirect">/transactionInfo.jsp</result>
             <result name="input">/payment.jsp</result>
+            <interceptor-ref name="loginInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
         </action>
 
         <action name="searchFlightByFlightNumber" class="action.searchGoingAction" method="searchFlightByFlightNumber">
