@@ -4,6 +4,8 @@
 <%@ page import="model.*" %>
 <%@ page import="service.TravelerService" %>
 <%@ page import="java.util.Map" %>
+<%@ page import="java.util.Iterator" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
@@ -24,6 +26,13 @@
     TransactionService transactionService = new TransactionService();
     String username= (String) session.getAttribute("username");
     Map<Transactions,List<Ticket>> ticketsListSet = transactionService.getTransactionAndTicket(username);
+    Iterator<List<Ticket>> it = ticketsListSet.values().iterator();
+    while(it.hasNext()){
+        List<Ticket> ticketList=it.next();
+        if (ticketList.size()==0){
+            it.remove();
+        }
+    }
     session.setAttribute("ticketsListSet",ticketsListSet);
 %>
 
@@ -81,7 +90,7 @@
                         <s:property value='%{#ticket.price}'/>
                     </td>
                     <td>
-                        <s:a href="cancelTicket.action?ticketID=%{#ticket.ticketID}">Delete</s:a><br>
+                        <s:a href="cancelTicket.action?ticketID=%{#ticket.ticketID}">Cancel</s:a><br>
                     </td>
                 </tr>
             </s:iterator>
@@ -91,6 +100,8 @@
     <br><br>
 
 </s:iterator>
+
+
 <br>
 <input type="button" onclick="location.href='index.jsp';" value="Return"/>
 

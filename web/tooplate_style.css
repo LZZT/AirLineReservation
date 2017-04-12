@@ -220,7 +220,8 @@ h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
 
 /* end of menu */
 
-#tooplate_middle { 
+#tooplate_middle {
+	font-size: large;
 	clear: both;
 	width: 800px;
 	height: 227px;
