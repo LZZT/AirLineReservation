@@ -73,7 +73,7 @@
 
         <h1>Search result:</h1>
 
-        <table width="80%" align="center" border="1">
+        <table style="width: 100%;" align="center" border="1">
 
             <tr>
                 <th>Flight Number</th>
@@ -82,7 +82,7 @@
                 <th>Departure Time</th>
                 <th>Arrival Time</th>
                 <th>Departure Airport</th>
-                <th>ArrivalAirport</th>
+                <th>Arrival Airport</th>
                 <th>Price</th>
                 <th></th>
             </tr>
@@ -108,17 +108,17 @@
                         <s:property value='%{#flight.arrivalTime}'/>
                     </td>
                     <td>
-                        <s:property value='%{#flight.departureAirport.name}'/>
+                        <s:property value='%{#flight.departureAirport.code}'/>
                     </td>
                     <td>
-                        <s:property value='%{#flight.arrivalAirport.name}'/>
+                        <s:property value='%{#flight.arrivalAirport.code}'/>
                     </td>
                     <td>
                         <s:property value='%{#flight.Price}'/>
                     </td>
                     <td>
                         <s:a href="deleteFlight.action?flightNumber=%{#flight.flightNumber}">Delete</s:a><br>
-                        <s:a href='updateFlight.jsp?flightNumber=%{#flight.flightNumber}'>Update</s:a>
+                        <s:a href="updateFlight.jsp?flightNumber=%{#flight.flightNumber}&departureTime=%{#flight.departureTime}&arrivalTime=%{#flight.arrivalTime}&daysOperated=%{#flight.daysOperated}&departureAirport=%{#flight.departureAirport.code}&arrivalAirport=%{#flight.arrivalAirport.code}&airline=%{#flight.airline.name}&aircraftModel=%{#flight.aircraftModel.model}&price=%{#flight.price}">Update</s:a>
                     </td>
 
                 </tr>
