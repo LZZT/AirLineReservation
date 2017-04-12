@@ -20,16 +20,16 @@ public class TravelerAction extends ActionSupport{
 
 
     private List<Traveler> travelerList;
-    private CustomerService customerService = new CustomerService();
+//    private CustomerService customerService = new CustomerService();
 
-    private String[] travelerIndex;
+    private String[] travelerHistory;
 
-    public String[] getTravelerIndex() {
-        return travelerIndex;
+    public String[] getTravelerHistory() {
+        return travelerHistory;
     }
 
-    public void setTravelerIndex(String[] travelerIndex) {
-        this.travelerIndex = travelerIndex;
+    public void setTravelerHistory(String[] travelerHistory) {
+        this.travelerHistory = travelerHistory;
     }
 
     public List<Traveler> getTravelerList() {
@@ -43,14 +43,14 @@ public class TravelerAction extends ActionSupport{
     public String add() throws Exception{
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        String username= (String) session.getAttribute("username");
-        Customer customer=customerService.getCustomer(username);
-        Set<Customer> customerSet= new HashSet<>();
-        customerSet.add(customer);
 
-        for(Traveler traveler:travelerList){
-            traveler.setCustomerSet(customerSet);
+        List<Traveler> tList = (List<Traveler>)session.getAttribute("TravelersHistoryList");
+
+        for (String s: travelerHistory) {
+            String indexNumber = s.split("\"")[0];
+            travelerList.add(tList.get(Integer.valueOf(indexNumber)));
         }
+        
         session.setAttribute("travelerList", travelerList);
         return SUCCESS;
     }

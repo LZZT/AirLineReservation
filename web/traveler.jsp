@@ -43,9 +43,10 @@
 
                 <%
                     if (null == session.getAttribute("username")) {
+                        response.sendRedirect("login.jsp");
                 %>
-                <input type="button" value="Login" onclick="location.href='login.jsp';">
-                <input type="button" value="Register" onclick="location.href='register.jsp';">
+                <%--<input type="button" value="Login" onclick="location.href='login.jsp';">--%>
+                <%--<input type="button" value="Register" onclick="location.href='register.jsp';">--%>
 
                 <% } else {
                 %>
@@ -168,8 +169,6 @@
             session.setAttribute("TravelersHistoryList",travelerList);
 
             for (int i = 0; i<travelerList.size(); i++) {
-
-
 
                %>
 
