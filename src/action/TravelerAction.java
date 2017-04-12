@@ -22,6 +22,16 @@ public class TravelerAction extends ActionSupport{
     private List<Traveler> travelerList;
     private CustomerService customerService = new CustomerService();
 
+    private String[] travelerIndex;
+
+    public String[] getTravelerIndex() {
+        return travelerIndex;
+    }
+
+    public void setTravelerIndex(String[] travelerIndex) {
+        this.travelerIndex = travelerIndex;
+    }
+
     public List<Traveler> getTravelerList() {
         return travelerList;
     }
@@ -37,6 +47,7 @@ public class TravelerAction extends ActionSupport{
         Customer customer=customerService.getCustomer(username);
         Set<Customer> customerSet= new HashSet<>();
         customerSet.add(customer);
+
         for(Traveler traveler:travelerList){
             traveler.setCustomerSet(customerSet);
         }

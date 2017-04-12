@@ -164,27 +164,32 @@
                 <% TravelerService ts = new TravelerService();
             String username = (String) session.getAttribute("username");
             List<Traveler> travelerList= ts.getTravelerByUsername(username);
-           for (Traveler t : travelerList ) {
+
+            session.setAttribute("TravelersHistoryList",travelerList);
+
+            for (int i = 0; i<travelerList.size(); i++) {
+
+
 
                %>
 
             <form action="traveler.action" method="post">
                 <tr>
                     <td>
-                        <%= t.getLastname() %>
+                        <%= travelerList.get(i).getLastname() %>
                     </td>
                     <td>
-                        <%= t.getFirstname() %>
+                        <%= travelerList.get(i).getFirstname() %>
                     </td>
                     <td>
-                        <%= t.getGender() %>
+                        <%= travelerList.get(i).getGender() %>
                     </td>
                     <td>
-                        <%= t.getPhone() %>
+                        <%= travelerList.get(i).getPhone() %>
                     </td>
 
                     <td>
-                        <input type="checkbox" name="<%= t.getPhone() %>"/>
+                        <input type="checkbox" name="travelerHistory" value= <%= i%>"/>
                     </td>
 
                 </tr>
@@ -194,11 +199,7 @@
            <%}%>
         </table>
 
-
-
-            ============以下是之前的
-
-            <form name="TravelersForm" action="traveler.action" onsubmit="return validateForm()" method="post">
+            <%--<form name="TravelersForm" action="traveler.action" onsubmit="return validateForm()" method="post">--%>
 
                 <%! int i;%>
                 <% for (i = 1; i <= Integer.valueOf((String) session.getAttribute("ticketsNumber")); i++) {%>
