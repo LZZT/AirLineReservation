@@ -40,7 +40,13 @@ public class TicketService {
         }
         return  ticketList;
     }
-
-
+    public void deleteTicketByTicketID(String  ticketID){
+        TicketDAO ticketDAO = new TicketDAO();
+        ticketDAO.deleteTicketByTicketID(ticketID);
+    }
+    public Ticket getTicket(String ticketID){
+        TicketDAO ticketDAO = new TicketDAO();
+        return ticketDAO.getTicket(ticketID);
+    }
 
 }

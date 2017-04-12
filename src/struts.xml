@@ -165,6 +165,10 @@
             <result name="input">/ResetPassword.jsp</result>
         </action>
 
+
+        <action name="cancelTicket" class="action.MytripAction" method="cancelTicket">
+            <result name="success" type="redirect">/mytrip.jsp</result>
+        </action>
     </package>
 
 </struts>

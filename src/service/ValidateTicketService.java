@@ -40,4 +40,8 @@ public class ValidateTicketService {
         }
         return true;
     }
+    public void deleteValidateTicketByTicketID(String  ticketID){
+        ValidateTicketDAO validateTicketDAO = new ValidateTicketDAO();
+        validateTicketDAO.deleteValidateTicketByTicketID(ticketID);
+    }
 }

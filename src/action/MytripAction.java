@@ -2,65 +2,34 @@ package action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import service.CustomerService;
+import service.TicketService;
+import service.TransactionService;
+import service.ValidateTicketService;
 import util.emailValidation;
 
 
+public class MytripAction extends ActionSupport {
 
+    private String ticketID;
 
-public class ResetPasswordAction extends ActionSupport {
-
-    private String username;
-    private String email;
-    private String reemail;
-    private CustomerService customerService = new CustomerService();
-
-
-    public String getUsername() {
-        return username;
+    public String getTicketID() {
+        return ticketID;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setTicketID(String ticketID) {
+        this.ticketID = ticketID;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getReemail() {
-        return reemail;
-    }
-
-    public void setReemail(String reemail) {
-        this.reemail = reemail;
-    }
-
-    public String UserInfo() throws Exception{
-
+    public String cancelTicket() throws Exception{
+        TransactionService transactionService = new TransactionService();
+        transactionService.UpdateTransactionPrice(ticketID);
+        ValidateTicketService validateTicketService = new ValidateTicketService();
+        validateTicketService.deleteValidateTicketByTicketID(ticketID);
+        TicketService ticketService = new TicketService();
+        ticketService.deleteTicketByTicketID(ticketID);
         return SUCCESS;
 
     }
 
-    public void validateUserInfo(){
 
-        if (null == username || username.length() < 1){
-            this.addActionError("username can not be empty");
-        }
-
-        if (!emailValidation.emailValidate(email)){
-            this.addActionError("Invalid email address");
-        }
-
-        if (reemail == null || !email.equals(reemail)){
-            this.addActionError("Email address should be the same!");
-        }
-
-        if (!customerService.isCustomerExists(username)){
-            this.addActionError("username not exists");
-        }
-    }
 }

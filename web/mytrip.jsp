@@ -23,16 +23,12 @@
 <%
     TransactionService transactionService = new TransactionService();
     String username= (String) session.getAttribute("username");
-
-    if(username == null){
-        response.sendRedirect("login.jsp");
-    }
-
-    Map<Transactions,List<Ticket>> ticketsListSet = transactionService.getTransactionAndTicket2(username);
+    Map<Transactions,List<Ticket>> ticketsListSet = transactionService.getTransactionAndTicket(username);
     session.setAttribute("ticketsListSet",ticketsListSet);
 %>
 
 <s:iterator value='#session.ticketsListSet' id="ticketsListSet">
+
     <s:iterator value='%{#ticketsListSet.key}' id="transactions">
 
         &nbsp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Transaction ID:<s:property value='%{#transactions.transactionID}'/>
@@ -51,6 +47,7 @@
             <th>Departure City</th>
             <th>Arrival City</th>
             <th>Price</th>
+            <th></th>
 
         </tr>
 
@@ -82,6 +79,9 @@
                     </td>
                     <td>
                         <s:property value='%{#ticket.price}'/>
+                    </td>
+                    <td>
+                        <s:a href="cancelTicket.action?ticketID=%{#ticket.ticketID}">Delete</s:a><br>
                     </td>
                 </tr>
             </s:iterator>

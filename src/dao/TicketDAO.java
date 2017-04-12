@@ -61,6 +61,31 @@ public class TicketDAO {
         return true;
     }
 
+    public boolean deleteTicketByTicketID(String ticketID) {
+
+        Session session = HibernateUtil.openSession();
+
+        Transaction tx = session.beginTransaction();
+
+
+        try {
+
+            String hql = String.format("DELETE Ticket WHERE ticketID = '%s'", ticketID);
+            Query query = session.createQuery(hql);
+            int result = query.executeUpdate();
+            tx.commit();
+
+        } catch (Exception ex) {
+            if (null != tx) {
+                tx.rollback();
+            }
+        } finally {
+            HibernateUtil.close(session);
+        }
+
+        return true;
+    }
+
     public void saveTicket(Ticket ticket){
 
         Session session = HibernateUtil.openSession();
