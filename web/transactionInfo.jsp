@@ -233,33 +233,32 @@
                 <th>CVV</th>
                 <th>Billing Address</th>
             </tr>
-
-            <%
-                Payment payment = (Payment) session.getAttribute("payment");
-            %>
-            <s:iterator>
+            
+            <s:iterator value="#session.payment" id="payment">
 
                 <tr>
 
                     <td>
-                        <% out.println(payment.getCardNumber());%>
+                        <s:property value='%{#payment.cardNumber}'/>
                     </td>
                     <td>
-                        <% out.println(payment.getCardLastname());%>
+                        <s:property value='%{#payment.cardLastname}'/>
                     </td>
                     <td>
-                        <% out.println(payment.getCardFirstname());%>
+                        <s:property value='%{#payment.cardFirstname}'/>
                     </td>
                     <td>
-                        <% out.println(payment.getExpDate());%>
+                        <s:property value='%{#payment.expDate}'/>
                     </td>
                     <td>
-                        <% out.println(payment.getCvv());%>
+                        <s:property value='%{#payment.cvv}'/>
                     </td>
                     <td>
-                        <% out.println(payment.getBillingAddress());%>
+                        <s:property value='%{#payment.billingAddress}'/>
                     </td>
+
                 </tr>
+
             </s:iterator>
         </table>
 
