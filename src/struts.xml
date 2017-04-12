@@ -62,7 +62,6 @@
         <action name="searchReturningFlight" class="action.searchReturningAction" method="findInfo">
             <result name="success" type="redirect">/searchReturningResult.jsp</result>
             <result name="input">/noResultFound.jsp</result>
-
         </action>
 
         <action name="filterGoingAirports" class="action.FilterAction" method="filterGoingAirports">
@@ -112,8 +111,6 @@
 
 
         <action name="cartAction" class="action.CartAction">
-            <!--<interceptor-ref  name ="loginInterceptor" />-->
-            <result name ="login" type="redirect">/requireLogin.jsp</result >
             <result name="success" type="redirect">/cart.jsp</result>
         </action>
 
