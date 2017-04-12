@@ -35,11 +35,15 @@
 </head>
 
 <body>
-
 <br><br>
 
-<div id="tooplate_wrapper">
+<%
+    if (null == session.getAttribute("username") || !session.getAttribute("username").equals("root")) {
+        response.sendRedirect("login.jsp");
+    }
+%>
 
+<div id="tooplate_wrapper">
     <div id="tooplate_menu">
         <ul>
             <li><a href="index.jsp" class="current">Home</a></li>
@@ -73,7 +77,7 @@
 
         <h1>Search result:</h1>
 
-        <table width="80%" align="center" border="1">
+        <table style="width: 100%;" align="center" border="1">
 
             <tr>
                 <th>Flight Number</th>
@@ -82,7 +86,7 @@
                 <th>Departure Time</th>
                 <th>Arrival Time</th>
                 <th>Departure Airport</th>
-                <th>ArrivalAirport</th>
+                <th>Arrival Airport</th>
                 <th>Price</th>
                 <th></th>
             </tr>
@@ -108,17 +112,17 @@
                         <s:property value='%{#flight.arrivalTime}'/>
                     </td>
                     <td>
-                        <s:property value='%{#flight.departureAirport.name}'/>
+                        <s:property value='%{#flight.departureAirport.code}'/>
                     </td>
                     <td>
-                        <s:property value='%{#flight.arrivalAirport.name}'/>
+                        <s:property value='%{#flight.arrivalAirport.code}'/>
                     </td>
                     <td>
                         <s:property value='%{#flight.Price}'/>
                     </td>
                     <td>
                         <s:a href="deleteFlight.action?flightNumber=%{#flight.flightNumber}">Delete</s:a><br>
-                        <s:a href='updateFlight.jsp?flightNumber=%{#flight.flightNumber}'>Update</s:a>
+                        <s:a href="updateFlight.jsp?flightNumber=%{#flight.flightNumber}&departureTime=%{#flight.departureTime}&arrivalTime=%{#flight.arrivalTime}&daysOperated=%{#flight.daysOperated}&departureAirport=%{#flight.departureAirport.code}&arrivalAirport=%{#flight.arrivalAirport.code}&airline=%{#flight.airline.name}&aircraftModel=%{#flight.aircraftModel.model}&price=%{#flight.price}">Update</s:a>
                     </td>
 
                 </tr>
@@ -132,12 +136,11 @@
 </div>
 
 
-    <div id="tooplate_footer_wrapper">
-        <div id="tooplate_footer">
-            Copyright © 2017 <a href="#">CS 542 Team 2</a>
-        </div>
+<div id="tooplate_footer_wrapper">
+    <div id="tooplate_footer">
+        Copyright © 2017 <a href="#">CS 542 Team 2</a>
     </div>
-
+</div>
 
 </body>
 </html>

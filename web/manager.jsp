@@ -78,75 +78,119 @@
     </script>
 
 </head>
+
 <body>
+<br><br>
+
+<%
+    if (null == session.getAttribute("username") || !session.getAttribute("username").equals("root")) {
+        response.sendRedirect("login.jsp");
+    }
+%>
+
+<div id="tooplate_wrapper">
+    <div id="tooplate_menu">
+        <ul>
+            <li><a href="index.jsp" class="current">Home</a></li>
+            <li><a href="reloadDB.action">Manager</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li>
+
+                <%
+                    if (null == session.getAttribute("username")) {
+                %>
+                <input type="button" value="Login" onclick="location.href='login.jsp';">
+                <input type="button" value="Register" onclick="location.href='register.jsp';">
+
+                <% } else {
+                %>
+                <form action="logout.action" method="post">
+                    <h4>Hi! ${sessionScope.username}</h4>
+                    <input type="submit" value="Logout"/>
+                    <input type="button" value="My trip" onclick="location.href='mytrip.jsp' ;">
+                </form>
+                <% }%>
+            </li>
+
+        </ul>
+    </div> <!-- end of tooplate_menu -->
+
+    <div id="tooplate_header">
+        <h1>Manager Mode</h1>
+    </div>
+
     <!-- -->
     <div id="tooplate_wrapper">
-    <s:actionerror cssStyle="color:red"/>
+        <s:actionerror cssStyle="color:red"/>
 
-    <div id="managerOp">
-        <div id="tooplate_header">
-            <h1>Manager Mode</h1>
+        <div id="managerOp">
+
+            <h4>You must fill all fields in this form.</h4>
+
+            <input type="radio" name="manager" value="insert" checked/>Insert Flight
+            <input type="radio" name="manager" value="search"  />Search Flight
+
+
+            <div id="insert" class="desc">
+
+                <form action="insertFlight.action" method="post">
+
+                    Flight Number: <input type="text" name="flightNumber" required><br>
+
+                    Departure Time: <input type="text" name="departTime" id="departTime" required><br>
+
+                    Arrival Time: <input type="text" name="arriTime" id="arriTime" required><br>
+
+                    Days Operated:  <input type="checkbox" name="daysOperated" value="Mon">Mon
+                                    <input type="checkbox" name="daysOperated" value="Tue">Tue
+                                    <input type="checkbox" name="daysOperated" value="Wed">Wed
+                                    <input type="checkbox" name="daysOperated" value="Thu">Thu
+                                    <input type="checkbox" name="daysOperated" value="Fri">Fri
+                                    <input type="checkbox" name="daysOperated" value="Sat">Sat
+                                    <input type="checkbox" name="daysOperated" value="Sun">Sun<br>
+
+                    <s:select label="Departure Airports"
+                              headerKey="-1" headerValue="Select Departure Airport"
+                              list="#session.managerAirports"
+                              name="departAirport" /> <br>
+
+                    <s:select label="Arrival Airports"
+                              headerKey="-1" headerValue="Select Arrival Airport"
+                              list="#session.managerAirports"
+                              name="arriAirport" /> <br>
+
+                    <s:select label="Airline"
+                              headerKey="-1" headerValue="Select Airline"
+                              list="#session.managerAirlines"
+                              name="airline" /> <br>
+
+                    <s:select label="Aircraft Model"
+                              headerKey="-1" headerValue="Select Aircraft Model"
+                              list="#session.managerAircraft"
+                              name="aircraftModel" /> <br>
+
+                    Price: <input type="text" name="price" required><br>
+
+                    <input type="submit" value="submit" id="submit">
+                </form>
+            </div>
+
+            <div id ="search" class="desc" hidden>
+                <form action="searchFlightByFlightNumber.action" method="post">
+                    Flight Number: <input type="text" name="flightNumber"><br>
+
+                    <input type="submit" value="submit">
+                </form>
+            </div>
         </div>
-
-        <h4>You must fill all fields in this form.</h4>
-
-        <input type="radio" name="manager" value="insert" checked/>Insert Flight
-        <input type="radio" name="manager" value="search"  />Search Flight
-
-
-        <div id="insert" class="desc">
-
-            <form action="insertFlight.action" method="post">
-
-                Flight Number: <input type="text" name="flightNumber" required><br>
-
-                Departure Time: <input type="text" name="departTime" id="departTime" required><br>
-
-                Arrival Time: <input type="text" name="arriTime" id="arriTime" required><br>
-
-                Days Operated:  <input type="checkbox" name="daysOperated" value="Mon">Mon
-                                <input type="checkbox" name="daysOperated" value="Tue">Tue
-                                <input type="checkbox" name="daysOperated" value="Wed">Wed
-                                <input type="checkbox" name="daysOperated" value="Thu">Thu
-                                <input type="checkbox" name="daysOperated" value="Fri">Fri
-                                <input type="checkbox" name="daysOperated" value="Sat">Sat
-                                <input type="checkbox" name="daysOperated" value="Sun">Sun<br>
-
-                <s:select label="Departure Airports"
-                          headerKey="-1" headerValue="Select Departure Airport"
-                          list="#session.managerAirports"
-                          name="departAirport" /> <br>
-
-                <s:select label="Arrival Airports"
-                          headerKey="-1" headerValue="Select Arrival Airport"
-                          list="#session.managerAirports"
-                          name="arriAirport" /> <br>
-
-                <s:select label="Airline"
-                          headerKey="-1" headerValue="Select Airline"
-                          list="#session.managerAirlines"
-                          name="airline" /> <br>
-
-                <s:select label="Aircraft Model"
-                          headerKey="-1" headerValue="Select Aircraft Model"
-                          list="#session.managerAircraft"
-                          name="aircraftModel" /> <br>
-
-                Price: <input type="text" name="price" required><br>
-
-                <input type="submit" value="submit" id="submit">
-            </form>
-        </div>
-
-        <div id ="search" class="desc" hidden>
-            <form action="searchFlightByFlightNumber.action" method="post">
-                Flight Number: <input type="text" name="flightNumber"><br>
-
-                <input type="submit" value="submit">
-            </form>
-        </div>
-
     </div>
+</div>
+    <div id="tooplate_footer_wrapper">
+        <div id="tooplate_footer">
+            Copyright © 2017 <a href="#">CS 542 Team 2</a>
+        </div>
     </div>
+
 </body>
 </html>
