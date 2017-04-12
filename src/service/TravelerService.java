@@ -4,6 +4,8 @@ package service;
 import dao.TravelerDAO;
 import model.Traveler;
 
+import java.util.List;
+
 
 public class TravelerService {
     public void registerNewTraveler(Traveler traveler){
@@ -29,6 +31,10 @@ public class TravelerService {
     public  Traveler getTraveler(String phone){
         TravelerDAO travelerDAO = new TravelerDAO();
         return  travelerDAO.getTraveler(phone);
+    }
 
+    public List<Traveler> getTravelerByUsername(String username){
+        TravelerDAO travelerDAO = new TravelerDAO();
+        return travelerDAO.getTravelerByUsername(username);
     }
 }

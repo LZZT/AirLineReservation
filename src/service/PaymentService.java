@@ -2,7 +2,15 @@ package service;
 
 
 import dao.PaymentDAO;
+import dao.TicketDAO;
+import dao.TransactionDAO;
 import model.Payment;
+import model.Ticket;
+import model.Transactions;
+import model.Traveler;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class PaymentService {
@@ -25,5 +33,14 @@ public class PaymentService {
             return false;
         }
         return true;
+    }
+
+
+
+    public List<Payment> getCreditCardByUsername(String username){
+
+        PaymentDAO paymentDAO = new PaymentDAO();
+        List<Payment> payments = paymentDAO.getPaymentInfoByUsername(username);
+        return payments;
     }
 }

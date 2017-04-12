@@ -47,7 +47,13 @@ public class searchReturningAction extends ActionSupport{
 
 
             if (null == session.getAttribute("returningDate")) {
-                return "JumpToCart";
+
+                if(null != session.getAttribute("username")){
+                    return "JumpToCart";
+                }else{
+                    session.setAttribute("goToCartDirectly", true);
+                    return "login";
+                }
             }
 
             Airport returningDepartureAirport = chosenGoingFlight.get(chosenGoingFlight.size() - 1).getArrivalAirport();
@@ -56,11 +62,9 @@ public class searchReturningAction extends ActionSupport{
             List<Airport> returningDepartureAirportsList = searchInfoService.findNearByAirportsInSameCity(returningDepartureAirport);
             List<Airport> returningArrivalAirportsList = searchInfoService.findNearByAirportsInSameCity(returningArrivalAirport);
 
-            //        List<Airport> returningDepartureAirportsList = new ArrayList<>(Arrays.asList(returningDepartureAirport));
-            //        List<Airport> returningArrivalAirportsList = new ArrayList<>(Arrays.asList(returningArrivalAirport));
-
             session.setAttribute("returningDepartureAirportsList", returningDepartureAirportsList);
             session.setAttribute("returningArrivalAirportsList", returningArrivalAirportsList);
+
             String returningDate = (String) session.getAttribute("returningDate");
             List<List<Flight>> validReturningFlightsList = searchInfoService.handleSingleTrip(returningDepartureAirportsList, returningArrivalAirportsList, returningDate);
 

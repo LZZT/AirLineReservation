@@ -44,7 +44,12 @@ public class CartAction extends ActionSupport{
         }
 
         session.setAttribute("returningPrice", price);
-        return SUCCESS;
 
+        if(session.getAttribute("username") != null){
+            return SUCCESS;
+        }else{
+            session.setAttribute("goToCartDirectly", true);
+            return LOGIN;
+        }
     }
 }

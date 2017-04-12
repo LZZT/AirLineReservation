@@ -56,18 +56,16 @@ public class LoginAction extends ActionSupport{
             this.addActionError("Invalid password!");
             return INPUT;
         }
-        
-        ActionContext actionContext = ActionContext.getContext();
-        Map<String, Object> sessionMap = actionContext.getSession();
-        sessionMap.put("username", username);
+
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-//        List<List<Ticket>> transactionsListSet = transactionService.getTransactionAndTicket(username);
-//        session.setAttribute("transactionsListSet",transactionsListSet);
-        if (null ==session.getAttribute("leavingFlightObjectSet") && null==session.getAttribute("returningFlightObjectSet"))
-            return SUCCESS;
-        else
-            return NONE;
-    }
+        session.setAttribute("username", username);
 
+        if(session.getAttribute("goToCartDirectly") != null && (boolean)session.getAttribute("goToCartDirectly") == true){
+            session.removeAttribute("goToCartDirectly");
+            return "JumpToCart";
+        }
+
+        return SUCCESS;
+    }
 }

@@ -2,6 +2,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <%@ page import="model.Traveler" %>
 <%@ page import="java.util.List" %>
+<%@ page import="service.TravelerService" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -42,9 +43,10 @@
 
                 <%
                     if (null == session.getAttribute("username")) {
+                        response.sendRedirect("login.jsp");
                 %>
-                <input type="button" value="Login" onclick="location.href='login.jsp';">
-                <input type="button" value="Register" onclick="location.href='register.jsp';">
+                <%--<input type="button" value="Login" onclick="location.href='login.jsp';">--%>
+                <%--<input type="button" value="Register" onclick="location.href='register.jsp';">--%>
 
                 <% } else {
                 %>
@@ -70,13 +72,13 @@
 
         <script src="jquery-1.7.1.min.js"></script>
         <%--<script>--%>
-            <%--$(document).ready(function () {--%>
-                <%--$("#btn").click(function () {--%>
-                    <%--if ($(":radio:checked").length == 0) {--%>
-                        <%--alert("你的性别未选择");--%>
-                    <%--}--%>
-                <%--});--%>
-            <%--});--%>
+        <%--$(document).ready(function () {--%>
+        <%--$("#btn").click(function () {--%>
+        <%--if ($(":radio:checked").length == 0) {--%>
+        <%--alert("你的性别未选择");--%>
+        <%--}--%>
+        <%--});--%>
+        <%--});--%>
         <%--</script>--%>
         <script type="text/javascript">
             $(function () {
@@ -150,28 +152,72 @@
 
     <div id="tooplate_middle2">
 
-        <s:actionerror cssStyle="color:red"/>
+        <h3>Choose traveler from Order history</h3>
 
-        <form name="TravelersForm" action="traveler.action" onsubmit="return validateForm()" method="post">
+        <table width="80%" align="center" border="1">
+            <tr>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Gender</th>
+                <th>Phone</th>
+            </tr>
 
-            <%! int i;%>
-            <% for (i = 1; i <= Integer.valueOf((String) session.getAttribute("ticketsNumber")); i++) {%>
+                <% TravelerService ts = new TravelerService();
+            String username = (String) session.getAttribute("username");
+            List<Traveler> travelerList= ts.getTravelerByUsername(username);
 
-            <h3>Passenger <%= i%>:</h3>
-            <input type="radio" name="travelerList[<%= i-1%>].gender" value="M"/>male
-            <input type="radio" name="travelerList[<%= i-1%>].gender" value="F"/>female
-            <br>
-            Last Name: <input type="text" name="travelerList[<%= i-1%>].lastname"><br>
-            First Name: <input type="text" name="travelerList[<%= i-1%>].firstname"><br>
-            Date of birth: <input type="text" name="travelerList[<%= i-1%>].dob" class="dateTxt" id= <%= i-1%>><br>
-            Phone: <input type="text" name="travelerList[<%= i-1%>].phone"><br>
-            Email: <input type="email" name="travelerList[<%= i-1%>].email"><br>
-            <br>
-            <%}%>
+            session.setAttribute("TravelersHistoryList",travelerList);
+
+            for (int i = 0; i<travelerList.size(); i++) {
+
+               %>
+
+            <form action="traveler.action" method="post">
+                <tr>
+                    <td>
+                        <%= travelerList.get(i).getLastname() %>
+                    </td>
+                    <td>
+                        <%= travelerList.get(i).getFirstname() %>
+                    </td>
+                    <td>
+                        <%= travelerList.get(i).getGender() %>
+                    </td>
+                    <td>
+                        <%= travelerList.get(i).getPhone() %>
+                    </td>
+
+                    <td>
+                        <input type="checkbox" name="travelerHistory" value= <%= i%>"/>
+                    </td>
+
+                </tr>
+                <%--</form>--%>
 
 
-            <input type="submit" value="submit">
-        </form>
+           <%}%>
+        </table>
+
+            <%--<form name="TravelersForm" action="traveler.action" onsubmit="return validateForm()" method="post">--%>
+
+                <%! int i;%>
+                <% for (i = 1; i <= Integer.valueOf((String) session.getAttribute("ticketsNumber")); i++) {%>
+
+                <h3>Passenger <%= i%>:</h3>
+                <input type="radio" name="travelerList[<%= i-1%>].gender" value="M"/>male
+                <input type="radio" name="travelerList[<%= i-1%>].gender" value="F"/>female
+                <br>
+                Last Name: <input type="text" name="travelerList[<%= i-1%>].lastname"><br>
+                First Name: <input type="text" name="travelerList[<%= i-1%>].firstname"><br>
+                Date of birth: <input type="text" name="travelerList[<%= i-1%>].dob" class="dateTxt" id= <%= i-1%>><br>
+                Phone: <input type="text" name="travelerList[<%= i-1%>].phone"><br>
+                Email: <input type="email" name="travelerList[<%= i-1%>].email"><br>
+                <br>
+                <%}%>
+
+
+                <input type="submit" value="submit">
+            </form>
     </div>
 </div>
 

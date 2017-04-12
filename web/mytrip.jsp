@@ -23,6 +23,11 @@
 <%
     TransactionService transactionService = new TransactionService();
     String username= (String) session.getAttribute("username");
+
+    if(username == null){
+        response.sendRedirect("login.jsp");
+    }
+
     Map<Transactions,List<Ticket>> ticketsListSet = transactionService.getTransactionAndTicket2(username);
     session.setAttribute("ticketsListSet",ticketsListSet);
 %>

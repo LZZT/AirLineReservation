@@ -6,6 +6,9 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import util.HibernateUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class PaymentDAO {
 
@@ -75,6 +78,37 @@ public class PaymentDAO {
         }
 
         return true;
+    }
+
+    public List<Payment> getPaymentInfoByUsername(String username){
+        List<Payment> paymentsList=null;
+        Session session = HibernateUtil.openSession();
+        Transaction tx = session.beginTransaction();
+
+        try{
+
+            String hql1 = String.format("SELECT t.cardnumber from Transactions t WHERE t.username = '%s'", username);
+            Query query1 = session.createQuery(hql1);
+
+//            String hql = "SELECT cardnumber FROM Transactions WHERE username = :username";
+//            Query query = session.createQuery(hql);
+//            query.setParameter("username", username);
+
+            List<String> cardNumberList =(List<String>)query1.list();
+            paymentsList = new ArrayList<>();
+            for(String o: cardNumberList){
+                System.out.println(o);
+                paymentsList.add(getPayment(o));
+            }
+            tx.commit();
+        }catch(Exception ex){
+            if(null != tx){
+                tx.rollback();
+            }
+        }finally {
+            HibernateUtil.close(session);
+        }
+        return paymentsList;
     }
 
 }
