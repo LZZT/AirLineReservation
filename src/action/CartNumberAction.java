@@ -35,11 +35,10 @@ public class CartNumberAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
 
-        if(null == session.getAttribute("username") &&
+        if(null == session.getAttribute("username") ||
                 null == session.getAttribute("departingDate") ||
                 null == session.getAttribute("leavingFlightObjectSet") ||
-                
-                (null == session.getAttribute("returningDate") && null == session.getAttribute("returningFlightObjectSet"))){
+                (null != session.getAttribute("returningDate") && null == session.getAttribute("returningFlightObjectSet"))){
 
             return "login";
         }
