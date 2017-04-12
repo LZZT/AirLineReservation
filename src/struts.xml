@@ -141,23 +141,31 @@
             <result name="error" type="redirect">/managerActionError.jsp</result>
             <result name="success" type="redirect">/managerActionSuccessful.jsp</result>
             <result name="input">/manager.jsp</result>
+            <interceptor-ref name="loginInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
         </action>
 
         <action name="updateFlight" class="action.ManagerAction" method="updateFlight">
             <result name="error" type="redirect">/managerActionError.jsp</result>
             <result name="success" type="redirect">/managerActionSuccessful.jsp</result>
             <result name="input">/updateFlight.jsp</result>
+            <interceptor-ref name="loginInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
         </action>
 
         <action name="deleteFlight" class="action.ManagerAction" method="deleteFlight">
             <result name="error" type="redirect">/managerActionError.jsp</result>
             <result name="success" type="redirect">/managerActionSuccessful.jsp</result>
             <result name="input">/managerSearchResult.jsp</result>
+            <interceptor-ref name="loginInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
         </action>
 
         <action name="reloadDB" class="action.ManagerAction" method="getAirportAndAirline">
             <result name="success" type="redirect">/manager.jsp</result>
             <result name="input">/index.jsp</result>
+            <interceptor-ref name="loginInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
         </action>
 
         <action name="ResetPassword" class="action.ResetPasswordAction" method="UserInfo">

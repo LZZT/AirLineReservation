@@ -35,11 +35,15 @@
 </head>
 
 <body>
-
 <br><br>
 
-<div id="tooplate_wrapper">
+<%
+    if (null == session.getAttribute("username") || !session.getAttribute("username").equals("root")) {
+        response.sendRedirect("login.jsp");
+    }
+%>
 
+<div id="tooplate_wrapper">
     <div id="tooplate_menu">
         <ul>
             <li><a href="index.jsp" class="current">Home</a></li>
@@ -132,12 +136,11 @@
 </div>
 
 
-    <div id="tooplate_footer_wrapper">
-        <div id="tooplate_footer">
-            Copyright © 2017 <a href="#">CS 542 Team 2</a>
-        </div>
+<div id="tooplate_footer_wrapper">
+    <div id="tooplate_footer">
+        Copyright © 2017 <a href="#">CS 542 Team 2</a>
     </div>
-
+</div>
 
 </body>
 </html>
