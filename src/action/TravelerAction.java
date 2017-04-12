@@ -46,11 +46,13 @@ public class TravelerAction extends ActionSupport{
 
         List<Traveler> tList = (List<Traveler>)session.getAttribute("TravelersHistoryList");
 
-        for (String s: travelerHistory) {
-            String indexNumber = s.split("\"")[0];
-            travelerList.add(tList.get(Integer.valueOf(indexNumber)));
+        if(null != travelerList && travelerList.size()>0) {
+            for (String s : travelerHistory) {
+                String indexNumber = s.split("\"")[0];
+                travelerList.add(tList.get(Integer.valueOf(indexNumber)));
+            }
         }
-        
+
         session.setAttribute("travelerList", travelerList);
         return SUCCESS;
     }
