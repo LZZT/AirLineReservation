@@ -231,7 +231,7 @@
                 <th>CVV</th>
                 <th>Billing Address</th>
             </tr>
-            
+
             <s:iterator value="#session.payment" id="payment">
 
                 <tr>

@@ -44,9 +44,9 @@
 
             password: <input type="password" name="password"/><a href="ResetPassword.jsp">forget password?</a><br>
 
-            <input type="button" onclick="location.href='register.jsp';" value="Register"/>
+            <input type="button" onclick="location.href='register.jsp'; " value="Register" style="font-size: 100px"/>
 
-            <input type="submit" value="Login">
+            <input type="submit" value="Login" style="font-size: 100px">
 
         </form>
 

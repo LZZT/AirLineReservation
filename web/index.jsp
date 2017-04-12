@@ -69,15 +69,15 @@
                 <%
                     if (null == session.getAttribute("username")) {
                 %>
-                <input type="button" value="Login" onclick="location.href='login.jsp';">
-                <input type="button" value="Register" onclick="location.href='register.jsp';">
+                <input type="button" value="Login"   style="font-size: 15px" onclick="location.href='login.jsp';">
+                <input type="button" value="Register"  style="font-size: 15px" onclick="location.href='register.jsp';">
 
                 <% } else {
                 %>
                 <form action="logout.action" method="post">
                     <h4>Hi! ${sessionScope.username}</h4>
-                    <input type="submit" value="Logout"/>
-                    <input type="button" value="My trip" onclick="location.href='mytrip.jsp' ;">
+                    <input type="submit"  value="Logout"/>
+                    <input type="button" style="font-size: 15px" value="My trip" onclick="location.href='mytrip.jsp' ;">
                 </form>
                 <% }%>
 
@@ -97,7 +97,7 @@
 
         <s:actionerror cssStyle="color:red"/>
         <form action="searchGoingFlight.action" method="post">
-            <input type="radio" name="tripType" id="singleTrip" value="singleTrip" />Single Trip
+            <input type="radio" name="tripType" id="singleTrip" value="singleTrip" checked="checked"/>Single Trip
             <input type="radio" name="tripType" id="roundTrip" value="roundTrip"/>Round Trip
 
 
