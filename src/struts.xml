@@ -10,14 +10,7 @@
     <package name="action" extends="struts-default">
 
         <interceptors>
-
-            <interceptor name="loginInterceptor" class="interceptor.LoginInterceptor"></interceptor>
-
-            <interceptor-stack name="AirLineReservationInterceptorStack">
-                <interceptor-ref name="loginInterceptor"></interceptor-ref>
-                <interceptor-ref name="defaultStack"></interceptor-ref>
-            </interceptor-stack>
-
+            <interceptor name="loginInterceptor" class="interceptor.LoginInterceptor"/>
         </interceptors>
 
         <global-results>
@@ -115,14 +108,20 @@
         <action name="cartNumber" class="action.CartNumberAction" method="cart">
             <result name="success" type="redirect">/traveler.jsp</result>
             <result name="error" type="redirect">/purchaseError.jsp</result>
+            <interceptor-ref name="loginInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
         </action>
 
         <action name="traveler" class="action.TravelerAction" method="add">
             <result name="success" type="redirect">/payment.jsp</result>
+            <interceptor-ref name="loginInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
         </action>
 
         <action name="transAction" class="action.TransactionAction" method="TransInfo">
             <result name="success" type="redirect">/searchSuccessful.jsp</result>
+            <interceptor-ref name="loginInterceptor"></interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
         </action>
 
         <action name="payment" class="action.PaymentAction" method="PaymentInfo">
