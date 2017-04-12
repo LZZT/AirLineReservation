@@ -18,11 +18,8 @@ public class LoginInterceptor extends AbstractInterceptor {
         Map<String, Object> map = actionInvocation.getInvocationContext().getSession();
 
         if (null == map.get("username")){
-            System.out.println("============================Login interceptor invoked");
-            return "Login";
+            return "login";
         }
-
         return actionInvocation.invoke();
     }
-
 }

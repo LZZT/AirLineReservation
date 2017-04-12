@@ -94,7 +94,6 @@ public class PaymentAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
 
-
         if(null != index && index instanceof String){
             String indexNumber = ((String)index).split("/")[0];
             Payment p = (Payment) ((List)session.getAttribute("paymentsHistoryList")).get(Integer.valueOf(indexNumber));

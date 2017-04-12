@@ -39,7 +39,6 @@ public class CartNumberAction extends ActionSupport {
                 null == session.getAttribute("departingDate") ||
                 null == session.getAttribute("leavingFlightObjectSet") ||
                 (null != session.getAttribute("returningDate") && null == session.getAttribute("returningFlightObjectSet"))){
-
             return "login";
         }
 

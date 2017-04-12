@@ -12,11 +12,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Blue Arc Theme - Free Website Template</title>
+    <title>Payment</title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
 
     <link href="tooplate_style.css" rel="stylesheet" type="text/css"/>
+
 
 </head>
 <body>
@@ -35,9 +36,10 @@
 
                 <%
                     if (null == session.getAttribute("username")) {
+                        response.sendRedirect("login.jsp");
                 %>
-                <input type="button" value="Login" onclick="location.href='login.jsp';">
-                <input type="button" value="Register" onclick="location.href='register.jsp';">
+                <%--<input type="button" value="Login" onclick="location.href='login.jsp';">--%>
+                <%--<input type="button" value="Register" onclick="location.href='register.jsp';">--%>
 
                 <% } else {
                 %>
