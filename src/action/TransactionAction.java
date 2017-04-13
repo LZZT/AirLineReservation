@@ -19,9 +19,11 @@ public class TransactionAction extends ActionSupport {
     private TransactionService transactionService = new TransactionService();
     private TicketService ticketService = new TicketService();
     private CustomerService customerService = new CustomerService();
+    private ValidateTicketService validateTicketService = new ValidateTicketService();
     public String TransInfo() {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
+
         String departingDate = (String) session.getAttribute("departingDate");
         String returningDate = (String) session.getAttribute("returningDate");
 
@@ -71,6 +73,20 @@ public class TransactionAction extends ActionSupport {
                     travelerService.registerNewTraveler(t);
                 }
                 for (Flight flight : leavingFlightObjectSet) {
+                    int recordNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(), flightdate[leavingFlightObjectSet.indexOf(flight)]);
+                    if (recordNumber == 0) {
+                        ValidateTicket validateTicket = new ValidateTicket();
+                        validateTicket.setFlightNumber(flight.getFlightNumber());
+                        validateTicket.setFlightDate(flightdate[leavingFlightObjectSet.indexOf(flight)]);
+                        validateTicket.setCapacity(validateTicketService.getCapacity(flight.getAircraftModel().getModel()));
+                        validateTicket.setTotalTicketNumber(1);
+                        validateTicketService.recordValidateTicket(validateTicket);
+                    } else {
+                        validateTicketService.updateValidateTicket(recordNumber + 1, flight.getFlightNumber(), flightdate[leavingFlightObjectSet.indexOf(flight)]);
+                    }
+
+
+
                     Ticket ticket = new Ticket();
                     ticket.setFlightNumber(flight.getFlightNumber());
                     ticket.setTransactionID(transactionID);

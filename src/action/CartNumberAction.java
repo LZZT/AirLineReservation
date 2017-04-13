@@ -66,17 +66,17 @@ public class CartNumberAction extends ActionSupport {
                 if (!validateTicketService.isAvaliable(flight, flightdate[flightObjectSet.indexOf(flight)])) {
                     return ERROR;
                 }
-                int recordNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(), flightdate[flightObjectSet.indexOf(flight)]);
-                if (recordNumber == 0) {
-                    ValidateTicket validateTicket = new ValidateTicket();
-                    validateTicket.setFlightNumber(flight.getFlightNumber());
-                    validateTicket.setFlightDate(flightdate[flightObjectSet.indexOf(flight)]);
-                    validateTicket.setCapacity(validateTicketService.getCapacity(flight.getAircraftModel().getModel()));
-                    validateTicket.setTotalTicketNumber(1);
-                    validateTicketService.recordValidateTicket(validateTicket);
-                } else {
-                    validateTicketService.updateValidateTicket(recordNumber + 1, flight.getFlightNumber(), flightdate[flightObjectSet.indexOf(flight)]);
-                }
+//                int recordNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(), flightdate[flightObjectSet.indexOf(flight)]);
+//                if (recordNumber == 0) {
+//                    ValidateTicket validateTicket = new ValidateTicket();
+//                    validateTicket.setFlightNumber(flight.getFlightNumber());
+//                    validateTicket.setFlightDate(flightdate[flightObjectSet.indexOf(flight)]);
+//                    validateTicket.setCapacity(validateTicketService.getCapacity(flight.getAircraftModel().getModel()));
+//                    validateTicket.setTotalTicketNumber(1);
+//                    validateTicketService.recordValidateTicket(validateTicket);
+//                } else {
+//                    validateTicketService.updateValidateTicket(recordNumber + 1, flight.getFlightNumber(), flightdate[flightObjectSet.indexOf(flight)]);
+//                }
             }
         }
         return SUCCESS;
