@@ -83,7 +83,7 @@
 <br><br>
 
 <%
-    if (null == session.getAttribute("username") || !session.getAttribute("username").equals("root")) {
+    if (null == session.getAttribute("username") || !((String)session.getAttribute("username")).equals("root")) {
         response.sendRedirect("login.jsp");
     }
 %>
