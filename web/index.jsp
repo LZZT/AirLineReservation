@@ -50,6 +50,19 @@
         });
     </script>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#submit').click(function() {
+                checked = $("input[type=checkbox]:checked").length;
+
+                if(!checked) {
+                    alert("You must select one type of trip.");
+                    return false;
+                }
+            });
+        });
+    </script>
+
 </head>
 
 <body>
@@ -97,7 +110,7 @@
 
         <s:actionerror cssStyle="color:red"/>
         <form action="searchGoingFlight.action" method="post">
-            <input type="radio" name="tripType" id="singleTrip" value="singleTrip" checked="checked"/>Single Trip
+            <input type="radio" name="tripType" id="singleTrip" value="singleTrip"/>Single Trip
             <input type="radio" name="tripType" id="roundTrip" value="roundTrip"/>Round Trip
 
 
@@ -107,7 +120,7 @@
             Departing Date: <input type="text" id="datepicker1" name="departingDate" readonly/><br>
             Returning Date: <input type="text" id="datepicker2" name="returningDate" readonly/><br>
 
-            <input type="submit" value="Search"/>
+            <input type="submit" value="Search" id="submit"/>
 
         </form>
     </div>
