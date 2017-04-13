@@ -23,6 +23,7 @@
 
     <style>
         nav {
+            font-size: large;
             float: left;
             max-width: 200px;
             margin: 0;
@@ -30,6 +31,7 @@
         }
 
         main {
+
             margin-left: 300px;
             border-left: 1px solid gray;
             padding: 1em;
@@ -62,10 +64,10 @@
 
     <div id="tooplate_menu">
         <ul>
-            <li><a href="index.jsp" class="current">Home</a></li>
-            <li><a href="reloadDB.action">Manager</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.jsp" class="current" style="font-size: large">Home</a></li>
+            <li><a href="reloadDB.action" style="font-size: large">Manager</a></li>
+            <li><a href="about.html" style="font-size: large">About Us</a></li>
+            <li><a href="contact.html" style="font-size: large">Contact</a></li>
             <li>
 
                 <%
@@ -243,7 +245,7 @@
                 }%>
                         <td>
                             <input type="hidden" name="index" value=<%=i%>/>
-                            <input type="submit" value="Select"/>
+                            <input type="submit" value="Select" style="font-size: 30px"/>
                         </td>
                     </tr>
             </form>

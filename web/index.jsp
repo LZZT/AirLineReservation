@@ -60,10 +60,10 @@
 
     <div id="tooplate_menu">
         <ul>
-            <li><a href="index.jsp" class="current">Home</a></li>
-            <li><a href="reloadDB.action">Manager</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.jsp" class="current" style="font-size: large">Home</a></li>
+            <li><a href="reloadDB.action" style="font-size: large">Manager</a></li>
+            <li><a href="about.html" style="font-size: large">About Us</a></li>
+            <li><a href="contact.html" style="font-size: large">Contact</a></li>
             <li>
 
                 <%
@@ -76,7 +76,7 @@
                 %>
                 <form action="logout.action" method="post">
                     <h4>Hi! ${sessionScope.username}</h4>
-                    <input type="submit"  value="Logout"/>
+                    <input type="submit"   style="font-size: 15px" value="Logout"/>
                     <input type="button" style="font-size: 15px" value="My trip" onclick="location.href='mytrip.jsp' ;">
                 </form>
                 <% }%>
@@ -107,7 +107,7 @@
             Departing Date: <input type="text" id="datepicker1" name="departingDate" readonly/><br>
             Returning Date: <input type="text" id="datepicker2" name="returningDate" readonly/><br>
 
-            <input type="submit" value="Search"/>
+            <input type="submit" value="Search"  style="font-size: 100px"/>
 
         </form>
     </div>
