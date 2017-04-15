@@ -12,8 +12,17 @@ public class Traveler {
     private String phone;
     private String gender;
     private Set<Customer> customerSet;
+    private int rowIndex;
 
-//    public void setCustomer(Customer customer){
+    public int getRowIndex() {
+        return rowIndex;
+    }
+
+    public void setRowIndex(int rowIndex) {
+        this.rowIndex = rowIndex;
+    }
+
+    //    public void setCustomer(Customer customer){
 //        this.customerSet.add(customer);
 //    }
 
