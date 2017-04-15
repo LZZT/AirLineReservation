@@ -1,4 +1,6 @@
-
+<%@ page import="model.Flight" %>
+<%@ page import="java.util.List" %>
+<%@ page import="service.ValidateTicketService" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
@@ -66,45 +68,58 @@
                 <th>Departure Airport</th>
                 <th>Arrival Airport</th>
                 <th>Price</th>
+                <th>Remain</th>
+
             </tr>
 
-            <s:iterator value='#session.leavingFlightObjectSet' id="flightList">
-                <s:iterator value='%{#flightList}' id="flight">
+            <%
+                List<Flight> currentFlights = (List<Flight>) session.getAttribute("leavingFlightObjectSet");
 
-                    <tr>
+                for(Flight flight : currentFlights){
+                    ValidateTicketService validateTicketService = new ValidateTicketService();
+                    int totalTicketNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(),String.valueOf(flight.getDepartureTime()));
+                    int remain =validateTicketService.getCapacity(flight.getAircraftModel().getModel())-totalTicketNumber;
 
-                        <td>
-                            <s:property value='%{#flight.flightNumber}'/>
-                        </td>
-                        <td>
-                            <s:property value='%{#flight.airline.code}'/>
-                        </td>
-                        <td>
-                            <s:property value='%{#flight.aircraftModel.model}'/>
-                        </td>
-                        <td>
-                            <% out.println((String) session.getAttribute("departingDate"));%>
-                        </td>
-                        <td>
-                            <s:property value='%{#flight.departureTime}'/>
-                        </td>
-                        <td>
-                            <s:property value='%{#flight.arrivalTime}'/>
-                        </td>
-                        <td>
-                            <s:property value='%{#flight.departureAirport.name}'/>
-                        </td>
-                        <td>
-                            <s:property value='%{#flight.arrivalAirport.name}'/>
-                        </td>
-                        <td>
-                            <s:property value='%{#flight.Price}'/><br>
-                        </td>
+            %>
 
-                    </tr>
-                </s:iterator>
-            </s:iterator>
 
+
+            <tr>
+                <td>
+                    <%= flight.getFlightNumber() %>
+                </td>
+                <td>
+                    <%= flight.getAirline().getCode()%>
+                </td>
+                <td>
+                    <%= flight.getAircraftModel().getModel() %>
+                </td>
+                <td>
+                    <% out.println((String) session.getAttribute("departingDate"));%>
+                </td>
+                <td>
+                    <%= flight.getDepartureTime()%>
+                </td>
+                <td>
+                    <%= flight.getArrivalTime()%>
+                </td>
+
+                <td>
+                    <%= flight.getDepartureAirport().getName() %>
+                </td>
+                <td>
+                    <%= flight.getArrivalAirport().getName()%>
+                </td>
+                <td>
+                    <%= flight.getPrice()%>
+                </td>
+                <td>
+                    <%= remain%>
+                </td>
+            </tr>
+                    <%
+
+                    }%>
         </table>
 
         <% if(null != session.getAttribute("validReturningFlights")) {%>
@@ -124,47 +139,56 @@
                 <th>Departure Airport</th>
                 <th>Arrival Airport</th>
                 <th>Price</th>
+                <th>Remain</th>
+
 
             </tr>
 
-            <s:iterator value='#session.returningFlightObjectSet' id="flightList">
+            <%
+                List<Flight> returningFlightObjectSet = (List<Flight>) session.getAttribute("returningFlightObjectSet");
 
-                <s:iterator value='%{#flightList}' id="flight">
+                for(Flight flight : returningFlightObjectSet){
+                    ValidateTicketService validateTicketService = new ValidateTicketService();
+                    int totalTicketNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(),String.valueOf(flight.getDepartureTime()));
+                    int remain =validateTicketService.getCapacity(flight.getAircraftModel().getModel())-totalTicketNumber;
+            %>
 
-                    <tr>
+            <tr>
+                <td>
+                    <%= flight.getFlightNumber() %>
+                </td>
+                <td>
+                    <%= flight.getAirline().getCode()%>
+                </td>
+                <td>
+                    <%= flight.getAircraftModel().getModel() %>
+                </td>
+                <td>
+                    <% out.println((String) session.getAttribute("returningDate"));%>
+                </td>
+                <td>
+                    <%= flight.getDepartureTime()%>
+                </td>
+                <td>
+                    <%= flight.getArrivalTime()%>
+                </td>
 
-                        <td>
-                            <s:property value='%{#flight.flightNumber}'/>
-                        </td>
-                        <td>
-                            <s:property value='%{#flight.airline.code}'/>
-                        </td>
-                        <td>
-                            <s:property value='%{#flight.aircraftModel.model}'/>
-                        </td>
-                        <td>
-                            <% out.println((String) session.getAttribute("returningDate"));%>
-                        </td>
-                        <td>
-                            <s:property value='%{#flight.departureTime}'/>
-                        </td>
-                        <td>
-                            <s:property value='%{#flight.arrivalTime}'/>
-                        </td>
-                        <td>
-                            <s:property value='%{#flight.departureAirport.name}'/>
-                        </td>
-                        <td>
-                            <s:property value='%{#flight.arrivalAirport.name}'/>
-                        </td>
-                        <td>
-                            <s:property value='%{#flight.Price}'/><br>
-                        </td>
+                <td>
+                    <%= flight.getDepartureAirport().getName() %>
+                </td>
+                <td>
+                    <%= flight.getArrivalAirport().getName()%>
+                </td>
+                <td>
+                    <%= flight.getPrice()%>
+                </td>
+                <td>
+                    <%= remain%>
+                </td>
+            </tr>
+            <%
 
-                    </tr>
-                </s:iterator>
-            </s:iterator>
-
+                }%>
         </table>
         <% } %>
 

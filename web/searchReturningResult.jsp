@@ -11,6 +11,7 @@
 <%@ page import="java.lang.reflect.Array" %>
 <%@ page import="model.Flight" %>
 <%@ page import="model.Airport" %>
+<%@ page import="service.ValidateTicketService" %>
 
 
 <html>
@@ -30,7 +31,7 @@
         }
 
         main {
-            margin-left: 300px;
+            margin-left: 50px;
             border-left: 1px solid gray;
             padding: 1em;
             overflow: hidden;
@@ -195,6 +196,7 @@
                     <th>Departure Airport</th>
                     <th>ArrivalAirport</th>
                     <th>Price</th>
+                    <th>Remain</th>
                     <th>&nbsp</th>
                 </tr>
 
@@ -211,6 +213,9 @@
 
                     for(Flight flight : currentFlights){
 
+                    ValidateTicketService validateTicketService = new ValidateTicketService();
+                    int totalTicketNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(),String.valueOf(flight.getDepartureTime()));
+                    int remain =validateTicketService.getCapacity(flight.getAircraftModel().getModel())-totalTicketNumber;
                 %>
                         <tr>
                             <td>
@@ -237,6 +242,10 @@
                             </td>
                             <td>
                                 <%= flight.getPrice()%>
+                            </td>
+                            <td>
+
+                                <%= remain%>
                             </td>
 
                 <%
