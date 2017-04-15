@@ -118,6 +118,13 @@
             <interceptor-ref name="defaultStack"></interceptor-ref>
         </action>
 
+        <action name="delete" class="action.TravelerAction" method="delete">
+            <result name="success">/traveler.jsp</result>
+            <result name="input">/traveler.jsp</result>
+        </action>
+
+
+
         <action name="transAction" class="action.TransactionAction" method="TransInfo">
             <result name="success" type="redirect">/searchSuccessful.jsp</result>
             <interceptor-ref name="loginInterceptor"></interceptor-ref>

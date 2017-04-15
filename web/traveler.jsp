@@ -35,7 +35,7 @@
             var snoCol = document.createElement("input");
             snoCol.type = "text";
             snoCol.name = "travelerSet[" + (rowCount - 1) + "].lastname";
-            snoCol.value = rowCount;
+//            snoCol.value = rowCount;
             cell1.appendChild(snoCol);
 
             var cell2 = row.insertCell(1); //to insert second column
@@ -76,18 +76,37 @@
             rowRemoveCol.name = "reqlink[]";
             cell7.appendChild(rowRemoveCol);
 
-//            return false;
+            return false;
 
         }
 
         function goSubmit(rowindex) {
-            document.ticketForm.rowindex.value = rowindex;
-            document.ticketForm.action = "delete";
-            document.ticketForm.submit();
+//            var Form = document.getElementsByID("TravelerForm");
+//            var rowCountofForm = Form.row.length;
+//            var table = document.getElementById(tableID);
+//            var rowCount = table.rows.length;
+
+            document.TravelerForm.pdTable.rowIndex.value=rowindex
+
+            document.TravelerForm.action="delete";
+            document.TravelerForm.submit();
 
         }
 
     </script>
+
+    <%--<script type="text/javascript">--%>
+        <%--$(document).ready(function () {--%>
+            <%--$('#submit').click(function() {--%>
+                <%--checked = $("input[type=radio]:checked").length;--%>
+
+                <%--if(!checked) {--%>
+                    <%--alert("You must select one type of trip.");--%>
+                    <%--return false;--%>
+                <%--}--%>
+            <%--});--%>
+        <%--});--%>
+    <%--</script>--%>
 
 
 </head>
@@ -147,7 +166,8 @@
     <!-- end of header -->
 
     <div id="tooplate_middle2">
-        <s:form action="traveler" method="post">
+        <s:form name="TravelerForm" action="traveler" method="post">
+            <s:hidden name="rowindex"/>
 
 
             <table width="100%" align="center" border="1">
