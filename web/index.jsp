@@ -53,7 +53,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#submit').click(function() {
-                checked = $("input[type=checkbox]:checked").length;
+                checked = $("input[type=radio]:checked").length;
 
                 if(!checked) {
                     alert("You must select one type of trip.");
