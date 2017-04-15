@@ -68,6 +68,7 @@ public class TravelerAction extends ActionSupport {
         }
 
         session.setAttribute("travelerList", travelersList);
+        session.setAttribute("ticketsNumber",travelersList.size());
         return SUCCESS;
     }
 

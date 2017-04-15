@@ -28,7 +28,7 @@ public class TransactionAction extends ActionSupport {
         String returningDate = (String) session.getAttribute("returningDate");
 
         int leavingPrice = (int) session.getAttribute("leavingPrice");
-        int ticketsNumber = Integer.valueOf((String) session.getAttribute("ticketsNumber"));
+        int ticketsNumber = (Integer) session.getAttribute("ticketsNumber");
         int totalprice = 0;
         try {
             int returningPrice = (int) session.getAttribute("returningPrice");
