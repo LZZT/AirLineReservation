@@ -175,10 +175,6 @@
         <s:actionerror cssStyle="color:red"/>
         <form action="cartNumber.action" method="post">
 
-            <h2>Please select total number of travelers:</h2>
-            <input type="number" name="ticketsNumber" min="1"/>
-
-            <input type="reset" value="reset"/>
             <input type="button" value="Re-select" onclick="location.href='searchReturningResult.jsp'"/><br>
             <input type="submit" value="Next"/>
 

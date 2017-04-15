@@ -20,16 +20,20 @@ import java.util.ArrayList;
  */
 public class CartNumberAction extends ActionSupport {
 
-    private String ticketsNumber;
+//    private String ticketsNumber;
+//
+//    public String getTicketsNumber() {
+//        return ticketsNumber;
+//    }
+//
+//    public void setTicketsNumber(String ticketsNumber) {
+//        this.ticketsNumber = ticketsNumber;
+//    }
 
-    public String getTicketsNumber() {
-        return ticketsNumber;
-    }
 
-    public void setTicketsNumber(String ticketsNumber) {
-        this.ticketsNumber = ticketsNumber;
-    }
     private ValidateTicketService validateTicketService=new ValidateTicketService();
+
+
     public String cart() throws Exception {
 
         HttpServletRequest request = ServletActionContext.getRequest();
@@ -42,7 +46,7 @@ public class CartNumberAction extends ActionSupport {
             return "login";
         }
 
-        session.setAttribute("ticketsNumber", ticketsNumber);
+//        session.setAttribute("ticketsNumber", ticketsNumber);
         String departingDate = (String) session.getAttribute("departingDate");
         String returningDate = (String) session.getAttribute("returningDate");
         List<Flight> leavingFlightObjectSet = (List<Flight>) session.getAttribute("leavingFlightObjectSet");
@@ -61,11 +65,11 @@ public class CartNumberAction extends ActionSupport {
             }
         }
 
-        for (int i = 0; i < Integer.valueOf(ticketsNumber); i++) {
-            for (Flight flight : flightObjectSet) {
-                if (!validateTicketService.isAvaliable(flight, flightdate[flightObjectSet.indexOf(flight)])) {
-                    return ERROR;
-                }
+//        for (int i = 0; i < Integer.valueOf(ticketsNumber); i++) {
+//            for (Flight flight : flightObjectSet) {
+//                if (!validateTicketService.isAvaliable(flight, flightdate[flightObjectSet.indexOf(flight)])) {
+//                    return ERROR;
+//                }
 //                int recordNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(), flightdate[flightObjectSet.indexOf(flight)]);
 //                if (recordNumber == 0) {
 //                    ValidateTicket validateTicket = new ValidateTicket();
@@ -77,8 +81,8 @@ public class CartNumberAction extends ActionSupport {
 //                } else {
 //                    validateTicketService.updateValidateTicket(recordNumber + 1, flight.getFlightNumber(), flightdate[flightObjectSet.indexOf(flight)]);
 //                }
-            }
-        }
+//            }
+//        }
         return SUCCESS;
     }
 

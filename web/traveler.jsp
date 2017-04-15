@@ -25,6 +25,70 @@
         }
 
     </style>
+    <script type="text/javascript">
+        function addMorePassengerRow(tableID) {
+            var table = document.getElementById(tableID);
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount); //to insert blank row
+
+            var cell1 = row.insertCell(0);   //to insert first column
+            var snoCol = document.createElement("input");
+            snoCol.type = "text";
+            snoCol.name = "travelerSet[" + (rowCount - 1) + "].lastname";
+            snoCol.value = rowCount;
+            cell1.appendChild(snoCol);
+
+            var cell2 = row.insertCell(1); //to insert second column
+            var nameCol = document.createElement("input");
+            nameCol.type = "text";
+            nameCol.name = "travelerSet[" + (rowCount - 1) + "].firstname";
+            cell2.appendChild(nameCol);
+
+            var cell3 = row.insertCell(2); // to insert 3rd column
+            var genderCol = document.createElement("input");
+            genderCol.type = "text";
+            genderCol.name = "travelerSet[" + (rowCount - 1) + "].gender";
+            cell3.appendChild(genderCol);
+
+            var cell4 = row.insertCell(3);  //to insert 4th column
+            var ageCol = document.createElement("input");
+            ageCol.type = "text";
+            ageCol.name = "travelerSet[" + (rowCount - 1) + "].dob";
+            cell4.appendChild(ageCol);
+
+            var cell5 = row.insertCell(4);  //to insert 5th column
+            var phoneCol = document.createElement("input");
+            phoneCol.type = "text";
+            phoneCol.name = "travelerSet[" + (rowCount - 1) + "].phone";
+            cell5.appendChild(phoneCol);
+
+            var cell6 = row.insertCell(5);  //to insert 6th column
+            var emailCol = document.createElement("input");
+            emailCol.type = "text";
+            emailCol.name = "travelerSet[" + (rowCount - 1) + "].email";
+            cell6.appendChild(emailCol);
+
+            var cell7 = row.insertCell(6);   // to insert 7th column
+            var rowRemoveCol = document.createElement("a");
+            var text = document.createTextNode("Delete");
+            rowRemoveCol.appendChild(text);
+            rowRemoveCol.setAttribute("href", "javascript:goSubmit(" + (rowCount - 1) + ")");
+            rowRemoveCol.name = "reqlink[]";
+            cell7.appendChild(rowRemoveCol);
+
+//            return false;
+
+        }
+
+        function goSubmit(rowindex) {
+            document.ticketForm.rowindex.value = rowindex;
+            document.ticketForm.action = "delete";
+            document.ticketForm.submit();
+
+        }
+
+    </script>
+
 
 </head>
 <body>
@@ -59,7 +123,8 @@
 
             </li>
         </ul>
-    </div> <!-- end of tooplate_menu -->
+    </div>
+    <!-- end of tooplate_menu -->
 
     <div id="tooplate_header">
 
@@ -71,108 +136,41 @@
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
         <script src="jquery-1.7.1.min.js"></script>
-        <%--<script>--%>
-        <%--$(document).ready(function () {--%>
-        <%--$("#btn").click(function () {--%>
-        <%--if ($(":radio:checked").length == 0) {--%>
-        <%--alert("你的性别未选择");--%>
-        <%--}--%>
-        <%--});--%>
-        <%--});--%>
-        <%--</script>--%>
+
         <script type="text/javascript">
-            $(function () {
-                $('.dateTxt').datepicker({maxDate: 0});
-            });
 
-            function validateForm() {
-                <%--var sex = document.getElementsByName("travelerList[<%= i-1%>].gender");--%>
-                <%--var flag = false;--%>
-                <%--for (var x=0;x<sex.length;x++)--%>
-                <%--{--%>
-                <%--if (sex.item(x).checked == true)--%>
-                <%--{--%>
-                <%--flag = true;--%>
-                <%--break;--%>
-                <%--}--%>
-                <%--}--%>
-                <%--if (!flag)--%>
-                <%--{--%>
-                <%--alert("请选择性别");--%>
-                <%--return false;--%>
-                <%--}--%>
 
-                <%--var lastname = document.forms["TravelersForm"]["travelerList[<%= i-1%>].lastname"].value;--%>
-                <%--if (lastname == null || lastname.length < 3) {--%>
-                <%--alert("Length of the lastname can not be less than 3! ");--%>
-                <%--return false;--%>
-                <%--}--%>
-
-                <%--var firstname = document.forms["TravelersForm"]["travelerList[<%= i-1%>].firstname"].value;--%>
-                <%--if (firstname == null || firstname.length < 3) {--%>
-                <%--alert("Length of the firstname can not be less than 3!");--%>
-                <%--return false;--%>
-                <%--}--%>
-
-                <%--var dob = document.forms["TravelersForm"]["travelerList[<%= i-1%>].dob"].value;--%>
-                <%--if (dob == null) {--%>
-                <%--alert("Dob can not be null!");--%>
-                <%--return false;--%>
-                <%--}--%>
-
-                <%--var phone=document.forms["TravelersForm"]["travelerList[<%= i-1%>].phone"].value;--%>
-                <%--var reg=/^([0-9]|[\-])+$/g ;--%>
-                <%--if(phone.length<7 || phone.length>18){--%>
-                <%--alert("Invalid phone number length!");--%>
-
-                <%--return false;--%>
-                <%--}else{--%>
-                <%--if(!reg.exec(phone)){--%>
-                <%--alert("Invalid phone number!");--%>
-                <%--return false;--%>
-                <%--}--%>
-                <%--}--%>
-
-                <%--var email=document.forms["TravelersForm"]["travelerList[<%= i-1%>].email"].value;--%>
-                <%--var regu = "^(([0-9a-zA-Z]+)|([0-9a-zA-Z]+[_.0-9a-zA-Z-]*[0-9a-zA-Z]+))@([a-zA-Z0-9-]+[.])+([a-zA-Z]{2}|net|com|gov|mil|org|cc|edu|biz|int|tv)$"--%>
-                <%--var re = new RegExp(regu);--%>
-                <%--if (email.search(re) != -1) {--%>
-                <%--return true;--%>
-                <%--}--%>
-                <%--else {--%>
-                <%--alert ("请输入有效合法的E-mail地址！")--%>
-                <%--document.joinus.email.focus()--%>
-                <%--return false;--%>
-                <%--}--%>
-            }
         </script>
 
 
-    </div> <!-- end of header -->
+    </div>
+    <!-- end of header -->
 
     <div id="tooplate_middle2">
+        <s:form action="traveler" method="post">
 
-        <h3>Choose traveler from Order history</h3>
 
-        <table width="80%" align="center" border="1">
-            <tr>
-                <th>Last Name</th>
-                <th>First Name</th>
-                <th>Gender</th>
-                <th>Phone</th>
-            </tr>
+            <table width="100%" align="center" border="1">
+                <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Gender</th>
+                    <th>DOB</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                </tr>
 
                 <% TravelerService ts = new TravelerService();
-            String username = (String) session.getAttribute("username");
-            List<Traveler> travelerList= ts.getTravelerByUsername(username);
+                    String username = (String) session.getAttribute("username");
+                    List<Traveler> travelerList = ts.getTravelerByUsername(username);
 
-            session.setAttribute("TravelersHistoryList",travelerList);
+                    session.setAttribute("TravelersHistoryList", travelerList);
 
-            for (int i = 0; i<travelerList.size(); i++) {
+                    for (int i = 0; i < travelerList.size(); i++) {
 
-               %>
+                %>
 
-            <form action="traveler.action" method="post">
+
                 <tr>
                     <td>
                         <%= travelerList.get(i).getLastname() %>
@@ -184,40 +182,75 @@
                         <%= travelerList.get(i).getGender() %>
                     </td>
                     <td>
+                        <%= travelerList.get(i).getDob() %>
+                    </td>
+                    <td>
                         <%= travelerList.get(i).getPhone() %>
+                    </td>
+                    <td>
+                        <%= travelerList.get(i).getEmail() %>
                     </td>
 
                     <td>
-                        <input type="checkbox" name="travelerHistory" value= <%= i%>"/>
+                        <input type="checkbox" name="travelerHistory" value="<%= i%>"/>
                     </td>
 
                 </tr>
-                <%--</form>--%>
-
-
-           <%}%>
-        </table>
-
-            <%--<form name="TravelersForm" action="traveler.action" onsubmit="return validateForm()" method="post">--%>
-
-                <%! int i;%>
-                <% for (i = 1; i <= Integer.valueOf((String) session.getAttribute("ticketsNumber")); i++) {%>
-
-                <h3>Passenger <%= i%>:</h3>
-                <input type="radio" name="travelerList[<%= i-1%>].gender" value="M"/>male
-                <input type="radio" name="travelerList[<%= i-1%>].gender" value="F"/>female
-                <br>
-                Last Name: <input type="text" name="travelerList[<%= i-1%>].lastname"><br>
-                First Name: <input type="text" name="travelerList[<%= i-1%>].firstname"><br>
-                Date of birth: <input type="text" name="travelerList[<%= i-1%>].dob" class="dateTxt" id= <%= i-1%>><br>
-                Phone: <input type="text" name="travelerList[<%= i-1%>].phone"><br>
-                Email: <input type="email" name="travelerList[<%= i-1%>].email"><br>
-                <br>
                 <%}%>
+            </table>
+
+            <table>
+
+                <tr>
+
+                    <td colspan=1 align="right">
+                        <input type="button" value="Add More Passenger" onclick="addMorePassengerRow('pdTable')"/>
+                    </td>
+
+                </tr>
+            </table>
 
 
-                <input type="submit" value="submit">
-            </form>
+            <table id="pdTable" width="100%" align="center" border="1">
+
+
+                <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Gender</th>
+                    <th>DOB</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+
+
+                <s:iterator value="list" status="cnt">
+                    <tr>
+                        <TD><s:textfield name="travelerSet[%{#cnt.count-1}].lastname"/></TD>
+                        <TD><s:textfield name="travelerSet[%{#cnt.count-1}].firstname"/></TD>
+                        <TD><s:textfield name="travelerSet[%{#cnt.count-1}].gender"/></TD>
+                        <TD><s:textfield name="travelerSet[%{#cnt.count-1}].dob"/></TD>
+                        <TD><s:textfield name="travelerSet[%{#cnt.count-1}].phone"/></TD>
+                        <TD><s:textfield name="travelerSet[%{#cnt.count-1}].email"/></TD>
+                        <TD><a href="javascript:goSubmit(<s:property value='#cnt.count-1'/>)">delete</a></TD>
+                    </tr>
+                </s:iterator>
+
+
+            </table>
+            <table width="80%" align="left">
+                <tr>
+                    <td align="left">
+                        <input type="submit" value="submit">
+                    </td>
+
+                </tr>
+            </table>
+
+
+        </s:form>
+
     </div>
 </div>
 
