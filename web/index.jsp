@@ -11,7 +11,7 @@
 <html>
 
 <head>
-    <title>Index</title>
+    <title>AirLine Reservation System</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="tooplate_style.css" rel="stylesheet" type="text/css" />

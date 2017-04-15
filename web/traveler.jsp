@@ -8,7 +8,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Blue Arc Theme - Free Website Template</title>
+    <title>AirLine Reservation System</title>
     <meta name="keywords" content=""/>
     <meta name="description" content=""/>
 
@@ -64,7 +64,7 @@
 
             var cell6 = row.insertCell(5);  //to insert 6th column
             var emailCol = document.createElement("input");
-            emailCol.type = "text";
+            emailCol.type = "email";
             emailCol.name = "travelerSet[" + (rowCount - 1) + "].email";
             cell6.appendChild(emailCol);
 

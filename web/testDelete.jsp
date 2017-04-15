@@ -9,7 +9,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-    <title>user information</title>
+    <title>AirLine Reservation System</title>
 </head>
 <body>
 
