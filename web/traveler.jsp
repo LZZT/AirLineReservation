@@ -3,6 +3,7 @@
 <%@ page import="model.Traveler" %>
 <%@ page import="java.util.List" %>
 <%@ page import="service.TravelerService" %>
+<%@ page import="javax.persistence.criteria.CriteriaBuilder" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -168,6 +169,17 @@
     <div id="tooplate_middle2">
         <s:form name="TravelerForm" action="traveler" method="post">
             <s:hidden name="rowindex"/>
+            <% TravelerService ts = new TravelerService();
+                String username = (String) session.getAttribute("username");
+                List<Traveler> travelerList = ts.getTravelerByUsername(username);
+
+                session.setAttribute("TravelersHistoryList", travelerList);
+
+                if(travelerList.size()>0){
+
+                for (int i = 0; i < travelerList.size(); i++) {
+
+            %>
 
 
             <table width="100%" align="center" border="1">
@@ -180,15 +192,7 @@
                     <th>Email</th>
                 </tr>
 
-                <% TravelerService ts = new TravelerService();
-                    String username = (String) session.getAttribute("username");
-                    List<Traveler> travelerList = ts.getTravelerByUsername(username);
 
-                    session.setAttribute("TravelersHistoryList", travelerList);
-
-                    for (int i = 0; i < travelerList.size(); i++) {
-
-                %>
 
 
                 <tr>
@@ -216,7 +220,7 @@
                     </td>
 
                 </tr>
-                <%}%>
+                <%}}%>
             </table>
 
             <table>
