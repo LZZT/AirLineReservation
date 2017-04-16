@@ -76,27 +76,51 @@ public class TravelerAction extends ActionSupport {
         String departingDate = (String) session.getAttribute("departingDate");
         String returningDate = (String) session.getAttribute("returningDate");
         List<Flight> leavingFlightObjectSet = (List<Flight>) session.getAttribute("leavingFlightObjectSet");
-        int leavingSetSize = leavingFlightObjectSet.size();
+//        int leavingSetSize = leavingFlightObjectSet.size();
         List<Flight> returningFlightObjectSet = (List<Flight>) session.getAttribute("returningFlightObjectSet");
-        List<Flight> flightObjectSet = (List) ((ArrayList<Flight>) leavingFlightObjectSet).clone();
-        if (returningFlightObjectSet != null) {
-            flightObjectSet.addAll(returningFlightObjectSet);
-        }
-        String[] flightdate = new String[flightObjectSet.size()];
-        for (int i = 0; i < flightObjectSet.size(); i++) {
-            if (i < leavingSetSize) {
-                flightdate[i] = departingDate;
-            } else {
-                flightdate[i] = returningDate;
+//        List<Flight> flightObjectSet = (List) ((ArrayList<Flight>) leavingFlightObjectSet).clone();
+//        if (returningFlightObjectSet != null) {
+//            flightObjectSet.addAll(returningFlightObjectSet);
+//        }
+
+        ValidateTicketService validateTicketService = new ValidateTicketService();
+
+        for (Flight flight : leavingFlightObjectSet) {
+            int totalTicketNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(), departingDate);
+            int remain = validateTicketService.getCapacity(flight.getAircraftModel().getModel()) - totalTicketNumber;
+            if (remain < ticketsNumber) {
+                return ERROR;
             }
+
         }
-        for (int i = 0; i < Integer.valueOf(ticketsNumber); i++) {
-            for (Flight flight : flightObjectSet) {
-                if (!validateTicketService.isAvaliable(flight, flightdate[flightObjectSet.indexOf(flight)])) {
+
+        if (returningFlightObjectSet != null) {
+            for (Flight flight : returningFlightObjectSet) {
+                int totalTicketNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(), returningDate);
+                int remain = validateTicketService.getCapacity(flight.getAircraftModel().getModel()) - totalTicketNumber;
+                if (remain < ticketsNumber) {
                     return ERROR;
                 }
+
             }
         }
+
+
+//        String[] flightdate = new String[flightObjectSet.size()];
+//        for (int i = 0; i < flightObjectSet.size(); i++) {
+//            if (i < leavingSetSize) {
+//                flightdate[i] = departingDate;
+//            } else {
+//                flightdate[i] = returningDate;
+//            }
+//        }
+//        for (int i = 0; i < Integer.valueOf(ticketsNumber); i++) {
+//            for (Flight flight : flightObjectSet) {
+//                if (!validateTicketService.isAvaliable(flight, flightdate[flightObjectSet.indexOf(flight)])) {
+//                    return ERROR;
+//                }
+//            }
+//        }
 
         return SUCCESS;
     }
