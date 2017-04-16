@@ -20,8 +20,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
     <script>
-        $(document).ready(function() {
-            $("input[name$='manager']").click(function() {
+        /* this function for controlling the display when switch div */
+        $(function() {
+            $("input[name='manager']").click(function() {
                 var test = $(this).val();
 
                 $("div.desc").hide();
@@ -34,6 +35,7 @@
     </script>
 
     <script>
+        /* this function for embedding timepicker */
         $(function() {
             $('#departTime').timepicker({
                 timeFormat: 'HH:mm:ss',
@@ -55,28 +57,30 @@
         });
     </script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
+    <script>
+        /* this function for making sure the input field to be filled */
+        $(function () {
             $('#submit').click(function() {
-                checked = $("input[type=checkbox]:checked").length;
+                var checked = $("input[name=daysOperated]:checked").length;
 
                 if(!checked) {
-                    alert("You must fill all fields in this form.");
+                    alert("You must select the operated days!");
                     return false;
                 }
 
                 var selectDepart = document.getElementById("departAirport");
                 var departAirport = selectDepart.options[selectDepart.selectedIndex].value;
+
                 var selectArrival = document.getElementById("arriAirport");
                 var arrivalAirport = selectArrival.options[selectArrival.selectedIndex].value;
-                if(departAirport == arrivalAirport) {
-                    alert("Departure airport cannot be same with Arrived airport!");
+
+                if(departAirport.localeCompare(arrivalAirport) == 0) {
+                    alert("Departure airport cannot be the same with Arrived airport!");
                     return false;
                 }
             });
         });
     </script>
-
 </head>
 
 <body>
@@ -96,7 +100,6 @@
             <li><a href="about.html" style="font-size: large">About Us</a></li>
             <li><a href="contact.html" style="font-size: large">Contact</a></li>
             <li>
-
                 <%
                     if (null == session.getAttribute("username")) {
                 %>
@@ -112,25 +115,25 @@
                 </form>
                 <% }%>
             </li>
-
         </ul>
     </div> <!-- end of tooplate_menu -->
 
     <div id="tooplate_header">
-        <h1>Manager Mode</h1>
+        <div>
+            <h1>Manager Mode</h1>
+        </div>
     </div>
 
     <!-- -->
-    <div id="tooplate_wrapper">
+    <div id="tooplate_middle">
         <s:actionerror cssStyle="color:red"/>
 
         <div id="managerOp">
 
             <h4>You must fill all fields in this form.</h4>
 
-            <input type="radio" name="manager" value="insert" checked/>Insert Flight
-            <input type="radio" name="manager" value="search"  />Search Flight
-
+            <input type="radio" name="manager" value="insert" checked />Insert Flight
+            <input type="radio" name="manager" value="search" />Search Flight
 
             <div id="insert" class="desc">
 
@@ -150,25 +153,29 @@
                                     <input type="checkbox" name="daysOperated" value="Sat">Sat
                                     <input type="checkbox" name="daysOperated" value="Sun">Sun<br>
 
-                    <s:select label="Departure Airports"
-                              headerKey="-1" headerValue="Select Departure Airport"
+                    <s:select id="departAirport"
+                              label="Departure Airports"
                               list="#session.managerAirports"
-                              name="departAirport" /> <br>
+                              name="departAirport"
+                              required="true" /> <br>
 
-                    <s:select label="Arrival Airports"
-                              headerKey="-1" headerValue="Select Arrival Airport"
+                    <s:select id="arriAirport"
+                              label="Arrival Airports"
                               list="#session.managerAirports"
-                              name="arriAirport" /> <br>
+                              name="arriAirport"
+                              required="true" /> <br>
 
-                    <s:select label="Airline"
-                              headerKey="-1" headerValue="Select Airline"
+                    <s:select id="airline"
+                              label="Airline"
                               list="#session.managerAirlines"
-                              name="airline" /> <br>
+                              name="airline"
+                              required="true" /> <br>
 
-                    <s:select label="Aircraft Model"
-                              headerKey="-1" headerValue="Select Aircraft Model"
+                    <s:select id="aircraftModel"
+                              label="Aircraft Model"
                               list="#session.managerAircraft"
-                              name="aircraftModel" /> <br>
+                              name="aircraftModel"
+                              required="true" /> <br>
 
                     Price: <input type="text" name="price" required><br>
 
@@ -178,7 +185,7 @@
 
             <div id ="search" class="desc" hidden>
                 <form action="searchFlightByFlightNumber.action" method="post">
-                    Flight Number: <input type="text" name="flightNumber"><br>
+                    Flight Number: <input type="text" name="flightNumber" required><br>
 
                     <input type="submit" value="submit">
                 </form>
@@ -186,11 +193,12 @@
         </div>
     </div>
 </div>
-    <div id="tooplate_footer_wrapper">
-        <div id="tooplate_footer">
-            Copyright © 2017 <a href="#">CS 542 Team 2</a>
-        </div>
+
+<div id="tooplate_footer_wrapper">
+    <div id="tooplate_footer">
+        Copyright © 2017 <a href="#">CS 542 Team 2</a>
     </div>
+</div>
 
 </body>
 </html>

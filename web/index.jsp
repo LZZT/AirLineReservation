@@ -133,12 +133,5 @@
     </div>
 </div>
 
-
-
-<%--<input type="button" value="Manager Mode" onclick="location.href='manager.jsp';">--%>
-<%--<br><br><br><br>--%>
-
-
-
 </body>
 </html>

@@ -115,7 +115,9 @@
     </div> <!-- end of tooplate_menu -->
 
     <div id="tooplate_header">
-        <div><h1>Update Flight Action</h1></div>
+        <div>
+            <h1>Update Flight Action</h1>
+        </div>
     </div>
 
     <h4>You must fill all fields in this form.</h4>
@@ -195,8 +197,8 @@
         <s:select id="airline"
                   label="Airline"
                   headerKey="-1" headerValue="Select Airline"
-                list="#session.managerAirlines"
-                name="airline" /> <br>
+                  list="#session.managerAirlines"
+                  name="airline" /> <br>
         <script>
             var sParameterAI = sParameters[6].split('=');
             document.getElementById('airline').value = decodeURI(sParameterAI[1]);
