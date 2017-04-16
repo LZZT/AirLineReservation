@@ -171,19 +171,20 @@ public class FlightDAO {
 
 
         try {
-            String hql = "UPDATE Flight set price = :price, daysOperated = :daysOperated, departureAirport = :departureAirport WHERE flightNumber = :flightNumber";
+            String hql = "UPDATE Flight set aircraftModel=:aircraftModel, airline=:airline, departureAirport=:departureAirport, arrivalAirport=:arrivalAirport, departureTime=:departureTime, arrivalTime=:arrivalTime, daysOperated=:daysOperated, price=:price WHERE flightNumber = :flightNumber";
+            
             Query query = session.createQuery(hql);
+
             query.setParameter("flightNumber", flight.getFlightNumber());
-            /*
+            query.setParameter("daysOperated", flight.getDaysOperated());
             query.setParameter("departureTime", flight.getDepartureTime());
             query.setParameter("arrivalTime", flight.getArrivalTime());
-            query.setParameter("airline", flight.getAirline().getCode());
-            query.setParameter("aircraftModel", flight.getAircraftModel().getModel());
-            */
-            query.setParameter("departureAirport", flight.getDepartureAirport().getCode());
-            //query.setParameter("arrivalAirport", flight.getArrivalAirport().getCode());
-            query.setParameter("daysOperated", flight.getDaysOperated());
             query.setParameter("price", flight.getPrice());
+            query.setParameter("departureAirport", flight.getDepartureAirport());
+            query.setParameter("arrivalAirport", flight.getArrivalAirport());
+            query.setParameter("airline", flight.getAirline());
+            query.setParameter("aircraftModel", flight.getAircraftModel());
+
             int result = query.executeUpdate();
             tx.commit();
 
