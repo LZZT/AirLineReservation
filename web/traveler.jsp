@@ -70,30 +70,56 @@
             emailCol.name = "travelerSet[" + (rowCount - 1) + "].email";
             cell6.appendChild(emailCol);
 
-            var cell7 = row.insertCell(6);   // to insert 7th column
-            var rowRemoveCol = document.createElement("a");
-            var text = document.createTextNode("Delete");
-            rowRemoveCol.appendChild(text);
-            rowRemoveCol.setAttribute("href", "javascript:goSubmit(" + (rowCount - 1) + ")");
-            rowRemoveCol.name = "reqlink[]";
-            cell7.appendChild(rowRemoveCol);
+//            var cell7 = row.insertCell(6);   // to insert 7th column
+//            var rowRemoveCol = document.createElement("a");
+//            var text = document.createTextNode("Delete");
+//            rowRemoveCol.appendChild(text);
+//            rowRemoveCol.setAttribute("href", "javascript:deleteRow(" + (rowCount - 1) + ")");
+//            rowRemoveCol.name = "reqlink[]";
+//            cell7.appendChild(rowRemoveCol);
 
             return false;
 
         }
 
-        function goSubmit(rowindex) {
-//            var Form = document.getElementsByID("TravelerForm");
-//            var rowCountofForm = Form.row.length;
-//            var table = document.getElementById(tableID);
-//            var rowCount = table.rows.length;
+//        function deleteRow(r)
+//        {
+//
+////            var i=(r+1).parentNode.parentNode.rowIndex;
+////            document.getElementById('pdTable').deleteRow(i);
+//            var row = document.getElementById(r+1);
+//            row.parentNode.removeChild(row);
+//        }
 
-            document.TravelerForm.pdTable.rowIndex.value=rowindex
+        function deleteRow(r) {
+            var i = r.parentNode.parentNode.rowIndex;
+            document.write(i);
 
-            document.TravelerForm.action="delete";
-            document.TravelerForm.submit();
 
+            document.getElementById("pdTable").removeChild(document.getElementById(r));
+
+//            var i = r.parentNode.parentNode.rowIndex;
+//            document.getElementById("pdTable").deleteRow(i);
         }
+
+//        function goSubmit(rowindex) {
+//
+//            document.TravelerForm.rowindex.value=rowindex;
+//
+//
+//            document.TravelerForm.action="delete";
+//            document.TravelerForm.submit();
+//////            var Form = document.getElementsByID("TravelerForm");
+//////            var rowCountofForm = Form.row.length;
+//////            var table = document.getElementById(tableID);
+//////            var rowCount = table.rows.length;
+////
+////            document.TravelerForm.pdTable.rowIndex.value=rowindex
+////
+////            document.TravelerForm.action="delete";
+////            document.TravelerForm.submit();
+//
+//        }
 
     </script>
 
@@ -249,7 +275,7 @@
                     <th>DOB</th>
                     <th>Phone</th>
                     <th>Email</th>
-                    <th>Action</th>
+                    <%--<th>Action</th>--%>
                 </tr>
 
 
@@ -261,7 +287,8 @@
                         <TD><s:textfield name="travelerSet[%{#cnt.count-1}].dob"/></TD>
                         <TD><s:textfield name="travelerSet[%{#cnt.count-1}].phone"/></TD>
                         <TD><s:textfield name="travelerSet[%{#cnt.count-1}].email"/></TD>
-                        <TD><a href="javascript:goSubmit(<s:property value='#cnt.count-1'/>)">delete</a></TD>
+
+                        <%--<TD><a href="javascript:deleteRow(<s:property value='#cnt.count-1'/>)">delete</a></TD>--%>
                     </tr>
                 </s:iterator>
 

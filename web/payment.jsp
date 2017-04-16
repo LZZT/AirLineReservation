@@ -63,26 +63,37 @@
     <div id="tooplate_middle2">
         <h3>Choose payment from Order history</h3>
 
-        <table width="80%" align="center" border="1">
-
-            <tr>
-                <th>cardNumber</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Billing Address</th>
-            </tr>
         <%
             PaymentService paymentService = new PaymentService();
             String username = (String) session.getAttribute("username");
             List<Payment> paymentsList = paymentService.getCreditCardByUsername(username);
             session.setAttribute("paymentsHistoryList",paymentsList);
 
+
+            if(paymentsList.size()>0){ %>
+                <table width="80%" align="center" border="1">
+
+            <tr>
+                <th>cardNumber</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Billing Address</th>
+                <th>&nbsp</th>
+            </tr>
+
+             <%
+
             for (int i = 0; i<paymentsList.size(); i++) {
 
 
-//            for(Payment p: paymentsList){
+
+
+//
 
         %>
+
+
+
 
             <form action="payment.action" method="post">
                 <tr>
@@ -106,7 +117,7 @@
                     </td>
                 </tr>
 
-                    <% }%>
+                    <% }}%>
             </table>
 
         <s:actionerror cssStyle="color:red"/>
