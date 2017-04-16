@@ -214,7 +214,8 @@
 
                 for(Flight flight : currentFlights){
                     ValidateTicketService validateTicketService = new ValidateTicketService();
-                    int totalTicketNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(),String.valueOf(flight.getDepartureTime()));
+                    String departureDate = (String) session.getAttribute("departingDate");
+                    int totalTicketNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(),departureDate);
                     int remain =validateTicketService.getCapacity(flight.getAircraftModel().getModel())-totalTicketNumber;
 
             %>

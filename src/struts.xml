@@ -114,6 +114,7 @@
 
         <action name="traveler" class="action.TravelerAction" method="add">
             <result name="success" type="redirect">/payment.jsp</result>
+            <result name="error" type="redirect">/purchaseError.jsp</result>
             <interceptor-ref name="loginInterceptor"></interceptor-ref>
             <interceptor-ref name="defaultStack"></interceptor-ref>
         </action>

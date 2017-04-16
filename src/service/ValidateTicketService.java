@@ -17,6 +17,8 @@ public class ValidateTicketService {
 
     public int getTotalTicketNumber(String flightNumber,String flightDate){
         ValidateTicketDAO validateTicketDAO = new ValidateTicketDAO();
+        System.out.println(flightDate);
+        System.out.println(validateTicketDAO.getTotalTicketNumber(flightNumber,flightDate));
         return  validateTicketDAO.getTotalTicketNumber(flightNumber,flightDate);
     }
 

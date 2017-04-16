@@ -1,9 +1,11 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import model.Flight;
 import model.Traveler;
 
 import org.apache.struts2.ServletActionContext;
+import service.ValidateTicketService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,6 +20,7 @@ public class TravelerAction extends ActionSupport {
     private String[] travelerHistory;
     private List<Traveler> travelersList;
     private int rowindex;
+    private ValidateTicketService validateTicketService = new ValidateTicketService();
 
 
     public ArrayList<Traveler> getTravelerSet() {
@@ -66,9 +69,34 @@ public class TravelerAction extends ActionSupport {
                 travelersList.add(t);
             }
         }
-
+        int ticketsNumber =travelersList.size();
         session.setAttribute("travelerList", travelersList);
-        session.setAttribute("ticketsNumber",travelersList.size());
+        session.setAttribute("ticketsNumber",ticketsNumber);
+        String departingDate = (String) session.getAttribute("departingDate");
+        String returningDate = (String) session.getAttribute("returningDate");
+        List<Flight> leavingFlightObjectSet = (List<Flight>) session.getAttribute("leavingFlightObjectSet");
+        int leavingSetSize = leavingFlightObjectSet.size();
+        List<Flight> returningFlightObjectSet = (List<Flight>) session.getAttribute("returningFlightObjectSet");
+        List<Flight> flightObjectSet = (List) ((ArrayList<Flight>) leavingFlightObjectSet).clone();
+        if (returningFlightObjectSet != null) {
+            flightObjectSet.addAll(returningFlightObjectSet);
+        }
+        String[] flightdate = new String[flightObjectSet.size()];
+        for (int i = 0; i < flightObjectSet.size(); i++) {
+            if (i < leavingSetSize) {
+                flightdate[i] = departingDate;
+            } else {
+                flightdate[i] = returningDate;
+            }
+        }
+                for (int i = 0; i < Integer.valueOf(ticketsNumber); i++) {
+            for (Flight flight : flightObjectSet) {
+                if (!validateTicketService.isAvaliable(flight, flightdate[flightObjectSet.indexOf(flight)])) {
+                    return ERROR;
+                }
+            }
+        }
+
         return SUCCESS;
     }
 

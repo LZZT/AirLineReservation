@@ -95,6 +95,8 @@ public class ValidateTicketDAO {
             Ticket ticket =ticketDAO.getTicket(ticketID);
             String flightNumber = ticket.getFlightNumber();
             String flightDate = ticket.getFlightDate();
+            int totalTicketNumber=getTotalTicketNumber(flightNumber,flightDate);
+            if (totalTicketNumber>0){
             String hql = "UPDATE ValidateTicket set totalTicketNumber = totalTicketNumber-1 WHERE flightDate = :flightDate AND flightNumber=:flightNumber";
             Query query = session.createQuery(hql);
             query.setParameter("flightDate", flightDate);
@@ -102,7 +104,7 @@ public class ValidateTicketDAO {
 //            String hql = String.format("DELETE ValidateTicket WHERE flightNumber = '%s' AND flightDate = '%s'", flightNumber,flightDate);
 //            Query query = session.createQuery(hql);
             int result = query.executeUpdate();
-            tx.commit();
+            tx.commit();}
 
         } catch (Exception ex) {
             if (null != tx) {

@@ -77,7 +77,8 @@
 
                 for(Flight flight : currentFlights){
                     ValidateTicketService validateTicketService = new ValidateTicketService();
-                    int totalTicketNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(),String.valueOf(flight.getDepartureTime()));
+                    String departureDate = (String) session.getAttribute("departingDate");
+                    int totalTicketNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(),departureDate);
                     int remain =validateTicketService.getCapacity(flight.getAircraftModel().getModel())-totalTicketNumber;
 
             %>
@@ -149,7 +150,8 @@
 
                 for(Flight flight : returningFlightObjectSet){
                     ValidateTicketService validateTicketService = new ValidateTicketService();
-                    int totalTicketNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(),String.valueOf(flight.getDepartureTime()));
+                    String returningDate = (String) session.getAttribute("returningDate");
+                    int totalTicketNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(),returningDate);
                     int remain =validateTicketService.getCapacity(flight.getAircraftModel().getModel())-totalTicketNumber;
             %>
 
