@@ -88,13 +88,13 @@ public class TravelerDAO {
         List<Traveler> travelerList = new ArrayList<>();
 
         try {
-            String hql = String.format("SELECT ticket.travellerID FROM Transactions trans, Ticket ticket WHERE trans.username = '%s' AND trans.transactionID = ticket.transactionID", username);
+            String hql = String.format("SELECT distinct ticket.travellerID FROM Transactions trans, Ticket ticket WHERE trans.username = '%s' AND trans.transactionID = ticket.transactionID", username);
 //            String hql = String.format("SELECT C.contactPhone FROM CustomerOwnsTraveler C WHERE C.username = '%s'", username);
 
             Query query= session.createQuery(hql);
             List<String> travellerIDList = (List<String>) query.list();
             for(String t :travellerIDList){
-                System.out.println("111111111111");
+
                 travelerList.add(getTraveler(t));
             }
         } catch (Exception ex) {

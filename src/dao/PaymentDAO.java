@@ -87,7 +87,7 @@ public class PaymentDAO {
 
         try{
 
-            String hql1 = String.format("SELECT t.cardnumber from Transactions t WHERE t.username = '%s'", username);
+            String hql1 = String.format("SELECT distinct t.cardnumber from Transactions t WHERE t.username = '%s'", username);
             Query query1 = session.createQuery(hql1);
 
 //            String hql = "SELECT cardnumber FROM Transactions WHERE username = :username";

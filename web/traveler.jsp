@@ -30,6 +30,7 @@
         function addMorePassengerRow(tableID) {
             var table = document.getElementById(tableID);
             var rowCount = table.rows.length;
+
             var row = table.insertRow(rowCount); //to insert blank row
 
             var cell1 = row.insertCell(0);   //to insert first column
@@ -175,14 +176,8 @@
 
                 session.setAttribute("TravelersHistoryList", travelerList);
 
-                if(travelerList.size()>0){
-
-                for (int i = 0; i < travelerList.size(); i++) {
-
-            %>
-
-
-            <table width="100%" align="center" border="1">
+                if(travelerList.size()>0){ %>
+                     <table width="100%" align="center" border="1">
                 <tr>
                     <th>Last Name</th>
                     <th>First Name</th>
@@ -190,7 +185,16 @@
                     <th>DOB</th>
                     <th>Phone</th>
                     <th>Email</th>
+                    <th>&nbsp</th>
+
                 </tr>
+
+
+                   <% for (int i = 0; i < travelerList.size(); i++) {
+
+            %>
+
+
 
 
 
