@@ -63,15 +63,16 @@ public class TravelerAction extends ActionSupport {
 
 
         if (null != travelerSet && travelerSet.size() > 0) {
-
-
             for (Traveler t : travelerSet) {
-                travelersList.add(t);
+                if (t.getLastname().length() != 0) {
+                    travelersList.add(t);
+                }
             }
         }
-        int ticketsNumber =travelersList.size();
+
+        int ticketsNumber = travelersList.size();
         session.setAttribute("travelerList", travelersList);
-        session.setAttribute("ticketsNumber",ticketsNumber);
+        session.setAttribute("ticketsNumber", ticketsNumber);
         String departingDate = (String) session.getAttribute("departingDate");
         String returningDate = (String) session.getAttribute("returningDate");
         List<Flight> leavingFlightObjectSet = (List<Flight>) session.getAttribute("leavingFlightObjectSet");
@@ -89,7 +90,7 @@ public class TravelerAction extends ActionSupport {
                 flightdate[i] = returningDate;
             }
         }
-                for (int i = 0; i < Integer.valueOf(ticketsNumber); i++) {
+        for (int i = 0; i < Integer.valueOf(ticketsNumber); i++) {
             for (Flight flight : flightObjectSet) {
                 if (!validateTicketService.isAvaliable(flight, flightdate[flightObjectSet.indexOf(flight)])) {
                     return ERROR;
