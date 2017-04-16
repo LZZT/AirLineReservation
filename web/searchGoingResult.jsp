@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%@ page import="java.lang.reflect.Array" %>
 <%@ page import="model.Flight" %>
 <%@ page import="model.Airport" %>
@@ -19,8 +19,8 @@
 
     <title>AirLine Reservation System</title>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="tooplate_style.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="tooplate_style.css" rel="stylesheet" type="text/css"/>
 
     <style>
         nav {
@@ -44,15 +44,15 @@
 
     <%
         String sortGoingBy = "None";
-        if(null != session.getAttribute("sortGoingBy")) {
-            sortGoingBy = (String)session.getAttribute("sortGoingBy");
+        if (null != session.getAttribute("sortGoingBy")) {
+            sortGoingBy = (String) session.getAttribute("sortGoingBy");
         }
     %>
 
     <script>
         function filterSelection() {
             var element = document.getElementById('sortGoingBy');
-            if('None' != ('<%= sortGoingBy %>'))
+            if ('None' != ('<%= sortGoingBy %>'))
                 element.value = ('<%= sortGoingBy %>');
         }
     </script>
@@ -92,7 +92,6 @@
     </div> <!-- end of tooplate_menu -->
 
 
-
     <nav>
         <h3>Filter Conditions:</h3>
         <ul>
@@ -119,11 +118,13 @@
 
                     <h5>Departure Airports:</h5>
                     <%
-                        List<Airport> goingDepartureAirportsList = (List<Airport>)session.getAttribute("goingDepartureAirportsList");
+                        List<Airport> goingDepartureAirportsList = (List<Airport>) session.getAttribute("goingDepartureAirportsList");
 
-                        for(int goingDepartureAirportsIndex = 0; goingDepartureAirportsIndex < goingDepartureAirportsList.size(); goingDepartureAirportsIndex++){
+                        for (int goingDepartureAirportsIndex = 0; goingDepartureAirportsIndex < goingDepartureAirportsList.size(); goingDepartureAirportsIndex++) {
                     %>
-                        <input type="checkbox" name="goingDepartureAirportNamesList" value="<%=goingDepartureAirportsList.get(goingDepartureAirportsIndex).getName()%>"/><%=goingDepartureAirportsList.get(goingDepartureAirportsIndex).getName()%><br>
+                    <input type="checkbox" name="goingDepartureAirportNamesList"
+                           value="<%=goingDepartureAirportsList.get(goingDepartureAirportsIndex).getName()%>"/><%=goingDepartureAirportsList.get(goingDepartureAirportsIndex).getName()%>
+                    <br>
                     <%
                         }
                     %>
@@ -131,12 +132,14 @@
 
                     <h5>Arrival Airports:</h5>
                     <%
-                        List<Airport> goingArrivalAirportsList = (List<Airport>)session.getAttribute("goingArrivalAirportsList");
+                        List<Airport> goingArrivalAirportsList = (List<Airport>) session.getAttribute("goingArrivalAirportsList");
 
-                        for(int goingArrivalAirportsIndex = 0; goingArrivalAirportsIndex < goingArrivalAirportsList.size(); goingArrivalAirportsIndex++){
+                        for (int goingArrivalAirportsIndex = 0; goingArrivalAirportsIndex < goingArrivalAirportsList.size(); goingArrivalAirportsIndex++) {
                     %>
 
-                    <input type="checkbox" name="goingArrivalAirportNamesList" value="<%=goingArrivalAirportsList.get(goingArrivalAirportsIndex).getName()%>"/><%=goingArrivalAirportsList.get(goingArrivalAirportsIndex).getName()%><br>
+                    <input type="checkbox" name="goingArrivalAirportNamesList"
+                           value="<%=goingArrivalAirportsList.get(goingArrivalAirportsIndex).getName()%>"/><%=goingArrivalAirportsList.get(goingArrivalAirportsIndex).getName()%>
+                    <br>
 
                     <%
                         }
@@ -183,7 +186,6 @@
     <main>
 
 
-
         <h3>Choose Departure Flight: </h3>
 
 
@@ -202,26 +204,26 @@
             </tr>
 
             <%
-            List<ArrayList> validFlights = (List<ArrayList>)session.getAttribute("validGoingFlights");
+                List<ArrayList> validFlights = (List<ArrayList>) session.getAttribute("validGoingFlights");
                 Iterator<ArrayList> it = validFlights.iterator();
                 while (it.hasNext()) {
                     List<Flight> flightList = it.next();
-                    for (Flight f:flightList){
+                    for (Flight f : flightList) {
                         ValidateTicketService validateTicketService = new ValidateTicketService();
                         String departureDate = (String) session.getAttribute("departingDate");
-                        int totalTicketNumber = validateTicketService.getTotalTicketNumber(f.getFlightNumber(),departureDate);
-                        int remain =validateTicketService.getCapacity(f.getAircraftModel().getModel())-totalTicketNumber;
-                        if (remain<=0){
+                        int totalTicketNumber = validateTicketService.getTotalTicketNumber(f.getFlightNumber(), departureDate);
+                        int remain = validateTicketService.getCapacity(f.getAircraftModel().getModel()) - totalTicketNumber;
+                        if (remain <= 0) {
                             it.remove();
                         }
                     }
 
                 }
 
-                if (validFlights.size()==0) {
+                if (validFlights.size() == 0) {
                     response.sendRedirect("noResultFound.jsp");
                 }
-            for(int i = 0; i < validFlights.size(); i++){
+                for (int i = 0; i < validFlights.size(); i++) {
 
             %>
 
@@ -229,64 +231,63 @@
             <%
                 List<Flight> currentFlights = validFlights.get(i);
 
-                for(Flight flight : currentFlights){
+                for (Flight flight : currentFlights) {
                     ValidateTicketService validateTicketService = new ValidateTicketService();
                     String departureDate = (String) session.getAttribute("departingDate");
-                    int totalTicketNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(),departureDate);
-                    int remain =validateTicketService.getCapacity(flight.getAircraftModel().getModel())-totalTicketNumber;
-                    if (remain>0){
+                    int totalTicketNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(), departureDate);
+                    int remain = validateTicketService.getCapacity(flight.getAircraftModel().getModel()) - totalTicketNumber;
+                    if (remain > 0) {
             %>
-                    <tr>
-                        <td>
-                            <%= flight.getFlightNumber() %>
-                        </td>
-                        <td>
-                            <%= flight.getAirline().getCode()%>
-                        </td>
-                        <td>
-                            <%= flight.getAircraftModel().getModel() %>
-                        </td>
-                        <td>
-                            <%= flight.getDepartureTime()%>
-                        </td>
-                        <td>
-                            <%= flight.getArrivalTime()%>
-                        </td>
+            <tr>
+                <td>
+                    <%= flight.getFlightNumber() %>
+                </td>
+                <td>
+                    <%= flight.getAirline().getCode()%>
+                </td>
+                <td>
+                    <%= flight.getAircraftModel().getModel() %>
+                </td>
+                <td>
+                    <%= flight.getDepartureTime()%>
+                </td>
+                <td>
+                    <%= flight.getArrivalTime()%>
+                </td>
 
-                        <td>
-                            <%= flight.getDepartureAirport().getName() %>
-                        </td>
-                        <td>
-                            <%= flight.getArrivalAirport().getName()%>
-                        </td>
-                        <td>
-                            <%= flight.getPrice()%>
-                        </td>
-                        <td>
-                            <%= remain%>
-                        </td>
+                <td>
+                    <%= flight.getDepartureAirport().getName() %>
+                </td>
+                <td>
+                    <%= flight.getArrivalAirport().getName()%>
+                </td>
+                <td>
+                    <%= flight.getPrice()%>
+                </td>
+                <td>
+                    <%= remain%>
+                </td>
 
-            <%
+                <%
 
+                        }
                     }
-                }
-            %>
-                        <td>
-                            <input type="hidden" name="index" value=<%=i%>/>
-                            <input type="submit" value="Select" style="font-size: 30px"/>
-                        </td>
-                    </tr>
+                %>
+                <td>
+                    <input type="hidden" name="index" value=<%=i%>/>
+                    <input type="submit" value="Select" style="font-size: 30px"/>
+                </td>
+            </tr>
             </form>
             <%
-            }
+                }
             %>
 
-        <br>
+            <br>
         </table>
 
     </main>
 </div>
-
 
 
 <div id="tooplate_footer_wrapper">

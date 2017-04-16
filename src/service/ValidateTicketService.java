@@ -10,6 +10,18 @@ import model.ValidateTicket;
 
 
 public class ValidateTicketService {
+    public ValidateTicket getValidateTicket(String flightNumber,String flightDate){
+        ValidateTicketDAO validateTicketDAO = new ValidateTicketDAO();
+        return validateTicketDAO.getValidateTicket(flightNumber,flightDate);
+
+    }
+
+    public void deleteValidateTicket(String flightNumber,String flightDate){
+        ValidateTicketDAO validateTicketDAO = new ValidateTicketDAO();
+        validateTicketDAO.deleteValidateTicket(flightNumber,flightDate);
+
+    }
+
     public void recordValidateTicket(ValidateTicket validateTicket){
         ValidateTicketDAO validateTicketDAO = new ValidateTicketDAO();
         validateTicketDAO.saveValidateTicket(validateTicket);

@@ -75,6 +75,7 @@ public class TransactionAction extends ActionSupport {
                 for (Flight flight : leavingFlightObjectSet) {
                     int recordNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(), flightdate[leavingFlightObjectSet.indexOf(flight)]);
                     if (recordNumber == 0) {
+                        validateTicketService.deleteValidateTicket(flight.getFlightNumber(), flightdate[leavingFlightObjectSet.indexOf(flight)]);
                         ValidateTicket validateTicket = new ValidateTicket();
                         validateTicket.setFlightNumber(flight.getFlightNumber());
                         validateTicket.setFlightDate(flightdate[leavingFlightObjectSet.indexOf(flight)]);

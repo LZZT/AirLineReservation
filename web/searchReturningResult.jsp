@@ -214,7 +214,6 @@
                                 it.remove();
                             }
                         }
-
                     }
 
                     if (validFlights.size()==0) {

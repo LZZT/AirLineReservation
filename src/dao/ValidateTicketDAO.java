@@ -12,6 +12,31 @@ import util.HibernateUtil;
 
 public class ValidateTicketDAO {
 
+    public ValidateTicket getValidateTicket(String flightNumber,String flightDate){
+
+        ValidateTicket validateTicket = null;
+
+        Session session = HibernateUtil.openSession();
+
+        Transaction tx = session.beginTransaction();
+
+        try{
+            String hql = String.format("FROM ValidateTicket WHERE flightNumber = '%s' AND flightDate= '%s", flightNumber,flightDate);
+            Query query = session.createQuery(hql);
+            validateTicket =(ValidateTicket) (query.list().get(0));
+            tx.commit();
+
+        }catch (Exception ex){
+            if(null != tx){
+                tx.rollback();
+            }
+        }finally {
+            HibernateUtil.close(session);
+        }
+
+        return validateTicket;
+    }
+
     public int getTotalTicketNumber(String flightNumber, String flightDate) {
         Session session = HibernateUtil.openSession();
         int totalTicketNumber = 0;
@@ -83,6 +108,31 @@ public class ValidateTicketDAO {
         return true;
     }
 
+
+    public void deleteValidateTicket( String flightNumber, String flightDate) {
+
+        Session session = HibernateUtil.openSession();
+
+        Transaction tx = session.beginTransaction();
+
+
+        try {
+            String hql = "DELETE FROM ValidateTicket WHERE flightNumber = :flightNumber AND flightDate=:flightDate ";
+            Query query = session.createQuery(hql);
+            query.setParameter("flightNumber", flightNumber);
+            query.setParameter("flightDate", flightDate);
+            query.executeUpdate();
+            tx.commit();
+
+        } catch (Exception ex) {
+            if (null != tx) {
+                tx.rollback();
+            }
+        } finally {
+            HibernateUtil.close(session);
+        }
+
+    }
     public boolean deleteValidateTicketByTicketID(String ticketID) {
 
         Session session = HibernateUtil.openSession();

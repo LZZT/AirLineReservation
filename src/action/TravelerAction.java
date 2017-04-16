@@ -83,7 +83,6 @@ public class TravelerAction extends ActionSupport {
 //            flightObjectSet.addAll(returningFlightObjectSet);
 //        }
 
-        ValidateTicketService validateTicketService = new ValidateTicketService();
 
         for (Flight flight : leavingFlightObjectSet) {
             int totalTicketNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(), departingDate);
