@@ -203,7 +203,24 @@
 
             <%
             List<ArrayList> validFlights = (List<ArrayList>)session.getAttribute("validGoingFlights");
+                Iterator<ArrayList> it = validFlights.iterator();
+                while (it.hasNext()) {
+                    List<Flight> flightList = it.next();
+                    for (Flight f:flightList){
+                        ValidateTicketService validateTicketService = new ValidateTicketService();
+                        String departureDate = (String) session.getAttribute("departingDate");
+                        int totalTicketNumber = validateTicketService.getTotalTicketNumber(f.getFlightNumber(),departureDate);
+                        int remain =validateTicketService.getCapacity(f.getAircraftModel().getModel())-totalTicketNumber;
+                        if (remain<=0){
+                            it.remove();
+                        }
+                    }
 
+                }
+
+                if (validFlights.size()==0) {
+                    response.sendRedirect("noResultFound.jsp");
+                }
             for(int i = 0; i < validFlights.size(); i++){
 
             %>
@@ -217,7 +234,7 @@
                     String departureDate = (String) session.getAttribute("departingDate");
                     int totalTicketNumber = validateTicketService.getTotalTicketNumber(flight.getFlightNumber(),departureDate);
                     int remain =validateTicketService.getCapacity(flight.getAircraftModel().getModel())-totalTicketNumber;
-
+                    if (remain>0){
             %>
                     <tr>
                         <td>
@@ -251,7 +268,9 @@
 
             <%
 
-                }%>
+                    }
+                }
+            %>
                         <td>
                             <input type="hidden" name="index" value=<%=i%>/>
                             <input type="submit" value="Select" style="font-size: 30px"/>
