@@ -16,6 +16,11 @@
         <property name="cvv" column="cvv" type="string"></property>
         <property name="billingAddress" column="billingAddress" type="string"></property>
 
+        <set name="customerSet" table="CustomerOwnsPayment" cascade="save-update">
+            <key column="cardNumber"/>
+            <many-to-many class="model.Customer" column="username"/>
+        </set>
+
     </class>
 
 </hibernate-mapping>

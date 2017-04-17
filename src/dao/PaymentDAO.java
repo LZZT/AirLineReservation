@@ -89,11 +89,6 @@ public class PaymentDAO {
 
             String hql1 = String.format("SELECT distinct t.cardnumber from Transactions t WHERE t.username = '%s'", username);
             Query query1 = session.createQuery(hql1);
-
-//            String hql = "SELECT cardnumber FROM Transactions WHERE username = :username";
-//            Query query = session.createQuery(hql);
-//            query.setParameter("username", username);
-
             List<String> cardNumberList =(List<String>)query1.list();
             paymentsList = new ArrayList<>();
             for(String o: cardNumberList){

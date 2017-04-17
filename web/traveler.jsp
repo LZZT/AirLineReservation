@@ -82,14 +82,14 @@
 
         }
 
-//        function deleteRow(r)
-//        {
-//
-////            var i=(r+1).parentNode.parentNode.rowIndex;
-////            document.getElementById('pdTable').deleteRow(i);
-//            var row = document.getElementById(r+1);
-//            row.parentNode.removeChild(row);
-//        }
+        //        function deleteRow(r)
+        //        {
+        //
+        ////            var i=(r+1).parentNode.parentNode.rowIndex;
+        ////            document.getElementById('pdTable').deleteRow(i);
+        //            var row = document.getElementById(r+1);
+        //            row.parentNode.removeChild(row);
+        //        }
 
         function deleteRow(r) {
             var i = r.parentNode.parentNode.rowIndex;
@@ -102,38 +102,38 @@
 //            document.getElementById("pdTable").deleteRow(i);
         }
 
-//        function goSubmit(rowindex) {
-//
-//            document.TravelerForm.rowindex.value=rowindex;
-//
-//
-//            document.TravelerForm.action="delete";
-//            document.TravelerForm.submit();
-//////            var Form = document.getElementsByID("TravelerForm");
-//////            var rowCountofForm = Form.row.length;
-//////            var table = document.getElementById(tableID);
-//////            var rowCount = table.rows.length;
-////
-////            document.TravelerForm.pdTable.rowIndex.value=rowindex
-////
-////            document.TravelerForm.action="delete";
-////            document.TravelerForm.submit();
-//
-//        }
+        //        function goSubmit(rowindex) {
+        //
+        //            document.TravelerForm.rowindex.value=rowindex;
+        //
+        //
+        //            document.TravelerForm.action="delete";
+        //            document.TravelerForm.submit();
+        //////            var Form = document.getElementsByID("TravelerForm");
+        //////            var rowCountofForm = Form.row.length;
+        //////            var table = document.getElementById(tableID);
+        //////            var rowCount = table.rows.length;
+        ////
+        ////            document.TravelerForm.pdTable.rowIndex.value=rowindex
+        ////
+        ////            document.TravelerForm.action="delete";
+        ////            document.TravelerForm.submit();
+        //
+        //        }
 
     </script>
 
     <%--<script type="text/javascript">--%>
-        <%--$(document).ready(function () {--%>
-            <%--$('#submit').click(function() {--%>
-                <%--checked = $("input[type=radio]:checked").length;--%>
+    <%--$(document).ready(function () {--%>
+    <%--$('#submit').click(function() {--%>
+    <%--checked = $("input[type=radio]:checked").length;--%>
 
-                <%--if(!checked) {--%>
-                    <%--alert("You must select one type of trip.");--%>
-                    <%--return false;--%>
-                <%--}--%>
-            <%--});--%>
-        <%--});--%>
+    <%--if(!checked) {--%>
+    <%--alert("You must select one type of trip.");--%>
+    <%--return false;--%>
+    <%--}--%>
+    <%--});--%>
+    <%--});--%>
     <%--</script>--%>
 
 
@@ -203,8 +203,8 @@
 
                 session.setAttribute("TravelersHistoryList", travelerList);
 
-                if(travelerList.size()>0){ %>
-                     <table width="100%" align="center" border="1">
+                if (travelerList.size() > 0) { %>
+            <table width="100%" align="center" border="1">
                 <tr>
                     <th>Last Name</th>
                     <th>First Name</th>
@@ -217,13 +217,9 @@
                 </tr>
 
 
-                   <% for (int i = 0; i < travelerList.size(); i++) {
+                <% for (int i = 0; i < travelerList.size(); i++) {
 
-            %>
-
-
-
-
+                %>
 
 
                 <tr>
@@ -248,13 +244,18 @@
 
                     <td>
                         <input type="checkbox" name="travelerHistory" value="<%= i%>"/>
+
+                        <%--<input type="button" name="Update" value="<%= i%> onclick="location.href='mytrip.jsp';">--%>
+
                     </td>
 
                 </tr>
-                <%}}
-                else{
+                <%
+                        }
+                    } else {
 
-                }%>
+                    }
+                %>
             </table>
 
             <table>
@@ -279,7 +280,7 @@
                     <th>DOB</th>
                     <th>Phone</th>
                     <th>Email</th>
-                    <%--<th>Action</th>--%>
+                        <%--<th>Action</th>--%>
                 </tr>
 
 
@@ -292,7 +293,7 @@
                         <TD><s:textfield name="travelerSet[%{#cnt.count-1}].phone"/></TD>
                         <TD><s:textfield name="travelerSet[%{#cnt.count-1}].email"/></TD>
 
-                        <%--<TD><a href="javascript:deleteRow(<s:property value='#cnt.count-1'/>)">delete</a></TD>--%>
+                            <%--<TD><a href="javascript:deleteRow(<s:property value='#cnt.count-1'/>)">delete</a></TD>--%>
                     </tr>
                 </s:iterator>
 

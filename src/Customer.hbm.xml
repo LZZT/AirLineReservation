@@ -23,6 +23,11 @@
             <key column="username"></key>
             <many-to-many class="model.Traveler" column="contactPhone"></many-to-many>
         </set>
+
+        <set name="paymentSet" table="CustomerOwnsPayment" cascade="save-update">
+            <key column="username"></key>
+            <many-to-many class="model.Traveler" column="cardNumber"></many-to-many>
+        </set>
     </class>
 
 </hibernate-mapping>

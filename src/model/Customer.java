@@ -12,8 +12,17 @@ public class Customer {
     private String contactEmail;
     private int cBonus;
     private Set<Traveler> TravelerSet;
+    private Set<Payment> PaymentSet;
 
     public Customer() {
+    }
+
+    public Set<Payment> getPaymentSet() {
+        return PaymentSet;
+    }
+
+    public void setPaymentSet(Set<Payment> paymentSet) {
+        PaymentSet = paymentSet;
     }
 
     public Customer(String username) {

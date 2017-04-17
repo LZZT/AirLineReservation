@@ -125,7 +125,6 @@ public class TravelerDAO {
 
                 travelerList.add(getTraveler(t));
             }
-            System.out.println(travelerList.size());
         } catch (Exception ex) {
             if (null != tx) {
                 tx.rollback();
