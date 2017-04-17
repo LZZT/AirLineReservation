@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<!--map java class with table in database-->
+
+<hibernate-mapping>
+
+    <class name="model.CustomerOwnsTraveler" table="CustomerOwnsTraveler">
+
+        <id name="username" column="username" type="string"/>
+        <property name="contactPhone" column="contactPhone" type="string"/>
+
+
+    </class>
+
+</hibernate-mapping>

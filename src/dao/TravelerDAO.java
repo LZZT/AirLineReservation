@@ -1,5 +1,6 @@
 package dao;
 
+//import model.CustomerOwnsTraveler;
 import model.Traveler;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -108,5 +109,31 @@ public class TravelerDAO {
 
     }
 
+    public List<Traveler> getTravelerList( String username) {
+
+        Session session = HibernateUtil.openSession();
+
+        Transaction tx = session.beginTransaction();
+        List<Traveler> travelerList = new ArrayList<>();
+        try {
+            String hql = String.format("SELECT contactPhone FROM CustomerOwnsTraveler WHERE username = '%s'", username);
+            Query query= session.createQuery(hql);
+            List<String> travellerIDList = (List<String>) query.list();
+            System.out.println("abc"+travellerIDList.size());
+
+            for(String t :travellerIDList){
+
+                travelerList.add(getTraveler(t));
+            }
+            System.out.println(travelerList.size());
+        } catch (Exception ex) {
+            if (null != tx) {
+                tx.rollback();
+            }
+        } finally {
+            HibernateUtil.close(session);
+        }
+        return travelerList;
+    }
 
 }

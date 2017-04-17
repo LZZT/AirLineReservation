@@ -37,4 +37,9 @@ public class TravelerService {
         TravelerDAO travelerDAO = new TravelerDAO();
         return travelerDAO.getTravelerByUsername(username);
     }
+
+    public List<Traveler> getTravelerList(String username){
+        TravelerDAO travelerDAO = new TravelerDAO();
+        return travelerDAO.getTravelerList(username);
+    }
 }

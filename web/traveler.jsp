@@ -198,7 +198,8 @@
             <s:hidden name="rowindex"/>
             <% TravelerService ts = new TravelerService();
                 String username = (String) session.getAttribute("username");
-                List<Traveler> travelerList = ts.getTravelerByUsername(username);
+//                List<Traveler> travelerList = ts.getTravelerByUsername(username);
+                List<Traveler> travelerList = ts.getTravelerList(username);
 
                 session.setAttribute("TravelersHistoryList", travelerList);
 
@@ -250,7 +251,10 @@
                     </td>
 
                 </tr>
-                <%}}%>
+                <%}}
+                else{
+
+                }%>
             </table>
 
             <table>
