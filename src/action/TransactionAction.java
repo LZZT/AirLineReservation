@@ -92,7 +92,7 @@ public class TransactionAction extends ActionSupport {
                     ticket.setFlightNumber(flight.getFlightNumber());
                     ticket.setTransactionID(transactionID);
                     ticket.setFlightDate(flightdate[leavingFlightObjectSet.indexOf(flight)]);
-                    ticket.setTicketID(transactionID.substring(2,4)+transactionID.substring(7,9) + String.valueOf(i));
+                    ticket.setTicketID(transactionID.substring(2,4)+transactionID.substring(7,9)+date.toString().substring(14, 19)+ String.valueOf(i));
                     ticket.setTravellerID(t.getPhone());
                     ticketService.addNewTicket(ticket);
                     i++;
