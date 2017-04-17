@@ -185,6 +185,10 @@
         <action name="cancelTicket" class="action.MytripAction" method="cancelTicket">
             <result name="success" type="redirect">/mytrip.jsp</result>
         </action>
+
+        <action name="deleteCard" class="action.MytripAction" method="deleteCard">
+            <result name="success" type="redirect">/myProfile.jsp</result>
+        </action>
     </package>
 
 </struts>

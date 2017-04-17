@@ -9,6 +9,7 @@
 <%@ page import="model.*" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.Iterator" %>
+<%@ page import="service.PaymentService" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
@@ -95,6 +96,62 @@
     <!-- end of header -->
 
     <div id="tooplate_middle2">
+
+        <h1> My Creditcard</h1>
+
+            <%
+        TransactionService transactionService = new TransactionService();
+        String username= (String) session.getAttribute("username");
+        PaymentService paymentService = new PaymentService();
+        List<Payment> paymentsList = paymentService.getCreditCardByUsername(username);
+        session.setAttribute("myCard",paymentsList);
+        if(paymentsList.size()>0){ %>
+
+        <table width="80%" align="center" border="1">
+
+            <tr>
+                <th>Card #</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Expire Date</th>
+                <th>Billing Address</th>
+                <th></th>
+
+            </tr>
+
+            <s:iterator value='#session.myCard' id="card">
+
+                <tr>
+                    <td>
+                        <s:property value='%{#card.cardNumber}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#card.cardFirstname}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#card.cardLastname}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#card.expDate}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#card.billingAddress}'/>
+                    </td>
+                    <td>
+                        <s:a href="deleteCard.action?cardNumber=%{#card.cardNumber}">Delete</s:a><br>
+                    </td>
+                </tr>
+            </s:iterator>
+
+        </table>
+            <% } %>
+
+
+
+        <br>
+
+
+
         <h1> My Tickets</h1>
 
 
@@ -102,8 +159,8 @@
 
 
             <%
-    TransactionService transactionService = new TransactionService();
-    String username= (String) session.getAttribute("username");
+//    TransactionService transactionService = new TransactionService();
+//    String username= (String) session.getAttribute("username");
     Map<Transactions,List<Ticket>> ticketsListSet = transactionService.getTransactionAndTicket(username);
     Iterator<List<Ticket>> it = ticketsListSet.values().iterator();
     while(it.hasNext()){

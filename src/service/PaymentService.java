@@ -35,12 +35,16 @@ public class PaymentService {
         return true;
     }
 
-
-
     public List<Payment> getCreditCardByUsername(String username){
 
         PaymentDAO paymentDAO = new PaymentDAO();
         List<Payment> payments = paymentDAO.getPaymentInfoByUsername(username);
         return payments;
     }
+
+    public void deleteCardbyCardNumber(String cardnumber){
+        PaymentDAO paymentDAO = new PaymentDAO();
+        paymentDAO.deletePayment2(cardnumber);
+    }
+
 }

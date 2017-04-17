@@ -34,6 +34,7 @@
         <mapping resource="Ticket.hbm.xml"/>
         <mapping resource="ValidateTicket.hbm.xml"/>
         <mapping resource="CustomerOwnsTraveler.hbm.xml"/>
+        <mapping resource="CustomerOwnsPayment.hbm.xml"/>
 
     </session-factory>
 
