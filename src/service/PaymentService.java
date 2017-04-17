@@ -46,4 +46,9 @@ public class PaymentService {
         PaymentDAO paymentDAO = new PaymentDAO();
         paymentDAO.deletePayment(cardnumber);
     }
+
+    public void updateCreditCard(Payment payment){
+        PaymentDAO paymentDAO = new PaymentDAO();
+        paymentDAO.updatePayment(payment);
+    }
 }

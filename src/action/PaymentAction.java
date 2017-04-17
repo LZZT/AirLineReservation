@@ -135,7 +135,7 @@ public class PaymentAction extends ActionSupport {
         String username = (String) session.getAttribute("username");
         Set<Customer> customerSet = new HashSet<>();
         customerSet.add(customerService.getCustomer(username));
-        payment.setCustomerSet(customerSet);
+        paymentService.updateCreditCard(payment);
         return  SUCCESS;
     }
 

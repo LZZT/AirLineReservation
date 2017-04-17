@@ -105,6 +105,23 @@ public class PaymentDAO {
         return paymentsList;
     }
 
+    public void updatePayment(Payment payment){
+        Session session = HibernateUtil.openSession();
 
+        Transaction tx = session.beginTransaction();
+
+        try{
+            session.update(payment);
+            tx.commit();
+
+        }catch (Exception ex){
+            if(null != tx){
+                tx.rollback();
+            }
+
+        }finally {
+            HibernateUtil.close(session);
+        }
+    }
 
 }
