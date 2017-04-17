@@ -86,14 +86,7 @@
             for (int i = 0; i<paymentsList.size(); i++) {
 
 
-
-
-//
-
         %>
-
-
-
 
             <form action="payment.action" method="post">
                 <tr>
@@ -112,8 +105,9 @@
                     </td>
 
                     <td>
-                        <input type="hidden" name="index" value=<%=i%>/>
-                        <input type="submit" value="Select"/>
+                        <input type="checkbox" name="index" value="<%= i%>"/>
+                        <%--<input type="hidden" name="index" value=<%=i%>/>--%>
+                        <%--<input type="submit" value="Select"/>--%>
                     </td>
                 </tr>
 

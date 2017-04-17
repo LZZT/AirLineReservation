@@ -95,6 +95,8 @@ public class PaymentAction extends ActionSupport {
         HttpSession session = request.getSession();
 
         if(null != index && index instanceof String){
+
+
             String indexNumber = ((String)index).split("/")[0];
             Payment p = (Payment) ((List)session.getAttribute("paymentsHistoryList")).get(Integer.valueOf(indexNumber));
             session.setAttribute("payment", p);
@@ -115,9 +117,9 @@ public class PaymentAction extends ActionSupport {
     }
 
 
-//
-//    public void validatePaymentInfo(){
-//
+
+    public void validatePaymentInfo(){
+
 //        if (null == cardNumber || !isNumeric(cardNumber) || cardNumber.length()!=16){
 //            this.addActionError("Invalid Card Number");
 //        }
@@ -134,10 +136,18 @@ public class PaymentAction extends ActionSupport {
 //            this.addActionError("Invalid CVV number");
 //        }
 //
-//
-//
-//
-//    }
+        if (index.split(",").length>1){
+            this.addActionError("Only one payment!");
+        }
+
+        if (null != index && null != cardNumber){
+            this.addActionError("Only one payment!");
+        }
+
+
+
+
+    }
 
 
 
