@@ -11,6 +11,16 @@ public class MytripAction extends ActionSupport {
 
     private String cardNumber;
 
+    private String travelerPhone;
+
+    public String getTravelerPhone() {
+        return travelerPhone;
+    }
+
+    public void setTravelerPhone(String travelerPhone) {
+        this.travelerPhone = travelerPhone;
+    }
+
     public String getCardNumber() {
         return cardNumber;
     }
@@ -42,6 +52,15 @@ public class MytripAction extends ActionSupport {
 
         PaymentService paymentService = new PaymentService();
         paymentService.deleteCardbyCardNumber(cardNumber);
+        return SUCCESS;
+
+    }
+
+    public String deleteTraveler() throws Exception{
+
+
+        TravelerService travelerService = new TravelerService();
+        travelerService.deleteTravelerbyPhone(travelerPhone);
         return SUCCESS;
 
     }

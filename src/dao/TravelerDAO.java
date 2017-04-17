@@ -89,6 +89,8 @@ public class TravelerDAO {
         List<Traveler> travelerList = new ArrayList<>();
 
         try {
+
+
             String hql = String.format("SELECT distinct ticket.travellerID FROM Transactions trans, Ticket ticket WHERE trans.username = '%s' AND trans.transactionID = ticket.transactionID", username);
 //            String hql = String.format("SELECT C.contactPhone FROM CustomerOwnsTraveler C WHERE C.username = '%s'", username);
 
@@ -133,6 +135,31 @@ public class TravelerDAO {
             HibernateUtil.close(session);
         }
         return travelerList;
+    }
+
+    public boolean deleteTraveler2(String phone) {
+
+        Session session = HibernateUtil.openSession();
+
+        Transaction tx = session.beginTransaction();
+
+
+        try {
+
+            String hql = String.format("DELETE CustomerOwnsTraveler WHERE contactPhone = '%s'", phone);
+            Query query = session.createQuery(hql);
+            int result = query.executeUpdate();
+            tx.commit();
+
+        } catch (Exception ex) {
+            if (null != tx) {
+                tx.rollback();
+            }
+        } finally {
+            HibernateUtil.close(session);
+        }
+
+        return true;
     }
 
 }

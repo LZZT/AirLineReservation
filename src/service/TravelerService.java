@@ -1,6 +1,7 @@
 package service;
 
 
+import dao.PaymentDAO;
 import dao.TravelerDAO;
 import model.Traveler;
 
@@ -35,11 +36,16 @@ public class TravelerService {
 
     public List<Traveler> getTravelerByUsername(String username){
         TravelerDAO travelerDAO = new TravelerDAO();
-        return travelerDAO.getTravelerByUsername(username);
+        return travelerDAO.getTravelerList(username);
     }
 
     public List<Traveler> getTravelerList(String username){
         TravelerDAO travelerDAO = new TravelerDAO();
         return travelerDAO.getTravelerList(username);
+    }
+
+    public void deleteTravelerbyPhone(String phone){
+        TravelerDAO travelerDAO = new TravelerDAO();
+        travelerDAO.deleteTraveler2(phone);
     }
 }

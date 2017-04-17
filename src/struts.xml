@@ -187,7 +187,11 @@
         </action>
 
         <action name="deleteCard" class="action.MytripAction" method="deleteCard">
-            <result name="success" type="redirect">/myProfile.jsp</result>
+            <result name="success" type="redirect">/mytrip.jsp</result>
+        </action>
+
+        <action name="deleteTraveler" class="action.MytripAction" method="deleteTraveler">
+            <result name="success" type="redirect">/mytrip.jsp</result>
         </action>
     </package>
 

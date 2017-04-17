@@ -238,6 +238,61 @@
         </s:iterator>
 
 
+        <h1> Travelers' Information</h1>
+
+            <%
+
+            TravelerService travelerService = new TravelerService();
+            List<Traveler> travelerList = travelerService.getTravelerByUsername(username);
+            session.setAttribute("myTraveler", travelerList);
+            if (travelerList.size() > 0){ %>
+
+
+        <table width="80%" align="center" border="1">
+
+            <tr>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Gender</th>
+                <th>DOB</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th></th>
+
+            </tr>
+
+
+            <s:iterator value='#session.myTraveler' id="Traveler">
+
+                <tr>
+                    <td>
+                        <s:property value='%{#Traveler.lastname}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#Traveler.firstname}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#Traveler.gender}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#Traveler.dob}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#Traveler.email}'/>
+                    </td>
+                    <td>
+                        <s:property value='%{#Traveler.phone}'/>
+                    </td>
+                    <td>
+                        <s:a href="deleteTraveler.action?travelerPhone=%{#Traveler.phone}">Delete</s:a><br>
+                    </td>
+                </tr>
+            </s:iterator>
+
+        </table>
+            <% } %>
+
+
 
 
 
