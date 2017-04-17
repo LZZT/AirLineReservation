@@ -1,8 +1,12 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.ServletActionContext;
 import service.*;
 import util.emailValidation;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 
 public class MytripAction extends ActionSupport {
@@ -65,7 +69,12 @@ public class MytripAction extends ActionSupport {
 
     }
 
-
+    public String updateCard() throws  Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        session.setAttribute("cardNumber",cardNumber);
+        return  SUCCESS;
+    }
 
 
 }

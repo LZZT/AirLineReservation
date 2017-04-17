@@ -122,6 +122,23 @@ public class PaymentAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public String updateCard() throws  Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        String cardNumber = (String)session.getAttribute("cardNumber");
+        Payment payment = paymentService.getPayment(cardNumber);
+        payment.setCardLastname(cardLastname);
+        payment.setCardFirstname(cardFirstname);
+        payment.setExpDate(expDate);
+        payment.setCvv(cvv);
+        payment.setBillingAddress(billingAddress);
+        String username = (String) session.getAttribute("username");
+        Set<Customer> customerSet = new HashSet<>();
+        customerSet.add(customerService.getCustomer(username));
+        payment.setCustomerSet(customerSet);
+        return  SUCCESS;
+    }
+
 
 //
 //    public void validatePaymentInfo(){

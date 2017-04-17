@@ -139,6 +139,7 @@
                     </td>
                     <td>
                         <s:a href="deleteCard.action?cardNumber=%{#card.cardNumber}">Delete</s:a><br>
+                        <s:a href="updateCard.action?cardNumber=%{#card.cardNumber}">Update</s:a><br>
                     </td>
                 </tr>
             </s:iterator>
