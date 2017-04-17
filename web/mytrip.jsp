@@ -159,9 +159,8 @@
 
 
             <%
-//    TransactionService transactionService = new TransactionService();
-//    String username= (String) session.getAttribute("username");
-    Map<Transactions,List<Ticket>> ticketsListSet = transactionService.getTransactionAndTicket(username);
+    try{
+            Map<Transactions,List<Ticket>> ticketsListSet = transactionService.getTransactionAndTicket(username);
     Iterator<List<Ticket>> it = ticketsListSet.values().iterator();
     while(it.hasNext()){
         List<Ticket> ticketList=it.next();
@@ -170,6 +169,8 @@
         }
     }
     session.setAttribute("ticketsListSet",ticketsListSet);
+    }catch (Exception ex){}
+
 %>
 
         <s:iterator value='#session.ticketsListSet' id="ticketsListSet">

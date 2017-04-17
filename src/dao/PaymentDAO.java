@@ -63,8 +63,7 @@ public class PaymentDAO {
 
 
         try {
-
-            String hql = String.format("DELETE CreditCard WHERE cardNumber = '%s'", cardNumber);
+            String hql = String.format("DELETE Payment WHERE cardNumber = '%s'", cardNumber);
             Query query = session.createQuery(hql);
             int result = query.executeUpdate();
             tx.commit();
@@ -107,28 +106,5 @@ public class PaymentDAO {
     }
 
 
-    public boolean deletePayment2(String cardNumber) {
-
-        Session session = HibernateUtil.openSession();
-
-        Transaction tx = session.beginTransaction();
-
-        try {
-
-            String hql = String.format("DELETE CustomerOwnsPayment WHERE cardNumber = '%s'", cardNumber);
-            Query query = session.createQuery(hql);
-            int result = query.executeUpdate();
-            tx.commit();
-
-        } catch (Exception ex) {
-            if (null != tx) {
-                tx.rollback();
-            }
-        } finally {
-            HibernateUtil.close(session);
-        }
-
-        return true;
-    }
 
 }

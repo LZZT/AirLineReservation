@@ -42,9 +42,8 @@ public class PaymentService {
         return payments;
     }
 
-    public void deleteCardbyCardNumber(String cardnumber){
+    public void deleteCreditCard(String cardnumber){
         PaymentDAO paymentDAO = new PaymentDAO();
-        paymentDAO.deletePayment2(cardnumber);
+        paymentDAO.deletePayment(cardnumber);
     }
-
 }

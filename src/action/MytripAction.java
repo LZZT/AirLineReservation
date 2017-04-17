@@ -51,7 +51,7 @@ public class MytripAction extends ActionSupport {
     public String deleteCard() throws Exception{
 
         PaymentService paymentService = new PaymentService();
-        paymentService.deleteCardbyCardNumber(cardNumber);
+        paymentService.deleteCreditCard(cardNumber);
         return SUCCESS;
 
     }
@@ -60,10 +60,12 @@ public class MytripAction extends ActionSupport {
 
 
         TravelerService travelerService = new TravelerService();
-        travelerService.deleteTravelerbyPhone(travelerPhone);
+        travelerService.deleteTraveler(travelerPhone);
         return SUCCESS;
 
     }
+
+
 
 
 }

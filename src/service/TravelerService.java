@@ -43,9 +43,4 @@ public class TravelerService {
         TravelerDAO travelerDAO = new TravelerDAO();
         return travelerDAO.getTravelerList(username);
     }
-
-    public void deleteTravelerbyPhone(String phone){
-        TravelerDAO travelerDAO = new TravelerDAO();
-        travelerDAO.deleteTraveler2(phone);
-    }
 }
