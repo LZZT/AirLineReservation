@@ -80,6 +80,7 @@ public class PaymentDAO {
         return true;
     }
 
+
     public List<Payment> getPaymentInfoByUsername(String username){
         List<Payment> paymentsList=null;
         Session session = HibernateUtil.openSession();
@@ -87,12 +88,11 @@ public class PaymentDAO {
 
         try{
 
-            String hql1 = String.format("SELECT distinct t.cardnumber from Transactions t WHERE t.username = '%s'", username);
+            String hql1 = String.format("SELECT cardNumber FROM CustomerOwnsPayment WHERE username = '%s'", username);
             Query query1 = session.createQuery(hql1);
             List<String> cardNumberList =(List<String>)query1.list();
             paymentsList = new ArrayList<>();
             for(String o: cardNumberList){
-                System.out.println(o);
                 paymentsList.add(getPayment(o));
             }
             tx.commit();
@@ -104,6 +104,31 @@ public class PaymentDAO {
             HibernateUtil.close(session);
         }
         return paymentsList;
+    }
+
+
+    public boolean deletePayment2(String cardNumber) {
+
+        Session session = HibernateUtil.openSession();
+
+        Transaction tx = session.beginTransaction();
+
+        try {
+
+            String hql = String.format("DELETE CustomerOwnsPayment WHERE cardNumber = '%s'", cardNumber);
+            Query query = session.createQuery(hql);
+            int result = query.executeUpdate();
+            tx.commit();
+
+        } catch (Exception ex) {
+            if (null != tx) {
+                tx.rollback();
+            }
+        } finally {
+            HibernateUtil.close(session);
+        }
+
+        return true;
     }
 
 }
