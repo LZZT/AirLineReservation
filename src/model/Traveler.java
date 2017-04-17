@@ -22,7 +22,7 @@ public class Traveler {
         this.rowIndex = rowIndex;
     }
 
-    //    public void setCustomer(Customer customer){
+//        public void setCustomer(Customer customer){
 //        this.customerSet.add(customer);
 //    }
 

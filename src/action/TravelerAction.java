@@ -1,10 +1,12 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import model.Customer;
 import model.Flight;
 import model.Traveler;
 
 import org.apache.struts2.ServletActionContext;
+import service.CustomerService;
 import service.ValidateTicketService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +23,7 @@ public class TravelerAction extends ActionSupport {
     private List<Traveler> travelersList;
     private int rowindex;
     private ValidateTicketService validateTicketService = new ValidateTicketService();
-
+    private CustomerService customerService = new CustomerService();
 
     public ArrayList<Traveler> getTravelerSet() {
         return travelerSet;
@@ -69,7 +71,12 @@ public class TravelerAction extends ActionSupport {
                 }
             }
         }
-
+        String username=(String)session.getAttribute("username");
+        Set<Customer> customerSet = new HashSet<>();
+        customerSet.add(customerService.getCustomer(username)) ;
+        for (Traveler traveler:travelersList){
+            traveler.setCustomerSet(customerSet);
+        }
         int ticketsNumber = travelersList.size();
         session.setAttribute("travelerList", travelersList);
         session.setAttribute("ticketsNumber", ticketsNumber);

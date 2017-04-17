@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Set;
+
 /**
  * Created by liweihao on 3/8/17.
  */
@@ -10,6 +12,22 @@ public class Payment {
     private String expDate;
     private String cvv;
     private String billingAddress;
+    private Set<Customer> customerSet;
+
+    public Set<Customer> getCustomerSet() {
+        return customerSet;
+    }
+
+    public void setCustomerSet(Set<Customer> customerSet) {
+        this.customerSet = customerSet;
+    }
+
+    public Payment() {
+    }
+
+    public Payment(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
 
     public String getCardNumber() {
         return cardNumber;

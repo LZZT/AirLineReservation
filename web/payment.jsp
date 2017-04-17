@@ -112,8 +112,8 @@
                     </td>
 
                     <td>
-                        <input type="hidden" name="index" value=<%=i%>/>
-                        <input type="submit" value="Select"/>
+                        <input type="radio" name="index" value=<%=i%>/>
+
                     </td>
                 </tr>
 

@@ -3,12 +3,16 @@ package action;
 import com.opensymphony.xwork2.ActionSupport;
 import model.Customer;
 import model.Payment;
+import model.Traveler;
 import org.apache.struts2.ServletActionContext;
+import service.CustomerService;
 import service.PaymentService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class PaymentAction extends ActionSupport {
@@ -24,7 +28,7 @@ public class PaymentAction extends ActionSupport {
     private String billingAddress;
 
     private String index;
-
+    private CustomerService customerService = new CustomerService();
 
     public PaymentService getPaymentService() {
         return paymentService;
@@ -94,21 +98,25 @@ public class PaymentAction extends ActionSupport {
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
 
-        if(null != index && index instanceof String){
-            String indexNumber = ((String)index).split("/")[0];
-            Payment p = (Payment) ((List)session.getAttribute("paymentsHistoryList")).get(Integer.valueOf(indexNumber));
+        if (null != index && index instanceof String) {
+            String indexNumber = ((String) index).split("/")[0];
+            Payment p = (Payment) ((List) session.getAttribute("paymentsHistoryList")).get(Integer.valueOf(indexNumber));
             session.setAttribute("payment", p);
 
-        }else{
-        Payment payment = new Payment();
-        payment.setCardNumber(cardNumber);
-        payment.setCardLastname(cardLastname);
-        payment.setCardFirstname(cardFirstname);
-        payment.setExpDate(expDate);
-        payment.setCvv(cvv);
-        payment.setBillingAddress(billingAddress);
+        } else {
+            Payment payment = new Payment();
+            payment.setCardNumber(cardNumber);
+            payment.setCardLastname(cardLastname);
+            payment.setCardFirstname(cardFirstname);
+            payment.setExpDate(expDate);
+            payment.setCvv(cvv);
+            payment.setBillingAddress(billingAddress);
+            String username = (String) session.getAttribute("username");
+            Set<Customer> customerSet = new HashSet<>();
+            customerSet.add(customerService.getCustomer(username));
+            payment.setCustomerSet(customerSet);
 
-        session.setAttribute("payment",payment);
+            session.setAttribute("payment", payment);
         }
 
         return SUCCESS;
@@ -140,10 +148,9 @@ public class PaymentAction extends ActionSupport {
 //    }
 
 
-
-    public static boolean isNumeric(String str){
-        for (int i = str.length();--i>=0;){
-            if (!Character.isDigit(str.charAt(i))){
+    public static boolean isNumeric(String str) {
+        for (int i = str.length(); --i >= 0; ) {
+            if (!Character.isDigit(str.charAt(i))) {
                 return false;
             }
         }
