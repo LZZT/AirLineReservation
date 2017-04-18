@@ -37,8 +37,6 @@
 
     </style>
 
-
-
 </head>
 <body>
 
@@ -96,6 +94,7 @@
     <!-- end of header -->
 
     <div id="tooplate_middle2">
+        
 
         <h1> My Creditcard</h1>
 
@@ -146,8 +145,12 @@
 
         </table>
             <% } %>
+        <br>
 
+        <table width="80%" align="center" >
+            <input type="button" onclick="location.href='addNewCreditCard.jsp';" value="Add New Creditcard" style="font-size: 100px"/>
 
+        </table>
 
         <br>
 
@@ -295,10 +298,11 @@
         </table>
             <% } %>
 
+       <br>
+        <table width="80%" align="center" >
+            <input type="button" onclick="location.href='addNewTraveler.jsp';" value="Add New Traveler" style="font-size: 100px"/>
 
-
-
-
+        </table>
         <br>
         <input type="button" onclick="location.href='index.jsp';" value="Return"/>
 

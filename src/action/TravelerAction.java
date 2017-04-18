@@ -27,11 +27,20 @@ public class TravelerAction extends ActionSupport {
     private ValidateTicketService validateTicketService = new ValidateTicketService();
     private CustomerService customerService = new CustomerService();
 
+    private String phone;
     private String lastname;
     private String firstname;
     private String gender;
     private String dob;
     private String email;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getLastname() {
         return lastname;
@@ -228,6 +237,25 @@ public class TravelerAction extends ActionSupport {
         Set<Customer> customerSet = new HashSet<>();
         customerSet.add(customerService.getCustomer(username));
         travelerService.updateTravelerInfo(traveler);
+        return SUCCESS;
+    }
+
+    public String addTraveler() throws Exception {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        TravelerService travelerService = new TravelerService();
+        Traveler traveler = new Traveler();
+        traveler.setPhone(phone);
+        traveler.setLastname(lastname);
+        traveler.setFirstname(firstname);
+        traveler.setEmail(email);
+        traveler.setDob(dob);
+        traveler.setGender(gender);
+        String username = (String) session.getAttribute("username");
+        Set<Customer> customerSet = new HashSet<>();
+        customerSet.add(customerService.getCustomer(username));
+        traveler.setCustomerSet(customerSet);
+        travelerService.addTraveler(traveler);
         return SUCCESS;
     }
 }

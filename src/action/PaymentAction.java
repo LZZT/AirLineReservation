@@ -140,6 +140,25 @@ public class PaymentAction extends ActionSupport {
         return  SUCCESS;
     }
 
+    public String addCard() throws  Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+
+        Payment payment = new Payment();
+        payment.setCardNumber(cardNumber);
+        payment.setCardLastname(cardLastname);
+        payment.setCardFirstname(cardFirstname);
+        payment.setExpDate(expDate);
+        payment.setCvv(cvv);
+        payment.setBillingAddress(billingAddress);
+        String username = (String) session.getAttribute("username");
+        Set<Customer> customerSet = new HashSet<>();
+        customerSet.add(customerService.getCustomer(username));
+        payment.setCustomerSet(customerSet);
+        paymentService.addCreditCard(payment);
+        return  SUCCESS;
+    }
+
 
 //
 //    public void validatePaymentInfo(){

@@ -51,4 +51,10 @@ public class PaymentService {
         PaymentDAO paymentDAO = new PaymentDAO();
         paymentDAO.updatePayment(payment);
     }
+
+
+    public void addCreditCard(Payment payment){
+        PaymentDAO paymentDAO = new PaymentDAO();
+        paymentDAO.savePayment(payment);
+    }
 }

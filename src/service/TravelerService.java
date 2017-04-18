@@ -51,4 +51,9 @@ public class TravelerService {
         TravelerDAO travelerDAO = new TravelerDAO();
         travelerDAO.updateTravelerInfo(t);
     }
+
+    public void addTraveler(Traveler t){
+        TravelerDAO travelerDAO = new TravelerDAO();
+        travelerDAO.saveTraveler(t);
+    }
 }

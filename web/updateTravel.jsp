@@ -113,7 +113,7 @@
 
         <form action="updateNewTraveler" method="post">
 
-            PhoneNumberr: <s:property value='%{#traveler.phone}'/><br>
+            PhoneNumber: <s:property value='%{#traveler.phone}'/><br>
 
             First Name: <input type="text" name="firstname"><br>
 
