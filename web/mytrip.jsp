@@ -66,7 +66,7 @@
                 <form action="logout.action" method="post">
                     <h4>Hi! ${sessionScope.username}</h4>
                     <input type="submit" value="Logout"/>
-                    <input type="button" value="My trip" onclick="location.href='mytrip.jsp';">
+                    <input type="button" value="My Profile" onclick="location.href='mytrip.jsp';">
                 </form>
                 <% }%>
 
@@ -287,6 +287,7 @@
                     </td>
                     <td>
                         <s:a href="deleteTraveler.action?travelerPhone=%{#Traveler.phone}">Delete</s:a><br>
+                        <s:a href="updateTraveler.action?travelerPhone=%{#Traveler.phone}">Update</s:a><br>
                     </td>
                 </tr>
             </s:iterator>

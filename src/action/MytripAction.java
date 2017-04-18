@@ -72,7 +72,14 @@ public class MytripAction extends ActionSupport {
     public String updateCard() throws  Exception{
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        session.setAttribute("cardNumber",cardNumber);
+        session.setAttribute("updateNumber",cardNumber);
+        return  SUCCESS;
+    }
+
+    public String updateTraveler() throws  Exception{
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        session.setAttribute("updateTraveler",travelerPhone);
         return  SUCCESS;
     }
 

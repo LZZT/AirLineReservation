@@ -190,7 +190,24 @@
             <result name="success" type="redirect">/mytrip.jsp</result>
         </action>
 
+        <action name="updateCard" class="action.MytripAction" method="updateCard">
+            <result name="success" type="redirect">/updateCard.jsp</result>
+
+        </action>
+
+        <action name="updateNewCard" class="action.PaymentAction" method="updateCard">
+            <result name="success" type="redirect">/mytrip.jsp</result>
+        </action>
+
         <action name="deleteTraveler" class="action.MytripAction" method="deleteTraveler">
+            <result name="success" type="redirect">/mytrip.jsp</result>
+        </action>
+
+        <action name="updateTraveler" class="action.MytripAction" method="updateTraveler">
+            <result name="success" type="redirect">/updateTravel.jsp</result>
+        </action>
+
+        <action name="updateNewTraveler" class="action.TravelerAction" method="updateTraveler">
             <result name="success" type="redirect">/mytrip.jsp</result>
         </action>
     </package>

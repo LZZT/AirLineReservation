@@ -3,10 +3,12 @@ package action;
 import com.opensymphony.xwork2.ActionSupport;
 import model.Customer;
 import model.Flight;
+import model.Payment;
 import model.Traveler;
 
 import org.apache.struts2.ServletActionContext;
 import service.CustomerService;
+import service.TravelerService;
 import service.ValidateTicketService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +26,52 @@ public class TravelerAction extends ActionSupport {
     private int rowindex;
     private ValidateTicketService validateTicketService = new ValidateTicketService();
     private CustomerService customerService = new CustomerService();
+
+    private String lastname;
+    private String firstname;
+    private String gender;
+    private String dob;
+    private String email;
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public ArrayList<Traveler> getTravelerSet() {
         return travelerSet;
@@ -71,10 +119,10 @@ public class TravelerAction extends ActionSupport {
                 }
             }
         }
-        String username=(String)session.getAttribute("username");
+        String username = (String) session.getAttribute("username");
         Set<Customer> customerSet = new HashSet<>();
-        customerSet.add(customerService.getCustomer(username)) ;
-        for (Traveler traveler:travelersList){
+        customerSet.add(customerService.getCustomer(username));
+        for (Traveler traveler : travelersList) {
             traveler.setCustomerSet(customerSet);
         }
         int ticketsNumber = travelersList.size();
@@ -162,5 +210,24 @@ public class TravelerAction extends ActionSupport {
 
     public void setRowindex(int rowindex) {
         this.rowindex = rowindex;
+    }
+
+
+    public String updateTraveler() throws Exception {
+        HttpServletRequest request = ServletActionContext.getRequest();
+        HttpSession session = request.getSession();
+        String phonenumber = (String) session.getAttribute("updateTraveler");
+        TravelerService travelerService = new TravelerService();
+        Traveler traveler = travelerService.getTraveler(phonenumber);
+        traveler.setLastname(lastname);
+        traveler.setFirstname(firstname);
+        traveler.setEmail(email);
+        traveler.setDob(dob);
+        traveler.setGender(gender);
+        String username = (String) session.getAttribute("username");
+        Set<Customer> customerSet = new HashSet<>();
+        customerSet.add(customerService.getCustomer(username));
+        travelerService.updateTravelerInfo(traveler);
+        return SUCCESS;
     }
 }

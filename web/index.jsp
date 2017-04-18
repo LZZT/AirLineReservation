@@ -90,7 +90,7 @@
                 <form action="logout.action" method="post">
                     <h4>Hi! ${sessionScope.username}</h4>
                     <input type="submit"   style="font-size: 15px" value="Logout"/>
-                    <input type="button" style="font-size: 15px" value="My trip" onclick="location.href='mytrip.jsp' ;">
+                    <input type="button" style="font-size: 15px" value="My Profile" onclick="location.href='mytrip.jsp' ;">
                 </form>
                 <% }%>
 

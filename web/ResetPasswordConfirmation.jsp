@@ -53,7 +53,7 @@
                 <form action="logout.action" method="post">
                     <h4>Hi! ${sessionScope.username}</h4>
                     <input type="submit" value="Logout"/>
-                    <input type="button" value="My trip" onclick="location.href='mytrip.jsp';">
+                    <input type="button" value="My Profile" onclick="location.href='mytrip.jsp';">
                 </form>
                 <% }%>
 

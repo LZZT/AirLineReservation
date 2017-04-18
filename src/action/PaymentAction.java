@@ -28,6 +28,7 @@ public class PaymentAction extends ActionSupport {
     private String billingAddress;
 
     private String index;
+
     private CustomerService customerService = new CustomerService();
 
     public PaymentService getPaymentService() {
@@ -125,7 +126,7 @@ public class PaymentAction extends ActionSupport {
     public String updateCard() throws  Exception{
         HttpServletRequest request = ServletActionContext.getRequest();
         HttpSession session = request.getSession();
-        String cardNumber = (String)session.getAttribute("cardNumber");
+        String cardNumber = (String)session.getAttribute("updateNumber");
         Payment payment = paymentService.getPayment(cardNumber);
         payment.setCardLastname(cardLastname);
         payment.setCardFirstname(cardFirstname);
