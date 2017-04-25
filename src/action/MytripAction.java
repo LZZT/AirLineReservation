@@ -82,6 +82,4 @@ public class MytripAction extends ActionSupport {
         session.setAttribute("updateTraveler",travelerPhone);
         return  SUCCESS;
     }
-
-
 }
