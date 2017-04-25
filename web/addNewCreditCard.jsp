@@ -99,9 +99,7 @@
             Billing Address: <input type="text" name="billingAddress"><br>
 
             <input type="submit" value="Submit">
-
-
-            <input id="submit" type="submit" value="Submit" style="font-size: 100px"/>
+            
         </form>
 
     </div>
