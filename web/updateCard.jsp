@@ -53,7 +53,7 @@
 
     <div id="tooplate_header">
         <div>
-            <h1>Update Flight Action</h1>
+            <h1>Update Card Action</h1>
         </div>
     </div>
 

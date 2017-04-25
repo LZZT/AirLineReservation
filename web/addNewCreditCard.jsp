@@ -99,7 +99,7 @@
             Billing Address: <input type="text" name="billingAddress"><br>
 
             <input type="submit" value="Submit">
-            
+
         </form>
 
     </div>

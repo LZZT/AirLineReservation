@@ -189,7 +189,7 @@
         <h3>Choose Departure Flight: </h3>
 
 
-        <table width="80%" align="center" border="1">
+        <table width="60%" align="center" border="1">
             <tr>
                 <th>Flight Number</th>
                 <th>AirLine</th>

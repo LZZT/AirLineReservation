@@ -201,7 +201,7 @@
         <s:actionerror cssStyle="color:red"/>
         <form action="cartNumber.action" method="post">
 
-            <input type="button" value="Re-select" onclick="location.href='searchReturningResult.jsp'"/><br>
+            <input type="button" value="Re-select" onclick="location.href='index.jsp'"/><br>
             <input type="submit" value="Next"/>
 
         </form>
