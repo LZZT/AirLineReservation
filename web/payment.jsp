@@ -124,7 +124,7 @@
 
         <form action="payment.action" method="post">
 
-            Card Number: <input type="text" name="cardNumber"><br>
+            Card Number: <input type="text" name="cardNumber" ><br>
 
             Last Name: <input type="text" name="cardLastname"><br>
 
