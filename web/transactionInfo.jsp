@@ -259,10 +259,26 @@
 
             </s:iterator>
         </table>
+        <br>
+
+        <%
+            int leavingPrice = (int) session.getAttribute("leavingPrice");
+            int ticketsNumber = (Integer) session.getAttribute("ticketsNumber");
+            int totalprice = 0;
+            try {
+                int returningPrice = (int) session.getAttribute("returningPrice");
+                totalprice = (leavingPrice + returningPrice) * ticketsNumber;
+            } catch (Exception ex) {
+                totalprice = leavingPrice * ticketsNumber;
+            }
+        %>
+        <br/>
+        <h3>Total Price: &nbsp <%=totalprice%></h3>
+
 
         <form action="transAction.action" method="post">
             <br><br>
-            <input type="submit" value="Submit" style="font-size: 100px">
+            <input type="submit" value="Purchase" style="font-size: 100px">
 
         </form>
     </div>
