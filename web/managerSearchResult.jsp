@@ -76,7 +76,9 @@
     <div id="tooplate_header">
 
         <h1>Search result:</h1>
+    </div>
 
+    <div id="tooplate_middle">
         <table style="width: 100%;" align="center" border="1">
 
             <tr>

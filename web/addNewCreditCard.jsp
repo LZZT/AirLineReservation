@@ -66,7 +66,7 @@
 
     <div id="tooplate_header">
 
-        <div><h1>Traveler information</h1></div>
+        <div><h1>Card information</h1></div>
 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/resources/demos/style.css">
